@@ -7,21 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51FF7E97FEA9708B7047F1BC /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
+		A83B5DD71DB50ACD009C3D6E /* OpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */; };
+		A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
-		A8F836501DB37336001131BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364F1DB37336001131BE /* ViewController.swift */; };
 		A8F836531DB37336001131BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A8F836551DB37336001131BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F836541DB37336001131BE /* Assets.xcassets */; };
 		A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
+		A8F836631DB374A6001131BE /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* BikeStation.swift */; };
+		A8F836651DB378CA001131BE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F836641DB378CA001131BE /* MapKit.framework */; };
+		A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
+		A8F8366D1DB3B7D4001131BE /* stationlist.aspx.xml in Resources */ = {isa = PBXBuildFile; fileRef = A8F8366C1DB3B7D4001131BE /* stationlist.aspx.xml */; };
+		A8F8366F1DB3CC38001131BE /* BikeStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12968D17E8D673E7CA8E294F /* Pods-PBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.debug.xcconfig"; sourceTree = "<group>"; };
+		3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.release.xcconfig"; sourceTree = "<group>"; };
+		A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDataAPI.swift; sourceTree = "<group>"; };
+		A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A8F8364A1DB37336001131BE /* PBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F8364D1DB37336001131BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A8F8364F1DB37336001131BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A8F836521DB37336001131BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8F836541DB37336001131BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8F836571DB37336001131BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8F836591DB37336001131BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8F836621DB374A6001131BE /* BikeStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStation.swift; sourceTree = "<group>"; };
+		A8F836641DB378CA001131BE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
+		A8F8366C1DB3B7D4001131BE /* stationlist.aspx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = stationlist.aspx.xml; sourceTree = "<group>"; };
+		A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationViewController.swift; sourceTree = "<group>"; };
+		D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +45,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8F836651DB378CA001131BE /* MapKit.framework in Frameworks */,
+				51FF7E97FEA9708B7047F1BC /* Pods_PBike.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CFB6AEC87F182A1F3C642C7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				12968D17E8D673E7CA8E294F /* Pods-PBike.debug.xcconfig */,
+				3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6E84EAB925C4FD7FD414DFDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8F836641DB378CA001131BE /* MapKit.framework */,
+				D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A8F836411DB37336001131BE = {
 			isa = PBXGroup;
 			children = (
 				A8F8364C1DB37336001131BE /* PBike */,
 				A8F8364B1DB37336001131BE /* Products */,
+				2CFB6AEC87F182A1F3C642C7 /* Pods */,
+				6E84EAB925C4FD7FD414DFDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +92,43 @@
 		A8F8364C1DB37336001131BE /* PBike */ = {
 			isa = PBXGroup;
 			children = (
+				A8F836611DB3747E001131BE /* View */,
+				A8F836601DB37456001131BE /* Controller */,
+				A8F8365F1DB3744C001131BE /* Model */,
 				A8F8364D1DB37336001131BE /* AppDelegate.swift */,
-				A8F8364F1DB37336001131BE /* ViewController.swift */,
+				A8F8366C1DB3B7D4001131BE /* stationlist.aspx.xml */,
 				A8F836511DB37336001131BE /* Main.storyboard */,
 				A8F836541DB37336001131BE /* Assets.xcassets */,
 				A8F836561DB37336001131BE /* LaunchScreen.storyboard */,
 				A8F836591DB37336001131BE /* Info.plist */,
 			);
 			path = PBike;
+			sourceTree = "<group>";
+		};
+		A8F8365F1DB3744C001131BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A8F836621DB374A6001131BE /* BikeStation.swift */,
+				A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A8F836601DB37456001131BE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */,
+				A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A8F836611DB3747E001131BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +138,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8F8365C1DB37336001131BE /* Build configuration list for PBXNativeTarget "PBike" */;
 			buildPhases = (
+				4C11C28DCFE172EED88B0DEA /* [CP] Check Pods Manifest.lock */,
 				A8F836461DB37336001131BE /* Sources */,
 				A8F836471DB37336001131BE /* Frameworks */,
 				A8F836481DB37336001131BE /* Resources */,
+				57F4C19608A4D96E5F57C15E /* [CP] Embed Pods Frameworks */,
+				DE6EB98F9EE5BD80D898B18B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +166,13 @@
 				TargetAttributes = {
 					A8F836491DB37336001131BE = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9XY989BJNH;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -126,18 +202,71 @@
 				A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */,
 				A8F836551DB37336001131BE /* Assets.xcassets in Resources */,
 				A8F836531DB37336001131BE /* Main.storyboard in Resources */,
+				A8F8366D1DB3B7D4001131BE /* stationlist.aspx.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C11C28DCFE172EED88B0DEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		57F4C19608A4D96E5F57C15E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PBike/Pods-PBike-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE6EB98F9EE5BD80D898B18B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PBike/Pods-PBike-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A8F836461DB37336001131BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8F836501DB37336001131BE /* ViewController.swift in Sources */,
+				A83B5DD71DB50ACD009C3D6E /* OpenDataAPI.swift in Sources */,
+				A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */,
 				A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */,
+				A8F836631DB374A6001131BE /* BikeStation.swift in Sources */,
+				A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */,
+				A8F8366F1DB3CC38001131BE /* BikeStationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +310,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -231,6 +361,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -258,9 +389,13 @@
 		};
 		A8F8365D1DB37336001131BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12968D17E8D673E7CA8E294F /* Pods-PBike.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9XY989BJNH;
 				INFOPLIST_FILE = PBike/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NativeLive.PBike;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -270,9 +405,13 @@
 		};
 		A8F8365E1DB37336001131BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9XY989BJNH;
 				INFOPLIST_FILE = PBike/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NativeLive.PBike;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -299,6 +438,7 @@
 				A8F8365E1DB37336001131BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

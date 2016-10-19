@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+let PBike_URL = "http://pbike.pthg.gov.tw/xml/stationlist.aspx"
+
+
+typealias DownloadComplete = () -> ()
