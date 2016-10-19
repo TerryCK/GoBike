@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<BIKEStationData>
+<BIKEStation>
+<Station>
+<StationID>130</StationID>
+<StationNO>1</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東火車站(唐榮國小站)</StationName>
+<StationAddress>中山路與永福路交叉路口(面對唐榮國小大門左邊)</StationAddress>
+<StationLon>22.671259</StationLon>
+<StationLat>120.486331</StationLat>
+<StationDesc>中山路與永福路交叉路口(面對唐榮國小大門左邊)</StationDesc>
+<StationNums1>4</StationNums1>
+<StationNums2>28</StationNums2>
+</Station>
+<Station>
+<StationID>131</StationID>
+<StationNO>2</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>勞工育樂中心站</StationName>
+<StationAddress>自由路17號(面對勞工處大門右邊人行道上)</StationAddress>
+<StationLon>22.665759</StationLon>
+<StationLat>120.483938</StationLat>
+<StationDesc>自由路17號(面對勞工處大門右邊人行道上)</StationDesc>
+<StationNums1>22</StationNums1>
+<StationNums2>10</StationNums2>
+</Station>
+<Station>
+<StationID>132</StationID>
+<StationNO>3</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東市公所站</StationName>
+<StationAddress>台糖街3號(台糖量販店對面人行道上)</StationAddress>
+<StationLon>22.66268</StationLon>
+<StationLat>120.488756</StationLat>
+<StationDesc>台糖街3號(台糖量販店對面人行道上)</StationDesc>
+<StationNums1>17</StationNums1>
+<StationNums2>15</StationNums2>
+</Station>
+<Station>
+<StationID>133</StationID>
+<StationNO>4</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東觀光夜市站</StationName>
+<StationAddress>民族路與仁愛路交叉路口(臨仁愛路人行道上)</StationAddress>
+<StationLon>22.669588</StationLon>
+<StationLat>120.49202</StationLat>
+<StationDesc>民族路與仁愛路交叉路口(臨仁愛路人行道上)</StationDesc>
+<StationNums1>1</StationNums1>
+<StationNums2>31</StationNums2>
+</Station>
+<Station>
+<StationID>134</StationID>
+<StationNO>5</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東大學屏商站</StationName>
+<StationAddress>民生東路51號(面對學校大門左邊人行道)</StationAddress>
+<StationLon>22.659334</StationLon>
+<StationLat>120.512091</StationLat>
+<StationDesc>民生東路51號(面對學校大門左邊人行道)</StationDesc>
+<StationNums1>19</StationNums1>
+<StationNums2>13</StationNums2>
+</Station>
+<Station>
+<StationID>135</StationID>
+<StationNO>6</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>美術館站</StationName>
+<StationAddress>中正路與公園路交叉路口(臨公園路人行道上)</StationAddress>
+<StationLon>22.674471</StationLon>
+<StationLat>120.489335</StationLat>
+<StationDesc>中正路與公園路交叉路口(臨公園路人行道上)</StationDesc>
+<StationNums1>1</StationNums1>
+<StationNums2>31</StationNums2>
+</Station>
+<Station>
+<StationID>136</StationID>
+<StationNO>7</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東女中站</StationName>
+<StationAddress>屏東女中對面中山公園(仁愛路)內機車停車場上</StationAddress>
+<StationLon>22.67454</StationLon>
+<StationLat>120.493315</StationLat>
+<StationDesc>屏東女中對面中山公園(仁愛路)內機車停車場上</StationDesc>
+<StationNums1>6</StationNums1>
+<StationNums2>26</StationNums2>
+</Station>
+<Station>
+<StationID>137</StationID>
+<StationNO>8</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>文化處站</StationName>
+<StationAddress>自由路與大連路交叉口(千禧公園內椰林大道上)</StationAddress>
+<StationLon>22.678698</StationLon>
+<StationLat>120.497961</StationLat>
+<StationDesc>自由路與大連路交叉口(千禧公園內椰林大道上)</StationDesc>
+<StationNums1>4</StationNums1>
+<StationNums2>16</StationNums2>
+</Station>
+<Station>
+<StationID>138</StationID>
+<StationNO>9</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>環保局站</StationName>
+<StationAddress>自由路271號(面對環保局大門右邊停車場內)</StationAddress>
+<StationLon>22.674521</StationLon>
+<StationLat>120.49647</StationLat>
+<StationDesc>自由路271號(面對環保局大門右邊停車場內)</StationDesc>
+<StationNums1>17</StationNums1>
+<StationNums2>15</StationNums2>
+</Station>
+<Station>
+<StationID>139</StationID>
+<StationNO>10</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東大學林森站</StationName>
+<StationAddress>林森路與民教路交叉路口(臨民教路)</StationAddress>
+<StationLon>22.670185</StationLon>
+<StationLat>120.500836</StationLat>
+<StationDesc>林森路與民教路交叉路口(臨民教路)</StationDesc>
+<StationNums1>13</StationNums1>
+<StationNums2>19</StationNums2>
+</Station>
+<Station>
+<StationID>140</StationID>
+<StationNO>11</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>演藝廳站</StationName>
+<StationAddress>民生路與瑞民路交叉口(臨民生路)</StationAddress>
+<StationLon>22.662849</StationLon>
+<StationLat>120.506587</StationLat>
+<StationDesc>民生路與瑞民路交叉口(臨民生路)</StationDesc>
+<StationNums1>13</StationNums1>
+<StationNums2>19</StationNums2>
+</Station>
+<Station>
+<StationID>141</StationID>
+<StationNO>12</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>玉皇宮站</StationName>
+<StationAddress>自立路160號前停車場</StationAddress>
+<StationLon>22.66622</StationLon>
+<StationLat>120.492098</StationLat>
+<StationDesc>自立路160號前停車場</StationDesc>
+<StationNums1>22</StationNums1>
+<StationNums2>10</StationNums2>
+</Station>
+<Station>
+<StationID>142</StationID>
+<StationNO>13</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>將軍之屋站</StationName>
+<StationAddress>中山路與青島街交叉路口(臨青島街多寶屋前廣場)</StationAddress>
+<StationLon>22.678602</StationLon>
+<StationLat>120.484279</StationLat>
+<StationDesc>中山路與青島街交叉路口(臨青島街多寶屋前廣場)</StationDesc>
+<StationNums1>11</StationNums1>
+<StationNums2>10</StationNums2>
+</Station>
+<Station>
+<StationID>143</StationID>
+<StationNO>14</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>縣政府站</StationName>
+<StationAddress>自由路527號(面對屏東縣政府大門左邊人行道上)</StationAddress>
+<StationLon>22.683267</StationLon>
+<StationLat>120.488348</StationLat>
+<StationDesc>自由路527號(面對屏東縣政府大門左邊人行道上)</StationDesc>
+<StationNums1>10</StationNums1>
+<StationNums2>22</StationNums2>
+</Station>
+<Station>
+<StationID>144</StationID>
+<StationNO>15</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>棒球場站</StationName>
+<StationAddress>棒球路與興安街交叉口(臨棒球路)</StationAddress>
+<StationLon>22.657633</StationLon>
+<StationLat>120.485883</StationLat>
+<StationDesc>棒球路與興安街交叉口(臨棒球路)</StationDesc>
+<StationNums1>5</StationNums1>
+<StationNums2>11</StationNums2>
+</Station>
+<Station>
+<StationID>145</StationID>
+<StationNO>16</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>社會福利館站</StationName>
+<StationAddress>華正路184號對面和平公園人行道上</StationAddress>
+<StationLon>22.685776</StationLon>
+<StationLat>120.499581</StationLat>
+<StationDesc>華正路184號對面和平公園人行道上</StationDesc>
+<StationNums1>17</StationNums1>
+<StationNums2>15</StationNums2>
+</Station>
+<Station>
+<StationID>146</StationID>
+<StationNO>17</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>中正藝術館站</StationName>
+<StationAddress>和平路427號(面對中正藝術館大門左邊人行道上)</StationAddress>
+<StationLon>22.676939</StationLon>
+<StationLat>120.477759</StationLat>
+<StationDesc>和平路427號(面對中正藝術館大門左邊人行道上)</StationDesc>
+<StationNums1>16</StationNums1>
+<StationNums2>16</StationNums2>
+</Station>
+<Station>
+<StationID>147</StationID>
+<StationNO>18</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>崇蘭環保公園站</StationName>
+<StationAddress>博愛路與崇德路交叉口(臨博愛路人行道上)</StationAddress>
+<StationLon>22.686635</StationLon>
+<StationLat>120.480613</StationLat>
+<StationDesc>博愛路與崇德路交叉口(臨博愛路人行道上)</StationDesc>
+<StationNums1>0</StationNums1>
+<StationNums2>24</StationNums2>
+</Station>
+<Station>
+<StationID>148</StationID>
+<StationNO>19</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>崇大新城站</StationName>
+<StationAddress>華盛街與永大路交叉路口公園(臨永大路)</StationAddress>
+<StationLon>22.660962</StationLon>
+<StationLat>120.478215</StationLat>
+<StationDesc>華盛街與永大路交叉路口公園(臨永大路)</StationDesc>
+<StationNums1>8</StationNums1>
+<StationNums2>8</StationNums2>
+</Station>
+<Station>
+<StationID>149</StationID>
+<StationNO>20</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>忠孝國小站</StationName>
+<StationAddress>建豐路204號人行道上(面對忠孝國小大門右邊)</StationAddress>
+<StationLon>22.676379</StationLon>
+<StationLat>120.504007</StationLat>
+<StationDesc>建豐路204號人行道上(面對忠孝國小大門右邊)</StationDesc>
+<StationNums1>9</StationNums1>
+<StationNums2>15</StationNums2>
+</Station>
+<Station>
+<StationID>152</StationID>
+<StationNO>21</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>環球購物中心站</StationName>
+<StationAddress>公園路與仁愛路口(臨公園路)</StationAddress>
+<StationLon>22.67334</StationLon>
+<StationLat>120.4937</StationLat>
+<StationDesc>公園路與仁愛路口(臨公園路)</StationDesc>
+<StationNums1>1</StationNums1>
+<StationNums2>31</StationNums2>
+</Station>
+<Station>
+<StationID>153</StationID>
+<StationNO>22</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東高中站</StationName>
+<StationAddress>忠孝路與廣東路口(臨廣東路)</StationAddress>
+<StationLon>22.68763</StationLon>
+<StationLat>120.4886</StationLat>
+<StationDesc>忠孝路與廣東路口(臨廣東路)</StationDesc>
+<StationNums1>10</StationNums1>
+<StationNums2>22</StationNums2>
+</Station>
+<Station>
+<StationID>154</StationID>
+<StationNO>23</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東大學民生站</StationName>
+<StationAddress>民生路4-18號(民生校區)</StationAddress>
+<StationLon>22.665566</StationLon>
+<StationLat>120.504637</StationLat>
+<StationDesc>民生路4-18號
+(民生校區)</StationDesc>
+<StationNums1>17</StationNums1>
+<StationNums2>15</StationNums2>
+</Station>
+<Station>
+<StationID>155</StationID>
+<StationNO>24</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>千禧公園站</StationName>
+<StationAddress>廣東路與廣東路456巷路口</StationAddress>
+<StationLon>22.67956</StationLon>
+<StationLat>120.5016</StationLat>
+<StationDesc>廣東路與廣東路456巷路口</StationDesc>
+<StationNums1>9</StationNums1>
+<StationNums2>23</StationNums2>
+</Station>
+<Station>
+<StationID>159</StationID>
+<StationNO>25</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東火車站(唐榮國小站)2</StationName>
+<StationAddress>屏東縣屏東市中山路41號(面對唐榮國小大門右邊)</StationAddress>
+<StationLon>22.67201</StationLon>
+<StationLat>120.4860</StationLat>
+<StationDesc>屏東縣屏東市中山路41號(面對唐榮國小大門右邊)</StationDesc>
+<StationNums1>17</StationNums1>
+<StationNums2>11</StationNums2>
+</Station>
+<Station>
+<StationID>160</StationID>
+<StationNO>26</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>東山河站</StationName>
+<StationAddress>機場北路與崇勝一街路口(臨機場北路)</StationAddress>
+<StationLon>22.68738</StationLon>
+<StationLat>120.4714</StationLat>
+<StationDesc>機場北路與崇勝一街路口(臨機場北路)</StationDesc>
+<StationNums1>18</StationNums1>
+<StationNums2>14</StationNums2>
+</Station>
+<Station>
+<StationID>161</StationID>
+<StationNO>27</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>屏東書院站(孔廟)</StationName>
+<StationAddress>勝利路38號(勝利路與中華路口)</StationAddress>
+<StationLon>22.67867</StationLon>
+<StationLat>120.4922</StationLat>
+<StationDesc>勝利路38號
+(勝利路與中華路口)</StationDesc>
+<StationNums1>15</StationNums1>
+<StationNums2>13</StationNums2>
+</Station>
+<Station>
+<StationID>162</StationID>
+<StationNO>28</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>明正國中站</StationName>
+<StationAddress>仁愛路與公勤街口(臨仁愛路)</StationAddress>
+<StationLon>22.68206</StationLon>
+<StationLat>120.4972</StationLat>
+<StationDesc>仁愛路與公勤街口(臨仁愛路)</StationDesc>
+<StationNums1>15</StationNums1>
+<StationNums2>17</StationNums2>
+</Station>
+<Station>
+<StationID>163</StationID>
+<StationNO>29</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>國稅局站</StationName>
+<StationAddress>北興街55號(面對國稅局左邊)</StationAddress>
+<StationLon>22.68823</StationLon>
+<StationLat>120.4944</StationLat>
+<StationDesc>北興街55號(面對國稅局左邊)</StationDesc>
+<StationNums1>19</StationNums1>
+<StationNums2>13</StationNums2>
+</Station>
+<Station>
+<StationID>164</StationID>
+<StationNO>30</StationNO>
+<StationPic> </StationPic>
+<StationPic2> </StationPic2>
+<StationPic3> </StationPic3>
+<StationMap> </StationMap>
+<StationName>中正國中站</StationName>
+<StationAddress>瑞光路二段與田寮巷路口(臨瑞光路)</StationAddress>
+<StationLon>22.67349</StationLon>
+<StationLat>120.5105</StationLat>
+<StationDesc>瑞光路二段與田寮巷路口
+(臨瑞光路)</StationDesc>
+<StationNums1>19</StationNums1>
+<StationNums2>5</StationNums2>
+</Station>
+</BIKEStation>
+</BIKEStationData>
