@@ -10,6 +10,7 @@
 		51FF7E97FEA9708B7047F1BC /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
 		A83B5DD71DB50ACD009C3D6E /* OpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */; };
 		A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
+		A8B34C4A1DBB0B1900DC422E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8B34C491DBB0B1900DC422E /* GoogleService-Info.plist */; };
 		A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
 		A8F836531DB37336001131BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A8F836551DB37336001131BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F836541DB37336001131BE /* Assets.xcassets */; };
@@ -25,7 +26,9 @@
 		12968D17E8D673E7CA8E294F /* Pods-PBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.debug.xcconfig"; sourceTree = "<group>"; };
 		3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.release.xcconfig"; sourceTree = "<group>"; };
 		A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDataAPI.swift; sourceTree = "<group>"; };
+		A85B62C41DB895BF00C1413B /* PingtungTW.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PingtungTW.gpx; path = ../PingtungTW.gpx; sourceTree = "<group>"; };
 		A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A8B34C491DBB0B1900DC422E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8F8364A1DB37336001131BE /* PBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F8364D1DB37336001131BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8F836521DB37336001131BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +74,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A85B62C51DB895C800C1413B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A85B62C41DB895BF00C1413B /* PingtungTW.gpx */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		A8F836411DB37336001131BE = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +103,7 @@
 		A8F8364C1DB37336001131BE /* PBike */ = {
 			isa = PBXGroup;
 			children = (
+				A85B62C51DB895C800C1413B /* Resource */,
 				A8F836611DB3747E001131BE /* View */,
 				A8F836601DB37456001131BE /* Controller */,
 				A8F8365F1DB3744C001131BE /* Model */,
@@ -100,6 +112,7 @@
 				A8F836511DB37336001131BE /* Main.storyboard */,
 				A8F836541DB37336001131BE /* Assets.xcassets */,
 				A8F836561DB37336001131BE /* LaunchScreen.storyboard */,
+				A8B34C491DBB0B1900DC422E /* GoogleService-Info.plist */,
 				A8F836591DB37336001131BE /* Info.plist */,
 			);
 			path = PBike;
@@ -201,6 +214,7 @@
 			files = (
 				A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */,
 				A8F836551DB37336001131BE /* Assets.xcassets in Resources */,
+				A8B34C4A1DBB0B1900DC422E /* GoogleService-Info.plist in Resources */,
 				A8F836531DB37336001131BE /* Main.storyboard in Resources */,
 				A8F8366D1DB3B7D4001131BE /* stationlist.aspx.xml in Resources */,
 			);

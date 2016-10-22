@@ -69,10 +69,10 @@ class BikeStation {
         static func deserialize(_ node: XMLIndexer) throws -> Station { return try Station(
             name: node["StationName"].value(),
             location: node["StationAddress"].value(),
-            parkNumber: node["StationNums1"].value(),
-            currentBikeNumber: node["StationNums2"].value(),
-            longitude: node["StationLon"].value(),
-            latitude: node["StationLat"].value()
+            parkNumber: node["StationNums2"].value(),
+            currentBikeNumber: node["StationNums1"].value(),
+            longitude: node["StationLat"].value(),
+            latitude: node["StationLon"].value()
             )
         }
     }
@@ -85,16 +85,57 @@ class BikeStation {
             enumerate(indexer: child, level: level + 1)
         }
     }
+    func current(station:[Station], index:Int) -> Int {
+        return { station[index].currentBikeNumber! + station[index].parkNumber! }()
+    }
     
+    //計算邏輯：半夜Pbike在站數 - 目前Bike在站數
     func numberOfBikeIsUsing(station: [Station], count:Int) -> Int {
-        var parkNumber = 0
+        var bikesInStation = 0
+        var bikesInUsing = 0
+        let nightBikeInStation = 388
         for index in 0...(count - 1) {
-            parkNumber += station[index].currentBikeNumber!
+            bikesInStation += station[index].currentBikeNumber!
         }
-       
-        return parkNumber
+        bikesInUsing = nightBikeInStation - bikesInStation
+        //取得方法：半夜無人使用之bike在站數
+        if bikesInStation <= 0 {
+            bikesInStation = 0
+        }
+        return bikesInUsing
+    }
+    
+    func bikesInStation(station: [Station], count:Int) -> Int {
+        var currentBikeNumber = 0
+        for index in 0...(count - 1) {
+            currentBikeNumber += station[index].currentBikeNumber!
+        }
+        
+                return currentBikeNumber
+    }
+    
+    
+    func statusOfStationImage(station:[Station], index:Int) -> String {
+        var pinImage = ""
+        
+        if let numberOfBike = station[index].currentBikeNumber {
+        switch numberOfBike {
+        case 1...5:
+            pinImage = "pinLess"
+        case 5...24:
+            pinImage = "pinMed"
+        case 25...40:
+            pinImage = "pinFull"
+        default:
+            pinImage = "pinEmpty"
+            }
+        }
+        
+        return pinImage
     }
 }
+
+
 
 
 
