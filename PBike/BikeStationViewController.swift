@@ -65,7 +65,10 @@ class BikeStationViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! BikeStationTableViewCell
         
         // Configure the cell...
-        cell.nameLabel?.text! = self.bikeStations[indexPath.row].name
+        if let name = self.bikeStations[indexPath.row].name{
+            cell.nameLabel?.text! = name
+        }
+        
         cell.parkNumber?.text! = "\(self.bikeStations[indexPath.row].parkNumber!)"
         cell.currentBikeNumber?.text! = "\(self.bikeStations[indexPath.row].currentBikeNumber!)"
         

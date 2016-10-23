@@ -17,11 +17,13 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
+  - ReachabilitySwift (3)
   - SWXMLHash (3.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Firebase/Core
+  - ReachabilitySwift
   - SWXMLHash (~> 3.0.0)
 
 SPEC CHECKSUMS:
@@ -33,8 +35,9 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SWXMLHash: e0f6935971f01b06fb228cf435510d998ecde647
 
-PODFILE CHECKSUM: dda69f79e326ef61858815379ec1b756c6993b1a
+PODFILE CHECKSUM: cbd293de3124118bd718da957ccd16cee728e9a1
 
 COCOAPODS: 1.1.0.rc.3

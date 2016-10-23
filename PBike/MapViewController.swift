@@ -96,11 +96,20 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         var location = CLLocationCoordinate2D()
         location = self.location
         
+        print(stations[1].name)
+        
         let nunberOfUsingPBike = self.bikeStation.numberOfBikeIsUsing(station: stations, count: numberOfStation)
         print("目前有\(nunberOfUsingPBike)人正在騎PBIke")
         let bikesInStation = self.bikeStation.bikesInStation(station: stations, count: numberOfStation)
         print("站內腳踏車有\(bikesInStation)台")
-        self.bikeInStation?.text = "目前有 \(nunberOfUsingPBike) 人正在騎PBIke"
+        var bikeInUsing = ""
+        switch nunberOfUsingPBike {
+        case 0...1000:
+             bikeInUsing = "有 \(nunberOfUsingPBike) 人陪你"
+        default:
+             bikeInUsing = "不知道有多少人正在"
+        }
+        self.bikeInStation?.text = "目前\(bikeInUsing)騎PBIke"
         
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
@@ -108,31 +117,56 @@ class MapViewController: UIViewController, MKMapViewDelegate{
 
         //set Annotation with xml imformation
         for index in 0...(stations.count - 1){
-            // Add pin picture
+            
             let objectAnnotation = CustomPointAnnotation()
             
-            //處理座標
-            let _latitude:CLLocationDegrees = Double(stations[index].latitude)!
-            let _longitude:CLLocationDegrees = Double(stations[index].longitude)!
-            let coordinats = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
-            let destinationOfCoordinats = CLLocation(latitude: _latitude, longitude: _longitude)
-            
-            let distanceInMeter = destinationOfCoordinats.distance(from: currentLocation) / 1000
-            let distanceInKm = String(format:"%.1f", distanceInMeter)
+            //handle coordinate
+            if let _latitude:CLLocationDegrees = Double(stations[index].latitude),
+                let _longitude:CLLocationDegrees = Double(stations[index].longitude){
+                
+                let coordinats = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
+                let destinationOfCoordinats = CLLocation(latitude: _latitude, longitude: _longitude)
+                objectAnnotation.coordinate = coordinats
+                
+                //handle distance
+                let distanceInMeter = destinationOfCoordinats.distance(from: currentLocation) / 1000
+                let distanceInKm = String(format:"%.1f", distanceInMeter)
+                objectAnnotation.distance = distanceInKm
+                
+                //handle name for navigation
+                if let name = stations[index].name {
+                    let placemark = MKPlacemark(coordinate: coordinats, addressDictionary: [ name: "123"])
+                    
+                    objectAnnotation.placemark = placemark
+                }
+                
+                
+            }
+            //handle picture of pin
             let pinImage = self.bikeStation.statusOfStationImage(station: stations, index: index)
-            let placemark = MKPlacemark(coordinate: coordinats, addressDictionary: [stations[index].name : ""])
-            
-            objectAnnotation.placemark = placemark
-            objectAnnotation.coordinate = coordinats
-            objectAnnotation.distance = distanceInKm
-
-            objectAnnotation.title = "🚲:  \(stations[index].currentBikeNumber!)     🅿️:  \(stations[index].parkNumber!)"
-            objectAnnotation.subtitle = "\(stations[index].name)"
-            
-            
-    
-            print("name: \(stations[index].name),   \(objectAnnotation.subtitle!)")
             objectAnnotation.imageName = UIImage(named: pinImage)
+            
+            
+
+            
+            
+            //handle bikes in each bike stations
+            if let currentBikeNumber = stations[index].currentBikeNumber ,
+                let parkNumber = stations[index].parkNumber{
+                if (currentBikeNumber == 99) || (parkNumber == 99) {
+                    objectAnnotation.title = "🚲: ??    🅿️: ??"
+                }else{objectAnnotation.title = "🚲:  \(currentBikeNumber)     🅿️:  \(parkNumber)"}
+            }
+            
+            if let name = stations[index].name {
+                print("name:\(name)")
+                objectAnnotation.subtitle = "\(name)"
+            }
+            
+            //handle bike station's name
+            
+            print("name:\(objectAnnotation.subtitle), \(objectAnnotation.title)")
+           
             
             self.mapView?.addAnnotation(objectAnnotation)
             
@@ -187,7 +221,10 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         
         if let annotation = view.annotation as? CustomPointAnnotation {
             self.selectedPin = annotation.placemark
-            print("Your annotationView title: \(annotation.title)")
+            if let title = annotation.title{
+                print("Your annotationView title: \(title)")
+            }
+            
         }
     }
     

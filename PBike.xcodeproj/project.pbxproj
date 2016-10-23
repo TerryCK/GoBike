@@ -19,7 +19,7 @@
 		A8F836631DB374A6001131BE /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* BikeStation.swift */; };
 		A8F836651DB378CA001131BE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F836641DB378CA001131BE /* MapKit.framework */; };
 		A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
-		A8F8366D1DB3B7D4001131BE /* stationlist.aspx.xml in Resources */ = {isa = PBXBuildFile; fileRef = A8F8366C1DB3B7D4001131BE /* stationlist.aspx.xml */; };
+		A8F8366D1DB3B7D4001131BE /* stationlist.xml in Resources */ = {isa = PBXBuildFile; fileRef = A8F8366C1DB3B7D4001131BE /* stationlist.xml */; };
 		A8F8366F1DB3CC38001131BE /* BikeStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +41,7 @@
 		A8F836621DB374A6001131BE /* BikeStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStation.swift; sourceTree = "<group>"; };
 		A8F836641DB378CA001131BE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
-		A8F8366C1DB3B7D4001131BE /* stationlist.aspx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = stationlist.aspx.xml; sourceTree = "<group>"; };
+		A8F8366C1DB3B7D4001131BE /* stationlist.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = stationlist.xml; sourceTree = "<group>"; };
 		A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationViewController.swift; sourceTree = "<group>"; };
 		D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,8 +80,8 @@
 		A85B62C51DB895C800C1413B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A8F8366C1DB3B7D4001131BE /* stationlist.xml */,
 				A85B62C41DB895BF00C1413B /* PingtungTW.gpx */,
-				A8F8366C1DB3B7D4001131BE /* stationlist.aspx.xml */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 				A8F836551DB37336001131BE /* Assets.xcassets in Resources */,
 				A8B34C4A1DBB0B1900DC422E /* GoogleService-Info.plist in Resources */,
 				A8F836531DB37336001131BE /* Main.storyboard in Resources */,
-				A8F8366D1DB3B7D4001131BE /* stationlist.aspx.xml in Resources */,
+				A8F8366D1DB3B7D4001131BE /* stationlist.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
