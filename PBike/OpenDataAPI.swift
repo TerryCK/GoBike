@@ -9,6 +9,6 @@
 import Foundation
 
 let PBike_URL = "http://pbike.pthg.gov.tw/xml/stationlist.aspx"
-
+//let PBike_URL = "http://www.c-bike.com.tw/xml/stationlistopendata.aspx"
 
 typealias DownloadComplete = () -> ()

@@ -11,6 +11,7 @@
 		A83B5DD71DB50ACD009C3D6E /* OpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */; };
 		A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A8B34C4A1DBB0B1900DC422E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8B34C491DBB0B1900DC422E /* GoogleService-Info.plist */; };
+		A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
 		A8F836531DB37336001131BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A8F836551DB37336001131BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F836541DB37336001131BE /* Assets.xcassets */; };
@@ -29,6 +30,8 @@
 		A85B62C41DB895BF00C1413B /* PingtungTW.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PingtungTW.gpx; path = ../PingtungTW.gpx; sourceTree = "<group>"; };
 		A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A8B34C491DBB0B1900DC422E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PBike.entitlements; sourceTree = "<group>"; };
+		A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		A8F8364A1DB37336001131BE /* PBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F8364D1DB37336001131BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8F836521DB37336001131BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				A85B62C41DB895BF00C1413B /* PingtungTW.gpx */,
+				A8F8366C1DB3B7D4001131BE /* stationlist.aspx.xml */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -103,12 +107,12 @@
 		A8F8364C1DB37336001131BE /* PBike */ = {
 			isa = PBXGroup;
 			children = (
+				A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */,
 				A85B62C51DB895C800C1413B /* Resource */,
 				A8F836611DB3747E001131BE /* View */,
 				A8F836601DB37456001131BE /* Controller */,
 				A8F8365F1DB3744C001131BE /* Model */,
 				A8F8364D1DB37336001131BE /* AppDelegate.swift */,
-				A8F8366C1DB3B7D4001131BE /* stationlist.aspx.xml */,
 				A8F836511DB37336001131BE /* Main.storyboard */,
 				A8F836541DB37336001131BE /* Assets.xcassets */,
 				A8F836561DB37336001131BE /* LaunchScreen.storyboard */,
@@ -132,6 +136,7 @@
 			children = (
 				A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */,
 				A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */,
+				A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -182,6 +187,9 @@
 						DevelopmentTeam = 9XY989BJNH;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -275,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */,
 				A83B5DD71DB50ACD009C3D6E /* OpenDataAPI.swift in Sources */,
 				A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */,
 				A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */,
@@ -350,6 +359,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -394,6 +404,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -407,6 +418,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PBike/PBike.entitlements;
 				DEVELOPMENT_TEAM = 9XY989BJNH;
 				INFOPLIST_FILE = PBike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -423,10 +435,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PBike/PBike.entitlements;
 				DEVELOPMENT_TEAM = 9XY989BJNH;
 				INFOPLIST_FILE = PBike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NativeLive.PBike;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

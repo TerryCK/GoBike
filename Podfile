@@ -7,8 +7,9 @@ target 'PBike' do
 
   # Pods for PBike
 
-   
+    pod 'Firebase/Core'
     pod 'SWXMLHash', '~> 3.0.0'
     pod 'Alamofire', '~> 4.0'
+    pod 'ReachabilitySwift'
 
 end
