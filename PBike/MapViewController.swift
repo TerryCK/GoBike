@@ -17,7 +17,7 @@ protocol HandleMapSearch:class {
 
 
 class MapViewController: UIViewController, MKMapViewDelegate{
-
+    
     @IBOutlet weak var bikeInStation: UILabel!
     @IBOutlet var mapView: MKMapView!
     var myLocationManager: CLLocationManager!
@@ -25,53 +25,78 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     var bikeStations = BikeStation().stations
     var location = CLLocationCoordinate2D()
     var selectedPin: MKPlacemark?
+    var selectedPinName:String?
+    var currentPeopleOfRidePBike:String = ""
     
     var resultSearchController: UISearchController!
     
-//    func locationSearchFunc(){
-//        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
-//        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-//        resultSearchController.searchResultsUpdater = locationSearchTable
-//        let searchBar = resultSearchController!.searchBar
-//        searchBar.sizeToFit()
-//        searchBar.placeholder = "輸入車站名稱"
-//        navigationItem.titleView = resultSearchController?.searchBar
-//        resultSearchController.hidesNavigationBarDuringPresentation = false
-//        resultSearchController.dimsBackgroundDuringPresentation = true
-//        definesPresentationContext = true
-//        locationSearchTable.mapView = mapView
-//        locationSearchTable.handleMapSearchDelegate = self
-//    }
+    //    func locationSearchFunc(){
+    //        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+    //        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+    //        resultSearchController.searchResultsUpdater = locationSearchTable
+    //        let searchBar = resultSearchController!.searchBar
+    //        searchBar.sizeToFit()
+    //        searchBar.placeholder = "輸入車站名稱"
+    //        navigationItem.titleView = resultSearchController?.searchBar
+    //        resultSearchController.hidesNavigationBarDuringPresentation = false
+    //        resultSearchController.dimsBackgroundDuringPresentation = true
+    //        definesPresentationContext = true
+    //        locationSearchTable.mapView = mapView
+    //        locationSearchTable.handleMapSearchDelegate = self
+    //    }
+    
     
     func getDirections(){
         guard let selectedPin = self.selectedPin else {return}
         let mapItem = MKMapItem(placemark: selectedPin)
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        mapItem.name = self.selectedPinName
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
         mapItem.openInMaps(launchOptions: launchOptions)
-      
+        
     }
-   
-  
-    @IBOutlet weak var locationArrowImage: UIBarButtonItem!
+    
+    @IBOutlet weak var locationArrowImage: UIButton!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.UITableView.delegate = self
+        self.UITableView.dataSource = self
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        UITableView.backgroundView = blurEffectView
+        
+        //if inside a popover
+//        if let popover = navigationController?.popoverPresentationController {
+//            popover.backgroundColor = UIColor.clear()
+//        }
         
         let downloadPBikeData = bikeStation.downloadPBikeDetails
-        myLocationManager = CLLocationManager()
-        myLocationManager.delegate = self
-        myLocationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
-        myLocationManager.desiredAccuracy = kCLLocationAccuracyBest
+        initializeLocationManager()
+
         
-        
-        setCurrentLocation()
         //下載資料
         downloadPBikeData() {
-        self.handleAnnotationInfo()
+            self.handleAnnotationInfo()
+        self.UITableView.reloadData()
         }
+        mapViewInfoCustomize()
+        
+
+
+        applyMotionEffect(toView: mapView, magnitude: 10)
+        applyMotionEffect(toView: UITableView, magnitude: -20)
         
         
+        //set ui to load Downloaded code
+    }
+    
+    
+    
+    // Do any additional setup after loading the view.
+    
+    func mapViewInfoCustomize(){
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.showsUserLocation = true
@@ -79,15 +104,16 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         mapView.showsCompass = false
         mapView.showsScale = false
         mapView.showsTraffic = true
-    //set ui to load Downloaded code
+    }
+    
+    func initializeLocationManager(){
+        myLocationManager = CLLocationManager()
+        myLocationManager.delegate = self
+        myLocationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
-        
-        
-        // Do any additional setup after loading the view.
     
-    
-
     func handleAnnotationInfo() {
         
         let stations = self.bikeStation.stations
@@ -96,25 +122,29 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         var location = CLLocationCoordinate2D()
         location = self.location
         
-        print(stations[1].name)
+        // analysis bike information
         
         let nunberOfUsingPBike = self.bikeStation.numberOfBikeIsUsing(station: stations, count: numberOfStation)
-        print("目前有\(nunberOfUsingPBike)人正在騎PBIke")
+        
         let bikesInStation = self.bikeStation.bikesInStation(station: stations, count: numberOfStation)
-        print("站內腳踏車有\(bikesInStation)台")
+        
         var bikeInUsing = ""
         switch nunberOfUsingPBike {
         case 0...1000:
-             bikeInUsing = "有 \(nunberOfUsingPBike) 人陪你"
+            bikeInUsing = " \(nunberOfUsingPBike) "
         default:
-             bikeInUsing = "不知道有多少人正在"
+            bikeInUsing = "不知道有多少人正在"
         }
-        self.bikeInStation?.text = "目前\(bikeInUsing)騎PBIke"
+        
+        self.currentPeopleOfRidePBike = "\(bikeInUsing)"
+        print("站內腳踏車有\(bikesInStation)台")
+        print("目前有\(nunberOfUsingPBike)人正在騎PBIke")
+        
         
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
-
+        
         //set Annotation with xml imformation
         for index in 0...(stations.count - 1){
             
@@ -135,7 +165,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
                 
                 //handle name for navigation
                 if let name = stations[index].name {
-                    let placemark = MKPlacemark(coordinate: coordinats, addressDictionary: [ name: "123"])
+                    let placemark = MKPlacemark(coordinate: coordinats, addressDictionary:[name: "123"])
                     
                     objectAnnotation.placemark = placemark
                 }
@@ -147,35 +177,118 @@ class MapViewController: UIViewController, MKMapViewDelegate{
             objectAnnotation.imageName = UIImage(named: pinImage)
             
             
-
-            
-            
             //handle bikes in each bike stations
-            if let currentBikeNumber = stations[index].currentBikeNumber ,
-                let parkNumber = stations[index].parkNumber{
-                if (currentBikeNumber == 99) || (parkNumber == 99) {
-                    objectAnnotation.title = "🚲: ??    🅿️: ??"
-                }else{objectAnnotation.title = "🚲:  \(currentBikeNumber)     🅿️:  \(parkNumber)"}
-            }
-            
-            if let name = stations[index].name {
-                print("name:\(name)")
-                objectAnnotation.subtitle = "\(name)"
-            }
-            
             //handle bike station's name
+            if let currentBikeNumber = stations[index].currentBikeNumber,
+                let name = stations[index].name,
+                let parkNumber = stations[index].parkNumber{
+                objectAnnotation.subtitle = "\(name)"
+                if (currentBikeNumber == 99) || (parkNumber == 99) {
+                    objectAnnotation.title = "🚲: ??  🅿️: ??"
+                }else{objectAnnotation.title = "🚲:  \(currentBikeNumber)   🅿️:  \(parkNumber)"}
+                //print("\(objectAnnotation.title!), name:\(name)")
+            }
             
-            print("name:\(objectAnnotation.subtitle), \(objectAnnotation.title)")
-           
             
             self.mapView?.addAnnotation(objectAnnotation)
-            
-            
+        }
     }
-}
     
+    
+    
+    
+    @IBOutlet weak var UITableView: UITableView!
+    var showInfoTableView:Bool = false
+   
+    
+    
+    @IBAction func titleBtnPressed(_ sender: AnyObject) {
+        print("按按鈕有反應嗎？ \(tableViewCanDoNext)")
+        print("秀表格嗎？ \(showInfoTableView)")
+        
+        
+        if tableViewCanDoNext {
+            if showInfoTableView {
+                //do for unshow tabview
+                
+                unShowTableView(UITableView)
+                showInfoTableView = false
+                
+            }else{
+                // do for show tabview
+                
+                showUpTableView(UITableView)
+                showInfoTableView = true
+                
+            }
+        }
+    }
+
+    let yDelta:CGFloat = 500
+    var tableViewCanDoNext:Bool = true
+    
+    
+    func showUpTableView(_ moveView: UIView){
+        //show subview from top
+        print("self.tableViewCanDoNext \(self.tableViewCanDoNext)")
+        self.tableViewCanDoNext = false
+        
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        print("UITableView Postition \(UITableView.center) ")
+        print("Show up Table View   : Y + yDelta")
+        moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta )
+
+        
+        
+        moveView.isHidden = false
+        
+        print("isHidden after")
+        UIView.animate(withDuration: 0.5, delay: 0, options:[ UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut], animations: {
+            
+            moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta)
+            
+            }, completion: { (Bool) in
+                self.tableViewCanDoNext = true
+                print("show Up animation is completion")
+                
+        })
+        
+        print("y: \(moveView.center.y)")
+  
+    }
+    
+    func unShowTableView(_ moveView: UIView){
+        //show subview out to top
+        print("Show off Table View  : Y - yDelta")
+        
+        self.tableViewCanDoNext = false
+       
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options:[ UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut], animations: {
+            
+            moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta)
+            
+            }, completion: { (Bool) in
+             
+                print("show off animation is completion")
+                moveView.isHidden = true
+                moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta )
+                print("y: \(moveView.center.y)")
 
 
+                self.tableViewCanDoNext = true
+                
+ 
+                
+        })
+    }
+    
+    
+    
+    
+    //handle Tabview present animates
+    
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -211,7 +324,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
             annotationView?.rightCalloutAccessoryView = button
             annotationView?.leftCalloutAccessoryView = subTitleView
             
-           
+            
         }
         return annotationView
     }
@@ -221,8 +334,9 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         
         if let annotation = view.annotation as? CustomPointAnnotation {
             self.selectedPin = annotation.placemark
-            if let title = annotation.title{
-                print("Your annotationView title: \(title)")
+            if let name = annotation.subtitle {
+                self.selectedPinName = "\(name)(PBike)"
+                print("Your annotationView title: \(name)")
             }
             
         }
@@ -230,11 +344,12 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     
     
     func setCurrentLocation() {
-
-        let latDelta = 0.05
-        let longDelta = 0.05
+        
+        let latDelta = 0.03
+        let longDelta = 0.03
         let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
         var location = CLLocationCoordinate2D()
+        print("myLocationManager.location , \(myLocationManager.location)")
         
         if let current = myLocationManager.location {
             location.latitude = Double(current.coordinate.latitude)
@@ -246,34 +361,48 @@ class MapViewController: UIViewController, MKMapViewDelegate{
             location.longitude = 120.4861926
             print("無法取得使用者位置、改取得屏東火車站GPS位置")
         }
-    
+        
         print("北緯：\(location.latitude) 東經：\(location.longitude)")
         let center:CLLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
         let currentRegion:MKCoordinateRegion = MKCoordinateRegion (center: center.coordinate, span:currentLocationSpan)
-       
+        
         self.mapView.setRegion(currentRegion, animated: true)
-    
+        
         print("currentRegion \(currentRegion)")
-        locationArrowImage?.tintColor = UIColor.gray
-    
         self.location = location
     }
-        
-        
-    @IBAction func locationArrowPressed(_ sender: AnyObject) {
-        locationArrowImage.tintColor = UIColor.purple
-        self.setCurrentLocation()
-        
-    }
-
-    @IBAction func searchBtnPressed(_ sender: AnyObject) {
-//        locationSearchFunc()
-    }
     
+    var mapUserTrackingMod:Bool = true
+    
+    @IBAction func locationArrowPressed(_ sender: AnyObject) {
+        if mapUserTrackingMod {
+        
+        self.mapView.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
+        locationArrowImage.setImage(UIImage(named: "locationArrorFollewWithHeading"), for: UIControlState.normal)
+        mapUserTrackingMod = false
+        print("followWithHeading")
+        }else{
+            
+        self.mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
+        locationArrowImage.setImage(UIImage(named: "locationArrow"), for: UIControlState.normal) 
+        mapUserTrackingMod = true
+        print("follow")
+        }
 
+    }
 
+    
+    @IBAction func searchBtnPressed(_ sender: AnyObject) {
+        //        locationSearchFunc()
+        let downloadPBikeData = bikeStation.downloadPBikeDetails
+        downloadPBikeData(){
+            self.handleAnnotationInfo()
+            self.UITableView.reloadData()
+        }
+    }
 }
+
 
 
 
@@ -284,7 +413,20 @@ extension MapViewController: CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        authrizationStatus()
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        myLocationManager.stopUpdatingLocation()
+        
+    }
+    
+    func authrizationStatus(){
+        
         let authrizationStatus = CLLocationManager.authorizationStatus()
+        
         switch authrizationStatus {
             
         case .notDetermined:
@@ -298,31 +440,27 @@ extension MapViewController: CLLocationManagerDelegate {
             self.present(alertController,animated: true, completion:nil)
             
         case .authorizedWhenInUse:
-                myLocationManager.startUpdatingLocation()
-                print("開始定位")
-
+            myLocationManager.startUpdatingLocation()
+            print("開始定位")
+            
+            
         default:
             print("Location authrization error")
-                break
-            }
+            break
+        }
+        
         let myLocation:MKUserLocation = mapView.userLocation
         myLocation.title = "😏目前位置"
-        print("取得定位資訊：\(myLocationManager.location)!")
-    }
 
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        myLocationManager.stopUpdatingLocation()
-    
+        setCurrentLocation()
     }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-//        guard let location = locations.first else { return }
-//        let span = MKCoordinateSpanMake(0.05, 0.05)
-//        let region = MKCoordinateRegion(center: location.coordinate, span: span)
-//        mapView.setRegion(region, animated: true)
+        //        guard let location = locations.first else { return }
+        //        let span = MKCoordinateSpanMake(0.05, 0.05)
+        //        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        //        mapView.setRegion(region, animated: true)
         
         //        let currentLocation: CLLocation = locations[0] as CLLocation
         //        print("\(currentLocation.coordinate.latitude)")
@@ -335,9 +473,14 @@ extension MapViewController: CLLocationManagerDelegate {
         }
     }
     
+    
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error)")
     }
+    
+    
+    
     
 }
 
@@ -350,13 +493,13 @@ extension MapViewController: CLLocationManagerDelegate {
 //        let annotation = MKPointAnnotation()
 //        annotation.coordinate = placemark.coordinate
 //        annotation.title = placemark.name
-//        
+//
 //        if let city = placemark.locality,
 //            let state = placemark.administrativeArea {
 //            annotation.subtitle = "\(city) \(state)"
 //        }
-//        
-//        
+//
+//
 //        mapView.addAnnotation(annotation)
 //        let span = MKCoordinateSpanMake(0.05, 0.05)
 //        let region = MKCoordinateRegionMake(placemark.coordinate, span)
@@ -364,12 +507,47 @@ extension MapViewController: CLLocationManagerDelegate {
 //        }
 //}
 
+extension MapViewController {
+    
+    func applyMotionEffect(toView view: UIView, magnitude:Float){
+        let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+        xMotion.minimumRelativeValue = -magnitude
+        xMotion.maximumRelativeValue = magnitude
+        
+        let yMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+        yMotion.maximumRelativeValue = magnitude
+        yMotion.minimumRelativeValue = -magnitude
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [xMotion, yMotion]
+        view.addMotionEffect(group)
+        
+    }
+}
+
 
 class CustomPointAnnotation: MKPointAnnotation {
     var imageName: UIImage!
     var placemark: MKPlacemark!
     var distance: String!
     
+    
 }
+extension MapViewController:UITableViewDataSource, UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationTableViewCell
+        cell.backgroundColor = UIColor.clear
+        cell.peopleNumberLabel.text! = self.currentPeopleOfRidePBike
+        print("cell.peopleNumberLabel.text \(cell.peopleNumberLabel.text)")
+    
+    return cell }
 
+    
+}
 

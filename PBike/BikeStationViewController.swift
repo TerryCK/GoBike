@@ -11,9 +11,7 @@ import SWXMLHash
 
 class BikeStationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
 
-    
     @IBOutlet weak var tableView: UITableView!
     
 

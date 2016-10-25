@@ -14,7 +14,7 @@ import ReachabilitySwift
 class BikeStation {
     let reachability = Reachability()!
     var _date: String!
-    
+    let bikeOnService = 500
     var stations:[Station] {
         return _stations
     }
@@ -86,17 +86,6 @@ class BikeStation {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     struct Station:XMLIndexerDeserializable {
         var name: String?
         var location:String
@@ -135,11 +124,11 @@ class BikeStation {
     func numberOfBikeIsUsing(station: [Station], count:Int) -> Int {
         var bikesInStation = 0
         var bikesInUsing = 0
-        let nightBikeInStation = 388
+       
         for index in 0...(count - 1) {
             bikesInStation += station[index].currentBikeNumber!
         }
-        bikesInUsing = nightBikeInStation - bikesInStation
+        bikesInUsing = bikeOnService - bikesInStation
         //取得方法：半夜無人使用之bike在站數
         if bikesInStation <= 0 {
             bikesInStation = 0
