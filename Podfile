@@ -11,5 +11,6 @@ target 'PBike' do
     pod 'SWXMLHash', '~> 3.0.0'
     pod 'Alamofire', '~> 4.0'
     pod 'ReachabilitySwift'
+    pod 'Firebase/AdMob'
 
 end

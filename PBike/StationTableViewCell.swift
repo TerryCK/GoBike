@@ -14,7 +14,6 @@ class StationTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         peopleNumberLabel.textColor = UIColor.white
-        
         peopleNumberLabel.numberOfLines = 1
         peopleNumberLabel.minimumScaleFactor = 8
         peopleNumberLabel.adjustsFontSizeToFitWidth = true

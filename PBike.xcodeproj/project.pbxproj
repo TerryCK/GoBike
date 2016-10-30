@@ -10,19 +10,32 @@
 		51FF7E97FEA9708B7047F1BC /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
 		A80B67DF1DBE16EB00F6B19F /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
 		A8174C991DBF414B00202D8D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8174C981DBF414B00202D8D /* StoreKit.framework */; };
+		A831C8361DC52A6F00C5EAC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A831C8351DC52A6F00C5EAC3 /* Images.xcassets */; };
 		A83B5DD71DB50ACD009C3D6E /* OpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */; };
+		A83BD3351DC355E0002D2DC4 /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
+		A83BD3371DC360C5002D2DC4 /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
+		A870E6DA1DC2519100329830 /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
+		A87E52371DC0999E0016F9E0 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */; };
+		A87E52391DC099CC0016F9E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52381DC099CC0016F9E0 /* AudioToolbox.framework */; };
+		A87E523B1DC099D40016F9E0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E523A1DC099D40016F9E0 /* AVFoundation.framework */; };
+		A87E523D1DC099DA0016F9E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E523C1DC099DA0016F9E0 /* CoreGraphics.framework */; };
+		A87E523F1DC099F70016F9E0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E523E1DC099F70016F9E0 /* CoreTelephony.framework */; };
+		A87E52411DC099FD0016F9E0 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52401DC099FD0016F9E0 /* EventKitUI.framework */; };
+		A87E52431DC09A070016F9E0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52421DC09A070016F9E0 /* EventKit.framework */; };
+		A87E52451DC09A0D0016F9E0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52441DC09A0D0016F9E0 /* MessageUI.framework */; };
+		A87E52471DC09A160016F9E0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */; };
+		A891CC8E1DC0E9BE00518182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A891CC8D1DC0E9BE00518182 /* GoogleService-Info.plist */; };
 		A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
-		A8B34C4A1DBB0B1900DC422E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8B34C491DBB0B1900DC422E /* GoogleService-Info.plist */; };
+		A8B556651DBF5436008EA68F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556641DBF5436008EA68F /* AdSupport.framework */; };
+		A8B556671DBF5446008EA68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556661DBF5446008EA68F /* CoreMotion.framework */; };
 		A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
 		A8F836531DB37336001131BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
-		A8F836551DB37336001131BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8F836541DB37336001131BE /* Assets.xcassets */; };
 		A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
 		A8F836631DB374A6001131BE /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* BikeStation.swift */; };
 		A8F836651DB378CA001131BE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F836641DB378CA001131BE /* MapKit.framework */; };
 		A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
 		A8F8366D1DB3B7D4001131BE /* stationlist.xml in Resources */ = {isa = PBXBuildFile; fileRef = A8F8366C1DB3B7D4001131BE /* stationlist.xml */; };
-		A8F8366F1DB3CC38001131BE /* BikeStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,23 +43,37 @@
 		3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.release.xcconfig"; sourceTree = "<group>"; };
 		A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		A8174C981DBF414B00202D8D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A831C8351DC52A6F00C5EAC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDataAPI.swift; sourceTree = "<group>"; };
+		A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksforTableViewCell.swift; sourceTree = "<group>"; };
+		A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateingReportTableViewCell.swift; sourceTree = "<group>"; };
 		A85B62C41DB895BF00C1413B /* PingtungTW.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PingtungTW.gpx; path = ../PingtungTW.gpx; sourceTree = "<group>"; };
+		A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = aboutUsTableViewCell.swift; sourceTree = "<group>"; };
+		A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		A87E52381DC099CC0016F9E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A87E523A1DC099D40016F9E0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A87E523C1DC099DA0016F9E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A87E523E1DC099F70016F9E0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A87E52401DC099FD0016F9E0 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		A87E52421DC09A070016F9E0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		A87E52441DC09A0D0016F9E0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A891CC8D1DC0E9BE00518182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8A8A3171DC60BD900946AA9 /* Directions.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Directions.geojson; sourceTree = "<group>"; };
 		A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		A8B34C491DBB0B1900DC422E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8B556641DBF5436008EA68F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		A8B556661DBF5446008EA68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PBike.entitlements; sourceTree = "<group>"; };
 		A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		A8F8364A1DB37336001131BE /* PBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F8364D1DB37336001131BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8F836521DB37336001131BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A8F836541DB37336001131BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8F836571DB37336001131BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8F836591DB37336001131BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8F836621DB374A6001131BE /* BikeStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStation.swift; sourceTree = "<group>"; };
 		A8F836641DB378CA001131BE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
 		A8F8366C1DB3B7D4001131BE /* stationlist.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = stationlist.xml; sourceTree = "<group>"; };
-		A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationViewController.swift; sourceTree = "<group>"; };
 		D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -55,8 +82,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A87E52451DC09A0D0016F9E0 /* MessageUI.framework in Frameworks */,
+				A87E52471DC09A160016F9E0 /* SystemConfiguration.framework in Frameworks */,
+				A87E52431DC09A070016F9E0 /* EventKit.framework in Frameworks */,
+				A87E52411DC099FD0016F9E0 /* EventKitUI.framework in Frameworks */,
+				A87E523F1DC099F70016F9E0 /* CoreTelephony.framework in Frameworks */,
+				A87E523D1DC099DA0016F9E0 /* CoreGraphics.framework in Frameworks */,
+				A87E523B1DC099D40016F9E0 /* AVFoundation.framework in Frameworks */,
+				A87E52391DC099CC0016F9E0 /* AudioToolbox.framework in Frameworks */,
+				A8B556651DBF5436008EA68F /* AdSupport.framework in Frameworks */,
+				A8B556671DBF5446008EA68F /* CoreMotion.framework in Frameworks */,
 				A8174C991DBF414B00202D8D /* StoreKit.framework in Frameworks */,
 				A8F836651DB378CA001131BE /* MapKit.framework in Frameworks */,
+				A87E52371DC0999E0016F9E0 /* GoogleMobileAds.framework in Frameworks */,
 				51FF7E97FEA9708B7047F1BC /* Pods_PBike.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +114,17 @@
 		6E84EAB925C4FD7FD414DFDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */,
+				A87E52441DC09A0D0016F9E0 /* MessageUI.framework */,
+				A87E52421DC09A070016F9E0 /* EventKit.framework */,
+				A87E52401DC099FD0016F9E0 /* EventKitUI.framework */,
+				A87E523E1DC099F70016F9E0 /* CoreTelephony.framework */,
+				A87E523C1DC099DA0016F9E0 /* CoreGraphics.framework */,
+				A87E523A1DC099D40016F9E0 /* AVFoundation.framework */,
+				A87E52381DC099CC0016F9E0 /* AudioToolbox.framework */,
+				A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */,
+				A8B556661DBF5446008EA68F /* CoreMotion.framework */,
+				A8B556641DBF5436008EA68F /* AdSupport.framework */,
 				A8174C981DBF414B00202D8D /* StoreKit.framework */,
 				A8F836641DB378CA001131BE /* MapKit.framework */,
 				D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */,
@@ -88,6 +137,7 @@
 			children = (
 				A8F8366C1DB3B7D4001131BE /* stationlist.xml */,
 				A85B62C41DB895BF00C1413B /* PingtungTW.gpx */,
+				A8A8A3171DC60BD900946AA9 /* Directions.geojson */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -120,10 +170,10 @@
 				A8F8365F1DB3744C001131BE /* Model */,
 				A8F8364D1DB37336001131BE /* AppDelegate.swift */,
 				A8F836511DB37336001131BE /* Main.storyboard */,
-				A8F836541DB37336001131BE /* Assets.xcassets */,
 				A8F836561DB37336001131BE /* LaunchScreen.storyboard */,
-				A8B34C491DBB0B1900DC422E /* GoogleService-Info.plist */,
+				A891CC8D1DC0E9BE00518182 /* GoogleService-Info.plist */,
 				A8F836591DB37336001131BE /* Info.plist */,
+				A831C8351DC52A6F00C5EAC3 /* Images.xcassets */,
 			);
 			path = PBike;
 			sourceTree = "<group>";
@@ -140,7 +190,6 @@
 		A8F836601DB37456001131BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A8F8366E1DB3CC38001131BE /* BikeStationViewController.swift */,
 				A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */,
 				A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */,
 			);
@@ -152,6 +201,9 @@
 			children = (
 				A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */,
 				A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */,
+				A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */,
+				A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */,
+				A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -231,8 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */,
-				A8F836551DB37336001131BE /* Assets.xcassets in Resources */,
-				A8B34C4A1DBB0B1900DC422E /* GoogleService-Info.plist in Resources */,
+				A831C8361DC52A6F00C5EAC3 /* Images.xcassets in Resources */,
+				A891CC8E1DC0E9BE00518182 /* GoogleService-Info.plist in Resources */,
 				A8F836531DB37336001131BE /* Main.storyboard in Resources */,
 				A8F8366D1DB3B7D4001131BE /* stationlist.xml in Resources */,
 			);
@@ -293,14 +345,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A83BD3351DC355E0002D2DC4 /* ThanksforTableViewCell.swift in Sources */,
 				A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */,
 				A83B5DD71DB50ACD009C3D6E /* OpenDataAPI.swift in Sources */,
 				A80B67DF1DBE16EB00F6B19F /* StationTableViewCell.swift in Sources */,
 				A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */,
+				A870E6DA1DC2519100329830 /* aboutUsTableViewCell.swift in Sources */,
 				A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */,
 				A8F836631DB374A6001131BE /* BikeStation.swift in Sources */,
+				A83BD3371DC360C5002D2DC4 /* RateingReportTableViewCell.swift in Sources */,
 				A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */,
-				A8F8366F1DB3CC38001131BE /* BikeStationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,11 +485,26 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PBike/PBike.entitlements;
 				DEVELOPMENT_TEAM = Y8SJ5M44N4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"$(PROJECT_DIR)/PBike",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PBike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MapVision.PBike;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -448,12 +517,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PBike/PBike.entitlements;
 				DEVELOPMENT_TEAM = Y8SJ5M44N4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"$(PROJECT_DIR)/PBike",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PBike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MapVision.PBike;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

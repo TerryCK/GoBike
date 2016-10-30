@@ -15,6 +15,26 @@
 			<array>
 				<string>com.apple.maps.directionsrequest</string>
 			</array>
+			<key>CFBundleURLTypes</key>
+			<array>
+				<dict>
+					<key>CFBundleURLSchemes</key>
+					<array>
+						<string>fb328916240811788</string>
+					</array>
+				</dict>
+			</array>
+			<key>FacebookAppID</key>
+			<string>328916240811788</string>
+			<key>FacebookDisplayName</key>
+			<string>mapVisionPBike</string>
+			<key>LSApplicationQueriesSchemes</key>
+			<array>
+				<string>fbapi</string>
+				<string>fb-messenger-api</string>
+				<string>fbauth2</string>
+				<string>fbshareextension</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

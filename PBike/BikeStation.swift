@@ -38,12 +38,16 @@ class BikeStation {
     
     func downloadPBikeDetails(completed:@escaping DownloadComplete){
         //Alamofire download
-       
+        
         //        let test = false //測試連線模式
         //        switch test{
-      switch reachability.isReachable {
-
+        switch reachability.isReachable {
+            
         case true:
+            
+            func catchPBikeDataOffline(){
+                
+            }
             if let currentPBikeURL = URL(string: PBike_URL){
                 Alamofire.request(currentPBikeURL).responseString {response in
                     print("資料來源: \(response.request!)")
@@ -58,9 +62,30 @@ class BikeStation {
                                 self._stations = stations
                             }
                         }
-                    }else{ print("data download error") }
-                    print("PBick Station Data has been downloaded online")
-                    completed()
+                        print("PBick Station Data has been downloaded online")
+                   
+                    
+                    
+                    }else{
+                        print("data download error")
+                        
+                        if let offlineURL = Bundle.main.url(forResource: "stationlist", withExtension: "xml"){
+                            print("not found any network please turn on your Wifi or cellular ")
+                            print("Offline mode")
+                            let data = try? Data(contentsOf: offlineURL)
+                            if let xmlString = data {
+                                let xml = SWXMLHash.parse(xmlString)
+                                if let stations:[Station] = try! xml["BIKEStationData"]["BIKEStation"]["Station"].value(){
+                                    self._stations = stations
+                                    print("PBick Station Data from offline")
+                                }else{ print("data download error") }
+                            }
+                            completed() //else
+                        }
+                        
+                    }
+                    
+                    completed() // main
                 }
             }
             
@@ -74,11 +99,11 @@ class BikeStation {
                     let xml = SWXMLHash.parse(xmlString)
                     if let stations:[Station] = try! xml["BIKEStationData"]["BIKEStation"]["Station"].value(){
                         self._stations = stations
-                        
+                        print("PBick Station Data from offline")
                     }else{ print("data download error") }
                 }
                 
-                print("PBick Station Data from offline")
+                
                 completed()
             }
         }
@@ -99,8 +124,8 @@ class BikeStation {
             location: node["StationAddress"].value(),
             parkNumber: node["StationNums2"].value(),
             currentBikeNumber: node["StationNums1"].value(),
-            //            longitude: node["StationLon"].value(),
-            //            latitude: node["StationLat"].value()
+//                        longitude: node["StationLon"].value(),
+//                        latitude: node["StationLat"].value()
             longitude: node["StationLat"].value(),
             latitude: node["StationLon"].value()
             
@@ -124,7 +149,7 @@ class BikeStation {
     func numberOfBikeIsUsing(station: [Station], count:Int) -> Int {
         var bikesInStation = 0
         var bikesInUsing = 0
-       
+        
         for index in 0...(count - 1) {
             bikesInStation += station[index].currentBikeNumber!
         }
