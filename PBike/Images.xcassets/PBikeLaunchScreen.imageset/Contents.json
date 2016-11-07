@@ -2,7 +2,10 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "iPhoneAPPicon.pdf",
+      "filename" : "PbikeLaunchScreen.pdf"
+    },
+    {
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {

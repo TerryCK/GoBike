@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-CBike.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PBike.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,6 +32,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0409D094BFF5E0B3EEFC77541C9E9AD3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>23E95ED8E669E1CFF35BCE3B902E0E9D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2A13BBAFAB92BDA1B1A1BC7F9A22F8CE</key>
 		<dict>
 			<key>primary</key>
@@ -37,12 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>899418E923091C964E26203CC15513B5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EC701C5FFE0BAC9FFBAF29B464470E8A</key>
+		<key>8F76010D4B9399F62EFF25E90B61BC81</key>
 		<dict>
 			<key>primary</key>
 			<true/>

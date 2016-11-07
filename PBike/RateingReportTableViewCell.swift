@@ -9,7 +9,7 @@
 import UIKit
 
 class RateingReportTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var report: UIButton!
     
     override func awakeFromNib() {
@@ -18,17 +18,17 @@ class RateingReportTableViewCell: UITableViewCell {
         report.layer.borderWidth = 0
         report.layer.cornerRadius = 8
         report.clipsToBounds = true
-       
-//        report.backgroundView.alpha = 0.9
+        
+        //        report.backgroundView.alpha = 0.9
         report.layoutMargins = UIEdgeInsets.zero
-      
+        
         // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

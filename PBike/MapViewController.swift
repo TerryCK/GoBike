@@ -19,28 +19,30 @@ protocol HandleMapSearch:class {
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var bannerView: GADBannerView!
-    
+    var effect:UIVisualEffect!
     @IBOutlet var mapView: MKMapView!
     var myLocationManager: CLLocationManager!
-    var bikeStation = BikeStation()
-    var bikeStations = BikeStation().stations
+    var bikeStation = BikeStation() //the object for download and init station datas
+    var bikeStations = BikeStation().stations //the object for save ["station"]
     var location = CLLocationCoordinate2D()
     var selectedPin: MKPlacemark?
     var selectedPinName:String?
     var currentPeopleOfRidePBike:String = ""
     var resultSearchController: UISearchController!
-    let adUnitID = "ca-app-pub-3022461967351598/7933523718"
-    let rateLink = "" //  app store Pbike's link url
-    
+    var adUnitID = "ca-app-pub-3022461967351598/7933523718"
+    var appId = "1168936145"
     let cellSpacingHeight: CGFloat = 5
+    var mailtitle =  "[PBike]APP建議與回報"
+    var govName = "屏東縣政府"
     
     
     func getDirections(){
         guard let selectedPin = self.selectedPin else {return}
         let mapItem = MKMapItem(placemark: selectedPin)
         mapItem.name = self.selectedPinName
+        print(" mapItem.name \( mapItem.name)")
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
         mapItem.openInMaps(launchOptions: launchOptions)
         
@@ -52,13 +54,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        effect = visualEffectView.effect
+        visualEffectView.effect = nil
         UITableView.delegate = self
         UITableView.dataSource = self
         UITableView.backgroundView?.alpha = 0
         applyMotionEffect(toView: UITableView, magnitude: -20)
-        //        applyMotionEffect(toView: mapView, magnitude: 10)
-        //        applyMotionEffect(toView: locationArrowImage, magnitude: -20)
-        
+        appVersionInit()
+        print("view did load ")
         setGoogleMobileAds()
         
         // 調整navigation 背景color
@@ -92,7 +96,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.isZoomEnabled = true
         mapView.showsCompass = false
         mapView.showsScale = false
-        mapView.showsTraffic = true
+        mapView.showsTraffic = false
     }
     
     func initializeLocationManager(){
@@ -119,7 +123,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         var bikeInUsing = ""
         switch nunberOfUsingPBike {
-        case 0...1000:
+        case 0...5000:
             bikeInUsing = " \(nunberOfUsingPBike) "
         default:
             bikeInUsing = "不知道有多少人正在"
@@ -127,8 +131,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         self.currentPeopleOfRidePBike = "\(bikeInUsing)"
         print("站內腳踏車有\(bikesInStation)台")
-        print("目前有\(nunberOfUsingPBike)人正在騎PBIke")
-        
+        print("目前有\(nunberOfUsingPBike)人正在騎BIke")
+        print("目前站點有：\(stations.count)座")
         
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
@@ -140,24 +144,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let objectAnnotation = CustomPointAnnotation()
             
             //handle coordinate
-            if let _latitude:CLLocationDegrees = Double(stations[index].latitude),
-                let _longitude:CLLocationDegrees = Double(stations[index].longitude){
+            let _latitude:CLLocationDegrees = stations[index].latitude
+            let _longitude:CLLocationDegrees = stations[index].longitude
+            
+            let coordinats = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
+            let destinationOfCoordinats = CLLocation(latitude: _latitude, longitude: _longitude)
+            objectAnnotation.coordinate = coordinats
+            
+            //handle distance
+            let distanceInMeter = destinationOfCoordinats.distance(from: currentLocation) / 1000
+            let distanceInKm = String(format:"%.1f", distanceInMeter)
+            objectAnnotation.distance = distanceInKm
+            
+            //handle name for navigation
+            if let name = stations[index].name {
+                let placemark = MKPlacemark(coordinate: coordinats, addressDictionary:[name: ""])
                 
-                let coordinats = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
-                let destinationOfCoordinats = CLLocation(latitude: _latitude, longitude: _longitude)
-                objectAnnotation.coordinate = coordinats
+                objectAnnotation.placemark = placemark
                 
-                //handle distance
-                let distanceInMeter = destinationOfCoordinats.distance(from: currentLocation) / 1000
-                let distanceInKm = String(format:"%.1f", distanceInMeter)
-                objectAnnotation.distance = distanceInKm
-                
-                //handle name for navigation
-                if let name = stations[index].name {
-                    let placemark = MKPlacemark(coordinate: coordinats, addressDictionary:[name: "123"])
-                    
-                    objectAnnotation.placemark = placemark
-                }
                 
                 
             }
@@ -219,9 +223,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     
     @IBAction func ratingBtnPressed(_ sender: AnyObject) {
-         UIApplication.shared.openURL(NSURL(string : "itms-apps://itunes.apple.com/app/1168936145")! as URL)
-    
+
+        let appID = self.appId
+        if let checkURL = URL(string: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appID)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8") {
+            if UIApplication.shared.canOpenURL(checkURL) {
+                UIApplication.shared.openURL(checkURL)
+                print("url successfully opened")
+            }
+        } else {
+            print("invalid url")
+        }
     }
+    @IBOutlet weak var topTitleimageView: UIButton!
     
     @IBOutlet weak var UITableView: UITableView!
     var showInfoTableView:Bool = false
@@ -239,14 +252,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 unShowTableView(UITableView)
                 showInfoTableView = false
-                self.myLocationManager.stopUpdatingLocation()
+                
                 
             }else{
                 // do for show tabview
-                
+                setTrackModeNone()
                 showUpTableView(UITableView)
                 showInfoTableView = true
-                self.myLocationManager.startUpdatingLocation()
+                
             }
         }
     }
@@ -270,12 +283,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         
         moveView.isHidden = false
-        
+        self.visualEffectView.isHidden = false
         
         UIView.animate(withDuration: 0.3, delay: 0, options:[ UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut], animations: {
             
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta)
-             self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: self.toRadian(degree: 180))
+            self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: self.toRadian(degree: 180))
+            self.visualEffectView.effect = self.effect
             }, completion: { (Bool) in
                 self.tableViewCanDoNext = true
                 print("show Up animation is completion")
@@ -298,11 +312,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta)
             
             self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 0)
+            self.visualEffectView.effect = nil
             
             }, completion: { (Bool) in
                 
                 print("show off animation is completion")
                 moveView.isHidden = true
+                self.visualEffectView.isHidden = true
                 moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta )
                 print("y: \(moveView.center.y)")
                 
@@ -334,12 +350,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotationView?.canShowCallout = true
             let customAnnotation = annotation as! CustomPointAnnotation
             let distance = Double(customAnnotation.distance!)!
-            var width = 25
+            var width = 28
             if (distance > 100) {
                 width = 40
             }
             else{
-                width = 25
+                width = 28
             }
             
             
@@ -397,9 +413,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             print("取得使用者GPS位置")
         }else{
             
-            location.latitude = 22.669248
-            location.longitude = 120.4861926
-            print("無法取得使用者位置、改取得屏東火車站GPS位置")
+            #if CityBike
+                //cibike Version
+                location.latitude = 22.6384542
+                location.longitude = 120.3019452
+                print("無法取得使用者位置、改取得高雄火車站GPS位置")
+            #else
+                //Pbike Version
+                location.latitude = 22.669248
+                location.longitude = 120.4861926
+                print("無法取得使用者位置、改取得屏東火車站GPS位置")
+            #endif
+            
+           
+            
         }
         
         print("北緯：\(location.latitude) 東經：\(location.longitude)")
@@ -407,38 +434,80 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         let currentRegion:MKCoordinateRegion = MKCoordinateRegion (center: center.coordinate, span:currentLocationSpan)
         
-        self.mapView.setRegion(currentRegion, animated: true)
+        self.mapView.setRegion(currentRegion, animated: false)
         
         print("currentRegion \(currentRegion)")
         self.location = location
         
     }
     
-    var mapUserTrackingMod:Bool = false
+    //    var mapUserTrackingModFlag:Int = 0 //init tracking mode to none
+    
     
     @IBAction func locationArrowPressed(_ sender: AnyObject) {
-        if mapUserTrackingMod {
-            
-            
-            setCurrentLocation(latDelta: 0.05, longDelta: 0.05)
-            
-            self.mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: false)
-            locationArrowImage.setImage(UIImage(named: "locationArrow"), for: UIControlState.normal)
-            mapUserTrackingMod = false
-            print("follow")
-            
-        }else{
-            setCurrentLocation(latDelta: 0.01, longDelta: 0.01)
-            self.mapView.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
-            locationArrowImage.setImage(UIImage(named: "locationArrorFollewWithHeading"), for: UIControlState.normal)
-            mapUserTrackingMod = true
-            print("followWithHeading")
-        }
         
+        
+        switch (self.mapView.userTrackingMode) {
+            
+        case .none:
+            setTrackModeToFollow()
+            
+        case .follow:
+            setTrackModeToFollowWithHeading()
+            
+            
+        case .followWithHeading:
+            setTrackModeNone()
+            
+        }
     }
     
     
+    @objc(mapView:didChangeUserTrackingMode:animated:) func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+        
+        
+        switch (self.mapView.userTrackingMode) {
+            
+        case .none:
+            locationArrowImage.setImage(UIImage(named: "locationArrowNone"), for: UIControlState.normal)
+            
+            print("tracking mode has changed to none")
+            
+        case .followWithHeading:
+            locationArrowImage.setImage(UIImage(named: "locationArrowFollewWithHeading"), for: UIControlState.normal)
+            print("tracking mode has changed to followWithHeading")
+            
+            
+            
+        case .follow:
+            locationArrowImage.setImage(UIImage(named: "locationArrow"), for: UIControlState.normal)
+            print("tracking mode has changed to follow")
+            
+        }
+        
+        print("userTracking mode has been charged")
+    }
     
+    
+    func setTrackModeToFollowWithHeading(){
+        
+        setCurrentLocation(latDelta: 0.01, longDelta: 0.01)
+        //        self.mapView.setCenter(self.location, animated: true)
+        self.mapView.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
+    }
+    
+    func setTrackModeNone(){
+        //        setCurrentLocation(latDelta: 0.05, longDelta: 0.05)
+        self.mapView.setUserTrackingMode(MKUserTrackingMode.none, animated: false)
+    }
+    func setTrackModeToFollow(){
+        
+        //        setCurrentLocation(latDelta: 0.05, longDelta: 0.05)
+        self.mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: false)
+        //        locationArrowImage.setImage(UIImage(named: "locationArrow"), for: UIControlState.normal)
+        //        print("follow")
+        
+    }
     
     
     @IBAction func searchBtnPressed(_ sender: AnyObject) {
@@ -461,6 +530,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("view did apear ")
         authrizationStatus()
     }
     
@@ -514,6 +584,8 @@ extension MapViewController: CLLocationManagerDelegate {
         //        print("\(currentLocation.coordinate.latitude)")
         //        print(", \(currentLocation.coordinate.longitude)")
         
+        print("did Update Location")
+        
         
     }
     
@@ -528,7 +600,6 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error)")
     }
-    
     
     
     
@@ -590,7 +661,7 @@ extension MapViewController:UITableViewDataSource, UITableViewDelegate{
     { return 4 }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    { return 10 } //set cell space hight
+    { return 12 } //set cell space hight
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     { return 1 }
@@ -622,7 +693,7 @@ extension MapViewController:UITableViewDataSource, UITableViewDelegate{
             
             print("ThanksforTableViewCell")
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThanksforTableViewCell", for: indexPath) as! ThanksforTableViewCell
-            cell.thanksLabel.text = "   本程式資料來源係由屏東縣政府與高雄捷運公司之公開資訊、恕不保證內容準確性，本程式之所有權為作者所有。"
+            cell.thanksLabel.text = "   本程式資料來源係由\(govName)與高雄捷運公司之公開資訊、恕不保證內容準確性，本程式之所有權為作者所有。"
             cellCustomize(cell: cell)
             return cell
             
@@ -635,29 +706,7 @@ extension MapViewController:UITableViewDataSource, UITableViewDelegate{
         }
         
     }
-    //        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationTableViewCell
     
-    
-    
-    
-    //        switch (indexPath as NSIndexPath).row {
-    //        case 0:
-    //                   case 1:
-    //            cell.peopleNumberLabel.text = "test"
-    ////            cell.valueLabel.text = restaurant.type
-    ////        case 2:
-    ////            cell.fieldLabel.text = "Location"
-    ////            cell.valueLabel.text = restaurant.location
-    ////        case 3:
-    ////            cell.fieldLabel.text = "Phone"
-    ////            cell.valueLabel.text = restaurant.phoneNumber
-    ////        case 4:
-    ////            cell.fieldLabel.text = "Been here"
-    ////            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before" : "No"
-    //        default:
-    //            cell.peopleNumberLabel.text = ""
-    //            cell.peopleNumberLabel.text = ""
-    //        }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -674,7 +723,7 @@ extension MapViewController:UITableViewDataSource, UITableViewDelegate{
         cell.layer.cornerRadius = 8
         cell.clipsToBounds = true
         cell.backgroundView = blurEffectView
-        cell.backgroundView?.alpha = 0.9
+        cell.backgroundView?.alpha = 0.85
         cell.layoutMargins = UIEdgeInsets.zero
     }
 }
@@ -696,8 +745,9 @@ extension MapViewController: GADBannerViewDelegate{
         bannerView.rootViewController = self
         bannerView.adUnitID = adUnitID
         let test_iPhone:NSString = "09f8ecd06be28585d166f429d404b8044ccecdbe"
+        let test_iPhones:String = "09f8ecd06be28585d166f429d404b8044ccecdbe"
         //        let test_iPad = ""
-        request.testDevices = [test_iPhone, kGADSimulatorID]
+        request.testDevices = [test_iPhone, test_iPhones, kGADSimulatorID]
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.load(request)
         print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
@@ -711,12 +761,7 @@ extension MapViewController: GADBannerViewDelegate{
     
 }
 
-extension MapViewController {
-    
-    @IBAction func rateClicked(sender: AnyObject) {
-        UIApplication.shared.openURL(NSURL(string : rateLink)! as URL)
-    }
-}
+
 
 extension MapViewController: MFMailComposeViewControllerDelegate {
     
@@ -725,18 +770,14 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
         mailComposerVC.setToRecipients(["pbikemapvision@gmail.com"])
-        mailComposerVC.setSubject("[PBike]APP建議與回報")
-        mailComposerVC.setMessageBody("我們非常感謝您使用此App，我們收到訊息後會儘快處理，謝謝！", isHTML: false)
+        mailComposerVC.setSubject(self.mailtitle)
+        mailComposerVC.setMessageBody("我們非常感謝您使用此App，歡迎寫下您希望的功能/錯誤回報或是合作洽談，謝謝", isHTML: false)
         
         return mailComposerVC
     }
     
     func showSendMailErrorAlert() {
-        
-        
         let sendMailErrorAlert = UIAlertView(title: "無法傳送Email", message: "目前無法傳送郵件，請檢查E-mail設定並在重試", delegate: self, cancelButtonTitle: "OK")
-        
-        
         
         sendMailErrorAlert.show()
     }
@@ -749,6 +790,28 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
     }
     
     
+}
+// APP check version and default
+extension MapViewController {
+   
+    func appVersionInit(){
+        
+        #if CityBike
+            //cibike Version
+            
+            self.topTitleimageView.setImage(UIImage(named: "cityBikeTitle"), for: UIControlState.normal)
+            self.mailtitle = "[CBike]APP建議與回報"
+            self.appId = "1173313131"
+            self.govName = "高雄市政府"
+            self.adUnitID = "ca-app-pub-3022461967351598/9565570510"
+            //高雄
+        #else
+            
+            //Pbike Version
+            self.appId = "1168936145"
+        #endif
+    }
+
 }
 
 //    func locationSearchFunc(){

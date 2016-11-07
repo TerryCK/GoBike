@@ -4,6 +4,13 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CBike.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>PBike.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +19,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>A85D3C411DCEBAE800875B3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A8F836491DB37336001131BE</key>
 		<dict>
 			<key>primary</key>
