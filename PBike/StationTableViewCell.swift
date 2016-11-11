@@ -11,6 +11,7 @@ import UIKit
 class StationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var peopleNumberLabel: UILabel!
+    @IBOutlet weak var rideBikeWithYouLabel: UILabel!
 
     override func awakeFromNib() {
         peopleNumberLabel.textColor = UIColor.white

@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		40ACEEAFD0248A4258C14B03 /* Pods_CBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F40DD318A338037D38DDF6 /* Pods_CBike.framework */; };
 		51FF7E97FEA9708B7047F1BC /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
+		63B4778DBB4F852F1E078D55 /* Pods_PBike_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F262FF5EDD68A91BEAA59A4 /* Pods_PBike_Dev.framework */; };
 		A80B67DF1DBE16EB00F6B19F /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
 		A8174C991DBF414B00202D8D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8174C981DBF414B00202D8D /* StoreKit.framework */; };
-		A831C8361DC52A6F00C5EAC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A831C8351DC52A6F00C5EAC3 /* Images.xcassets */; };
 		A83690521DC7304A004EC843 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83690511DC7304A004EC843 /* Locations.swift */; };
 		A83B5DD71DB50ACD009C3D6E /* OpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */; };
 		A83BD3351DC355E0002D2DC4 /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
 		A83BD3371DC360C5002D2DC4 /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
+		A842925A1DD41B4800F341EF /* image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83D19F91DD35AA2009212B2 /* image.xcassets */; };
+		A842925C1DD41B4F00F341EF /* image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83D19F91DD35AA2009212B2 /* image.xcassets */; };
+		A84B26F01DD1F97300BF3936 /* CBike Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A84B26EF1DD1F97300BF3936 /* CBike Dev-Info.plist */; };
 		A85D3C441DCEBAE800875B3A /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
 		A85D3C451DCEBAE800875B3A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A85D3C461DCEBAE800875B3A /* OpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */; };
@@ -42,8 +45,6 @@
 		A85D3C5C1DCEBAE800875B3A /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */; };
 		A85D3C5D1DCEBAE800875B3A /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
 		A85D3C5F1DCEBAE800875B3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
-		A85D3C601DCEBAE800875B3A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A831C8351DC52A6F00C5EAC3 /* Images.xcassets */; };
-		A85D3C611DCEBAE800875B3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A891CC8D1DC0E9BE00518182 /* GoogleService-Info.plist */; };
 		A85D3C621DCEBAE800875B3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A85D3C631DCEBAE800875B3A /* stationlist.xml in Resources */ = {isa = PBXBuildFile; fileRef = A8F8366C1DB3B7D4001131BE /* stationlist.xml */; };
 		A85D3C6C1DCEBD4300875B3A /* CBike-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A85D3C6B1DCEBD4300875B3A /* CBike-Info.plist */; };
@@ -57,12 +58,40 @@
 		A87E52431DC09A070016F9E0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52421DC09A070016F9E0 /* EventKit.framework */; };
 		A87E52451DC09A0D0016F9E0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52441DC09A0D0016F9E0 /* MessageUI.framework */; };
 		A87E52471DC09A160016F9E0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */; };
-		A891CC8E1DC0E9BE00518182 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A891CC8D1DC0E9BE00518182 /* GoogleService-Info.plist */; };
+		A89833521DD2C8950092F727 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89833511DD2C8950092F727 /* GoogleService-Info.plist */; };
+		A89833551DD2C89D0092F727 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89833541DD2C89D0092F727 /* GoogleService-Info.plist */; };
+		A8A80AFE1DD1F6F400107566 /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
+		A8A80AFF1DD1F6F400107566 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
+		A8A80B001DD1F6F400107566 /* OpenDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */; };
+		A8A80B011DD1F6F400107566 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
+		A8A80B021DD1F6F400107566 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
+		A8A80B031DD1F6F400107566 /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
+		A8A80B041DD1F6F400107566 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
+		A8A80B051DD1F6F400107566 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* BikeStation.swift */; };
+		A8A80B061DD1F6F400107566 /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
+		A8A80B071DD1F6F400107566 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83690511DC7304A004EC843 /* Locations.swift */; };
+		A8A80B081DD1F6F400107566 /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
+		A8A80B0A1DD1F6F400107566 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52441DC09A0D0016F9E0 /* MessageUI.framework */; };
+		A8A80B0B1DD1F6F400107566 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */; };
+		A8A80B0C1DD1F6F400107566 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52421DC09A070016F9E0 /* EventKit.framework */; };
+		A8A80B0D1DD1F6F400107566 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52401DC099FD0016F9E0 /* EventKitUI.framework */; };
+		A8A80B0E1DD1F6F400107566 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E523E1DC099F70016F9E0 /* CoreTelephony.framework */; };
+		A8A80B0F1DD1F6F400107566 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E523C1DC099DA0016F9E0 /* CoreGraphics.framework */; };
+		A8A80B101DD1F6F400107566 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E523A1DC099D40016F9E0 /* AVFoundation.framework */; };
+		A8A80B111DD1F6F400107566 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52381DC099CC0016F9E0 /* AudioToolbox.framework */; };
+		A8A80B121DD1F6F400107566 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556641DBF5436008EA68F /* AdSupport.framework */; };
+		A8A80B131DD1F6F400107566 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556661DBF5446008EA68F /* CoreMotion.framework */; };
+		A8A80B141DD1F6F400107566 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8174C981DBF414B00202D8D /* StoreKit.framework */; };
+		A8A80B151DD1F6F400107566 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F836641DB378CA001131BE /* MapKit.framework */; };
+		A8A80B161DD1F6F400107566 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */; };
+		A8A80B171DD1F6F400107566 /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
+		A8A80B191DD1F6F400107566 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
+		A8A80B1C1DD1F6F400107566 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
+		A8A80B1D1DD1F6F400107566 /* stationlist.xml in Resources */ = {isa = PBXBuildFile; fileRef = A8F8366C1DB3B7D4001131BE /* stationlist.xml */; };
 		A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A8B556651DBF5436008EA68F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556641DBF5436008EA68F /* AdSupport.framework */; };
 		A8B556671DBF5446008EA68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556661DBF5446008EA68F /* CoreMotion.framework */; };
 		A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
-		A8F4B0991DCF287200EBC68F /* CBikeinfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B0981DCF287200EBC68F /* CBikeinfo.plist */; };
 		A8F4B09B1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B09A1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard */; };
 		A8F4B09D1DCF596C00EBC68F /* DirectionsCityBike.geojson in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */; };
 		A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
@@ -76,15 +105,19 @@
 
 /* Begin PBXFileReference section */
 		12968D17E8D673E7CA8E294F /* Pods-PBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.debug.xcconfig"; sourceTree = "<group>"; };
+		1F262FF5EDD68A91BEAA59A4 /* Pods_PBike_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		302362E34D8493EC76C60597 /* Pods-PBike Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike Dev/Pods-PBike Dev.release.xcconfig"; sourceTree = "<group>"; };
 		3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.release.xcconfig"; sourceTree = "<group>"; };
 		4A6316802783ECC1016D1871 /* Pods-CBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBike/Pods-CBike.debug.xcconfig"; sourceTree = "<group>"; };
+		7999D3C438D4233D1651F9DC /* Pods-PBike Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PBike Dev/Pods-PBike Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		A8174C981DBF414B00202D8D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		A831C8351DC52A6F00C5EAC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A83690511DC7304A004EC843 /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDataAPI.swift; sourceTree = "<group>"; };
 		A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksforTableViewCell.swift; sourceTree = "<group>"; };
 		A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateingReportTableViewCell.swift; sourceTree = "<group>"; };
+		A83D19F91DD35AA2009212B2 /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = image.xcassets; path = ../image.xcassets; sourceTree = "<group>"; };
+		A84B26EF1DD1F97300BF3936 /* CBike Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CBike Dev-Info.plist"; sourceTree = "<group>"; };
 		A85B62C41DB895BF00C1413B /* PingtungTW.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PingtungTW.gpx; path = ../PingtungTW.gpx; sourceTree = "<group>"; };
 		A85D3C691DCEBAE800875B3A /* CBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85D3C6B1DCEBD4300875B3A /* CBike-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CBike-Info.plist"; sourceTree = "<group>"; };
@@ -98,14 +131,15 @@
 		A87E52421DC09A070016F9E0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		A87E52441DC09A0D0016F9E0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A891CC8D1DC0E9BE00518182 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A89833511DD2C8950092F727 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A89833541DD2C89D0092F727 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8A80B231DD1F6F400107566 /* PBike Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PBike Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A8A3171DC60BD900946AA9 /* Directions.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Directions.geojson; sourceTree = "<group>"; };
 		A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A8B556641DBF5436008EA68F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		A8B556661DBF5446008EA68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PBike.entitlements; sourceTree = "<group>"; };
 		A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
-		A8F4B0981DCF287200EBC68F /* CBikeinfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CBikeinfo.plist; sourceTree = "<group>"; };
 		A8F4B09A1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "CBikeLaunch Screen.storyboard"; path = "../CBikeLaunch Screen.storyboard"; sourceTree = "<group>"; };
 		A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DirectionsCityBike.geojson; sourceTree = "<group>"; };
 		A8F8364A1DB37336001131BE /* PBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +179,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8A80B091DD1F6F400107566 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A80B0A1DD1F6F400107566 /* MessageUI.framework in Frameworks */,
+				A8A80B0B1DD1F6F400107566 /* SystemConfiguration.framework in Frameworks */,
+				A8A80B0C1DD1F6F400107566 /* EventKit.framework in Frameworks */,
+				A8A80B0D1DD1F6F400107566 /* EventKitUI.framework in Frameworks */,
+				A8A80B0E1DD1F6F400107566 /* CoreTelephony.framework in Frameworks */,
+				A8A80B0F1DD1F6F400107566 /* CoreGraphics.framework in Frameworks */,
+				A8A80B101DD1F6F400107566 /* AVFoundation.framework in Frameworks */,
+				A8A80B111DD1F6F400107566 /* AudioToolbox.framework in Frameworks */,
+				A8A80B121DD1F6F400107566 /* AdSupport.framework in Frameworks */,
+				A8A80B131DD1F6F400107566 /* CoreMotion.framework in Frameworks */,
+				A8A80B141DD1F6F400107566 /* StoreKit.framework in Frameworks */,
+				A8A80B151DD1F6F400107566 /* MapKit.framework in Frameworks */,
+				A8A80B161DD1F6F400107566 /* GoogleMobileAds.framework in Frameworks */,
+				A8A80B171DD1F6F400107566 /* Pods_PBike.framework in Frameworks */,
+				63B4778DBB4F852F1E078D55 /* Pods_PBike_Dev.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A8F836471DB37336001131BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +232,8 @@
 				3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */,
 				4A6316802783ECC1016D1871 /* Pods-CBike.debug.xcconfig */,
 				DD2EDEEE889805C44CBB4CDF /* Pods-CBike.release.xcconfig */,
+				7999D3C438D4233D1651F9DC /* Pods-PBike Dev.debug.xcconfig */,
+				302362E34D8493EC76C60597 /* Pods-PBike Dev.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -198,6 +256,7 @@
 				A8F836641DB378CA001131BE /* MapKit.framework */,
 				D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */,
 				E0F40DD318A338037D38DDF6 /* Pods_CBike.framework */,
+				1F262FF5EDD68A91BEAA59A4 /* Pods_PBike_Dev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,6 +270,23 @@
 				A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		A89833501DD2C8360092F727 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A8F836561DB37336001131BE /* LaunchScreen.storyboard */,
+				A8F4B09A1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard */,
+			);
+			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		A89833531DD2C89D0092F727 /* CBike */ = {
+			isa = PBXGroup;
+			children = (
+				A89833541DD2C89D0092F727 /* GoogleService-Info.plist */,
+			);
+			path = CBike;
 			sourceTree = "<group>";
 		};
 		A8F836411DB37336001131BE = {
@@ -228,6 +304,7 @@
 			children = (
 				A8F8364A1DB37336001131BE /* PBike.app */,
 				A85D3C691DCEBAE800875B3A /* CBike.app */,
+				A8A80B231DD1F6F400107566 /* PBike Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,19 +313,17 @@
 			isa = PBXGroup;
 			children = (
 				A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */,
+				A89833501DD2C8360092F727 /* LaunchScreen */,
 				A85B62C51DB895C800C1413B /* Resource */,
 				A8F836611DB3747E001131BE /* View */,
 				A8F836601DB37456001131BE /* Controller */,
 				A8F8365F1DB3744C001131BE /* Model */,
 				A8F8364D1DB37336001131BE /* AppDelegate.swift */,
 				A8F836511DB37336001131BE /* Main.storyboard */,
-				A8F836561DB37336001131BE /* LaunchScreen.storyboard */,
-				A8F4B09A1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard */,
-				A891CC8D1DC0E9BE00518182 /* GoogleService-Info.plist */,
 				A8F836591DB37336001131BE /* Info.plist */,
-				A8F4B0981DCF287200EBC68F /* CBikeinfo.plist */,
+				A84B26EF1DD1F97300BF3936 /* CBike Dev-Info.plist */,
 				A85D3C6B1DCEBD4300875B3A /* CBike-Info.plist */,
-				A831C8351DC52A6F00C5EAC3 /* Images.xcassets */,
+				A83D19F91DD35AA2009212B2 /* image.xcassets */,
 			);
 			path = PBike;
 			sourceTree = "<group>";
@@ -256,6 +331,8 @@
 		A8F8365F1DB3744C001131BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A89833531DD2C89D0092F727 /* CBike */,
+				A89833511DD2C8950092F727 /* GoogleService-Info.plist */,
 				A8F836621DB374A6001131BE /* BikeStation.swift */,
 				A83B5DD61DB50ACD009C3D6E /* OpenDataAPI.swift */,
 				A83690511DC7304A004EC843 /* Locations.swift */,
@@ -307,6 +384,26 @@
 			productReference = A85D3C691DCEBAE800875B3A /* CBike.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A8A80AFB1DD1F6F400107566 /* PBike Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A80B201DD1F6F400107566 /* Build configuration list for PBXNativeTarget "PBike Dev" */;
+			buildPhases = (
+				A8A80AFC1DD1F6F400107566 /* [CP] Check Pods Manifest.lock */,
+				A8A80AFD1DD1F6F400107566 /* Sources */,
+				A8A80B091DD1F6F400107566 /* Frameworks */,
+				A8A80B181DD1F6F400107566 /* Resources */,
+				A8A80B1E1DD1F6F400107566 /* [CP] Embed Pods Frameworks */,
+				A8A80B1F1DD1F6F400107566 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PBike Dev";
+			productName = PBike;
+			productReference = A8A80B231DD1F6F400107566 /* PBike Dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A8F836491DB37336001131BE /* PBike */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8F8365C1DB37336001131BE /* Build configuration list for PBXNativeTarget "PBike" */;
@@ -338,6 +435,9 @@
 				ORGANIZATIONNAME = "陳 冠禎";
 				TargetAttributes = {
 					A85D3C411DCEBAE800875B3A = {
+						DevelopmentTeam = Y8SJ5M44N4;
+					};
+					A8A80AFB1DD1F6F400107566 = {
 						DevelopmentTeam = Y8SJ5M44N4;
 					};
 					A8F836491DB37336001131BE = {
@@ -373,6 +473,7 @@
 			targets = (
 				A8F836491DB37336001131BE /* PBike */,
 				A85D3C411DCEBAE800875B3A /* CBike */,
+				A8A80AFB1DD1F6F400107566 /* PBike Dev */,
 			);
 		};
 /* End PBXProject section */
@@ -383,14 +484,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				A85D3C5F1DCEBAE800875B3A /* LaunchScreen.storyboard in Resources */,
+				A89833551DD2C89D0092F727 /* GoogleService-Info.plist in Resources */,
 				A85D3C6C1DCEBD4300875B3A /* CBike-Info.plist in Resources */,
-				A8F4B0991DCF287200EBC68F /* CBikeinfo.plist in Resources */,
-				A85D3C601DCEBAE800875B3A /* Images.xcassets in Resources */,
-				A85D3C611DCEBAE800875B3A /* GoogleService-Info.plist in Resources */,
 				A8F4B09B1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard in Resources */,
 				A8F4B09D1DCF596C00EBC68F /* DirectionsCityBike.geojson in Resources */,
+				A842925C1DD41B4F00F341EF /* image.xcassets in Resources */,
 				A85D3C621DCEBAE800875B3A /* Main.storyboard in Resources */,
 				A85D3C631DCEBAE800875B3A /* stationlist.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A80B181DD1F6F400107566 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A84B26F01DD1F97300BF3936 /* CBike Dev-Info.plist in Resources */,
+				A8A80B191DD1F6F400107566 /* LaunchScreen.storyboard in Resources */,
+				A8A80B1C1DD1F6F400107566 /* Main.storyboard in Resources */,
+				A8A80B1D1DD1F6F400107566 /* stationlist.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,8 +510,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */,
-				A831C8361DC52A6F00C5EAC3 /* Images.xcassets in Resources */,
-				A891CC8E1DC0E9BE00518182 /* GoogleService-Info.plist in Resources */,
+				A89833521DD2C8950092F727 /* GoogleService-Info.plist in Resources */,
+				A842925A1DD41B4800F341EF /* image.xcassets in Resources */,
 				A8F836531DB37336001131BE /* Main.storyboard in Resources */,
 				A8F8366D1DB3B7D4001131BE /* stationlist.xml in Resources */,
 			);
@@ -484,6 +595,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBike/Pods-CBike-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A8A80AFC1DD1F6F400107566 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A8A80B1E1DD1F6F400107566 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PBike Dev/Pods-PBike Dev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8A80B1F1DD1F6F400107566 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PBike Dev/Pods-PBike Dev-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DE6EB98F9EE5BD80D898B18B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,6 +673,24 @@
 				A85D3C4C1DCEBAE800875B3A /* RateingReportTableViewCell.swift in Sources */,
 				A85D3C4D1DCEBAE800875B3A /* Locations.swift in Sources */,
 				A85D3C4E1DCEBAE800875B3A /* BikeStationTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A80AFD1DD1F6F400107566 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A80AFE1DD1F6F400107566 /* ThanksforTableViewCell.swift in Sources */,
+				A8A80AFF1DD1F6F400107566 /* LocationSearchTable.swift in Sources */,
+				A8A80B001DD1F6F400107566 /* OpenDataAPI.swift in Sources */,
+				A8A80B011DD1F6F400107566 /* StationTableViewCell.swift in Sources */,
+				A8A80B021DD1F6F400107566 /* MapViewController.swift in Sources */,
+				A8A80B031DD1F6F400107566 /* aboutUsTableViewCell.swift in Sources */,
+				A8A80B041DD1F6F400107566 /* AppDelegate.swift in Sources */,
+				A8A80B051DD1F6F400107566 /* BikeStation.swift in Sources */,
+				A8A80B061DD1F6F400107566 /* RateingReportTableViewCell.swift in Sources */,
+				A8A80B071DD1F6F400107566 /* Locations.swift in Sources */,
+				A8A80B081DD1F6F400107566 /* BikeStationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +795,73 @@
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DCityBike";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MapVision.CBike;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		A8A80B211DD1F6F400107566 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7999D3C438D4233D1651F9DC /* Pods-PBike Dev.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-CityBike";
+				CODE_SIGN_ENTITLEMENTS = PBike/PBike.entitlements;
+				DEVELOPMENT_TEAM = Y8SJ5M44N4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"$(PROJECT_DIR)/PBike",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/PBike/CBike-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DPBike Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MapVision.PBike-Dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A8A80B221DD1F6F400107566 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 302362E34D8493EC76C60597 /* Pods-PBike Dev.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-CityBike";
+				CODE_SIGN_ENTITLEMENTS = PBike/PBike.entitlements;
+				DEVELOPMENT_TEAM = Y8SJ5M44N4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"$(PROJECT_DIR)/PBike",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/PBike/CBike-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DPBike Dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MapVision.PBike-Dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
@@ -797,6 +1038,15 @@
 			buildConfigurations = (
 				A85D3C671DCEBAE800875B3A /* Debug */,
 				A85D3C681DCEBAE800875B3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A80B201DD1F6F400107566 /* Build configuration list for PBXNativeTarget "PBike Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A80B211DD1F6F400107566 /* Debug */,
+				A8A80B221DD1F6F400107566 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

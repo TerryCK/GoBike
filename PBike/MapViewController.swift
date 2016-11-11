@@ -36,6 +36,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let cellSpacingHeight: CGFloat = 5
     var mailtitle =  "[PBike]APP建議與回報"
     var govName = "屏東縣政府"
+    var bike = "PBike"
+    var applink = "https://itunes.apple.com/tw/app/pbike-ping-dong-zui-piao-liang/id1168936145?l=zh&mt=8"
+    var rideBikeWithYou = "人陪你騎PBike"
+    var timerStatusReadyTo: TimerStatus = .play
+    var timeCurrentStatus: TimerStatus = .reset
+    var timeInPause: Int = 5
+    let showTheResetButtonTime = 3
+    
+    @IBOutlet weak var rotationArrowOnNav: UIButton!
+    
+    var annotations = [MKAnnotation]()
+    var time = 1800
+    var timer = Timer()
+    var timerForAutoUpdate = Timer()
+    var reloadtime = 0 //seconds
+    @IBOutlet weak var timerLabel: UIButton!
     
     
     func getDirections(){
@@ -51,19 +67,36 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var locationArrowImage: UIButton!
     
     
+    @IBAction func shareBtnPressed(_ sender: AnyObject) {
+        if let name = NSURL(string: applink) {
+            let objectsToShare = [name]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            self.present(activityVC, animated: true, completion: nil)
+        }
+        else
+        {
+            // show alert for not available
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupRotatArrowBtnPosition()
         effect = visualEffectView.effect
         visualEffectView.effect = nil
+        addBlurEffect()
         UITableView.delegate = self
         UITableView.dataSource = self
         UITableView.backgroundView?.alpha = 0
         applyMotionEffect(toView: UITableView, magnitude: -20)
         appVersionInit()
         print("view did load ")
-        setGoogleMobileAds()
+        initializeLocationManager()
+        updatingDataByServalTime()
+        mapViewInfoCustomize()
+        
+                setGoogleMobileAds()
         
         // 調整navigation 背景color
         //if inside a popover
@@ -71,22 +104,34 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //            popover.backgroundColor = UIColor.clear()
         //        }
         
-        let downloadPBikeData = bikeStation.downloadPBikeDetails
-        initializeLocationManager()
         
-        
-        //下載資料
-        downloadPBikeData() {
-            self.handleAnnotationInfo()
-            self.UITableView.reloadData()
-        }
-        mapViewInfoCustomize()
         
         
         
         //set ui to load Downloaded code
     }
     
+    func updatingDataByServalTime(){
+        
+        let downloadPBikeData = bikeStation.downloadPBikeDetails
+        
+        
+        
+        if reloadtime > 0 {
+            reloadtime -= 1
+            print("\(reloadtime) seconds ")
+        } else {
+            timerForAutoUpdate.invalidate()
+            downloadPBikeData(){
+                self.handleAnnotationInfo()
+                self.UITableView.reloadData()
+            }
+            self.timerForAutoUpdate = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
+            
+            self.reloadtime = 15
+            
+        }
+    }
     // Do any additional setup after loading the view.
     
     func mapViewInfoCustomize(){
@@ -126,18 +171,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         case 0...5000:
             bikeInUsing = " \(nunberOfUsingPBike) "
         default:
-            bikeInUsing = "不知道有多少人正在"
+            bikeInUsing = "0"
         }
         
         self.currentPeopleOfRidePBike = "\(bikeInUsing)"
         print("站內腳踏車有\(bikesInStation)台")
-        print("目前有\(nunberOfUsingPBike)人正在騎BIke")
-        print("目前站點有：\(stations.count)座")
+        
+        print("目前有\(nunberOfUsingPBike)人正在騎\(self.bike)")
+        print("目前站點有：\(stations.count + 1)座")
         
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        if let annotation = self.mapView?.annotations  {
+            //            self.mapView?.removeAnnotations(annotation)
+            print("annotation count \(annotation.count)")
+        }
+        var oldAnnotations = [MKAnnotation]()
+        oldAnnotations = self.annotations
+        //        print("old annotation[] : \(oldAnnotations) ")
         
-        
+        annotations.removeAll()
         //set Annotation with xml imformation
         for index in 0...(stations.count - 1){
             
@@ -182,9 +235,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 //print("\(objectAnnotation.title!), name:\(name)")
             }
             
-            
-            self.mapView?.addAnnotation(objectAnnotation)
+            self.annotations.append(objectAnnotation)
+            //            print("map annotation : \(self.mapView?.)")
         }
+        
+        self.mapView?.addAnnotations(self.annotations)
+        print("before remove array count: \(self.mapView?.annotations.count)")
+        let annotation:[MKAnnotation]  = oldAnnotations
+        self.mapView?.removeAnnotations(annotation)
+        print("remove a old annotation of annotations")
+        
+        
+        
     }
     
     
@@ -223,7 +285,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     
     @IBAction func ratingBtnPressed(_ sender: AnyObject) {
-
+        
         let appID = self.appId
         if let checkURL = URL(string: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appID)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8") {
             if UIApplication.shared.canOpenURL(checkURL) {
@@ -249,20 +311,60 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if tableViewCanDoNext {
             if showInfoTableView {
                 //do for unshow tabview
-                
+                self.locationArrowImage.isEnabled = true
                 unShowTableView(UITableView)
                 showInfoTableView = false
-                
+                print("locationArrowImage Button is enabled")
                 
             }else{
                 // do for show tabview
                 setTrackModeNone()
                 showUpTableView(UITableView)
+                self.locationArrowImage.isEnabled = false
                 showInfoTableView = true
-                
+                print("locationArrowImage Button is unabled")
             }
         }
     }
+    @IBAction func timerPressed(_ sender: AnyObject) {
+        
+        switch timerStatusReadyTo {
+            
+        case .play:
+           
+            print("Timer playing")
+            timerStatusReadyTo = .pause
+            timeCurrentStatus = .play
+            
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.decreaseTimer), userInfo: nil, repeats: true)
+            
+            
+        case .pause:
+           self.timeInPause = time
+            print("Timer pause")
+            timerStatusReadyTo = .reset
+            timeCurrentStatus = .pause
+            
+            timerLabel.setTitleColor(UIColor.red, for: .normal)
+            timerLabel.setTitle("重置", for: .normal)
+            
+            
+            
+        case .reset:
+            
+            time = 1800
+            timer.invalidate()
+            print("Timer reset")
+            timerStatusReadyTo = .play
+            timeCurrentStatus = .reset
+            
+            timerLabel.setTitleColor(UIColor.gray, for: .normal)
+            timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: UIControlState.normal)
+          
+            
+        }
+    }
+    
     
     let yDelta:CGFloat = 500
     var tableViewCanDoNext:Bool = true
@@ -342,43 +444,45 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let identifier = "station"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
-        if annotationView != nil {
-            annotationView?.annotation = annotation
-            
-        }else {
+        if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
-            let customAnnotation = annotation as! CustomPointAnnotation
-            let distance = Double(customAnnotation.distance!)!
-            var width = 28
-            if (distance > 100) {
-                width = 40
-            }
-            else{
-                width = 28
-            }
             
-            
-            let textSquare = CGSize(width:width , height: 40)
-            let subTitleView:UILabel! = UILabel(frame: CGRect(origin: CGPoint.zero, size: textSquare))
-            subTitleView.font = subTitleView.font.withSize(12)
-            subTitleView.textAlignment = NSTextAlignment.right
-            subTitleView.numberOfLines = 0
-            subTitleView.textColor = UIColor.gray
-            subTitleView.text = "\(customAnnotation.distance!) km"
-            
-            
-            
-            annotationView?.image =  customAnnotation.imageName
-            
-            let smallSquare = CGSize(width: 43, height: 43)
-            let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
-            button.setBackgroundImage(UIImage(named: "go"), for: UIControlState())
-            button.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
-            annotationView?.rightCalloutAccessoryView = button
-            annotationView?.leftCalloutAccessoryView = subTitleView
-            
+        }else {
+            annotationView?.annotation = annotation   }
+        
+        
+        
+        let customAnnotation = annotation as! CustomPointAnnotation
+        let distance = Double(customAnnotation.distance!)!
+        var width = 28
+        if (distance > 100) {
+            width = 40
         }
+        else{
+            width = 28
+        }
+        let textSquare = CGSize(width:width , height: 40)
+        let subTitleView:UILabel! = UILabel(frame: CGRect(origin: CGPoint.zero, size: textSquare))
+        subTitleView.font = subTitleView.font.withSize(12)
+        subTitleView.textAlignment = NSTextAlignment.right
+        subTitleView.numberOfLines = 0
+        subTitleView.textColor = UIColor.gray
+        subTitleView.text = "\(distance) km"
+        
+        
+        
+        
+        annotationView?.image =  customAnnotation.imageName
+        
+        let smallSquare = CGSize(width: 43, height: 43)
+        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
+        button.setBackgroundImage(UIImage(named: "go"), for: UIControlState())
+        button.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
+        annotationView?.rightCalloutAccessoryView = button
+        annotationView?.leftCalloutAccessoryView = subTitleView
+        
+        
         return annotationView
     }
     
@@ -388,10 +492,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if let annotation = view.annotation as? CustomPointAnnotation {
             self.selectedPin = annotation.placemark
             if let name = annotation.subtitle {
-                self.selectedPinName = "\(name)(PBike)"
+                
+                self.selectedPinName = "\(name)(\(bike))"
                 print("Your annotationView title: \(name)")
+                
             }
-            
+            if let image = annotation.imageName {
+                print("image name \(image)")
+            }
         }
         
         func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){
@@ -425,7 +533,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 print("無法取得使用者位置、改取得屏東火車站GPS位置")
             #endif
             
-           
             
         }
         
@@ -679,6 +786,7 @@ extension MapViewController:UITableViewDataSource, UITableViewDelegate{
         if section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationTableViewCell
             cell.peopleNumberLabel.text = self.currentPeopleOfRidePBike
+            cell.rideBikeWithYouLabel.text = self.rideBikeWithYou
             print("cell.peopleNumberLabel.text \(cell.peopleNumberLabel.text)")
             cellCustomize(cell: cell)
             return cell
@@ -693,7 +801,7 @@ extension MapViewController:UITableViewDataSource, UITableViewDelegate{
             
             print("ThanksforTableViewCell")
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThanksforTableViewCell", for: indexPath) as! ThanksforTableViewCell
-            cell.thanksLabel.text = "   本程式資料來源係由\(govName)與高雄捷運公司之公開資訊、恕不保證內容準確性，本程式之所有權為作者所有。"
+            cell.thanksLabel.text = "   本程式資料來源係由\(govName)與高雄捷運公司之公開資訊、恕不保證內容準確性，本程式之所有權為作者所有。\n       計時器功能僅供參考使用"
             cellCustomize(cell: cell)
             return cell
             
@@ -793,7 +901,7 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
 }
 // APP check version and default
 extension MapViewController {
-   
+    
     func appVersionInit(){
         
         #if CityBike
@@ -804,6 +912,9 @@ extension MapViewController {
             self.appId = "1173313131"
             self.govName = "高雄市政府"
             self.adUnitID = "ca-app-pub-3022461967351598/9565570510"
+            self.bike = "CBike"
+            self.applink = "https://itunes.apple.com/tw/app/citybike-gao-xiong-zui-piao/id1173313131?l=zh&mt=8"
+            self.rideBikeWithYou = "人陪你騎CBike"
             //高雄
         #else
             
@@ -811,9 +922,115 @@ extension MapViewController {
             self.appId = "1168936145"
         #endif
     }
-
+    
 }
 
+extension MapViewController{
+    func addBlurEffect() {
+        // Add blur view
+        let bounds = self.navigationController?.navigationBar.bounds as CGRect!
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) as UIVisualEffectView
+        visualEffectView.frame = bounds!
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.navigationController?.navigationBar.addSubview(visualEffectView)
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
+        //        self.
+        //print("subviews\(self.navigationController?.navigationBar.subviews)")
+        //self.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
+        //        self.navigationController?.navigationBar.insertSubview(view:visualEffectView, at: 2)
+        
+        // Here you can add visual effects to any UIView control.
+        // Replace custom view with navigation bar in above code to add effects to custom view.
+    }
+}
+extension MapViewController {
+    //Timer
+    func decreaseTimer() {
+        time -= 1
+        if  self.timeCurrentStatus == .play {
+            if time > 600  {
+                
+                timerLabel.setTitleColor(UIColor.black, for: .normal)
+                timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
+                
+            } else if time <= 600 && time > 0 {
+                
+                timerLabel.setTitleColor(UIColor.red, for: .normal)
+                timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
+            }else{
+                
+                timerLabel.setTitleColor(UIColor.blue, for: .normal)
+                timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
+            }
+        }
+        
+        if self.timeCurrentStatus == .pause {
+            print("reset \(self.time)")
+            print("time in pause\(self.timeInPause)")
+            let timeToShowReset = timeInPause - self.showTheResetButtonTime
+            if timeToShowReset == self.time {
+                print("reset button unshow")
+                self.timeCurrentStatus = .play
+                self.timerStatusReadyTo = .pause
+            }
+        }
+        
+        
+    }
+    
+    func timeConverterToHMS(_seconds:Int) -> String {
+        var minutes: Int = 0
+        var seconds: Int = 0
+        var tempSeconds: Int = 0
+        var zero:String = ""
+        tempSeconds = _seconds
+        if _seconds < 0 {tempSeconds = _seconds * -1}
+        
+        minutes = tempSeconds / 60
+        seconds = tempSeconds % 60
+        
+        if seconds < 10 && seconds >= 0 {
+            zero = "0"
+        }else{
+            zero = ""
+        }
+        
+        let time:String = "\(minutes):\(zero)\(seconds) "
+        return (time)
+        
+    }
+    
+    enum TimerStatus{
+        case pause
+        case play
+        case reset
+    }
+}
+
+extension MapViewController{
+    func setupRotatArrowBtnPosition() {
+       let width = self.view.frame.size.width
+        var left = -40
+        print("width:\(width)")
+        
+        switch width {
+        case 320: left = -40    //iPhone SE
+        case 375: left = -60    //iPhone 7
+        case 414: left = -80    //iPhone 7+
+        case 1024: left = -380  //iPad直
+        case 1366: left = -560  //iPad橫
+        default: left = -320
+        }
+
+        
+        
+        rotationArrow.imageEdgeInsets = UIEdgeInsetsMake(0.0, CGFloat(left), 0.0, 0.0)
+        
+        print("left insert value:\(left)")
+    }
+    
+}
 //    func locationSearchFunc(){
 //        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
 //        resultSearchController = UISearchController(searchResultsController: locationSearchTable)

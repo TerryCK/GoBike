@@ -4,12 +4,24 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CBike copy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>CBike.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<true/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
+		</dict>
+		<key>PBike Dev.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>PBike.xcscheme</key>
 		<dict>
@@ -20,6 +32,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>A85D3C411DCEBAE800875B3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A8A80ACC1DD1F6E800107566</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A8A80AFB1DD1F6F400107566</key>
 		<dict>
 			<key>primary</key>
 			<true/>

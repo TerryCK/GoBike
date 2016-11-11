@@ -22,3 +22,9 @@ target 'CBike' do
     shared_pods
 
 end
+
+target ‘PBike Dev’ do
+
+    shared_pods
+
+end

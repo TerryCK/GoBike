@@ -236,9 +236,16 @@ class BikeStation {
                 
             case 1...5: pinImage = "pinLess"
                 
-            case 5...24: pinImage = "pinMed"
+            case 5...40:
                 
-            case 25...40: pinImage = "pinFull"
+                if station[index].parkNumber == 0 {
+                pinImage = "pinFull"
+                    
+            }else{
+                
+                pinImage = "pinMed"
+                }
+            
                 
             case 0: pinImage = "pinEmpty"
                 
