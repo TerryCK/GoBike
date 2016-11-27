@@ -9,7 +9,8 @@
 import UIKit
 import Firebase
 import GoogleMobileAds
-
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        Fabric.sharedSDK().debug = true
+        Fabric.with([Crashlytics.self])
         FIRApp.configure()
         
         #if CityBike  //city bike

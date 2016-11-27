@@ -8,6 +8,8 @@ def shared_pods
     pod 'Alamofire', '~> 4.0'
     pod 'ReachabilitySwift'
     pod 'Firebase/AdMob'
+    pod 'Fabric'
+    pod 'Crashlytics'
 
 end
 

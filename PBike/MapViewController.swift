@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import GoogleMobileAds
 import MessageUI
+import Crashlytics
 
 protocol HandleMapSearch:class {
     func dropPinZoomIn(_ placemark:MKPlacemark)
@@ -72,16 +73,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let objectsToShare = [name]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
+            
+            
+            if (UIDevice.current.userInterfaceIdiom) == .pad {
+                activityVC.popoverPresentationController?.sourceView = self.view
+                activityVC.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+                activityVC.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.init(rawValue: 0) //.Down
+                print("it's iPad ")
+            }
+            
             self.present(activityVC, animated: true, completion: nil)
+            let defaults = UserDefaults.standard
+            defaults.set(true, forKey: "hasSharedApp")
+            
         }
         else
         {
             // show alert for not available
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //test fabric
+        
+        
+        //
         setupRotatArrowBtnPosition()
         effect = visualEffectView.effect
         visualEffectView.effect = nil
@@ -96,7 +114,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         updatingDataByServalTime()
         mapViewInfoCustomize()
         
-                setGoogleMobileAds()
+        
         
         // 調整navigation 背景color
         //if inside a popover
@@ -291,6 +309,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if UIApplication.shared.canOpenURL(checkURL) {
                 UIApplication.shared.openURL(checkURL)
                 print("url successfully opened")
+                let defaults = UserDefaults.standard
+                defaults.set(true, forKey: "hasSharedApp")
             }
         } else {
             print("invalid url")
@@ -331,20 +351,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         switch timerStatusReadyTo {
             
         case .play:
-           
+            
             print("Timer playing")
             timerStatusReadyTo = .pause
             timeCurrentStatus = .play
-            
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.decreaseTimer), userInfo: nil, repeats: true)
             
             
         case .pause:
-           self.timeInPause = time
+            self.timeInPause = time
             print("Timer pause")
             timerStatusReadyTo = .reset
             timeCurrentStatus = .pause
-            
             timerLabel.setTitleColor(UIColor.red, for: .normal)
             timerLabel.setTitle("重置", for: .normal)
             
@@ -357,10 +375,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             print("Timer reset")
             timerStatusReadyTo = .play
             timeCurrentStatus = .reset
-            
             timerLabel.setTitleColor(UIColor.gray, for: .normal)
             timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: UIControlState.normal)
-          
+            
             
         }
     }
@@ -392,10 +409,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta)
             self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: self.toRadian(degree: 180))
             self.visualEffectView.effect = self.effect
-            }, completion: { (Bool) in
-                self.tableViewCanDoNext = true
-                print("show Up animation is completion")
-                
+        }, completion: { (Bool) in
+            self.tableViewCanDoNext = true
+            print("show Up animation is completion")
+            
         })
         
         print("y: \(moveView.center.y)")
@@ -416,18 +433,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 0)
             self.visualEffectView.effect = nil
             
-            }, completion: { (Bool) in
-                
-                print("show off animation is completion")
-                moveView.isHidden = true
-                self.visualEffectView.isHidden = true
-                moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta )
-                print("y: \(moveView.center.y)")
-                
-                
-                self.tableViewCanDoNext = true
-                
-                
+        }, completion: { (Bool) in
+            
+            print("show off animation is completion")
+            moveView.isHidden = true
+            self.visualEffectView.isHidden = true
+            moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta )
+            print("y: \(moveView.center.y)")
+            
+            
+            self.tableViewCanDoNext = true
+            
+            
         })
     }
     
@@ -639,6 +656,15 @@ extension MapViewController: CLLocationManagerDelegate {
         super.viewDidAppear(animated)
         print("view did apear ")
         authrizationStatus()
+        let defaults = UserDefaults.standard
+        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
+        if hasSharedApp {
+            print("hasSharedApp: \(hasSharedApp)")
+            return
+        }
+        print("hasSharedApp: \(hasSharedApp)")
+        setGoogleMobileAds()
+        
     }
     
     
@@ -1010,7 +1036,7 @@ extension MapViewController {
 
 extension MapViewController{
     func setupRotatArrowBtnPosition() {
-       let width = self.view.frame.size.width
+        let width = self.view.frame.size.width
         var left = -40
         print("width:\(width)")
         
@@ -1018,11 +1044,15 @@ extension MapViewController{
         case 320: left = -40    //iPhone SE
         case 375: left = -60    //iPhone 7
         case 414: left = -80    //iPhone 7+
+        case 768: left = -260
         case 1024: left = -380  //iPad直
         case 1366: left = -560  //iPad橫
+        case 1536: left = -620
+        case 2048: left = -720
+            
         default: left = -320
         }
-
+        
         
         
         rotationArrow.imageEdgeInsets = UIEdgeInsetsMake(0.0, CGFloat(left), 0.0, 0.0)
