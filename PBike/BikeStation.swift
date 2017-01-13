@@ -161,7 +161,7 @@ class BikeStation:BikeStationDelegate {
             
             case ("taipei", 24.96...25.14 , 121.44...121.65):
                 apis[index].isHere = true
-                self.bikeOnService = 15000
+                self.bikeOnService = 10000
          
                 
             case ("newTaipei", 25.09...25.10 , 121.51...121.60):
@@ -171,12 +171,12 @@ class BikeStation:BikeStationDelegate {
                 
             case ("taoyuan", 24.81...25.11 , 120.9...121.4):
                 apis[index].isHere = true
-                self.bikeOnService = 15000
+                self.bikeOnService = 5600
                
                 
             case ("taichung", 24.03...24.35 , 120.40...121.00):
                 apis[index].isHere = true
-                self.bikeOnService = 15000
+                self.bikeOnService = 7500
              
                 
 //            case (25.09...25.10 , 121.51...121.60, "tainan"): break
