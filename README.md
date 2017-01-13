@@ -13,12 +13,4 @@
 4. 計時器(Beta) - 充分利用GoBike免費時間
 
 ### Screen Shots
-!["1"](https://github.com/TerryCK/GoBike/blob/master/Screen/Bike%20App%20demo%20picture.001.png)
-
-![https://github.com/TerryCK/GoBike/blob/master/Screen/Bike%20App%20demo%20picture.002.png](test)
-
-![https://github.com/TerryCK/GoBike/blob/master/Screen/Bike%20App%20demo%20picture.003.png](test)
-
-![https://github.com/TerryCK/GoBike/blob/master/Screen/Bike%20App%20demo%20picture.004.png](test)
-
-
+!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/Screen/GoBikeDemo.png)
