@@ -16,3 +16,5 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 
 ### Screen Shots
 !["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/Screen/GoBikeDemo.png)
+
+!["DemoVideo"](http://gph.is/2jLdYrO)
