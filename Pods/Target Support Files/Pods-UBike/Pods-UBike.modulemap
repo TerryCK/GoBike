@@ -1,0 +1,6 @@
+framework module Pods_UBike {
+  umbrella header "Pods-UBike-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -27,14 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if CityBike  //city bike
             
             GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~8088837314")
-           
-           
-        #else  //PBike
             
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~3503324111")
             
+        #elseif PBike //PBike
+            
+            GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~3503324111")
+        #else
+            
+            GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~6339780911")
         #endif
-       
+        
         return true
     }
 

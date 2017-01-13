@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2017 Chen,Guan-Jhen. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
+                                <rect key="frame" x="20" y="527" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoBikeLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="e5K-xM-CbD">
+                                <rect key="frame" x="89" y="188" width="139" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="4XP-E1-oIM"/>
+                                    <constraint firstAttribute="height" constant="59" id="F2k-W6-SPJ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lanuchScreenSubtitle" highlightedImage="lanuchScreenSubtitle" translatesAutoresizingMaskIntoConstraints="NO" id="cW4-gb-4Q7">
+                                <rect key="frame" x="90" y="287" width="141" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="XjA-0P-MyC"/>
+                                    <constraint firstAttribute="height" constant="60" id="ZOk-Iy-unM"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="l4g-7z-2gc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83236783739999998" green="0.98242694139999998" blue="0.47256118060000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
+                            <constraint firstItem="cW4-gb-4Q7" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="74" id="7YY-m7-nHI"/>
+                            <constraint firstItem="cW4-gb-4Q7" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="FaX-eY-9u3"/>
+                            <constraint firstItem="e5K-xM-CbD" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="168" id="PgM-um-KQA"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
+                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
+                            <constraint firstItem="cW4-gb-4Q7" firstAttribute="top" secondItem="e5K-xM-CbD" secondAttribute="bottom" constant="40" id="ZnW-3d-kfm"/>
+                            <constraint firstItem="e5K-xM-CbD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-1.5" id="iAO-FA-G0A"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="GoBikeLaunchScreen" width="179" height="67"/>
+        <image name="lanuchScreenSubtitle" width="196" height="82"/>
+    </resources>
+</document>

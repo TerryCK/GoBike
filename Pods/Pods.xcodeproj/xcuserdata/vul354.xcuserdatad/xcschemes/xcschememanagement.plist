@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GzipSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CBike.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-UBike.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ReachabilitySwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,20 +49,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5BA037B8A5CF3E9AA74751A61FCA60BC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5BA1B50EE8C885FE15C86405A50D3741</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>759993A3AB2C32524F9F773A1A0094F1</key>
+		<key>60950484E2538375CB718F8BFBD60800</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +67,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>803EF880F0D8ECA3BA6F38C16BC6F2FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>852EBB10DE3CBCB1B2ABD33317CA40C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>92BB131FA876445E027D20AE23EA7B5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D5A0AE474ABC76EA5CC92109FABD4546</key>
+		<key>9BB18216944C7922F9ED691BB8298D84</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F914B8F767A563110D055CB7BD919322</key>
+		<key>9ED6AB3C632D653F739271C4DFA7B70B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AB2F882E01C69DE832B2BF33172AC4CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF003C05617C1C1687DA2463D9B65457</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2AB5345F626A85DD38651CBFF07D0C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

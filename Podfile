@@ -10,6 +10,8 @@ def shared_pods
     pod 'Firebase/AdMob'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'GzipSwift', '~> 3.1'
+    pod 'SwiftyJSON'
 
 end
 
@@ -25,7 +27,19 @@ target 'CBike' do
 
 end
 
-target ‘PBike Dev’ do
+target 'PBike Dev' do
+
+    shared_pods
+
+end
+
+target 'UBike' do
+    
+    shared_pods
+    
+end
+
+target 'GoBike' do
 
     shared_pods
 
