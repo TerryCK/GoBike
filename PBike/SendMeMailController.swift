@@ -9,13 +9,21 @@
 import MessageUI
 
 extension MapViewController: MFMailComposeViewControllerDelegate {
-   //error report button
+  
+    //error report button
     @IBAction func errorReportBtnPressed(_ sender: AnyObject) {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "hasSharedApp")
+        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
+        print("hasSharedApp:", hasSharedApp)
+        
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposeViewController, animated: true, completion: nil)
         } else { self.showSendMailErrorAlert() }
     }
+    
+    
     //rating button
     @IBAction func ratingBtnPressed(_ sender: AnyObject) {
         let appID = self.appId
@@ -26,6 +34,8 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "hasSharedApp")
     }
+    
+    
     //share button
     @IBAction func shareBtnPressed(_ sender: AnyObject) {
         guard let name = NSURL(string: applink) else{ /* show alert for not available */ return }
@@ -40,6 +50,8 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         self.present(activityVC, animated: true, completion: nil)
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "hasSharedApp")
+        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
+        print("hasSharedApp:", hasSharedApp)
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
@@ -70,8 +82,6 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
 //        alertController.addAction(okAction)
         
     }
-    
-    
     
     // MARK: MFMailComposeViewControllerDelegate
     

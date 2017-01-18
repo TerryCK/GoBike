@@ -73,7 +73,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         initializeLocationManager()
         authrizationStatus()
         mapViewInfoCustomize()
-        setGoogleMobileAds()
         effect = self.visualEffectView.effect
         visualEffectView.effect = nil
         addBlurEffect()
@@ -186,11 +185,14 @@ extension MapViewController {
         
         let defaults = UserDefaults.standard
         let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
+        
         if hasSharedApp {
             print("hasSharedApp: \(hasSharedApp)")
             return
         }
+     
         print("hasSharedApp: \(hasSharedApp)")
+        
         setGoogleMobileAds()
     }
     
@@ -198,7 +200,6 @@ extension MapViewController {
         super.viewDidDisappear(animated)
         myLocationManager.stopUpdatingLocation()
     }
-    
     
 }
 

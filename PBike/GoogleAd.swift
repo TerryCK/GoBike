@@ -12,8 +12,6 @@ extension MapViewController: GADBannerViewDelegate{
     
     func setGoogleMobileAds(){
         let request: GADRequest = GADRequest()
-        //set device to test devices
-        //        request.testDevices = ["09f8ecd06be28585d166f429d404b8044ccecdbe", kGADSimulatorID]
         bannerView.rootViewController = self
         bannerView.adUnitID = adUnitID
         let test_iPhone:NSString = "09f8ecd06be28585d166f429d404b8044ccecdbe"

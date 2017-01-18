@@ -105,8 +105,6 @@ extension MapViewController:CLLocationManagerDelegate {
     
     func setTrackModeToFollow(){
         self.mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: false)
-        
-        
     }
     
     func authrizationStatus(){

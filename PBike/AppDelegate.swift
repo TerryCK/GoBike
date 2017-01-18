@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         Fabric.sharedSDK().debug = true
         Fabric.with([Crashlytics.self])
         FIRApp.configure()
@@ -32,9 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #elseif PBike //PBike
             
             GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~3503324111")
-        #else
+        
+        #else //GoBike
             
             GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~6339780911")
+            
         #endif
         
         return true

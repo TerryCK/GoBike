@@ -20,7 +20,6 @@ extension MapViewController {
         
         var location = CLLocationCoordinate2D()
         location = self.location
-        //    print("stations:",stations)
     
         let _nunberOfUsingPBike = delegate?.numberOfBikeIsUsing(station: stations, count: numberOfStation)
         
