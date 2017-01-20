@@ -4,7 +4,7 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 "連結")
 
 ### 目前支援地區 
-#### 臺北市\*、新北市\*、桃園市\*、台中市\*、高雄市(CityBike)、屏東市(PBike)
+#### 臺北市\*、新北市\*、桃園市\*、台中市(iBike)、台南市(TBike)、高雄市(CityBike)、屏東市(PBike)
 ##### \*Youbike
 
 
