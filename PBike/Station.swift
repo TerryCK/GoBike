@@ -7,7 +7,6 @@
 //
 
 import SWXMLHash
-import SwiftyJSON
 
 protocol StationInfoProtocol {
     var name: String? {get set}
@@ -50,25 +49,5 @@ struct Station: StationInfoProtocol {
 
 
 
-struct StationXMLTainan:XMLIndexerDeserializable, StationInfoProtocol {
-    var name: String?
-    var location:String
-    var parkNumber:Int?
-    var currentBikeNumber:Int?
-    var longitude:Double
-    var latitude:Double
-    
-    
-    
-    static func deserialize(_ node: XMLIndexer) throws -> StationXMLTainan { return try StationXMLTainan(
-        name: node["StationName"].value(),
-        location: node["Address"].value(),
-        parkNumber: node["AvaliableSpaceCount"].value(),
-        currentBikeNumber: node["AvaliableBikeCount"].value(),
-        longitude: node["Longitude"].value(),
-        latitude: node["Latitude"].value()
-        
-        )
-    }
-}
+
 

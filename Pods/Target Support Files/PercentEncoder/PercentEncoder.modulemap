@@ -1,0 +1,6 @@
+framework module PercentEncoder {
+  umbrella header "PercentEncoder-umbrella.h"
+
+  export *
+  module * { export * }
+}

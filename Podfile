@@ -12,7 +12,8 @@ def shared_pods
     pod 'Crashlytics'
     pod 'GzipSwift', '~> 3.1'
     pod 'SwiftyJSON'
-
+    pod 'Kanna', '~> 2.1.0'
+    pod 'PercentEncoder'
 end
 
 target 'PBike' do
@@ -33,11 +34,6 @@ target 'PBike Dev' do
 
 end
 
-target 'UBike' do
-    
-    shared_pods
-    
-end
 
 target 'GoBike' do
 

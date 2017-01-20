@@ -57,7 +57,12 @@ extension MapViewController {
                     self.rideBikeWithYou = "人陪你騎iBike"
                     self.dataOwner = "巨大機械工業股份有限公司"
                     
-                    //            case (25.09...25.10 , 121.51...121.60, "tainan"): break
+                    
+                case "tainan" :
+                    self.govName = "台南市政府"
+                    self.bike = "TBike"
+                    self.rideBikeWithYou = "人陪你騎TBike"
+                    self.dataOwner = "T-Bike營運團隊"
                     
                     
                 case "kaohsiung":

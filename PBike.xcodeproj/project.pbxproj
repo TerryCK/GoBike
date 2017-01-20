@@ -12,6 +12,10 @@
 		51FF7E97FEA9708B7047F1BC /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
 		63B4778DBB4F852F1E078D55 /* Pods_PBike_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F262FF5EDD68A91BEAA59A4 /* Pods_PBike_Dev.framework */; };
 		A80B67DF1DBE16EB00F6B19F /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
+		A8207B671E2FAFD200B3BA0E /* YouBike.html in Resources */ = {isa = PBXBuildFile; fileRef = A8207B661E2FAFD200B3BA0E /* YouBike.html */; };
+		A8207B681E2FAFD200B3BA0E /* YouBike.html in Resources */ = {isa = PBXBuildFile; fileRef = A8207B661E2FAFD200B3BA0E /* YouBike.html */; };
+		A8207B691E2FAFD200B3BA0E /* YouBike.html in Resources */ = {isa = PBXBuildFile; fileRef = A8207B661E2FAFD200B3BA0E /* YouBike.html */; };
+		A8207B6A1E2FAFD200B3BA0E /* YouBike.html in Resources */ = {isa = PBXBuildFile; fileRef = A8207B661E2FAFD200B3BA0E /* YouBike.html */; };
 		A82B6AF91E1FE30E009314F1 /* PBikeDev.plist in Resources */ = {isa = PBXBuildFile; fileRef = A89B66B41DEDADDF007F186F /* PBikeDev.plist */; };
 		A83BD3351DC355E0002D2DC4 /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
 		A83BD3371DC360C5002D2DC4 /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
@@ -184,6 +188,8 @@
 		A8FE696E1DEDB2BE00BE4E51 /* DirectionsCityBike.geojson in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */; };
 		A8FE69701DEDB2BE00BE4E51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A8FE69711DEDB2BE00BE4E51 /* stationlist.xml in Resources */ = {isa = PBXBuildFile; fileRef = A8F8366C1DB3B7D4001131BE /* stationlist.xml */; };
+		A8FFE3111E31027900BFFB74 /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FFE3101E31027900BFFB74 /* Kanna.framework */; };
+		BC898FB4B74E846418FBA124 /* Pods_GoBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71747225C154CDF68D2F730 /* Pods_GoBike.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,10 +198,13 @@
 		302362E34D8493EC76C60597 /* Pods-PBike Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike Dev/Pods-PBike Dev.release.xcconfig"; sourceTree = "<group>"; };
 		3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.release.xcconfig"; sourceTree = "<group>"; };
 		4A6316802783ECC1016D1871 /* Pods-CBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBike/Pods-CBike.debug.xcconfig"; sourceTree = "<group>"; };
+		58F197C3FC2C8A5C3DCDA924 /* Pods-GoBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoBike/Pods-GoBike.release.xcconfig"; sourceTree = "<group>"; };
 		7999D3C438D4233D1651F9DC /* Pods-PBike Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PBike Dev/Pods-PBike Dev.debug.xcconfig"; sourceTree = "<group>"; };
+		7C227462ABED8330580CFF38 /* Pods-GoBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoBike/Pods-GoBike.debug.xcconfig"; sourceTree = "<group>"; };
 		9982BFD6F72E4B9B1137E91C /* Pods_UBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		A817098B2AB110E3FBB9885C /* Pods-UBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UBike/Pods-UBike.debug.xcconfig"; sourceTree = "<group>"; };
+		A8207B661E2FAFD200B3BA0E /* YouBike.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YouBike.html; sourceTree = "<group>"; };
 		A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksforTableViewCell.swift; sourceTree = "<group>"; };
 		A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateingReportTableViewCell.swift; sourceTree = "<group>"; };
 		A83D19F91DD35AA2009212B2 /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = image.xcassets; path = ../image.xcassets; sourceTree = "<group>"; };
@@ -223,6 +232,7 @@
 		A87E52421DC09A070016F9E0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		A87E52441DC09A0D0016F9E0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A89738AB1E2FAD5F005B74ED /* testForChanghua.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = testForChanghua.playground; sourceTree = "<group>"; };
 		A89B66B41DEDADDF007F186F /* PBikeDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PBikeDev.plist; sourceTree = "<group>"; };
 		A8A80B231DD1F6F400107566 /* PBike Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PBike Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A8A3171DC60BD900946AA9 /* Directions.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Directions.geojson; sourceTree = "<group>"; };
@@ -252,11 +262,13 @@
 		A8F836641DB378CA001131BE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
 		A8F8366C1DB3B7D4001131BE /* stationlist.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = stationlist.xml; sourceTree = "<group>"; };
-		A8FE69781DEDB2BE00BE4E51 /* UBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = UBike.app; path = GoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8FE69781DEDB2BE00BE4E51 /* GoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8FFE3101E31027900BFFB74 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = "../../../Library/Developer/Xcode/DerivedData/PBike-efybxyjodxkgixgvgrwfqpqrhxbb/Build/Products/Release-iphonesimulator/Kanna/Kanna.framework"; sourceTree = "<group>"; };
 		C3624A023940C70CE18739FA /* Pods-UBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-UBike/Pods-UBike.release.xcconfig"; sourceTree = "<group>"; };
 		D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2EDEEE889805C44CBB4CDF /* Pods-CBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBike/Pods-CBike.release.xcconfig"; sourceTree = "<group>"; };
 		E0F40DD318A338037D38DDF6 /* Pods_CBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F71747225C154CDF68D2F730 /* Pods_GoBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +338,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8FFE3111E31027900BFFB74 /* Kanna.framework in Frameworks */,
 				A8FE695A1DEDB2BE00BE4E51 /* MessageUI.framework in Frameworks */,
 				A8FE695B1DEDB2BE00BE4E51 /* SystemConfiguration.framework in Frameworks */,
 				A8FE695C1DEDB2BE00BE4E51 /* EventKit.framework in Frameworks */,
@@ -342,6 +355,7 @@
 				A8FE69671DEDB2BE00BE4E51 /* Pods_PBike.framework in Frameworks */,
 				A8FE69681DEDB2BE00BE4E51 /* Pods_CBike.framework in Frameworks */,
 				050A93DD5497149E61B17AFB /* Pods_UBike.framework in Frameworks */,
+				BC898FB4B74E846418FBA124 /* Pods_GoBike.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +373,8 @@
 				302362E34D8493EC76C60597 /* Pods-PBike Dev.release.xcconfig */,
 				A817098B2AB110E3FBB9885C /* Pods-UBike.debug.xcconfig */,
 				C3624A023940C70CE18739FA /* Pods-UBike.release.xcconfig */,
+				7C227462ABED8330580CFF38 /* Pods-GoBike.debug.xcconfig */,
+				58F197C3FC2C8A5C3DCDA924 /* Pods-GoBike.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -366,6 +382,7 @@
 		6E84EAB925C4FD7FD414DFDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8FFE3101E31027900BFFB74 /* Kanna.framework */,
 				A8DD38B01E20F4CD0050073E /* StoreKit.framework */,
 				A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */,
 				A87E52441DC09A0D0016F9E0 /* MessageUI.framework */,
@@ -383,6 +400,7 @@
 				E0F40DD318A338037D38DDF6 /* Pods_CBike.framework */,
 				1F262FF5EDD68A91BEAA59A4 /* Pods_PBike_Dev.framework */,
 				9982BFD6F72E4B9B1137E91C /* Pods_UBike.framework */,
+				F71747225C154CDF68D2F730 /* Pods_GoBike.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -398,6 +416,7 @@
 		A85B62C51DB895C800C1413B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A8207B661E2FAFD200B3BA0E /* YouBike.html */,
 				A8F8366C1DB3B7D4001131BE /* stationlist.xml */,
 				A85B62C41DB895BF00C1413B /* PingtungTW.gpx */,
 				A8A8A3171DC60BD900946AA9 /* Directions.geojson */,
@@ -450,7 +469,7 @@
 				A8F8364A1DB37336001131BE /* PBike.app */,
 				A85D3C691DCEBAE800875B3A /* CBike.app */,
 				A8A80B231DD1F6F400107566 /* PBike Dev.app */,
-				A8FE69781DEDB2BE00BE4E51 /* UBike.app */,
+				A8FE69781DEDB2BE00BE4E51 /* GoBike.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -467,6 +486,7 @@
 				A8F8364D1DB37336001131BE /* AppDelegate.swift */,
 				A8F836511DB37336001131BE /* Main.storyboard */,
 				A83D19F91DD35AA2009212B2 /* image.xcassets */,
+				A89738AB1E2FAD5F005B74ED /* testForChanghua.playground */,
 			);
 			path = PBike;
 			sourceTree = "<group>";
@@ -612,7 +632,7 @@
 			);
 			name = GoBike;
 			productName = PBike;
-			productReference = A8FE69781DEDB2BE00BE4E51 /* UBike.app */;
+			productReference = A8FE69781DEDB2BE00BE4E51 /* GoBike.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -701,6 +721,7 @@
 				A8F4B09D1DCF596C00EBC68F /* DirectionsCityBike.geojson in Resources */,
 				A8DD38B71E2234CB0050073E /* image.xcassets in Resources */,
 				A85D3C621DCEBAE800875B3A /* Main.storyboard in Resources */,
+				A8207B681E2FAFD200B3BA0E /* YouBike.html in Resources */,
 				A85D3C631DCEBAE800875B3A /* stationlist.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,6 +730,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8207B6A1E2FAFD200B3BA0E /* YouBike.html in Resources */,
 				A8A80B191DD1F6F400107566 /* LaunchScreen.storyboard in Resources */,
 				A8DD38B91E2234D10050073E /* image.xcassets in Resources */,
 				A8A80B1C1DD1F6F400107566 /* Main.storyboard in Resources */,
@@ -726,6 +748,7 @@
 				A8F836531DB37336001131BE /* Main.storyboard in Resources */,
 				A8F8366D1DB3B7D4001131BE /* stationlist.xml in Resources */,
 				A8E01EA41DDD481900BC440C /* GoogleService-Info.plist in Resources */,
+				A8207B671E2FAFD200B3BA0E /* YouBike.html in Resources */,
 				A8DD38B61E2234CB0050073E /* image.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,6 +762,7 @@
 				A8FE696D1DEDB2BE00BE4E51 /* CBikeLaunch Screen.storyboard in Resources */,
 				A8FE696E1DEDB2BE00BE4E51 /* DirectionsCityBike.geojson in Resources */,
 				A8F7DC7F1E0E8748008E0862 /* GoBike-Info.plist in Resources */,
+				A8207B691E2FAFD200B3BA0E /* YouBike.html in Resources */,
 				A8FE69701DEDB2BE00BE4E51 /* Main.storyboard in Resources */,
 				A84F02261E20D24300E65C22 /* GoogleService-Info.plist in Resources */,
 				A8DD38B51E2234C00050073E /* image.xcassets in Resources */,
@@ -923,7 +947,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UBike/Pods-UBike-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoBike/Pods-GoBike-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A8FE69731DEDB2BE00BE4E51 /* [CP] Copy Pods Resources */ = {
@@ -938,7 +962,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UBike/Pods-UBike-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoBike/Pods-GoBike-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A8FE69741DEDB2BE00BE4E51 /* ShellScript */ = {
@@ -1422,7 +1446,7 @@
 		};
 		A8FE69761DEDB2BE00BE4E51 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A817098B2AB110E3FBB9885C /* Pods-UBike.debug.xcconfig */;
+			baseConfigurationReference = 7C227462ABED8330580CFF38 /* Pods-GoBike.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-GoBike";
@@ -1443,6 +1467,7 @@
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
 					"$(PROJECT_DIR)/PBike",
 					"$(PROJECT_DIR)",
+					"$(SRCROOT)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/UBike-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1460,7 +1485,7 @@
 		};
 		A8FE69771DEDB2BE00BE4E51 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3624A023940C70CE18739FA /* Pods-UBike.release.xcconfig */;
+			baseConfigurationReference = 58F197C3FC2C8A5C3DCDA924 /* Pods-GoBike.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-GoBike";
@@ -1480,6 +1505,7 @@
 					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
 					"$(PROJECT_DIR)/PBike",
 					"$(PROJECT_DIR)",
+					"$(SRCROOT)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/UBike-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

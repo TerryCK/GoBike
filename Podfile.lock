@@ -27,6 +27,8 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
   - GzipSwift (3.1.2)
+  - Kanna (2.1.1)
+  - PercentEncoder (1.1.0)
   - ReachabilitySwift (3)
   - SwiftyJSON (3.1.3)
   - SWXMLHash (3.0.3)
@@ -38,6 +40,8 @@ DEPENDENCIES:
   - Firebase/AdMob
   - Firebase/Core
   - GzipSwift (~> 3.1)
+  - Kanna (~> 2.1.0)
+  - PercentEncoder
   - ReachabilitySwift
   - SwiftyJSON
   - SWXMLHash (~> 3.0.0)
@@ -55,10 +59,12 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GzipSwift: 86700e6530b3aa5e782ed7107cde2deea6b16688
+  Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
+  PercentEncoder: 7a001be188d62187761cb785156ac7e5c105688d
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   SWXMLHash: 80d2529d74891bb2f15305a0b9e08f2a4f229ee7
 
-PODFILE CHECKSUM: abf4df4e80f76e56807e075a81d37b62a26b4224
+PODFILE CHECKSUM: 5ada41b6dd885ed29006a9120a92cb50ceebce85
 
 COCOAPODS: 1.1.0.rc.3

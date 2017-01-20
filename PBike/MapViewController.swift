@@ -26,7 +26,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var myLocationManager: CLLocationManager!
     var effect:UIVisualEffect!
-    //    var bikeStation = BikeStation() //the object for download and init station datas
     var bikeStations = BikeStation().stations //the object for save ["station"]
     var location = CLLocationCoordinate2D()
     var selectedPin: MKPlacemark?

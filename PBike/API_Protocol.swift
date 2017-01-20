@@ -38,7 +38,7 @@ struct Bike:BikeAPIDelegate {
         BikeAPI(city: "newTaipei", url: "http://data.ntpc.gov.tw/api/v1/rest/datastore/382000000A-000352-001", isHere: false ,bikeVision: .UBike, dataType: .JSON),
         BikeAPI(city: "taoyuan", url: "http://data.tycg.gov.tw/api/v1/rest/datastore/a1b4714b-3b75-4ff8-a8f2-cc377e4eaa0f?format=json", isHere: false, bikeVision: .UBike, dataType: .JSON),
         BikeAPI(city: "taichung", url: "http://ybjson01.youbike.com.tw:1002/gwjs.json", isHere: false, bikeVision: .UBike, dataType: .JSON),
-        BikeAPI(city: "tainan", url: "http://tbike.tainan.gov.tw:8081/Service/StationStatus/Xml", isHere: false, bikeVision: .TainanBike, dataType: .XML),
+        BikeAPI(city: "tainan", url: "http://tbike.tainan.gov.tw:8081/Service/StationStatus/Json", isHere: false, bikeVision: .TainanBike, dataType: .JSON),
         BikeAPI(city: "kaohsiung", url: "http://www.c-bike.com.tw/xml/stationlistopendata.aspx", isHere: false, bikeVision: .CityBike, dataType: .XML),
         BikeAPI(city: "pingtung", url: "http://pbike.pthg.gov.tw/xml/stationlist.aspx", isHere: false, bikeVision: .PBike, dataType: .XML)]
 }

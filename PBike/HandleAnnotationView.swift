@@ -11,7 +11,7 @@ import MapKit
 extension MapViewController {
     
     func handleAnnotationInfo() {
-        timesOfLoadingAnnotationView += 1
+        var showPinInReginoDistance = 5.0
         guard let stations = delegate?.stations else { print("station nil"); return }
         self.bikeStations = stations
         var objArray = [CustomPointAnnotation]()
@@ -29,7 +29,7 @@ extension MapViewController {
         
         guard let nunberOfUsingPBike = _nunberOfUsingPBike else { print("nunberOfUsingPBike is nil"); return }
         self.bikeinusing += nunberOfUsingPBike
-        if timesOfLoadingAnnotationView == delegate?.numberOfAPIs {
+        if timesOfLoadingAnnotationView == ((delegate?.numberOfAPIs)! - 1) {
             
             switch nunberOfUsingPBike {
                 
@@ -44,7 +44,7 @@ extension MapViewController {
         }
         
             
-        print("站內腳踏車有\(bikesInStation)台")
+        print("站內腳踏車有\(bikesInStation!)台")
         print("目前有\(nunberOfUsingPBike)人正在騎\(self.bike)")
         print("目前站點有：\(numberOfStation)座")
         
@@ -57,7 +57,7 @@ extension MapViewController {
         
         
         oldAnnotations.append(contentsOf: annotations)
-        if timesOfLoadingAnnotationView == 2 {
+        if timesOfLoadingAnnotationView == delegate?.numberOfAPIs {
             annotations.removeAll() }
       
         for index in 0..<numberOfStation {
@@ -74,12 +74,14 @@ extension MapViewController {
             objectAnnotation.coordinate = coordinats
             
             //handle distance
-            let distanceInKM = destinationOfCoordinats.distance(from: currentLocation).divided(by: 1000)
-            let distanceInKMStr = String(format:"%.1f", distanceInKM)
+            let distanceInKM = destinationOfCoordinats.distance(from: currentLocation).km
+            let distanceInKMStr = distanceInKM.string
             objectAnnotation.distance = distanceInKMStr
-            
-            guard distanceInKM <= 5.0 else {  continue  } //距離控制顯示數量annotation
-            
+           
+            if delegate?.citys[timesOfLoadingAnnotationView] == "tainan" { showPinInReginoDistance = 20 }
+            else {showPinInReginoDistance = 5 }
+            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
+//            print("showPinInReginoDistance", showPinInReginoDistance)
             
             //handle name for navigation
             if let name = stations[index].name {
@@ -116,14 +118,9 @@ extension MapViewController {
 //            }
 //        }
 //        
-        print("5km 內的annotation數量：", annotations.count)
+        print(showPinInReginoDistance,"km 內的annotation數量：", annotations.count)
         guard let mapView = self.mapView else { print("mapView not to self.mapView"); return }
-
         mapView.addAnnotations(annotations)
-        
-//        for test in mapView.annotations {
-//            print(test.subtitle)
-//        }
         if timesOfLoadingAnnotationView == delegate?.numberOfAPIs {
             
             mapView.removeAnnotations(oldAnnotations)
@@ -133,7 +130,13 @@ extension MapViewController {
             
             print("移除舊後，annotations的數量： \(mapView.annotations.count)\n")
         }
-        
+       timesOfLoadingAnnotationView += 1
     }
     
+}
+extension Double {
+    var km:Double {
+        return Double(self/1000)
+    }
+    var string:String {return String(format:"%.1f", self)}
 }

@@ -19,7 +19,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Kanna.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PercentEncoder.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CBike.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-GoBike.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -30,11 +45,6 @@
 			<false/>
 		</dict>
 		<key>Pods-PBike.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-UBike.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,7 +67,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>60950484E2538375CB718F8BFBD60800</key>
+		<key>10E34DB6DE66B9C7769CD168A1F8C4BE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>46C66ACEA1961A5A0D632929A751D867</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>54E062F7DCCFEA95921F4FC75B74A4DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5C770AB9F1109D9C6C3C8C2EBA885FB0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6B535F108F36F971F443054A2FB1F624</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>852EBB10DE3CBCB1B2ABD33317CA40C2</key>
+		<key>8B7AF939ABA99CB42F2CC2725B1CAD06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,27 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9BB18216944C7922F9ED691BB8298D84</key>
+		<key>A9B7EA03AC0525D93D698B3138C4611F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9ED6AB3C632D653F739271C4DFA7B70B</key>
+		<key>D3B40298667B5D70E31CE087FB3C2E0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB2F882E01C69DE832B2BF33172AC4CE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DF003C05617C1C1687DA2463D9B65457</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E2AB5345F626A85DD38651CBFF07D0C0</key>
+		<key>F925C954F8D4DF56E029F061D8773794</key>
 		<dict>
 			<key>primary</key>
 			<true/>
