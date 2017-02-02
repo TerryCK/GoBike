@@ -11,7 +11,7 @@ import MapKit
 extension MapViewController {
     
     func handleAnnotationInfo() {
-        var showPinInReginoDistance = 5.0
+        let showPinInReginoDistance = 5.0
         guard let stations = delegate?.stations else { print("station nil"); return }
         self.bikeStations = stations
         var objArray = [CustomPointAnnotation]()
@@ -29,7 +29,8 @@ extension MapViewController {
         
         guard let nunberOfUsingPBike = _nunberOfUsingPBike else { print("nunberOfUsingPBike is nil"); return }
         self.bikeinusing += nunberOfUsingPBike
-        if timesOfLoadingAnnotationView == ((delegate?.numberOfAPIs)! - 1) {
+        
+        if timesOfLoadingAnnotationView == delegate?.numberOfAPIs {
             
             switch nunberOfUsingPBike {
                 
@@ -55,9 +56,11 @@ extension MapViewController {
         
         print("annotation count \(annotation.count)")
         
-        
+        print("timesOfLoadingAnnotationView:",timesOfLoadingAnnotationView," numberOfAPIs:", delegate?.numberOfAPIs as Any )
         oldAnnotations.append(contentsOf: annotations)
         if timesOfLoadingAnnotationView == delegate?.numberOfAPIs {
+            print("annotation remove all")
+            
             annotations.removeAll() }
       
         for index in 0..<numberOfStation {
@@ -78,9 +81,9 @@ extension MapViewController {
             let distanceInKMStr = distanceInKM.string
             objectAnnotation.distance = distanceInKMStr
            
-            if delegate?.citys[timesOfLoadingAnnotationView] == "tainan" { showPinInReginoDistance = 20 }
-            else {showPinInReginoDistance = 5 }
-            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
+//            if delegate?.citys[timesOfLoadingAnnotationView] == "tainan" { showPinInReginoDistance = 20 }
+//            else {showPinInReginoDistance = 5 }
+//            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
 //            print("showPinInReginoDistance", showPinInReginoDistance)
             
             //handle name for navigation

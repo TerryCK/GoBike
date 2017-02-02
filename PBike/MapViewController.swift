@@ -49,7 +49,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var tableViewCanDoNext:Bool = true
     var showInfoTableView:Bool = false
     var oldAnnotations = [MKAnnotation]()
-    var timesOfLoadingAnnotationView = 0
+    var timesOfLoadingAnnotationView = 1
     
     // time relation parameter
     var time = 1800
@@ -80,11 +80,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         
         self.updatingDataByServalTime()
-        
     }
     
-    func updatingDataByServalTime(){
-        
+    func updatingDataByServalTime() {
         if reloadtime > 0 {
             reloadtime -= 1
             updateTimeLabel.text = "\(30 - reloadtime) 秒前更新"
@@ -92,24 +90,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
         } else {
             timerForAutoUpdate.invalidate()
-           updateTimeLabel.text = "資料更新中"
+            updateTimeLabel.text = "資料更新中"
             delegate?.downloadInfoOfBikeFromAPI {
                 self.appVersionInit()
                 self.handleAnnotationInfo()
                 self.UITableView.reloadData()
-                
             }
-            timesOfLoadingAnnotationView = 0
-           
+            
+            timesOfLoadingAnnotationView = 1
+            
             self.timerForAutoUpdate = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
             reloadtime = 30
         }
     }
-    
-    // Do any additional setup after loading the view.
-    
-    
-    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -189,7 +182,7 @@ extension MapViewController {
             print("hasSharedApp: \(hasSharedApp)")
             return
         }
-     
+        
         print("hasSharedApp: \(hasSharedApp)")
         
         setGoogleMobileAds()

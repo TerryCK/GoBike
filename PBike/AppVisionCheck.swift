@@ -51,12 +51,23 @@ extension MapViewController {
                     self.rideBikeWithYou = "人陪你騎UBike"
                     self.dataOwner = "巨大機械工業股份有限公司"
                     
+                case "Hsinchu" :
+                    self.govName = "新竹市政府"
+                    self.bike = "YouBike"
+                    self.rideBikeWithYou = "人陪你騎UBike"
+                    self.dataOwner = "巨大機械工業股份有限公司"
+                    
                 case "taichung":
                     self.govName = "台中市政府"
                     self.bike = "iBike"
                     self.rideBikeWithYou = "人陪你騎iBike"
                     self.dataOwner = "巨大機械工業股份有限公司"
                     
+               case "Changhua":
+                self.govName = "彰化縣政府"
+                self.bike = "CBike"
+                self.rideBikeWithYou = "人陪你騎CBike"
+                self.dataOwner = "巨大機械工業股份有限公司"
                     
                 case "tainan" :
                     self.govName = "台南市政府"

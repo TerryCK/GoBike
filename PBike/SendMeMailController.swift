@@ -73,10 +73,10 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
             (result : UIAlertAction) -> Void in
             print("Destructive")
         }
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-            (result : UIAlertAction) -> Void in
-            print("OK")
-        }
+//        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+//            (result : UIAlertAction) -> Void in
+//            print("OK")
+//        }
         
         alertController.addAction(DestructiveAction)
 //        alertController.addAction(okAction)

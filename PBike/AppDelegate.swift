@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.sharedSDK().debug = true
         Fabric.with([Crashlytics.self])
+        
+        
         FIRApp.configure()
         
         #if CityBike  //city bike
