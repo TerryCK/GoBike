@@ -23,6 +23,7 @@ extension MapViewController {
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         print("hours = \(hour):\(minutes):\(seconds)")
+        
         switch timerStatusReadyTo {
             
         case .play:

@@ -44,7 +44,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var delegate: BikeStationDelegate?
     let queue = DispatchQueue(label: "com.MapVision.myqueue")
     var annotations = [MKAnnotation]()
-    var bikeinusing = 0
+    var bikeOnService = 0
     let yDelta:CGFloat = 500
     var tableViewCanDoNext:Bool = true
     var showInfoTableView:Bool = false
@@ -64,6 +64,34 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+        self.updatingDataByServalTime()
+    }
+    
+    func updatingDataByServalTime() {
+        
+        if reloadtime > 0 {
+            reloadtime -= 1
+            updateTimeLabel.text = "\(30 - reloadtime) 秒前更新"
+            print("\(reloadtime) seconds ")
+            
+        } else {
+            timerForAutoUpdate.invalidate()
+            updateTimeLabel.text = "資料更新中"
+            delegate?.downloadInfoOfBikeFromAPI {
+                self.bikeOnService = self.appVersionInit()
+                print("bikeOnService", self.bikeOnService)
+                self.handleAnnotationInfo()
+                self.UITableView.reloadData()
+            }
+            
+            timesOfLoadingAnnotationView = 1
+            self.timerForAutoUpdate = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
+            reloadtime = 30
+        }
+    }
+    
+    func setup() {
         delegate = BikeStation()
         setupRotatArrowBtnPosition()
         UITableView.delegate = self
@@ -78,36 +106,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         applyMotionEffect(toView: self.UITableView, magnitude: -20)
         applyMotionEffect(toView: self.updateTimeLabel, magnitude: -20)
         
-        
-        self.updatingDataByServalTime()
     }
     
-    func updatingDataByServalTime() {
-        if reloadtime > 0 {
-            reloadtime -= 1
-            updateTimeLabel.text = "\(30 - reloadtime) 秒前更新"
-            print("\(reloadtime) seconds ")
-            
-        } else {
-            timerForAutoUpdate.invalidate()
-            updateTimeLabel.text = "資料更新中"
-            delegate?.downloadInfoOfBikeFromAPI {
-                self.appVersionInit()
-                self.handleAnnotationInfo()
-                self.UITableView.reloadData()
-            }
-            
-            timesOfLoadingAnnotationView = 1
-            
-            self.timerForAutoUpdate = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
-            reloadtime = 30
-        }
-    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if annotation.isKind(of: MKUserLocation.self) {
-            return nil}
+        if annotation.isKind(of: MKUserLocation.self) { return nil }
         
         let identifier = "station"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
@@ -122,8 +126,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let customAnnotation = annotation as! CustomPointAnnotation
         let distance = Double(customAnnotation.distance!)!
         
-        var width = 28
-        if (distance > 100) { width = 40 } else { width = 28}
+        let width = distance > 100 ? 40 : 28
         let textSquare = CGSize(width:width , height: 40)
         let subTitleView:UILabel! = UILabel(frame: CGRect(origin: CGPoint.zero, size: textSquare))
         
@@ -164,7 +167,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){
-        
         print("region will change")
     }
 }
@@ -177,15 +179,18 @@ extension MapViewController {
         
         let defaults = UserDefaults.standard
         let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
-        
-        if hasSharedApp {
+        let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
+        if !hasSharedApp {
             print("hasSharedApp: \(hasSharedApp)")
-            return
+            setGoogleMobileAds()
         }
-        
+        if !hasViewedGuidePage {
+            
+            if let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController {
+                present(guidePageViewController, animated: true, completion: nil )
+            }
+        }
         print("hasSharedApp: \(hasSharedApp)")
-        
-        setGoogleMobileAds()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -228,6 +228,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juN-va-5J4" userLabel="BannerGAD" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="474" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aZV-LU-9DT"/>
+                                    <constraint firstAttribute="width" constant="320" id="xgB-xF-Dwb"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-3022461967351598/7933523718"/>
                                 </userDefinedRuntimeAttributes>
@@ -235,19 +239,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="juN-va-5J4" firstAttribute="centerX" secondItem="T86-vp-N61" secondAttribute="centerX" id="49I-QZ-LgY"/>
                             <constraint firstItem="JDr-aS-8Yh" firstAttribute="leading" secondItem="T86-vp-N61" secondAttribute="leading" id="5al-po-sSG"/>
-                            <constraint firstItem="juN-va-5J4" firstAttribute="trailing" secondItem="JDr-aS-8Yh" secondAttribute="trailing" id="9nt-ga-bhs"/>
-                            <constraint firstItem="juN-va-5J4" firstAttribute="top" secondItem="T86-vp-N61" secondAttribute="top" constant="474" id="Xam-Fs-i7t"/>
                             <constraint firstItem="JDr-aS-8Yh" firstAttribute="top" secondItem="T86-vp-N61" secondAttribute="top" constant="20" id="ajn-hi-9fH"/>
                             <constraint firstAttribute="bottom" secondItem="JDr-aS-8Yh" secondAttribute="bottom" id="bpT-v8-6If"/>
+                            <constraint firstItem="n15-Sr-peb" firstAttribute="top" secondItem="juN-va-5J4" secondAttribute="bottom" id="efn-Cq-Zxw"/>
                             <constraint firstAttribute="trailing" secondItem="JDr-aS-8Yh" secondAttribute="trailing" id="egc-Mr-cWY"/>
                             <constraint firstItem="62L-Ef-bF0" firstAttribute="top" secondItem="ECA-nH-ri7" secondAttribute="bottom" constant="7" id="feq-Re-2qw"/>
                             <constraint firstItem="JDr-aS-8Yh" firstAttribute="top" secondItem="T86-vp-N61" secondAttribute="top" constant="20" id="jj8-S0-6Qh"/>
-                            <constraint firstItem="juN-va-5J4" firstAttribute="leading" secondItem="JDr-aS-8Yh" secondAttribute="leading" id="oC1-xX-2Pq"/>
                             <constraint firstAttribute="trailing" secondItem="JDr-aS-8Yh" secondAttribute="trailing" id="p92-bp-vy3"/>
                             <constraint firstItem="yGB-VN-ZxY" firstAttribute="leading" secondItem="T86-vp-N61" secondAttribute="leadingMargin" constant="-20" id="p95-oD-c6j"/>
                             <constraint firstItem="n15-Sr-peb" firstAttribute="top" secondItem="yGB-VN-ZxY" secondAttribute="bottom" id="peT-Eg-1IJ"/>
-                            <constraint firstItem="juN-va-5J4" firstAttribute="bottom" secondItem="n15-Sr-peb" secondAttribute="top" id="rXQ-Rw-TRa"/>
                             <constraint firstItem="yGB-VN-ZxY" firstAttribute="top" secondItem="ECA-nH-ri7" secondAttribute="bottom" id="ss5-C7-q8w"/>
                             <constraint firstItem="62L-Ef-bF0" firstAttribute="trailing" secondItem="T86-vp-N61" secondAttribute="trailingMargin" id="suh-1T-dBQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yGB-VN-ZxY" secondAttribute="trailing" constant="-20" id="uPh-Sw-FOF"/>
@@ -273,7 +275,7 @@
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ivr-S5-e8b">
-                            <rect key="frame" x="117.5" y="6.5" width="85" height="31"/>
+                            <rect key="frame" x="118" y="7" width="85" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="GoBike"/>
                             <connections>
@@ -331,18 +333,18 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yWO-B3-3xC" id="sXo-x9-WsT">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tfe-qv-DlL">
-                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XDL-Iu-vfm">
-                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -382,9 +384,59 @@
             </objects>
             <point key="canvasLocation" x="-348" y="92"/>
         </scene>
+        <!--Guide Page View Controller-->
+        <scene sceneID="QnC-3S-gha">
+            <objects>
+                <viewController storyboardIdentifier="GuidePageViewController" id="RSY-jc-zWA" customClass="GuidePageViewController" customModule="GoBike" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Rs-Gs-U2L"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKP-6e-Y4g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Pe-GW-krW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPadGuidePage" translatesAutoresizingMaskIntoConstraints="NO" id="O23-eC-ELE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <variation key="heightClass=regular-widthClass=compact" image="iPhoneGuidePage"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUF-x2-wFG">
+                                <rect key="frame" x="61" y="512" width="198" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="5hV-QE-4Rx"/>
+                                    <constraint firstAttribute="width" constant="198" id="iry-2F-fCA"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="173" id="vTa-CZ-2JY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="&gt;&gt; 點此開始使用 &lt;&lt;"/>
+                                <connections>
+                                    <action selector="guidePageCompleteBtn:" destination="RSY-jc-zWA" eventType="touchUpInside" id="YXN-Bx-wFT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O23-eC-ELE" firstAttribute="leading" secondItem="1Pe-GW-krW" secondAttribute="leading" id="1tB-OT-cfj"/>
+                            <constraint firstItem="FKP-6e-Y4g" firstAttribute="top" secondItem="O23-eC-ELE" secondAttribute="bottom" id="5E8-wv-nhD"/>
+                            <constraint firstItem="O23-eC-ELE" firstAttribute="top" secondItem="1Pe-GW-krW" secondAttribute="top" id="MFW-8X-zQJ"/>
+                            <constraint firstAttribute="trailing" secondItem="O23-eC-ELE" secondAttribute="trailing" id="cqw-Re-VLJ"/>
+                            <constraint firstItem="yUF-x2-wFG" firstAttribute="centerX" secondItem="1Pe-GW-krW" secondAttribute="centerX" id="fAE-BK-RL6"/>
+                            <constraint firstItem="FKP-6e-Y4g" firstAttribute="top" secondItem="yUF-x2-wFG" secondAttribute="bottom" constant="20" id="fCk-7N-xv5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="guideImageView" destination="O23-eC-ELE" id="CLy-zZ-m4g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fz-dY-vfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-350.625" y="812.32394366197184"/>
+        </scene>
     </scenes>
     <resources>
         <image name="GoBike" width="85" height="32"/>
+        <image name="iPadGuidePage" width="16" height="16"/>
+        <image name="iPhoneGuidePage" width="16" height="16"/>
         <image name="locationArrowNone" width="22" height="22"/>
         <image name="mailto" width="148" height="83"/>
         <image name="rate" width="148" height="83"/>

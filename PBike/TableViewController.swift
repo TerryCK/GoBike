@@ -14,7 +14,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     @IBAction func titleBtnPressed(_ sender: AnyObject) {
-        print("按按鈕有反應嗎？ \(tableViewCanDoNext)")
+        print("titleBtnPressed？ \(tableViewCanDoNext)")
         print("秀表格嗎？ \(showInfoTableView)")
         
         
@@ -46,7 +46,6 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         print("self.tableViewCanDoNext \(self.tableViewCanDoNext)")
         self.tableViewCanDoNext = false
         
-        //        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         print("UITableView Postition \(UITableView.center) ")
         print("Show up Table View   : Y + yDelta")
         moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta )

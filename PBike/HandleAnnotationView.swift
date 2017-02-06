@@ -11,8 +11,18 @@ import MapKit
 extension MapViewController {
     
     func handleAnnotationInfo() {
-        let showPinInReginoDistance = 5.0
+        let numberOfAPIs = delegate?.numberOfAPIs
+        let showPinInReginoDistance = 15.0
+        print("restrict distance", showPinInReginoDistance)
+        
+        guard timesOfLoadingAnnotationView == numberOfAPIs else {
+            print("pass", timesOfLoadingAnnotationView)
+            timesOfLoadingAnnotationView += 1
+            return
+        }
+        
         guard let stations = delegate?.stations else { print("station nil"); return }
+        
         self.bikeStations = stations
         var objArray = [CustomPointAnnotation]()
         
@@ -20,57 +30,33 @@ extension MapViewController {
         
         var location = CLLocationCoordinate2D()
         location = self.location
-    
-        let _nunberOfUsingPBike = delegate?.numberOfBikeIsUsing(station: stations, count: numberOfStation)
         
-        let bikesInStation = delegate?.bikesInStation(station: stations, count: numberOfStation)
+        let numberBikeInUsing:Int? = stations.reduce(self.bikeOnService){$0 - $1.currentBikeNumber!}
         
-        var bikeInUsing = ""
+        let bikesInStation = stations.reduce(0){$0 + $1.currentBikeNumber!}
         
-        guard let nunberOfUsingPBike = _nunberOfUsingPBike else { print("nunberOfUsingPBike is nil"); return }
-        self.bikeinusing += nunberOfUsingPBike
+        guard let nunberOfUsingBike = numberBikeInUsing else { print("nunberOfUsingPBike is nil"); return }
+        print("nunberOfUsingBike: ",nunberOfUsingBike)
+        let bikeInUsing = (nunberOfUsingBike <= 0) ? "0" : "\(nunberOfUsingBike)"
+        self.currentPeopleOfRidePBike = bikeInUsing
         
-        if timesOfLoadingAnnotationView == delegate?.numberOfAPIs {
-            
-            switch nunberOfUsingPBike {
-                
-            case 0...15000:
-                bikeInUsing = " \(nunberOfUsingPBike) "
-                
-            default:
-                bikeInUsing = "0"
-            }
-            
-            self.currentPeopleOfRidePBike = "\(bikeInUsing)"
-        }
-        
-            
-        print("站內腳踏車有\(bikesInStation!)台")
-        print("目前有\(nunberOfUsingPBike)人正在騎\(self.bike)")
-        print("目前站點有：\(numberOfStation)座")
-        
-        
+        print("站內腳踏車有 \(bikesInStation) 台")
+        print("目前有 \(nunberOfUsingBike) 人正在騎 \(self.bike)")
+        print("目前站點有： \(numberOfStation) 座")
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-        guard let annotation = self.mapView?.annotations  else { return }
-        
-        print("annotation count \(annotation.count)")
-        
-        print("timesOfLoadingAnnotationView:",timesOfLoadingAnnotationView," numberOfAPIs:", delegate?.numberOfAPIs as Any )
+//        guard let annotation = self.mapView?.annotations  else { return }
+//        print("annotation count \(annotation.count)")
         oldAnnotations.append(contentsOf: annotations)
-        if timesOfLoadingAnnotationView == delegate?.numberOfAPIs {
-            print("annotation remove all")
-            
-            annotations.removeAll() }
-      
+        annotations.removeAll()
+
+        //prepare data, annotation view to display on the map
         for index in 0..<numberOfStation {
-            
             let objectAnnotation = CustomPointAnnotation()
             
             //handle coordinate
             let _latitude:CLLocationDegrees = stations[index].latitude
             let _longitude:CLLocationDegrees = stations[index].longitude
-            
             let coordinats = CLLocationCoordinate2D(latitude: _latitude, longitude: _longitude)
             let destinationOfCoordinats = CLLocation(latitude: _latitude, longitude: _longitude)
             
@@ -80,13 +66,13 @@ extension MapViewController {
             let distanceInKM = destinationOfCoordinats.distance(from: currentLocation).km
             let distanceInKMStr = distanceInKM.string
             objectAnnotation.distance = distanceInKMStr
-           
-//            if delegate?.citys[timesOfLoadingAnnotationView] == "tainan" { showPinInReginoDistance = 20 }
-//            else {showPinInReginoDistance = 5 }
-//            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
-//            print("showPinInReginoDistance", showPinInReginoDistance)
+            
+            
+            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
+            
             
             //handle name for navigation
+            
             if let name = stations[index].name {
                 
                 let placemark = MKPlacemark(coordinate: coordinats, addressDictionary:[name: ""])
@@ -97,49 +83,35 @@ extension MapViewController {
                 objectAnnotation.imageName = UIImage(named: pinImage) }
             
             
-            
             //handle bike station's name
             guard let currentBikeNumber = stations[index].currentBikeNumber,
                 let name = stations[index].name,
-                let parkNumber = stations[index].parkNumber  else { return }
-            
+                let parkNumber = stations[index].parkNumber else { return }
+//            let titleView = UILabel()
+//            titleView.font = titleView.font.withSize(14)
+//            titleView.numberOfLines = 0
+//            titleView.text = "🚲:  \(currentBikeNumber)   🅿️:  \(parkNumber)"
             objectAnnotation.subtitle = "\(name)"
             objectAnnotation.title = "🚲:  \(currentBikeNumber)   🅿️:  \(parkNumber)"
+//            objectAnnotation.detail
             objArray.append(objectAnnotation)
             
         }
         
-       objArray.sort{ Double($0.distance)! < Double($1.distance)! }
-       annotations = objArray
-       
-     //check sort loop
-//        for index in 0..<3 {
-//            
-//            if let foo = annotations as? [CustomPointAnnotation] {
-//                
-//                print("name:",foo[index].subtitle! ,"distance:",foo[index].distance)
-//            }
-//        }
-//        
-        print(showPinInReginoDistance,"km 內的annotation數量：", annotations.count)
+        objArray.sort{ Double($0.distance)! < Double($1.distance)! }
+        annotations = objArray
+        
+//        print(showPinInReginoDistance,"km 內的annotation數量：", annotations.count)
         guard let mapView = self.mapView else { print("mapView not to self.mapView"); return }
         mapView.addAnnotations(annotations)
-        if timesOfLoadingAnnotationView == delegate?.numberOfAPIs {
-            
-            mapView.removeAnnotations(oldAnnotations)
-            
-            print("oldAnnotations數量", oldAnnotations.count)
-            oldAnnotations.removeAll()
-            
-            print("移除舊後，annotations的數量： \(mapView.annotations.count)\n")
+        mapView.removeAnnotations(oldAnnotations)
+       
+        if oldAnnotations.count != 0 {
+        (mapView.annotations.count - 1) == oldAnnotations.count ? print("annotationViews clean success") : print("移除之前的 \(oldAnnotations.count) 個後，annotations： \(mapView.annotations.count) 個\n")
         }
-       timesOfLoadingAnnotationView += 1
-    }
+        oldAnnotations.removeAll()
+    }//loop
     
 }
-extension Double {
-    var km:Double {
-        return Double(self/1000)
-    }
-    var string:String {return String(format:"%.1f", self)}
-}
+
+

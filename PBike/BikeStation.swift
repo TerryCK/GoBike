@@ -15,13 +15,11 @@ import Kanna
 
 
 protocol BikeStationDelegate {
+    var  citys: [String] { get }
     var  stations: [Station] { get }
     var  numberOfAPIs:Int { get }
-    var  citys: [String] { get }
     func downloadInfoOfBikeFromAPI(completed:@escaping DownloadComplete)
-    func current(station:[Station], index:Int) -> Int
-    func numberOfBikeIsUsing(station: [Station], count:Int) -> Int
-    func bikesInStation(station: [Station], count:Int) -> Int
+//    func numberOfBikeIsUsing(station: [Station]) -> Int
     func statusOfStationImage(station:[Station], index:Int) -> String
     func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D)
     
@@ -31,10 +29,10 @@ protocol BikeStationDelegate {
 class BikeStation:BikeStationDelegate {
     
     internal var stations: [Station] { return _stations }
+    
     var numberOfAPIs = 0
     
-    var _date: String!
-    var bikeOnService: Int = 500
+    
     var Bike_URL = "http://pbike.pthg.gov.tw/xml/stationlist.aspx"
     var citys: [String] = []
     var longitude = ""
@@ -42,7 +40,7 @@ class BikeStation:BikeStationDelegate {
     var _stations: [Station] = []
     var apis = Bike().apis
     
-    internal func downloadInfoOfBikeFromAPI(completed:@escaping DownloadComplete) {
+     func downloadInfoOfBikeFromAPI(completed:@escaping DownloadComplete) {
         //Alamofire download
         
         #if CityBike
@@ -75,30 +73,39 @@ class BikeStation:BikeStationDelegate {
         self._stations.removeAll()
         numberOfAPIs = 0
         citys.removeAll() //inital
-        
-        
+
         for api in apis {
             guard api.isHere else { continue }
             self.numberOfAPIs += 1
+            
             citys.append(api.city)
             print("User in here: \(api.city)", self.numberOfAPIs)
             guard let currentBikeURL = URL(string: api.url) else {print("URL error"); return}
-            
+
             switch api.dataType {
-            case .XML:
+            case .XML, .html:
                 Alamofire.request(currentBikeURL).responseString { response in
                     print("資料來源: \(response.request!)\n 伺服器傳輸量: \(response.data!)\n")
-                    
                     guard response.result.isSuccess else { print("response is failed") ; return }
-                    guard let xmlToParse = response.result.value else { print("error, can't unwrap response data"); return }
-                    let xml = SWXMLHash.parse(xmlToParse)
                     
+                    // html
+                    if api.dataType == .html {
+                        if let html = response.result.value {
+                            self.parseHTML(city: api.city,html: html)
+                        } else { print("Can not parseHTML, please check parseHTML func" )}
+                    }
                     
-                    do {
-                        guard let stationsXML:[StationXML] = try xml["BIKEStationData"]["BIKEStation"]["Station"].value() else { return }
-                        let stations:[Station] = self.xmlToStation(key:api.city ,stations: stationsXML)
-                        self._stations.append(contentsOf: stations)
-                    } catch { print("error:", error) }
+                    // xml
+                    else {
+                        guard let xmlToParse = response.result.value else { print("error, can't unwrap response data"); return }
+                        let xml = SWXMLHash.parse(xmlToParse)
+                        
+                        do {
+                            guard let stationsXML:[StationXML] = try xml["BIKEStationData"]["BIKEStation"]["Station"].value() else { return }
+                            let stations:[Station] = self.xmlToStation(key:api.city ,stations: stationsXML)
+                            self._stations.append(contentsOf: stations)
+                        } catch { print("error:", error) }
+                    }
                     
                     completed() // main
                 }
@@ -119,17 +126,7 @@ class BikeStation:BikeStationDelegate {
                     case .failure(let error):
                         print("error", error)
                     }
-                }
-                
-            case .html:
-                Alamofire.request(currentBikeURL).responseString { response in
-                    print("資料來源: \(response.request!)\n 伺服器傳輸量: \(response.data!)\n")
-                    print("\(response.result.isSuccess)")
-                    if let html = response.result.value {
-                        self.parseHTML(city: api.city,html: html)
-                    completed()
-                    } else { print("Can not parseHTML, please check parseHTML func" )}
-                }
+                }//Alamofire
             } // switch
         }//for lop
     }
@@ -154,39 +151,39 @@ class BikeStation:BikeStationDelegate {
                 
             case ("taipei", 24.96...25.14 , 121.44...121.65):
                 apis[index].isHere = true
-                self.bikeOnService = 7500
                 
-            case ("newTaipei", 25.09...25.10 , 121.51...121.60):
+                
+            case ("newTaipei", 24.75...25.33 , 121.15...121.83):
                 apis[index].isHere = true
-                self.bikeOnService = 15000
+                
                 
             case ("taoyuan", 24.81...25.11 , 120.9...121.4):
                 apis[index].isHere = true
-                self.bikeOnService = 2800
+                
                 
             case ("Hsinchu", 24.67...24.96 , 120.81...121.16):
                 apis[index].isHere = true
-                self.bikeOnService = 1350
+                
                 
             case ("taichung", 24.03...24.35 , 120.40...121.00):
                 apis[index].isHere = true
-                self.bikeOnService = 7000
+                
                 
             case ("Changhua", 23.76...24.23 , 120.06...120.77):
                 apis[index].isHere = true
-                self.bikeOnService = 7000
+                
                 
             case ("tainan", 22.72...23.47 , 119.94...120.58):
                 apis[index].isHere = true
-                self.bikeOnService = 300
+                
                 
             case ("kaohsiung", 22.46...22.73 , 120.17...120.44):
                 apis[index].isHere = true
-                self.bikeOnService = 2500
+                
                 
             case ("pingtung", 22.62...22.71 , 120.430...120.53):
                 apis[index].isHere = true
-                self.bikeOnService = 500
+                
                 
             default:  //show alart
                 apis[index].isHere = false
@@ -236,62 +233,31 @@ class BikeStation:BikeStationDelegate {
             return deserializableJSONStation
         }
         var jsonArray = json[]
+        
         switch callIdentifier {
-        case "taipei","taichung":
-            jsonArray = json["retVal"]
-            jsonStation = deserializableJSON(json: jsonArray)
-            
-        case "newTaipei", "taoyuan":
-            jsonArray = json["result"]["records"]
-            jsonStation = deserializableJSON(json: jsonArray)
-            
-        case "Changhua", "Hsinchu":
-            jsonArray = json
-            jsonStation = deserializableJSON(json: jsonArray)
-            
         case "tainan":
             jsonArray = json
             jsonStation = deserializableJSONOfTainan(json: jsonArray)
+            return jsonStation
+            
+        case "taipei","taichung":
+            jsonArray = json["retVal"]
+            
+        case "newTaipei", "taoyuan":
+            jsonArray = json["result"]["records"]
+            
+        case "Changhua", "Hsinchu":
+            jsonArray = json
         
         default:
             print("callIdentifier error")
         }
+        
+        jsonStation = deserializableJSON(json: jsonArray)
         return jsonStation
     }
-    
-    func enumerate(indexer: XMLIndexer, level: Int) {
-        for child in indexer.children {
-            let name = child.element!.name
-            print("\(level) \(name)")
-            enumerate(indexer: child, level: level + 1)
-        }
-    }
-    
-    internal func current(station:[Station], index:Int) -> Int {
-        return { station[index].currentBikeNumber! + station[index].parkNumber! }()
-    }
-    
-    internal func numberOfBikeIsUsing(station: [Station], count:Int) -> Int {
-        var bikesInStation = 0
-        var bikesInUsing = 0
-        for index in 0..<count {
-            bikesInStation += station[index].currentBikeNumber!
-        }
-        
-        bikesInUsing = bikeOnService - bikesInStation
-        if bikesInStation <= 0 { bikesInStation = 0 }
-        return bikesInUsing
-    }
-    
-    internal func bikesInStation(station: [Station], count:Int) -> Int {
-        var currentBikeNumber = 0
-        for index in 0..<count {
-            currentBikeNumber += station[index].currentBikeNumber!
-        }
-        return currentBikeNumber
-    }
-    
-    internal func statusOfStationImage(station:[Station], index:Int) -> String {
+
+     func statusOfStationImage(station:[Station], index:Int) -> String {
         var pinImage = ""
         
         if let numberOfBike = station[index].currentBikeNumber {
@@ -318,103 +284,39 @@ class BikeStation:BikeStationDelegate {
     func xmlToStation(key:String, stations:[StationXML]) -> [Station] {
         var _station:[Station]  = []
         let count = stations.count
-        switch key {
-
-        case "pingtung":
+        
+        for index in 0..<count  {
             
-            for index in 0..<count  {
-                
-                let obj = Station(
-                    name: stations[index].name,
-                    location: stations[index].location,
-                    parkNumber: stations[index].parkNumber,
-                    currentBikeNumber: stations[index].currentBikeNumber,
-                    longitude: stations[index].latitude,
-                    latitude: stations[index].longitude
-                )
-                
-                _station.append(obj)
+            var obj = Station(
+                name: stations[index].name,
+                location: stations[index].location,
+                parkNumber: stations[index].parkNumber,
+                currentBikeNumber: stations[index].currentBikeNumber,
+                longitude: stations[index].longitude,
+                latitude: stations[index].latitude
+            )
+            
+            if key == "pingtung" {
+                swap(&obj.latitude, &obj.longitude)
             }
             
-        default:
-            for index in 0..<count  {
-                let obj = Station(
-                    name: stations[index].name,
-                    location: stations[index].location,
-                    parkNumber: stations[index].parkNumber,
-                    currentBikeNumber: stations[index].currentBikeNumber,
-                    longitude: stations[index].longitude,
-                    latitude: stations[index].latitude
-                )
-                _station.append(obj)
-            }
+            _station.append(obj)
         }
+        
+        
         return _station
     }
 }
 
-extension Double {
-    var format:Double {
-        return Double(String(format:"%.2f", self))!
+extension BikeStation {
+    func enumerate(indexer: XMLIndexer, level: Int) {
+        for child in indexer.children {
+            let name = child.element!.name
+            print("\(level) \(name)")
+            enumerate(indexer: child, level: level + 1)
+        }
     }
 }
 
-public extension String {
-    
-    //right is the first encountered string after left
-    func between(_ left: String, _ right: String) -> String? {
-        guard
-            let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
-            , left != right && leftRange.upperBound < rightRange.lowerBound
-            else { return nil }
-        
-        let sub = self.substring(from: leftRange.upperBound)
-        let closestToLeftRange = sub.range(of: right)!
-        return sub.substring(to: closestToLeftRange.lowerBound)
-    }
-    
-    var length: Int {
-        get {
-            return self.characters.count
-        }
-    }
-    
-    func substring(to : Int) -> String? {
-        if (to >= length) {
-            return nil
-        }
-        let toIndex = self.index(self.startIndex, offsetBy: to)
-        return self.substring(to: toIndex)
-    }
-    
-    func substring(from : Int) -> String? {
-        if (from >= length) {
-            return nil
-        }
-        let fromIndex = self.index(self.startIndex, offsetBy: from)
-        return self.substring(from: fromIndex)
-    }
-    
-    func substring(_ r: Range<Int>) -> String {
-        let fromIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
-        let toIndex = self.index(self.startIndex, offsetBy: r.upperBound)
-        return self.substring(with: Range<String.Index>(uncheckedBounds: (lower: fromIndex, upper: toIndex)))
-    }
-    
-    func character(_ at: Int) -> Character {
-        return self[self.index(self.startIndex, offsetBy: at)]
-    }
-    
-}
 
-extension String {
-    // url encode
-    var urlEncode:String? {
-        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet(charactersIn: "!*'\\\\\"();:@&=+$,/?%#[]% ").inverted)
-    }
-    // url decode
-    var urlDecode: String? {
-        return self.removingPercentEncoding
-    }
-}
 

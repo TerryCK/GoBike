@@ -147,10 +147,8 @@ extension MapViewController:CLLocationManagerDelegate {
         }
         location.longitude = longitude
         delegate?.findLocateBikdAPI2Download(userLocation: location)
-        print("location", locations.count)
-        appVersionInit()
+        
         print("重新取得使用者GPS位置", location)
-
         print("didUpdateLocations")
              //        guard let location = locations.first else { return }
         //        let span = MKCoordinateSpanMake(0.05, 0.05)
