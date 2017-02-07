@@ -20,11 +20,11 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 	5. 計時器(Beta) - 充分利用GoBike免費時間
 
 ### Screen Shots
-	!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/Screen/GoBikeDemo.png)
+!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/Screen/GoBikeDemo.png)
 
-	!["DemoVideo"](https://github.com/TerryCK/GoBike/blob/master/Screen/DemoGif.gif)
+!["DemoVideo"](https://github.com/TerryCK/GoBike/blob/master/Screen/DemoGif.gif)
 
-	!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/Screen/applewatch.png)
+!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/Screen/applewatch.png)
 
 
 ###Update history
