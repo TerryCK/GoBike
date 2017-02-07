@@ -14,6 +14,7 @@ def shared_pods
     pod 'SwiftyJSON'
     pod 'Kanna', '~> 2.1.0'
     pod 'PercentEncoder'
+    pod 'AsyncSwift'
 end
 
 target 'PBike' do

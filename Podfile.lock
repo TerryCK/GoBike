@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.2.0)
+  - AsyncSwift (2.0.1)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
@@ -35,6 +36,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - AsyncSwift
   - Crashlytics
   - Fabric
   - Firebase/AdMob
@@ -48,6 +50,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  AsyncSwift: 632138e42ead868b53c745fcde9bf733ce1527ad
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
@@ -65,6 +68,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   SWXMLHash: 80d2529d74891bb2f15305a0b9e08f2a4f229ee7
 
-PODFILE CHECKSUM: 5ada41b6dd885ed29006a9120a92cb50ceebce85
+PODFILE CHECKSUM: f4cc1ce130e900c3cc9ba7b2542db0e8132644b0
 
 COCOAPODS: 1.1.0.rc.3

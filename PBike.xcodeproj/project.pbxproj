@@ -493,9 +493,6 @@
 		A8F8365F1DB3744C001131BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A8E01E9E1DDD481900BC440C /* CBike */,
-				A8E01EA01DDD481900BC440C /* PBike-Google */,
-				A84F02271E20D24600E65C22 /* GoBike-Google */,
 				A8F836621DB374A6001131BE /* BikeStation.swift */,
 				A808B0A91E43874D0052C983 /* Extension.swift */,
 				A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */,
@@ -545,6 +542,9 @@
 				A89B66B41DEDADDF007F186F /* PBikeDev.plist */,
 				A8F7DC801E0E875B008E0862 /* CBike-info.plist */,
 				A8F7DC7E1E0E8748008E0862 /* GoBike-Info.plist */,
+				A8E01E9E1DDD481900BC440C /* CBike */,
+				A8E01EA01DDD481900BC440C /* PBike-Google */,
+				A84F02271E20D24600E65C22 /* GoBike-Google */,
 			);
 			name = info;
 			path = PBike;

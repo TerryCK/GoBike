@@ -68,7 +68,7 @@ extension MapViewController {
             objectAnnotation.distance = distanceInKMStr
             
             
-            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
+//            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
             
             
             //handle name for navigation
@@ -87,10 +87,7 @@ extension MapViewController {
             guard let currentBikeNumber = stations[index].currentBikeNumber,
                 let name = stations[index].name,
                 let parkNumber = stations[index].parkNumber else { return }
-//            let titleView = UILabel()
-//            titleView.font = titleView.font.withSize(14)
-//            titleView.numberOfLines = 0
-//            titleView.text = "🚲:  \(currentBikeNumber)   🅿️:  \(parkNumber)"
+
             objectAnnotation.subtitle = "\(name)"
             objectAnnotation.title = "🚲:  \(currentBikeNumber)   🅿️:  \(parkNumber)"
 //            objectAnnotation.detail

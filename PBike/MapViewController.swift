@@ -167,6 +167,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){
+        
+        //method of detect span region to change size of annotation View
         print("region will change")
     }
 }

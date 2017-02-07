@@ -186,7 +186,7 @@ class BikeStation:BikeStationDelegate {
                 
                 
             default:  //show alart
-                apis[index].isHere = false
+                apis[index].isHere = true
             }
             print("set",apis[index].city,"to" ,apis[index].isHere)
         }
