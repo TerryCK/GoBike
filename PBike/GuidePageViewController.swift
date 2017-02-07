@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class GuidePageViewController: UIViewController{
 
     @IBOutlet weak var guideImageView: UIImageView!
@@ -18,7 +17,33 @@ class GuidePageViewController: UIViewController{
         defaults.set(true, forKey: "hasViewedGuidePage")
         let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
         print("hasViewedGuidePage:", hasViewedGuidePage)
-        
         dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension MapViewController {
+    
+    //get the authorization for location
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let defaults = UserDefaults.standard
+        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
+        let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
+        
+        // Display ads from google if user no shared, recommend this app
+        if !hasSharedApp {
+            print("hasSharedApp: \(hasSharedApp)")
+            setGoogleMobileAds()
+        }
+        
+        //present the guide page to first launch GoBike app.
+        if !hasViewedGuidePage {
+            if let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController {
+                present(guidePageViewController, animated: true, completion: nil )
+            }
+        }
+        print("hasSharedApp: \(hasSharedApp)")
     }
 }

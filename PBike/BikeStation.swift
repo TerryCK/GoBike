@@ -6,12 +6,13 @@
 //  Copyright © 2016年 陳 冠禎. All rights reserved.
 //
 
-import Foundation
+import Kanna
 import Alamofire
 import SWXMLHash
+import Foundation
 import SwiftyJSON
 import CoreLocation
-import Kanna
+
 
 
 protocol BikeStationDelegate {
@@ -32,7 +33,7 @@ class BikeStation:BikeStationDelegate {
     
     var numberOfAPIs = 0
     
-    
+    var netWorkDataSize = 0
     var Bike_URL = "http://pbike.pthg.gov.tw/xml/stationlist.aspx"
     var citys: [String] = []
     var longitude = ""
@@ -87,7 +88,9 @@ class BikeStation:BikeStationDelegate {
                 Alamofire.request(currentBikeURL).responseString { response in
                     print("資料來源: \(response.request!)\n 伺服器傳輸量: \(response.data!)\n")
                     guard response.result.isSuccess else { print("response is failed") ; return }
-                    
+                    let dataSize = response.data! as NSData
+                    self.netWorkDataSize += (dataSize.length)
+                    print("netWorkDataSize", self.netWorkDataSize.currencyStyle, "bytes")
                     // html
                     if api.dataType == .html {
                         if let html = response.result.value {
@@ -114,7 +117,10 @@ class BikeStation:BikeStationDelegate {
                 Alamofire.request(currentBikeURL).validate().responseJSON { response in
                     print("資料來源: \(response.request!)\n 伺服器傳輸量: \(response.data!)\n")
                     print("success", api.city)
-                   
+                   let dataSize = response.data! as NSData
+                   self.netWorkDataSize += (dataSize.length)
+                   print("netWorkDataSize", self.netWorkDataSize.currencyStyle, "bytes")
+                    
                     switch response.result {
                     case .success(let value):
                         
@@ -132,7 +138,7 @@ class BikeStation:BikeStationDelegate {
     }
     
     func parseHTML(city:String, html: String) -> Void {
-
+        
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {print("doc can't be assigned by  html"); return }
         let node = doc.css("script")[21]
         let uriDecoded = node.text?.between("arealist='", "';arealist=JSON")?.urlDecode
@@ -140,7 +146,6 @@ class BikeStation:BikeStationDelegate {
         let json = JSON(data: dataFromString)
         guard let stations:[Station] = self.parseJSON2Object(city, json: json) else {print("station is nil plz check parseJson"); return}
         self._stations.append(contentsOf: stations)
-        
     }
     
     func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D) {
@@ -232,8 +237,8 @@ class BikeStation:BikeStationDelegate {
             }
             return deserializableJSONStation
         }
-        var jsonArray = json[]
         
+        var jsonArray = json[]
         switch callIdentifier {
         case "tainan":
             jsonArray = json
@@ -307,16 +312,3 @@ class BikeStation:BikeStationDelegate {
         return _station
     }
 }
-
-extension BikeStation {
-    func enumerate(indexer: XMLIndexer, level: Int) {
-        for child in indexer.children {
-            let name = child.element!.name
-            print("\(level) \(name)")
-            enumerate(indexer: child, level: level + 1)
-        }
-    }
-}
-
-
-

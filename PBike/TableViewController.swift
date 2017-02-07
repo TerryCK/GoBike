@@ -10,9 +10,7 @@
 import UIKit
 
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    
-    
+
     @IBAction func titleBtnPressed(_ sender: AnyObject) {
         print("titleBtnPressed？ \(tableViewCanDoNext)")
         print("秀表格嗎？ \(showInfoTableView)")
@@ -147,7 +145,6 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "aboutUs", for: indexPath) as! aboutUsTableViewCell
-           
             cellCustomize(cell: cell)
             return cell
         }

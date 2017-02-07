@@ -9,8 +9,7 @@
 import MapKit
 
 extension MapViewController {
-    
-    
+      
     func getDirections(){
         guard let selectedPin = self.selectedPin else { return }
         let mapItem = MKMapItem(placemark: selectedPin)

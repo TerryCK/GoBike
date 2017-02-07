@@ -172,4 +172,9 @@ extension MapViewController:CLLocationManagerDelegate {
         print("error:: \(error)")
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        myLocationManager.stopUpdatingLocation()
+    }
+    
 }

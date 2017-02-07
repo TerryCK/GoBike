@@ -36,13 +36,13 @@ extension MapViewController {
         let bikesInStation = stations.reduce(0){$0 + $1.currentBikeNumber!}
         
         guard let nunberOfUsingBike = numberBikeInUsing else { print("nunberOfUsingPBike is nil"); return }
-        print("nunberOfUsingBike: ",nunberOfUsingBike)
-        let bikeInUsing = (nunberOfUsingBike <= 0) ? "0" : "\(nunberOfUsingBike)"
+
+        let bikeInUsing = nunberOfUsingBike.minLimit.currencyStyle
         self.currentPeopleOfRidePBike = bikeInUsing
         
-        print("站內腳踏車有 \(bikesInStation) 台")
-        print("目前有 \(nunberOfUsingBike) 人正在騎 \(self.bike)")
-        print("目前站點有： \(numberOfStation) 座")
+        print("站內腳踏車有 \(bikesInStation.currencyStyle) 台")
+        print("目前有 \(bikeInUsing) 人正在騎 \(self.bike)")
+        print("全台目前站點有： \(numberOfStation) 座")
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
 //        guard let annotation = self.mapView?.annotations  else { return }
@@ -109,6 +109,73 @@ extension MapViewController {
         oldAnnotations.removeAll()
     }//loop
     
+}
+
+//present annotationView
+extension MapViewController {
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation.isKind(of: MKUserLocation.self) { return nil }
+        
+        let identifier = "station"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+            
+        } else {
+            annotationView?.annotation = annotation   }
+        
+        let customAnnotation = annotation as! CustomPointAnnotation
+        let distance = Double(customAnnotation.distance!)!
+        
+        let width = distance > 100 ? 40 : 28
+        let textSquare = CGSize(width:width , height: 40)
+        let subTitleView:UILabel! = UILabel(frame: CGRect(origin: CGPoint.zero, size: textSquare))
+        
+        subTitleView.font = subTitleView.font.withSize(12)
+        subTitleView.textAlignment = NSTextAlignment.right
+        subTitleView.numberOfLines = 0
+        subTitleView.textColor = UIColor.gray
+        subTitleView.text = "\(distance) km"
+        
+        annotationView?.image =  customAnnotation.imageName
+        
+        let smallSquare = CGSize(width: 43, height: 43)
+        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
+        button.setBackgroundImage(UIImage(named: "go"), for: UIControlState())
+        button.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
+        annotationView?.rightCalloutAccessoryView = button
+        annotationView?.leftCalloutAccessoryView = subTitleView
+        
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("Annotation selected")
+        
+        if let annotation = view.annotation as? CustomPointAnnotation {
+            self.selectedPin = annotation.placemark
+            
+            if let name = annotation.subtitle {
+                
+                self.selectedPinName = "\(name)(\(bike))"
+                print("Your annotationView title: \(name)")
+                
+            }
+            if let image = annotation.imageName {
+                print("image name \(image)")
+            }
+        }
+    }
+    
+    func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){
+        
+        //method of detect span region to change size of annotation View
+        print("region will change")
+    }
 }
 
 

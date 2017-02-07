@@ -34,7 +34,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var resultSearchController: UISearchController!
     var adUnitID = "ca-app-pub-3022461967351598/7933523718"
     var appId = "1168936145"
-    var mailtitle =  "[PBike]APP建議與回報"
+    var mailtitle =  "[GoBike]APP建議與回報"
     var govName = "屏東縣政府"
     var dataOwner = "高雄捷運局"
     var bike = "PBike"
@@ -69,7 +69,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func updatingDataByServalTime() {
-        
         if reloadtime > 0 {
             reloadtime -= 1
             updateTimeLabel.text = "\(30 - reloadtime) 秒前更新"
@@ -84,7 +83,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.handleAnnotationInfo()
                 self.UITableView.reloadData()
             }
-            
             timesOfLoadingAnnotationView = 1
             self.timerForAutoUpdate = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
             reloadtime = 30
@@ -92,6 +90,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func setup() {
+       
         delegate = BikeStation()
         setupRotatArrowBtnPosition()
         UITableView.delegate = self
@@ -99,106 +98,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         UITableView.backgroundView?.alpha = 0
         initializeLocationManager()
         authrizationStatus()
+        viewInit()
+    }
+    
+    func viewInit() {
+        
         mapViewInfoCustomize()
         effect = self.visualEffectView.effect
         visualEffectView.effect = nil
-        addBlurEffect()
+        blurEffect()
+        viewUpdateTimeLabel()
         applyMotionEffect(toView: self.UITableView, magnitude: -20)
         applyMotionEffect(toView: self.updateTimeLabel, magnitude: -20)
-        
-    }
-    
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if annotation.isKind(of: MKUserLocation.self) { return nil }
-        
-        let identifier = "station"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-            
-        } else {
-            annotationView?.annotation = annotation   }
-        
-        let customAnnotation = annotation as! CustomPointAnnotation
-        let distance = Double(customAnnotation.distance!)!
-        
-        let width = distance > 100 ? 40 : 28
-        let textSquare = CGSize(width:width , height: 40)
-        let subTitleView:UILabel! = UILabel(frame: CGRect(origin: CGPoint.zero, size: textSquare))
-        
-        subTitleView.font = subTitleView.font.withSize(12)
-        subTitleView.textAlignment = NSTextAlignment.right
-        subTitleView.numberOfLines = 0
-        subTitleView.textColor = UIColor.gray
-        subTitleView.text = "\(distance) km"
-        
-        annotationView?.image =  customAnnotation.imageName
-        
-        let smallSquare = CGSize(width: 43, height: 43)
-        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
-        button.setBackgroundImage(UIImage(named: "go"), for: UIControlState())
-        button.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
-        annotationView?.rightCalloutAccessoryView = button
-        annotationView?.leftCalloutAccessoryView = subTitleView
-        
-        return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("Annotation selected")
-        
-        if let annotation = view.annotation as? CustomPointAnnotation {
-            self.selectedPin = annotation.placemark
-            
-            if let name = annotation.subtitle {
-                
-                self.selectedPinName = "\(name)(\(bike))"
-                print("Your annotationView title: \(name)")
-                
-            }
-            if let image = annotation.imageName {
-                print("image name \(image)")
-            }
-        }
-    }
-    
-    func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){
-        
-        //method of detect span region to change size of annotation View
-        print("region will change")
     }
 }
 
-extension MapViewController {
-    
-    //get the authorization for location
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let defaults = UserDefaults.standard
-        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
-        let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
-        if !hasSharedApp {
-            print("hasSharedApp: \(hasSharedApp)")
-            setGoogleMobileAds()
-        }
-        if !hasViewedGuidePage {
-            
-            if let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController {
-                present(guidePageViewController, animated: true, completion: nil )
-            }
-        }
-        print("hasSharedApp: \(hasSharedApp)")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        myLocationManager.stopUpdatingLocation()
-    }
-    
-}
+
 

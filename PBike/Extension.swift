@@ -5,13 +5,15 @@
 //  Created by 陳 冠禎 on 2017/2/2.
 //  Copyright © 2017年 陳 冠禎. All rights reserved.
 //
+import SWXMLHash
 import Foundation
+
+
 public extension String {
     
     //right is the first encountered string after left
     func between(_ left: String, _ right: String) -> String? {
-        guard
-            let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
+        guard let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
             , left != right && leftRange.upperBound < rightRange.lowerBound
             else { return nil }
         
@@ -70,5 +72,29 @@ extension Double {
     
     var format:Double {
         return Double(String(format:"%.2f", self))!
+    }
+}
+
+public extension Int {
+    var minLimit:Int {
+        return self <= 0 ? 0 : self
+    }
+    var currencyStyle: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumIntegerDigits = 0
+        formatter.maximumFractionDigits = 0
+        let result = formatter.string(from: self as NSNumber)
+        return result!
+    }
+}
+
+extension BikeStation {
+    func enumerate(indexer: XMLIndexer, level: Int) {
+        for child in indexer.children {
+            let name = child.element!.name
+            print("\(level) \(name)")
+            enumerate(indexer: child, level: level + 1)
+        }
     }
 }

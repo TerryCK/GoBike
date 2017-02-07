@@ -11,7 +11,7 @@ import UIKit
 extension MapViewController{
       
     
-    func addBlurEffect() {
+    func blurEffect() {
         // Add blur view
         let bounds = self.navigationController?.navigationBar.bounds as CGRect!
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) as UIVisualEffectView
