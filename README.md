@@ -28,10 +28,10 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 
 
 ###Update history
-	2017/1/11 1.0    First release supported Taipei, newTaipei, Taoyuan, Taichung, Kaoshiung, Pingtung 
-	2017/1/18 1.0.1  Fixed Ad can't remove bug 
-	2017/2/3  1.1    Supported Hsinchu, Changhua, Tainan
 	2017/2/6  1.2    Fixed a part of region of newtaipei's bike information & increase efficiency
+	2017/2/3  1.1    Supported Hsinchu, Changhua, Tainan
+	2017/1/18 1.0.1  Fixed Ad can't remove bug 	
+	2017/1/11 1.0    First release supported Taipei, newTaipei, Taoyuan, Taichung, Kaoshiung, Pingtung 
 	  
 
 ###License
