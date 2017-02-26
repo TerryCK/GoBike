@@ -24,17 +24,15 @@ extension MapViewController {
         let seconds = calendar.component(.second, from: date)
         print("hours = \(hour):\(minutes):\(seconds)")
         
+        
         switch timerStatusReadyTo {
-            
         case .play:
-            
             print("Timer playing")
             timerStatusReadyTo = .pause
             timeCurrentStatus = .play
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.decreaseTimer), userInfo: nil, repeats: true)
             
         case .pause:
-            
             self.timeInPause = time
             print("Timer pause")
             timerStatusReadyTo = .reset
@@ -43,7 +41,6 @@ extension MapViewController {
             timerLabel.setTitle("重置", for: .normal)
             
         case .reset:
-            
             time = 1800
             timer.invalidate()
             print("Timer reset")
@@ -56,27 +53,32 @@ extension MapViewController {
     
     func decreaseTimer() {
         time -= 1
-        guard self.timeCurrentStatus == .play else { return }
+        guard self.timeCurrentStatus == .play else {
+            return
+        }
         switch time {
         case 600...3600:
-            
             timerLabel.setTitleColor(UIColor.black, for: .normal)
             timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
-        case 0...600:
             
+        case 0...600:
             timerLabel.setTitleColor(UIColor.red, for: .normal)
             timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
         
         default:
-            
             timerLabel.setTitleColor(UIColor.blue, for: .normal)
             timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
+        
         }
-        guard self.timeCurrentStatus == .pause else { return }
+        guard self.timeCurrentStatus == .pause else {
+            return
+        }
         print("reset \(self.time)")
         print("time in pause\(self.timeInPause)")
         let timeToShowReset = timeInPause - self.showTheResetButtonTime
-        guard timeToShowReset == self.time else { return }
+        guard timeToShowReset == self.time else {
+            return
+        }
         print("reset button unshow")
         self.timeCurrentStatus = .play
         self.timerStatusReadyTo = .pause
@@ -90,15 +92,21 @@ extension MapViewController {
         
         tempSeconds = _seconds
         
-        if _seconds < 0 { tempSeconds = _seconds * -1 }
+        if _seconds < 0 {
+            tempSeconds = _seconds * -1
+        }
         
         minutes = tempSeconds / 60
         seconds = tempSeconds % 60
         
-        if seconds < 10 && seconds >= 0 { zero = "0" }
-        else { zero = "" }
+        if seconds < 10 && seconds >= 0 {
+            zero = "0"
+        } else {
+            zero = ""
+        }
         
         let time:String = "\(minutes):\(zero)\(seconds) "
+        
         return (time)
     }
     

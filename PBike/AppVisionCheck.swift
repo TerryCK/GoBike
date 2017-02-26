@@ -41,7 +41,6 @@ extension MapViewController {
             for city in citys {
                 switch city {
                 case "taipei", "newTaipei":
-                    
                     self.govName = "臺北市&新北市政府"
                     self.bike = "UBike"
                     self.rideBikeWithYou = "人陪你騎UBike"

@@ -81,35 +81,48 @@ class BikeStation:BikeStationDelegate {
             
             citys.append(api.city)
             print("User in here: \(api.city)", self.numberOfAPIs)
-            guard let currentBikeURL = URL(string: api.url) else {print("URL error"); return}
+            guard let currentBikeURL = URL(string: api.url) else {
+                print("URL error")
+                return
+            }
 
             switch api.dataType {
             case .XML, .html:
                 Alamofire.request(currentBikeURL).responseString { response in
                     print("資料來源: \(response.request!)\n 伺服器傳輸量: \(response.data!)\n")
-                    guard response.result.isSuccess else { print("response is failed") ; return }
+                    guard response.result.isSuccess else {
+                        print("response is failed") ; return
+                    }
+                    
                     let dataSize = response.data! as NSData
                     self.netWorkDataSize += (dataSize.length)
                     print("netWorkDataSize", self.netWorkDataSize.currencyStyle, "bytes")
+                    
                     // html
                     if api.dataType == .html {
                         if let html = response.result.value {
                             self.parseHTML(city: api.city,html: html)
-                        } else { print("Can not parseHTML, please check parseHTML func" )}
+                        } else { print("Can not parseHTML, please check parseHTML func" )
+                        }
                     }
                     
                     // xml
                     else {
-                        guard let xmlToParse = response.result.value else { print("error, can't unwrap response data"); return }
+                        guard let xmlToParse = response.result.value else {
+                            print("error, can't unwrap response data")
+                            return
+                        }
+                        
                         let xml = SWXMLHash.parse(xmlToParse)
                         
                         do {
                             guard let stationsXML:[StationXML] = try xml["BIKEStationData"]["BIKEStation"]["Station"].value() else { return }
                             let stations:[Station] = self.xmlToStation(key:api.city ,stations: stationsXML)
                             self._stations.append(contentsOf: stations)
-                        } catch { print("error:", error) }
+                        } catch {
+                            print("error:", error)
+                        }
                     }
-                    
                     completed() // main
                 }
                 
@@ -125,7 +138,10 @@ class BikeStation:BikeStationDelegate {
                     case .success(let value):
                         
                         let json = JSON(value)
-                        guard let stations:[Station] = self.parseJSON2Object(api.city, json: json) else {print("station is nil plz check parseJson"); return}
+                        guard let stations:[Station] = self.parseJSON2Object(api.city, json: json) else {
+                            print("station is nil plz check parseJson")
+                            return
+                        }
                         self._stations.append(contentsOf: stations)
                         completed()
                         
@@ -142,9 +158,17 @@ class BikeStation:BikeStationDelegate {
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {print("doc can't be assigned by  html"); return }
         let node = doc.css("script")[21]
         let uriDecoded = node.text?.between("arealist='", "';arealist=JSON")?.urlDecode
-        guard let dataFromString = uriDecoded?.data(using: String.Encoding.utf8, allowLossyConversion: false) else { print("dataFromString can't be assigned Changhau & Hsinchu"); return }
+        
+        guard let dataFromString = uriDecoded?.data(using: String.Encoding.utf8, allowLossyConversion: false) else {
+            print("dataFromString can't be assigned Changhau & Hsinchu")
+            return
+        }
         let json = JSON(data: dataFromString)
-        guard let stations:[Station] = self.parseJSON2Object(city, json: json) else {print("station is nil plz check parseJson"); return}
+       
+        guard let stations:[Station] = self.parseJSON2Object(city, json: json) else {
+            print("station is nil plz check parseJson")
+            return
+        }
         self._stations.append(contentsOf: stations)
     }
     
@@ -152,8 +176,8 @@ class BikeStation:BikeStationDelegate {
         let latitude = userLocation.latitude.format //(%.2 double)
         let longitude = userLocation.longitude.format
         for index in 0..<apis.count {
+            
             switch (apis[index].city, latitude, longitude){
-                
             case ("taipei", 24.96...25.14 , 121.44...121.65):
                 apis[index].isHere = true
                 
@@ -200,7 +224,10 @@ class BikeStation:BikeStationDelegate {
     func parseJSON2Object(_ callIdentifier: String, json: JSON)  ->  [Station]? {
         var jsonStation: [Station] = []
 //        print("callIdentifier:",callIdentifier, "\n json:", json)
-        guard !(json.isEmpty) else { print("json is empty"); return nil }
+        guard !(json.isEmpty) else {
+            print("json is empty")
+            return nil
+        }
         
         func deserializableJSON(json: JSON) -> [Station] {
             var deserializableJSONStation:[Station] = []
@@ -268,14 +295,15 @@ class BikeStation:BikeStationDelegate {
         if let numberOfBike = station[index].currentBikeNumber {
             
             switch numberOfBike {
-            
             case 1...5:
                 pinImage = "pinLess"
                 
             case 5...200:
                 if station[index].parkNumber == 0 {
                     pinImage = "pinFull"
-                 } else {pinImage = "pinMed"}
+                } else {
+                    pinImage = "pinMed"
+                }
                 
             case 0: pinImage = "pinEmpty"
                 

@@ -79,6 +79,7 @@ public extension Int {
     var minLimit:Int {
         return self <= 0 ? 0 : self
     }
+    
     var currencyStyle: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal

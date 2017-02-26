@@ -14,37 +14,37 @@ protocol HandleMapSearch:class {
 }
 
 class LocationSearchTable: UITableViewController {
-
+    
     weak var handleMapSearchDelegate: HandleMapSearch?
     var matchingItems: [MKMapItem] = []
     var mapView: MKMapView?
     
     func parseAddress(_ selectedItem:MKPlacemark) -> String {
         
-        // put a space between "4" and "Melrose Place"
+        //put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil &&
             selectedItem.thoroughfare != nil) ? " " : ""
         
-        // put a comma between street and city/state
+        //put a comma between street and city/state
         let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) &&
             (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
         
-        // put a space between "Washington" and "DC"
+        //put a space between "Washington" and "DC"
         let secondSpace = (selectedItem.subAdministrativeArea != nil &&
             selectedItem.administrativeArea != nil) ? " " : ""
         
         let addressLine = String(
             format:"%@%@%@%@%@%@%@",
-            // street number
+            //street number
             selectedItem.subThoroughfare ?? "",
             firstSpace,
-            // street name
+            //street name
             selectedItem.thoroughfare ?? "",
             comma,
-            // city
+            //city
             selectedItem.locality ?? "",
             secondSpace,
-            // state
+            //state
             selectedItem.administrativeArea ?? ""
         )
         
@@ -56,7 +56,8 @@ extension LocationSearchTable: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let mapView = mapView, let searchBarText = searchController.searchBar.text
             else {
-                return}
+                return
+        }
         
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarText

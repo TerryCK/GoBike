@@ -42,11 +42,11 @@ struct Bike:BikeAPIDelegate {
         
         BikeAPI(city: "Hsinchu", url: "http://hccg.youbike.com.tw/cht/f12.php", isHere: true, bikeVision: .UBike,dataType: .html),
         
-        BikeAPI(city: "taichung", url: "http://ybjson01.youbike.com.tw:1002/gwjs.json", isHere: true, bikeVision: .UBike, dataType: .JSON),
+        BikeAPI(city: "taichung", url: "http://ybjson01.youbike.com.tw:1002/gwjs.json", isHere: false, bikeVision: .UBike, dataType: .JSON),
         
         BikeAPI(city: "Changhua", url: "http://chcg.youbike.com.tw/cht/f12.php", isHere: true, bikeVision: .UBike,dataType: .html),
         
-        BikeAPI(city: "tainan", url: "http://tbike.tainan.gov.tw:8081/Service/StationStatus/Json", isHere: true, bikeVision: .TainanBike, dataType: .JSON),
+        BikeAPI(city: "tainan", url: "http://tbike.tainan.gov.tw:8081/Service/StationStatus/Json", isHere: false, bikeVision: .TainanBike, dataType: .JSON),
         
         BikeAPI(city: "kaohsiung", url: "http://www.c-bike.com.tw/xml/stationlistopendata.aspx", isHere: false, bikeVision: .CityBike, dataType: .XML),
         

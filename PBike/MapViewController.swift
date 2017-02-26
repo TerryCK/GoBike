@@ -24,6 +24,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var locationArrowImage: UIButton!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
+    
+    let yDelta:CGFloat = 500
+    let queue = DispatchQueue(label: "com.MapVision.myqueue")
+    let cellSpacingHeight: CGFloat = 5
+    
     var myLocationManager: CLLocationManager!
     var effect:UIVisualEffect!
     var bikeStations = BikeStation().stations //the object for save ["station"]
@@ -40,18 +45,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var bike = "PBike"
     var applink = "https://itunes.apple.com/tw/app/pbike-ping-dong-zui-piao-liang/id1168936145?l=zh&mt=8"
     var rideBikeWithYou = "人陪你騎PBike"
-    let cellSpacingHeight: CGFloat = 5
     var delegate: BikeStationDelegate?
-    let queue = DispatchQueue(label: "com.MapVision.myqueue")
     var annotations = [MKAnnotation]()
     var bikeOnService = 0
-    let yDelta:CGFloat = 500
     var tableViewCanDoNext:Bool = true
     var showInfoTableView:Bool = false
     var oldAnnotations = [MKAnnotation]()
     var timesOfLoadingAnnotationView = 1
     
-    // time relation parameter
+//     time relation parameter
+    let showTheResetButtonTime = 3
     var time = 1800
     var timer = Timer()
     var timerForAutoUpdate = Timer()
@@ -59,9 +62,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var timerStatusReadyTo: TimerStatus = .play
     var timeCurrentStatus: TimerStatus = .reset
     var timeInPause: Int = 5
-    let showTheResetButtonTime = 3
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -83,6 +85,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.handleAnnotationInfo()
                 self.UITableView.reloadData()
             }
+            
             timesOfLoadingAnnotationView = 1
             self.timerForAutoUpdate = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
             reloadtime = 30

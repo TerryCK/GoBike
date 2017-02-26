@@ -25,9 +25,7 @@ extension MapViewController {
         
         self.bikeStations = stations
         var objArray = [CustomPointAnnotation]()
-        
         let numberOfStation = stations.count
-        
         var location = CLLocationCoordinate2D()
         location = self.location
         
@@ -36,7 +34,7 @@ extension MapViewController {
         let bikesInStation = stations.reduce(0){$0 + $1.currentBikeNumber!}
         
         guard let nunberOfUsingBike = numberBikeInUsing else { print("nunberOfUsingPBike is nil"); return }
-
+        
         let bikeInUsing = nunberOfUsingBike.minLimit.currencyStyle
         self.currentPeopleOfRidePBike = bikeInUsing
         
@@ -45,11 +43,11 @@ extension MapViewController {
         print("全台目前站點有： \(numberOfStation) 座")
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-//        guard let annotation = self.mapView?.annotations  else { return }
-//        print("annotation count \(annotation.count)")
+        //        guard let annotation = self.mapView?.annotations  else { return }
+        //        print("annotation count \(annotation.count)")
         oldAnnotations.append(contentsOf: annotations)
         annotations.removeAll()
-
+        
         //prepare data, annotation view to display on the map
         for index in 0..<numberOfStation {
             let objectAnnotation = CustomPointAnnotation()
@@ -68,7 +66,7 @@ extension MapViewController {
             objectAnnotation.distance = distanceInKMStr
             
             
-//            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
+            //            guard distanceInKM <= showPinInReginoDistance else {  continue  } //距離控制顯示數量annotation
             
             
             //handle name for navigation
@@ -87,10 +85,10 @@ extension MapViewController {
             guard let currentBikeNumber = stations[index].currentBikeNumber,
                 let name = stations[index].name,
                 let parkNumber = stations[index].parkNumber else { return }
-
+            
             objectAnnotation.subtitle = "\(name)"
             objectAnnotation.title = "🚲:  \(currentBikeNumber)   🅿️:  \(parkNumber)"
-//            objectAnnotation.detail
+            //            objectAnnotation.detail
             objArray.append(objectAnnotation)
             
         }
@@ -98,13 +96,13 @@ extension MapViewController {
         objArray.sort{ Double($0.distance)! < Double($1.distance)! }
         annotations = objArray
         
-//        print(showPinInReginoDistance,"km 內的annotation數量：", annotations.count)
+        //        print(showPinInReginoDistance,"km 內的annotation數量：", annotations.count)
         guard let mapView = self.mapView else { print("mapView not to self.mapView"); return }
         mapView.addAnnotations(annotations)
         mapView.removeAnnotations(oldAnnotations)
-       
+        
         if oldAnnotations.count != 0 {
-        (mapView.annotations.count - 1) == oldAnnotations.count ? print("annotationViews clean success") : print("移除之前的 \(oldAnnotations.count) 個後，annotations： \(mapView.annotations.count) 個\n")
+            (mapView.annotations.count - 1) == oldAnnotations.count ? print("annotationViews clean success") : print("移除之前的 \(oldAnnotations.count) 個後，annotations： \(mapView.annotations.count) 個\n")
         }
         oldAnnotations.removeAll()
     }//loop
@@ -116,7 +114,9 @@ extension MapViewController {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if annotation.isKind(of: MKUserLocation.self) { return nil }
+        if annotation.isKind(of: MKUserLocation.self) {
+            return nil
+        }
         
         let identifier = "station"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
@@ -132,7 +132,7 @@ extension MapViewController {
         let distance = Double(customAnnotation.distance!)!
         
         let width = distance > 100 ? 40 : 28
-        let textSquare = CGSize(width:width , height: 40)
+        let textSquare = CGSize(width:width, height: 40)
         let subTitleView:UILabel! = UILabel(frame: CGRect(origin: CGPoint.zero, size: textSquare))
         
         subTitleView.font = subTitleView.font.withSize(12)
@@ -158,21 +158,14 @@ extension MapViewController {
         
         if let annotation = view.annotation as? CustomPointAnnotation {
             self.selectedPin = annotation.placemark
-            
             if let name = annotation.subtitle {
-                
                 self.selectedPinName = "\(name)(\(bike))"
                 print("Your annotationView title: \(name)")
-                
-            }
-            if let image = annotation.imageName {
-                print("image name \(image)")
             }
         }
     }
     
     func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){
-        
         //method of detect span region to change size of annotation View
         print("region will change")
     }

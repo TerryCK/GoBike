@@ -29,7 +29,7 @@ extension MapViewController:CLLocationManagerDelegate {
             location.latitude = current.coordinate.latitude
             location.longitude = current.coordinate.longitude
             print("取得使用者GPS位置")
-        }else{
+        } else {
             
             #if CityBike
                 //cibike Version
@@ -123,10 +123,13 @@ extension MapViewController:CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             myLocationManager.startUpdatingLocation()
             print("開始定位")
+            
         default:
             print("Location authrization error")
             break
+            
         }
+        
         let myLocation:MKUserLocation = mapView.userLocation
         myLocation.title = "😏目前位置"
         setCurrentLocation(latDelta: 0.03, longDelta: 0.03)
@@ -141,25 +144,19 @@ extension MapViewController:CLLocationManagerDelegate {
         let latitude = current.coordinate.latitude
         var longitude = current.coordinate.longitude
         
+        location.longitude = longitude
         location.latitude = latitude
+       
         if longitude <= 0 {
             longitude = 360 + longitude
         }
-        location.longitude = longitude
+
         delegate?.findLocateBikdAPI2Download(userLocation: location)
         
         print("重新取得使用者GPS位置", location)
         print("didUpdateLocations")
-             //        guard let location = locations.first else { return }
-        //        let span = MKCoordinateSpanMake(0.05, 0.05)
-        //        let region = MKCoordinateRegion(center: location.coordinate, span: span)
-        //        mapView.setRegion(region, animated: true)
-        
-        //        let currentLocation: CLLocation = locations[0] as CLLocation
-        //        print("\(currentLocation.coordinate.latitude)")
-        //        print(", \(currentLocation.coordinate.longitude)")
-        
 //        print("did Update Location")
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
