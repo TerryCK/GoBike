@@ -1,1 +1,1 @@
-nguist-language=Swift
+*.js linguist-language=Swift *.css linguist-language=Swift *.html linguist-language=Swift *.h linguist-language=Swift
