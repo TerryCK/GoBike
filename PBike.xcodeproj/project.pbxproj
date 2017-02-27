@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		40ACEEAFD0248A4258C14B03 /* Pods_CBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F40DD318A338037D38DDF6 /* Pods_CBike.framework */; };
 		51FF7E97FEA9708B7047F1BC /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
-		63B4778DBB4F852F1E078D55 /* Pods_PBike_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F262FF5EDD68A91BEAA59A4 /* Pods_PBike_Dev.framework */; };
 		A808B0AA1E43874D0052C983 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808B0A91E43874D0052C983 /* Extension.swift */; };
 		A808B0AB1E43874D0052C983 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808B0A91E43874D0052C983 /* Extension.swift */; };
 		A808B0AC1E43874D0052C983 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808B0A91E43874D0052C983 /* Extension.swift */; };
@@ -105,9 +104,6 @@
 		A89B048D1E4992AA0052DBF6 /* UpdateTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89B048B1E4992AA0052DBF6 /* UpdateTimeLabel.swift */; };
 		A89B048E1E4992AA0052DBF6 /* UpdateTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89B048B1E4992AA0052DBF6 /* UpdateTimeLabel.swift */; };
 		A89B048F1E4992AA0052DBF6 /* UpdateTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89B048B1E4992AA0052DBF6 /* UpdateTimeLabel.swift */; };
-		A8A2FEB61E42E15A00AA48CC /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8A2FEB51E42E15A00AA48CC /* Taipei.gpx */; };
-		A8A2FEB71E42E15A00AA48CC /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8A2FEB51E42E15A00AA48CC /* Taipei.gpx */; };
-		A8A2FEB81E42E15A00AA48CC /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8A2FEB51E42E15A00AA48CC /* Taipei.gpx */; };
 		A8A80AFE1DD1F6F400107566 /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
 		A8A80AFF1DD1F6F400107566 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8A80B011DD1F6F400107566 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
@@ -155,10 +151,18 @@
 		A8DD38B11E20F4CD0050073E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD38B01E20F4CD0050073E /* StoreKit.framework */; };
 		A8E01EA31DDD481900BC440C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */; };
 		A8E01EA41DDD481900BC440C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */; };
-		A8E896DD1E42DEEF0096DD30 /* PingtungTW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A85B62C41DB895BF00C1413B /* PingtungTW.gpx */; };
-		A8E896E01E42DF1E0096DD30 /* PingtungTW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A85B62C41DB895BF00C1413B /* PingtungTW.gpx */; };
-		A8E896E11E42DF1E0096DD30 /* PingtungTW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A85B62C41DB895BF00C1413B /* PingtungTW.gpx */; };
-		A8F4B09B1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B09A1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard */; };
+		A8F43CC91E63D04900B0A6BE /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC71E63D04900B0A6BE /* Taipei.gpx */; };
+		A8F43CCA1E63D04900B0A6BE /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC71E63D04900B0A6BE /* Taipei.gpx */; };
+		A8F43CCB1E63D04900B0A6BE /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC71E63D04900B0A6BE /* Taipei.gpx */; };
+		A8F43CCC1E63D04900B0A6BE /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC71E63D04900B0A6BE /* Taipei.gpx */; };
+		A8F43CCD1E63D04900B0A6BE /* PingtungTW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */; };
+		A8F43CCE1E63D04900B0A6BE /* PingtungTW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */; };
+		A8F43CCF1E63D04900B0A6BE /* PingtungTW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */; };
+		A8F43CD01E63D04900B0A6BE /* PingtungTW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */; };
+		A8F43CD31E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CD11E63D07100B0A6BE /* CBikeLaunch Screen.storyboard */; };
+		A8F43CD41E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CD11E63D07100B0A6BE /* CBikeLaunch Screen.storyboard */; };
+		A8F43CD51E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CD11E63D07100B0A6BE /* CBikeLaunch Screen.storyboard */; };
+		A8F43CD61E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CD11E63D07100B0A6BE /* CBikeLaunch Screen.storyboard */; };
 		A8F4B09D1DCF596C00EBC68F /* DirectionsCityBike.geojson in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */; };
 		A8F7DC811E0E875B008E0862 /* CBike-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8F7DC801E0E875B008E0862 /* CBike-info.plist */; };
 		A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
@@ -191,7 +195,6 @@
 		A8FE69671DEDB2BE00BE4E51 /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
 		A8FE69681DEDB2BE00BE4E51 /* Pods_CBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F40DD318A338037D38DDF6 /* Pods_CBike.framework */; };
 		A8FE696A1DEDB2BE00BE4E51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
-		A8FE696D1DEDB2BE00BE4E51 /* CBikeLaunch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B09A1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard */; };
 		A8FE696E1DEDB2BE00BE4E51 /* DirectionsCityBike.geojson in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */; };
 		A8FE69701DEDB2BE00BE4E51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A8FFE3111E31027900BFFB74 /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8FFE3101E31027900BFFB74 /* Kanna.framework */; };
@@ -200,7 +203,6 @@
 
 /* Begin PBXFileReference section */
 		12968D17E8D673E7CA8E294F /* Pods-PBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.debug.xcconfig"; sourceTree = "<group>"; };
-		1F262FF5EDD68A91BEAA59A4 /* Pods_PBike_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		302362E34D8493EC76C60597 /* Pods-PBike Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike Dev/Pods-PBike Dev.release.xcconfig"; sourceTree = "<group>"; };
 		3BA89112C7C10FF0D5D9F479 /* Pods-PBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBike/Pods-PBike.release.xcconfig"; sourceTree = "<group>"; };
 		4A6316802783ECC1016D1871 /* Pods-CBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBike/Pods-CBike.debug.xcconfig"; sourceTree = "<group>"; };
@@ -210,7 +212,6 @@
 		9982BFD6F72E4B9B1137E91C /* Pods_UBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A808B0A91E43874D0052C983 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
-		A817098B2AB110E3FBB9885C /* Pods-UBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UBike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UBike/Pods-UBike.debug.xcconfig"; sourceTree = "<group>"; };
 		A81BE0841E462E8900407AB8 /* GuidePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidePageViewController.swift; sourceTree = "<group>"; };
 		A81BE0891E4838CF00407AB8 /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image.xcassets; sourceTree = "<group>"; };
 		A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksforTableViewCell.swift; sourceTree = "<group>"; };
@@ -227,7 +228,6 @@
 		A84989F31E14B41F0095D9E8 /* SendMeMailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMeMailController.swift; sourceTree = "<group>"; };
 		A84F02201E208ED300E65C22 /* GoBike.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoBike.storyboard; sourceTree = "<group>"; };
 		A84F02251E20D24300E65C22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A85B62C41DB895BF00C1413B /* PingtungTW.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PingtungTW.gpx; path = ../PingtungTW.gpx; sourceTree = "<group>"; };
 		A85D3C691DCEBAE800875B3A /* CBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = aboutUsTableViewCell.swift; sourceTree = "<group>"; };
 		A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
@@ -241,7 +241,6 @@
 		A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A89B048B1E4992AA0052DBF6 /* UpdateTimeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTimeLabel.swift; sourceTree = "<group>"; };
 		A89B66B41DEDADDF007F186F /* PBikeDev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PBikeDev.plist; sourceTree = "<group>"; };
-		A8A2FEB51E42E15A00AA48CC /* Taipei.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Taipei.gpx; sourceTree = "<group>"; };
 		A8A80B231DD1F6F400107566 /* PBike Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PBike Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A8A3171DC60BD900946AA9 /* Directions.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Directions.geojson; sourceTree = "<group>"; };
 		A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -254,10 +253,12 @@
 		A8CC81701E14C30E00CBC824 /* LocataionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocataionManager.swift; sourceTree = "<group>"; };
 		A8CC81751E14C7D000CBC824 /* MapNavigate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigate.swift; sourceTree = "<group>"; };
 		A8DD38B01E20F4CD0050073E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		A8DD38B21E20F4EB0050073E /* GoBike.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoBike.entitlements; sourceTree = "<group>"; };
 		A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A8F4B09A1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "CBikeLaunch Screen.storyboard"; path = "../CBikeLaunch Screen.storyboard"; sourceTree = "<group>"; };
+		A8F43CC71E63D04900B0A6BE /* Taipei.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Taipei.gpx; path = GPX/Taipei.gpx; sourceTree = "<group>"; };
+		A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PingtungTW.gpx; path = GPX/PingtungTW.gpx; sourceTree = "<group>"; };
+		A8F43CD21E63D07100B0A6BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/CBikeLaunch Screen.storyboard"; sourceTree = "<group>"; };
+		A8F43CD71E63D0A300B0A6BE /* GoBike.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = GoBike.entitlements; path = PBike/GoBike.entitlements; sourceTree = "<group>"; };
 		A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DirectionsCityBike.geojson; sourceTree = "<group>"; };
 		A8F7DC7E1E0E8748008E0862 /* GoBike-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoBike-Info.plist"; sourceTree = "<group>"; };
 		A8F7DC801E0E875B008E0862 /* CBike-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CBike-info.plist"; sourceTree = "<group>"; };
@@ -271,7 +272,6 @@
 		A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
 		A8FE69781DEDB2BE00BE4E51 /* GoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FFE3101E31027900BFFB74 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = "../../../Library/Developer/Xcode/DerivedData/PBike-efybxyjodxkgixgvgrwfqpqrhxbb/Build/Products/Release-iphonesimulator/Kanna/Kanna.framework"; sourceTree = "<group>"; };
-		C3624A023940C70CE18739FA /* Pods-UBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-UBike/Pods-UBike.release.xcconfig"; sourceTree = "<group>"; };
 		D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2EDEEE889805C44CBB4CDF /* Pods-CBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBike.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBike/Pods-CBike.release.xcconfig"; sourceTree = "<group>"; };
 		E0F40DD318A338037D38DDF6 /* Pods_CBike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CBike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,7 +317,6 @@
 				A8A80B151DD1F6F400107566 /* MapKit.framework in Frameworks */,
 				A8A80B161DD1F6F400107566 /* GoogleMobileAds.framework in Frameworks */,
 				A8A80B171DD1F6F400107566 /* Pods_PBike.framework in Frameworks */,
-				63B4778DBB4F852F1E078D55 /* Pods_PBike_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,8 +376,6 @@
 				DD2EDEEE889805C44CBB4CDF /* Pods-CBike.release.xcconfig */,
 				7999D3C438D4233D1651F9DC /* Pods-PBike Dev.debug.xcconfig */,
 				302362E34D8493EC76C60597 /* Pods-PBike Dev.release.xcconfig */,
-				A817098B2AB110E3FBB9885C /* Pods-UBike.debug.xcconfig */,
-				C3624A023940C70CE18739FA /* Pods-UBike.release.xcconfig */,
 				7C227462ABED8330580CFF38 /* Pods-GoBike.debug.xcconfig */,
 				58F197C3FC2C8A5C3DCDA924 /* Pods-GoBike.release.xcconfig */,
 			);
@@ -404,7 +401,6 @@
 				A8F836641DB378CA001131BE /* MapKit.framework */,
 				D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */,
 				E0F40DD318A338037D38DDF6 /* Pods_CBike.framework */,
-				1F262FF5EDD68A91BEAA59A4 /* Pods_PBike_Dev.framework */,
 				9982BFD6F72E4B9B1137E91C /* Pods_UBike.framework */,
 				F71747225C154CDF68D2F730 /* Pods_GoBike.framework */,
 			);
@@ -422,8 +418,8 @@
 		A85B62C51DB895C800C1413B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				A85B62C41DB895BF00C1413B /* PingtungTW.gpx */,
-				A8A2FEB51E42E15A00AA48CC /* Taipei.gpx */,
+				A8F43CC71E63D04900B0A6BE /* Taipei.gpx */,
+				A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */,
 				A8A8A3171DC60BD900946AA9 /* Directions.geojson */,
 				A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */,
 			);
@@ -434,7 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				A8F836561DB37336001131BE /* LaunchScreen.storyboard */,
-				A8F4B09A1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard */,
+				A8F43CD11E63D07100B0A6BE /* CBikeLaunch Screen.storyboard */,
 				A84F02201E208ED300E65C22 /* GoBike.storyboard */,
 			);
 			name = LaunchScreen;
@@ -459,7 +455,7 @@
 		A8F836411DB37336001131BE = {
 			isa = PBXGroup;
 			children = (
-				A8DD38B21E20F4EB0050073E /* GoBike.entitlements */,
+				A8F43CD71E63D0A300B0A6BE /* GoBike.entitlements */,
 				A8FE697C1DEDB34700BE4E51 /* info */,
 				A8F8364C1DB37336001131BE /* PBike */,
 				A8F8364B1DB37336001131BE /* Products */,
@@ -722,11 +718,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A85D3C5F1DCEBAE800875B3A /* LaunchScreen.storyboard in Resources */,
+				A8F43CD41E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */,
 				A8F7DC811E0E875B008E0862 /* CBike-info.plist in Resources */,
-				A8A2FEB71E42E15A00AA48CC /* Taipei.gpx in Resources */,
+				A8F43CCE1E63D04900B0A6BE /* PingtungTW.gpx in Resources */,
 				A8E01EA31DDD481900BC440C /* GoogleService-Info.plist in Resources */,
-				A8E896E01E42DF1E0096DD30 /* PingtungTW.gpx in Resources */,
-				A8F4B09B1DCF2CE500EBC68F /* CBikeLaunch Screen.storyboard in Resources */,
+				A8F43CCA1E63D04900B0A6BE /* Taipei.gpx in Resources */,
 				A81BE08B1E4838CF00407AB8 /* image.xcassets in Resources */,
 				A8F4B09D1DCF596C00EBC68F /* DirectionsCityBike.geojson in Resources */,
 				A85D3C621DCEBAE800875B3A /* Main.storyboard in Resources */,
@@ -738,8 +734,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A81BE08D1E4838CF00407AB8 /* image.xcassets in Resources */,
+				A8F43CD61E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */,
+				A8F43CD01E63D04900B0A6BE /* PingtungTW.gpx in Resources */,
 				A8A80B191DD1F6F400107566 /* LaunchScreen.storyboard in Resources */,
 				A8A80B1C1DD1F6F400107566 /* Main.storyboard in Resources */,
+				A8F43CCC1E63D04900B0A6BE /* Taipei.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,11 +748,12 @@
 			files = (
 				A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */,
 				A82B6AF91E1FE30E009314F1 /* PBikeDev.plist in Resources */,
-				A8E896E11E42DF1E0096DD30 /* PingtungTW.gpx in Resources */,
-				A8A2FEB61E42E15A00AA48CC /* Taipei.gpx in Resources */,
 				A8F836531DB37336001131BE /* Main.storyboard in Resources */,
+				A8F43CCD1E63D04900B0A6BE /* PingtungTW.gpx in Resources */,
 				A8E01EA41DDD481900BC440C /* GoogleService-Info.plist in Resources */,
+				A8F43CD31E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */,
 				A81BE08A1E4838CF00407AB8 /* image.xcassets in Resources */,
+				A8F43CC91E63D04900B0A6BE /* Taipei.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,14 +762,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8FE696A1DEDB2BE00BE4E51 /* LaunchScreen.storyboard in Resources */,
-				A8FE696D1DEDB2BE00BE4E51 /* CBikeLaunch Screen.storyboard in Resources */,
+				A8F43CD51E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */,
 				A8FE696E1DEDB2BE00BE4E51 /* DirectionsCityBike.geojson in Resources */,
-				A8E896DD1E42DEEF0096DD30 /* PingtungTW.gpx in Resources */,
+				A8F43CCF1E63D04900B0A6BE /* PingtungTW.gpx in Resources */,
 				A8FE69701DEDB2BE00BE4E51 /* Main.storyboard in Resources */,
+				A8F43CCB1E63D04900B0A6BE /* Taipei.gpx in Resources */,
 				A84F02261E20D24300E65C22 /* GoogleService-Info.plist in Resources */,
 				A81BE08C1E4838CF00407AB8 /* image.xcassets in Resources */,
 				A84F02211E208ED300E65C22 /* GoBike.storyboard in Resources */,
-				A8A2FEB81E42E15A00AA48CC /* Taipei.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,6 +1132,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A8F43CD11E63D07100B0A6BE /* CBikeLaunch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A8F43CD21E63D07100B0A6BE /* Base */,
+			);
+			name = "CBikeLaunch Screen.storyboard";
+			sourceTree = "<group>";
+		};
 		A8F836511DB37336001131BE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
