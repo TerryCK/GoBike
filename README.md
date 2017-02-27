@@ -20,14 +20,15 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 	5. 計時器(Beta) - 充分利用GoBike免費時間
 
 ### Screen Shots
-!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/Screen/GoBikeDemo.png)
+!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/ScreenShot/GoBikeDemo.png)
 
-!["DemoVideo"](https://github.com/TerryCK/GoBike/blob/master/Screen/DemoGif.gif)
+!["DemoVideo"](https://github.com/TerryCK/GoBike/blob/master/ScreenShot/DemoGif.gif)
 
-!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/Screen/applewatch.png)
+!["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/ScreenShot/applewatch.png)
 
 
 ###Update history
+	2017/2/27 1.3  Bug fixed & modify coding style for easy to maintance
 	2017/2/6  1.2    Fixed a part of region of newtaipei's bike information & increase efficiency
 	2017/2/3  1.1    Supported Hsinchu, Changhua, Tainan
 	2017/1/18 1.0.1  Fixed Ad can't remove bug 	
