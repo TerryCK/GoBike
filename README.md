@@ -1,9 +1,14 @@
 # GoBike - 福爾摩沙最漂亮的公共自行車iOS地圖App
 
 App Store免費下載[傳送門] (https://goo.gl/cqPrsf 
-"連結")
+"連結"). <p>
+`GoBike`是一套強而有力的公共自行車地圖App，使用方便、容易上手、並且直觀讓你快速找到最近的腳踏車站點與租界狀況
+<p align="center" >★★ <b>請星星這個專案來鼓勵作者，謝謝 ⸜(* ॑꒳ ॑* )⸝</b> ★★</p>
+![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)
+![Language: Swift](https://img.shields.io/badge/language-swift-orange.svg)
 
 ### 支援地區 
+
 #### 臺北\*、新北\*、桃園\*、新竹\*、台中(iBike)、彰化、台南(TBike)、高雄(CityBike)、屏東(PBike)
 ##### \*Youbike
 **支援三大台灣公共自行車系統
@@ -28,7 +33,7 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 
 
 ###Update history
-	2017/2/27 1.3  Bug fixed & modify coding style for easy to maintance
+	2017/2/27 1.3    Bug fixed & modify coding style for easy to maintance
 	2017/2/6  1.2    Fixed a part of region of newtaipei's bike information & increase efficiency
 	2017/2/3  1.1    Supported Hsinchu, Changhua, Tainan
 	2017/1/18 1.0.1  Fixed Ad can't remove bug 	
