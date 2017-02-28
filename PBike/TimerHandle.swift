@@ -101,6 +101,7 @@ extension MapViewController {
         
         if seconds < 10 && seconds >= 0 {
             zero = "0"
+            
         } else {
             zero = ""
         }

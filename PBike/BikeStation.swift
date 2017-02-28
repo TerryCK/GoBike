@@ -20,7 +20,7 @@ protocol BikeStationDelegate {
     var  stations: [Station] { get }
     var  numberOfAPIs:Int { get }
     func downloadInfoOfBikeFromAPI(completed:@escaping DownloadComplete)
-//    func numberOfBikeIsUsing(station: [Station]) -> Int
+    //    func numberOfBikeIsUsing(station: [Station]) -> Int
     func statusOfStationImage(station:[Station], index:Int) -> String
     func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D)
     
@@ -32,7 +32,6 @@ class BikeStation:BikeStationDelegate {
     internal var stations: [Station] { return _stations }
     
     var numberOfAPIs = 0
-    
     var netWorkDataSize = 0
     var Bike_URL = "http://pbike.pthg.gov.tw/xml/stationlist.aspx"
     var citys: [String] = []
@@ -41,7 +40,7 @@ class BikeStation:BikeStationDelegate {
     var _stations: [Station] = []
     var apis = Bike().apis
     
-     func downloadInfoOfBikeFromAPI(completed:@escaping DownloadComplete) {
+    func downloadInfoOfBikeFromAPI(completed:@escaping DownloadComplete) {
         //Alamofire download
         
         #if CityBike
@@ -74,7 +73,7 @@ class BikeStation:BikeStationDelegate {
         self._stations.removeAll()
         numberOfAPIs = 0
         citys.removeAll() //inital
-
+        
         for api in apis {
             guard api.isHere else { continue }
             self.numberOfAPIs += 1
@@ -85,7 +84,7 @@ class BikeStation:BikeStationDelegate {
                 print("URL error")
                 return
             }
-
+            
             switch api.dataType {
             case .XML, .html:
                 Alamofire.request(currentBikeURL).responseString { response in
@@ -102,17 +101,17 @@ class BikeStation:BikeStationDelegate {
                     if api.dataType == .html {
                         if let html = response.result.value {
                             self.parseHTML(city: api.city,html: html)
-                        } else { print("Can not parseHTML, please check parseHTML func" )
+                        } else {
+                            print("Can not parseHTML, please check parseHTML func" )
                         }
                     }
-                    
-                    // xml
+                        
+                        // xml
                     else {
                         guard let xmlToParse = response.result.value else {
                             print("error, can't unwrap response data")
                             return
                         }
-                        
                         let xml = SWXMLHash.parse(xmlToParse)
                         
                         do {
@@ -130,9 +129,9 @@ class BikeStation:BikeStationDelegate {
                 Alamofire.request(currentBikeURL).validate().responseJSON { response in
                     print("資料來源: \(response.request!)\n 伺服器傳輸量: \(response.data!)\n")
                     print("success", api.city)
-                   let dataSize = response.data! as NSData
-                   self.netWorkDataSize += (dataSize.length)
-                   print("netWorkDataSize", self.netWorkDataSize.currencyStyle, "bytes")
+                    let dataSize = response.data! as NSData
+                    self.netWorkDataSize += (dataSize.length)
+                    print("netWorkDataSize", self.netWorkDataSize.currencyStyle, "bytes")
                     
                     switch response.result {
                     case .success(let value):
@@ -155,7 +154,11 @@ class BikeStation:BikeStationDelegate {
     
     func parseHTML(city:String, html: String) -> Void {
         
-        guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {print("doc can't be assigned by  html"); return }
+        guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
+            print("doc can't be assigned by  html")
+            return
+        }
+        
         let node = doc.css("script")[21]
         let uriDecoded = node.text?.between("arealist='", "';arealist=JSON")?.urlDecode
         
@@ -164,7 +167,7 @@ class BikeStation:BikeStationDelegate {
             return
         }
         let json = JSON(data: dataFromString)
-       
+        
         guard let stations:[Station] = self.parseJSON2Object(city, json: json) else {
             print("station is nil plz check parseJson")
             return
@@ -178,39 +181,39 @@ class BikeStation:BikeStationDelegate {
         for index in 0..<apis.count {
             
             switch (apis[index].city, latitude, longitude){
-            case ("taipei", 24.96...25.14 , 121.44...121.65):
+            case ("taipei", 24.96...25.14, 121.44...121.65):
                 apis[index].isHere = true
                 
                 
-            case ("newTaipei", 24.75...25.33 , 121.15...121.83):
+            case ("newTaipei", 24.75...25.33, 121.15...121.83):
                 apis[index].isHere = true
                 
                 
-            case ("taoyuan", 24.81...25.11 , 120.9...121.4):
+            case ("taoyuan", 24.81...25.11, 120.9...121.4):
                 apis[index].isHere = true
                 
                 
-            case ("Hsinchu", 24.67...24.96 , 120.81...121.16):
+            case ("Hsinchu", 24.67...24.96, 120.81...121.16):
                 apis[index].isHere = true
                 
                 
-            case ("taichung", 24.03...24.35 , 120.40...121.00):
+            case ("taichung", 24.03...24.35, 120.40...121.00):
                 apis[index].isHere = true
                 
                 
-            case ("Changhua", 23.76...24.23 , 120.06...120.77):
+            case ("Changhua", 23.76...24.23, 120.06...120.77):
                 apis[index].isHere = true
                 
                 
-            case ("tainan", 22.72...23.47 , 119.94...120.58):
+            case ("tainan", 22.72...23.47, 119.94...120.58):
                 apis[index].isHere = true
                 
                 
-            case ("kaohsiung", 22.46...22.73 , 120.17...120.44):
+            case ("kaohsiung", 22.46...22.73, 120.17...120.44):
                 apis[index].isHere = true
                 
                 
-            case ("pingtung", 22.62...22.71 , 120.430...120.53):
+            case ("pingtung", 22.62...22.71, 120.430...120.53):
                 apis[index].isHere = true
                 
                 
@@ -223,7 +226,7 @@ class BikeStation:BikeStationDelegate {
     
     func parseJSON2Object(_ callIdentifier: String, json: JSON)  ->  [Station]? {
         var jsonStation: [Station] = []
-//        print("callIdentifier:",callIdentifier, "\n json:", json)
+        //        print("callIdentifier:",callIdentifier, "\n json:", json)
         guard !(json.isEmpty) else {
             print("json is empty")
             return nil
@@ -233,7 +236,7 @@ class BikeStation:BikeStationDelegate {
             var deserializableJSONStation:[Station] = []
             print("call deserializableJSON")
             
-            for (_, dict) in json {
+            for ( _ , dict) in json {
                 
                 let obj = Station(
                     name: dict["sna"].string,
@@ -242,7 +245,7 @@ class BikeStation:BikeStationDelegate {
                     currentBikeNumber: dict["sbi"].intValue,
                     longitude: dict["lng"].doubleValue,
                     latitude: dict["lat"].doubleValue)
-            
+                
                 deserializableJSONStation.append(obj)
             }
             return deserializableJSONStation
@@ -250,7 +253,7 @@ class BikeStation:BikeStationDelegate {
         
         func deserializableJSONOfTainan(json: JSON) -> [Station] {
             var deserializableJSONStation:[Station] = []
-            for (_, dict) in json {
+            for ( _ , dict) in json {
                 
                 let obj = Station(
                     name: dict["StationName"].string,
@@ -266,6 +269,7 @@ class BikeStation:BikeStationDelegate {
         }
         
         var jsonArray = json[]
+        
         switch callIdentifier {
         case "tainan":
             jsonArray = json
@@ -280,7 +284,7 @@ class BikeStation:BikeStationDelegate {
             
         case "Changhua", "Hsinchu":
             jsonArray = json
-        
+            
         default:
             print("callIdentifier error")
         }
@@ -288,8 +292,8 @@ class BikeStation:BikeStationDelegate {
         jsonStation = deserializableJSON(json: jsonArray)
         return jsonStation
     }
-
-     func statusOfStationImage(station:[Station], index:Int) -> String {
+    
+    func statusOfStationImage(station:[Station], index:Int) -> String {
         var pinImage = ""
         
         if let numberOfBike = station[index].currentBikeNumber {
@@ -299,15 +303,13 @@ class BikeStation:BikeStationDelegate {
                 pinImage = "pinLess"
                 
             case 5...200:
-                if station[index].parkNumber == 0 {
-                    pinImage = "pinFull"
-                } else {
-                    pinImage = "pinMed"
-                }
+                pinImage = station[index].parkNumber == 0 ? "pinFull" : "pinMed"
                 
-            case 0: pinImage = "pinEmpty"
+            case 0:
+                pinImage = "pinEmpty"
                 
-            default: pinImage  = "pinUnknow"
+            default:
+                pinImage  = "pinUnknow"
                 
             }
         }

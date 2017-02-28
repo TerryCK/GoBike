@@ -8,12 +8,13 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 ![Language: Swift](https://img.shields.io/badge/language-swift-orange.svg)
 
 ### 支援地區 
-
+-----------
 #### 臺北\*、新北\*、桃園\*、新竹\*、台中(iBike)、彰化、台南(TBike)、高雄(CityBike)、屏東(PBike)
 ##### \*Youbike
 **支援三大台灣公共自行車系統
 
 ### 特色
+-----------
 	1. 站點地圖化 - 直觀清楚的顯示GoBike各站點資訊
 	
 	2. 更廣的能見度 - 由距離使用者 5km 提昇至 15km 內的全部站點
@@ -25,6 +26,7 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 	5. 計時器(Beta) - 充分利用GoBike免費時間
 
 ### Screen Shots
+-----------
 !["ScreenShots"](https://github.com/TerryCK/GoBike/blob/master/ScreenShot/GoBikeDemo.png)
 
 !["DemoVideo"](https://github.com/TerryCK/GoBike/blob/master/ScreenShot/DemoGif.gif)
@@ -33,12 +35,19 @@ App Store免費下載[傳送門] (https://goo.gl/cqPrsf
 
 
 ###Update history
+-----------
 	2017/2/27 1.3    Bug fixed & modify coding style for easy to maintance
 	2017/2/6  1.2    Fixed a part of region of newtaipei's bike information & increase efficiency
 	2017/2/3  1.1    Supported Hsinchu, Changhua, Tainan
 	2017/1/18 1.0.1  Fixed Ad can't remove bug 	
 	2017/1/11 1.0    First release supported Taipei, newTaipei, Taoyuan, Taichung, Kaoshiung, Pingtung 
 	  
+###Requirement
+-----------
+
+- Xcode 8
+- iOS 9
+- Swift 3
 
 ###License
 

@@ -132,6 +132,7 @@
 		A8B556651DBF5436008EA68F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556641DBF5436008EA68F /* AdSupport.framework */; };
 		A8B556671DBF5446008EA68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556661DBF5446008EA68F /* CoreMotion.framework */; };
 		A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
+		A8C975411E65C46F00CDE8CD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C975401E65C46F00CDE8CD /* StoreKit.framework */; };
 		A8CC81671E14BAC600CBC824 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */; };
 		A8CC81691E14BB0100CBC824 /* AppVisionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81681E14BB0100CBC824 /* AppVisionCheck.swift */; };
 		A8CC816A1E14BE6F00CBC824 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */; };
@@ -148,7 +149,6 @@
 		A8CC81771E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
 		A8CC81781E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
 		A8CC81791E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
-		A8DD38B11E20F4CD0050073E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD38B01E20F4CD0050073E /* StoreKit.framework */; };
 		A8E01EA31DDD481900BC440C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */; };
 		A8E01EA41DDD481900BC440C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */; };
 		A8F43CC91E63D04900B0A6BE /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC71E63D04900B0A6BE /* Taipei.gpx */; };
@@ -248,17 +248,17 @@
 		A8B556661DBF5446008EA68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PBike.entitlements; sourceTree = "<group>"; };
 		A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		A8C975401E65C46F00CDE8CD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A8C975431E65C4EE00CDE8CD /* GoBike.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = GoBike.entitlements; sourceTree = "<group>"; };
 		A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		A8CC81681E14BB0100CBC824 /* AppVisionCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVisionCheck.swift; sourceTree = "<group>"; };
 		A8CC81701E14C30E00CBC824 /* LocataionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocataionManager.swift; sourceTree = "<group>"; };
 		A8CC81751E14C7D000CBC824 /* MapNavigate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigate.swift; sourceTree = "<group>"; };
-		A8DD38B01E20F4CD0050073E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8F43CC71E63D04900B0A6BE /* Taipei.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Taipei.gpx; path = GPX/Taipei.gpx; sourceTree = "<group>"; };
 		A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PingtungTW.gpx; path = GPX/PingtungTW.gpx; sourceTree = "<group>"; };
 		A8F43CD21E63D07100B0A6BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/CBikeLaunch Screen.storyboard"; sourceTree = "<group>"; };
-		A8F43CD71E63D0A300B0A6BE /* GoBike.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = GoBike.entitlements; path = PBike/GoBike.entitlements; sourceTree = "<group>"; };
 		A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DirectionsCityBike.geojson; sourceTree = "<group>"; };
 		A8F7DC7E1E0E8748008E0862 /* GoBike-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoBike-Info.plist"; sourceTree = "<group>"; };
 		A8F7DC801E0E875B008E0862 /* CBike-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CBike-info.plist"; sourceTree = "<group>"; };
@@ -348,7 +348,6 @@
 				A8FE695A1DEDB2BE00BE4E51 /* MessageUI.framework in Frameworks */,
 				A8FE695B1DEDB2BE00BE4E51 /* SystemConfiguration.framework in Frameworks */,
 				A8FE695C1DEDB2BE00BE4E51 /* EventKit.framework in Frameworks */,
-				A8DD38B11E20F4CD0050073E /* StoreKit.framework in Frameworks */,
 				A8FE695D1DEDB2BE00BE4E51 /* EventKitUI.framework in Frameworks */,
 				A8FE695E1DEDB2BE00BE4E51 /* CoreTelephony.framework in Frameworks */,
 				A8FE695F1DEDB2BE00BE4E51 /* CoreGraphics.framework in Frameworks */,
@@ -359,6 +358,7 @@
 				A8FE69651DEDB2BE00BE4E51 /* MapKit.framework in Frameworks */,
 				A8FE69661DEDB2BE00BE4E51 /* GoogleMobileAds.framework in Frameworks */,
 				A8FE69671DEDB2BE00BE4E51 /* Pods_PBike.framework in Frameworks */,
+				A8C975411E65C46F00CDE8CD /* StoreKit.framework in Frameworks */,
 				A8FE69681DEDB2BE00BE4E51 /* Pods_CBike.framework in Frameworks */,
 				BC898FB4B74E846418FBA124 /* Pods_GoBike.framework in Frameworks */,
 			);
@@ -385,8 +385,8 @@
 		6E84EAB925C4FD7FD414DFDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8C975401E65C46F00CDE8CD /* StoreKit.framework */,
 				A8FFE3101E31027900BFFB74 /* Kanna.framework */,
-				A8DD38B01E20F4CD0050073E /* StoreKit.framework */,
 				A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */,
 				A87E52441DC09A0D0016F9E0 /* MessageUI.framework */,
 				A87E52421DC09A070016F9E0 /* EventKit.framework */,
@@ -422,6 +422,7 @@
 				A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */,
 				A8A8A3171DC60BD900946AA9 /* Directions.geojson */,
 				A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */,
+				A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -455,7 +456,7 @@
 		A8F836411DB37336001131BE = {
 			isa = PBXGroup;
 			children = (
-				A8F43CD71E63D0A300B0A6BE /* GoBike.entitlements */,
+				A8C975431E65C4EE00CDE8CD /* GoBike.entitlements */,
 				A8FE697C1DEDB34700BE4E51 /* info */,
 				A8F8364C1DB37336001131BE /* PBike */,
 				A8F8364B1DB37336001131BE /* Products */,
@@ -478,7 +479,6 @@
 		A8F8364C1DB37336001131BE /* PBike */ = {
 			isa = PBXGroup;
 			children = (
-				A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */,
 				A89833501DD2C8360092F727 /* LaunchScreen */,
 				A85B62C51DB895C800C1413B /* Resource */,
 				A8F836611DB3747E001131BE /* View */,

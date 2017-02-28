@@ -7,7 +7,7 @@
 //
 import SWXMLHash
 import Foundation
-
+import CoreLocation
 
 public extension String {
     
@@ -99,3 +99,4 @@ extension BikeStation {
         }
     }
 }
+

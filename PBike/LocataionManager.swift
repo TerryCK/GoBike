@@ -141,21 +141,15 @@ extension MapViewController:CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         let current = locations.last!
-        let latitude = current.coordinate.latitude
-        var longitude = current.coordinate.longitude
-        
-        location.longitude = longitude
-        location.latitude = latitude
-       
-        if longitude <= 0 {
-            longitude = 360 + longitude
-        }
-
+        let longitude = current.coordinate.longitude
+        location.longitude = longitude >= 0 ? longitude : longitude + 360
+        location.latitude = current.coordinate.latitude
+        let checkLongitudeIsCorrect = location.longitude >= 0 ? "pass" : "NG! check out locationManager"
+        print("check longitude is Correct? : ", checkLongitudeIsCorrect)
         delegate?.findLocateBikdAPI2Download(userLocation: location)
+       
+        print("did Update locations the location is ", location)
         
-        print("重新取得使用者GPS位置", location)
-        print("didUpdateLocations")
-//        print("did Update Location")
         
     }
     
