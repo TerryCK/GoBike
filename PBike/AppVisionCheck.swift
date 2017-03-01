@@ -36,7 +36,10 @@ extension MapViewController {
             self.adUnitID = "ca-app-pub-3022461967351598/7816514110"
             self.mailtitle = "[GoBike]APP建議與回報"
             self.appId = "1192891004"
-            guard let citys = delegate?.citys else { print("citys error "); return -1}
+            guard let citys = delegate?.citys else {
+                print("citys error ")
+                return -1
+            }
             
             for city in citys {
                 switch city {

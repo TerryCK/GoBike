@@ -17,6 +17,7 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
         print("hasSharedApp:", hasSharedApp)
         let mailComposeViewController = configuredMailComposeViewController()
+        
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposeViewController, animated: true, completion: nil)
         } else {
@@ -31,7 +32,11 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         guard let checkURL = URL(string: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appID)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8") else {
             return
         }
-        guard UIApplication.shared.canOpenURL(checkURL) else { print("invalid url") ; return }
+        guard UIApplication.shared.canOpenURL(checkURL) else {
+            print("invalid url")
+            return
+        }
+        
         UIApplication.shared.openURL(checkURL)
         print("rating url successfully opened")
         let defaults = UserDefaults.standard
@@ -41,7 +46,10 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
     
     //share button
     @IBAction func shareBtnPressed(_ sender: AnyObject) {
-        guard let name = NSURL(string: applink) else{ /* show alert for not available */ return }
+        guard let name = NSURL(string: applink) else {
+            /* show alert for not available */
+            return
+        }
         let objectsToShare = [name]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         if (UIDevice.current.userInterfaceIdiom) == .pad {

@@ -48,14 +48,10 @@ extension MapViewController:CLLocationManagerDelegate {
         print("北緯：\(location.latitude) 東經：\(location.longitude)")
         let center:CLLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
-        let currentRegion:MKCoordinateRegion = MKCoordinateRegion (center: center.coordinate, span:currentLocationSpan)
-        
+        let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate, span: currentLocationSpan)
         self.mapView.setRegion(currentRegion, animated: false)
         
-
         print("currentRegion \(currentRegion)")
-        
-        
     }
     
     
@@ -67,7 +63,6 @@ extension MapViewController:CLLocationManagerDelegate {
             
         case .follow:
             setTrackModeToFollowWithHeading()
-            
             
         case .followWithHeading:
             setTrackModeNone()
@@ -116,9 +111,9 @@ extension MapViewController:CLLocationManagerDelegate {
             
         case .denied: //提示可以在設定中打開
             let alertController = UIAlertController(title: "定位權限以關閉", message: "如要變更權限，請至 設定 > 隱私權 > 定位服務 開啟", preferredStyle:.alert)
-            let okAction = UIAlertAction(title: "確認", style: .default, handler:nil)
+            let okAction = UIAlertAction(title: "確認", style: .default, handler: nil)
             alertController.addAction(okAction)
-            self.present(alertController,animated: true, completion:nil)
+            self.present(alertController,animated: true, completion: nil)
             
         case .authorizedWhenInUse:
             myLocationManager.startUpdatingLocation()

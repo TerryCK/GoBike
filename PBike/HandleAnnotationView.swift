@@ -21,7 +21,10 @@ extension MapViewController {
             return
         }
         
-        guard let stations = delegate?.stations else { print("station nil"); return }
+        guard let stations = delegate?.stations else {
+            print("station nil")
+            return
+        }
         
         self.bikeStations = stations
         var objArray = [CustomPointAnnotation]()
@@ -33,7 +36,10 @@ extension MapViewController {
         
         let bikesInStation = stations.reduce(0){$0 + $1.currentBikeNumber!}
         
-        guard let nunberOfUsingBike = numberBikeInUsing else { print("nunberOfUsingPBike is nil"); return }
+        guard let nunberOfUsingBike = numberBikeInUsing else {
+            print("nunberOfUsingPBike is nil")
+            return
+        }
         
         let bikeInUsing = nunberOfUsingBike.minLimit.currencyStyle
         self.currentPeopleOfRidePBike = bikeInUsing
@@ -84,7 +90,9 @@ extension MapViewController {
             //handle bike station's name
             guard let currentBikeNumber = stations[index].currentBikeNumber,
                 let name = stations[index].name,
-                let parkNumber = stations[index].parkNumber else { return }
+                let parkNumber = stations[index].parkNumber else {
+                    return
+            }
             
             objectAnnotation.subtitle = "\(name)"
             objectAnnotation.title = "🚲:  \(currentBikeNumber)   🅿️:  \(parkNumber)"
@@ -97,7 +105,10 @@ extension MapViewController {
         annotations = objArray
         
         //        print(showPinInReginoDistance,"km 內的annotation數量：", annotations.count)
-        guard let mapView = self.mapView else { print("mapView not to self.mapView"); return }
+        guard let mapView = self.mapView else {
+            print("mapView not to self.mapView")
+            return
+        }
         mapView.addAnnotations(annotations)
         mapView.removeAnnotations(oldAnnotations)
         

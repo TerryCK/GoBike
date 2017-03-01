@@ -93,7 +93,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func setup() {
-       
         delegate = BikeStation()
         setupRotatArrowBtnPosition()
         UITableView.delegate = self
@@ -105,7 +104,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func viewInit() {
-        
         mapViewInfoCustomize()
         effect = self.visualEffectView.effect
         visualEffectView.effect = nil
