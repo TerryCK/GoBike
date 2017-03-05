@@ -80,6 +80,11 @@ public extension Int {
         return self <= 0 ? 0 : self
     }
     
+    var increaing: Int {
+        return self + 1
+    }
+
+    
     var currencyStyle: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal

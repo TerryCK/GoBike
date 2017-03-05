@@ -11,7 +11,7 @@ import MapKit
 extension MapViewController {
     
     func handleAnnotationInfo() {
-        let numberOfAPIs = delegate?.numberOfAPIs
+        let numberOfAPIs = delegate?.countOfAPIs
         let showPinInReginoDistance = 15.0
         print("restrict distance", showPinInReginoDistance)
         
@@ -84,19 +84,19 @@ extension MapViewController {
             }
             //handle picture of pin
             if let pinImage = delegate?.statusOfStationImage(station: stations, index: index){
-                objectAnnotation.imageName = UIImage(named: pinImage) }
+                objectAnnotation.imageName = UIImage(named: pinImage)
+            }
             
             
             //handle bike station's name
             guard let currentBikeNumber = stations[index].currentBikeNumber,
-                let name = stations[index].name,
-                let parkNumber = stations[index].parkNumber else {
+                  let name = stations[index].name,
+                  let parkNumber = stations[index].parkNumber else {
                     return
             }
             
             objectAnnotation.subtitle = "\(name)"
             objectAnnotation.title = "🚲:  \(currentBikeNumber)   🅿️:  \(parkNumber)"
-            //            objectAnnotation.detail
             objArray.append(objectAnnotation)
             
         }

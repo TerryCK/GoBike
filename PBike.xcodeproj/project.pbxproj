@@ -66,6 +66,10 @@
 		A84989F71E14B41F0095D9E8 /* SendMeMailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989F31E14B41F0095D9E8 /* SendMeMailController.swift */; };
 		A84F02211E208ED300E65C22 /* GoBike.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A84F02201E208ED300E65C22 /* GoBike.storyboard */; };
 		A84F02261E20D24300E65C22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A84F02251E20D24300E65C22 /* GoogleService-Info.plist */; };
+		A851E5621E6C061A003A1B35 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851E5611E6C061A003A1B35 /* Parser.swift */; };
+		A851E5631E6C061A003A1B35 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851E5611E6C061A003A1B35 /* Parser.swift */; };
+		A851E5641E6C061A003A1B35 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851E5611E6C061A003A1B35 /* Parser.swift */; };
+		A851E5651E6C061A003A1B35 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851E5611E6C061A003A1B35 /* Parser.swift */; };
 		A85D3C441DCEBAE800875B3A /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
 		A85D3C451DCEBAE800875B3A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A85D3C471DCEBAE800875B3A /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
@@ -228,6 +232,7 @@
 		A84989F31E14B41F0095D9E8 /* SendMeMailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMeMailController.swift; sourceTree = "<group>"; };
 		A84F02201E208ED300E65C22 /* GoBike.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoBike.storyboard; sourceTree = "<group>"; };
 		A84F02251E20D24300E65C22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A851E5611E6C061A003A1B35 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		A85D3C691DCEBAE800875B3A /* CBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = aboutUsTableViewCell.swift; sourceTree = "<group>"; };
 		A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
@@ -494,6 +499,7 @@
 		A8F8365F1DB3744C001131BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A851E5611E6C061A003A1B35 /* Parser.swift */,
 				A84989C71E1367D10095D9E8 /* Station.swift */,
 				A808B0A91E43874D0052C983 /* Extension.swift */,
 				A8F836621DB374A6001131BE /* BikeStation.swift */,
@@ -1025,6 +1031,7 @@
 				A85D3C4B1DCEBAE800875B3A /* BikeStation.swift in Sources */,
 				A8CC816E1E14BE7500CBC824 /* AppVisionCheck.swift in Sources */,
 				A85D3C4C1DCEBAE800875B3A /* RateingReportTableViewCell.swift in Sources */,
+				A851E5631E6C061A003A1B35 /* Parser.swift in Sources */,
 				A84989F01E14B3CA0095D9E8 /* AddBlurEffect.swift in Sources */,
 				A8CC816A1E14BE6F00CBC824 /* CustomAnnotationView.swift in Sources */,
 				A85D3C4E1DCEBAE800875B3A /* BikeStationTableViewCell.swift in Sources */,
@@ -1039,6 +1046,7 @@
 				A84989D91E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A84989DE1E14B0840095D9E8 /* TableViewController.swift in Sources */,
 				A84989ED1E14B36D0095D9E8 /* TimerHandle.swift in Sources */,
+				A851E5651E6C061A003A1B35 /* Parser.swift in Sources */,
 				A8A80AFE1DD1F6F400107566 /* ThanksforTableViewCell.swift in Sources */,
 				A89B048F1E4992AA0052DBF6 /* UpdateTimeLabel.swift in Sources */,
 				A8A80AFF1DD1F6F400107566 /* LocationSearchTable.swift in Sources */,
@@ -1090,6 +1098,7 @@
 				A8F836631DB374A6001131BE /* BikeStation.swift in Sources */,
 				A8CC81691E14BB0100CBC824 /* AppVisionCheck.swift in Sources */,
 				A83BD3371DC360C5002D2DC4 /* RateingReportTableViewCell.swift in Sources */,
+				A851E5621E6C061A003A1B35 /* Parser.swift in Sources */,
 				A84989EF1E14B3CA0095D9E8 /* AddBlurEffect.swift in Sources */,
 				A8CC81671E14BAC600CBC824 /* CustomAnnotationView.swift in Sources */,
 				A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */,
@@ -1123,6 +1132,7 @@
 				A8CC816B1E14BE6F00CBC824 /* CustomAnnotationView.swift in Sources */,
 				A8CC816D1E14BE7500CBC824 /* AppVisionCheck.swift in Sources */,
 				A8FE69581DEDB2BE00BE4E51 /* BikeStationTableViewCell.swift in Sources */,
+				A851E5641E6C061A003A1B35 /* Parser.swift in Sources */,
 				A84989D31E14AFCA0095D9E8 /* motion.swift in Sources */,
 				A84989F61E14B41F0095D9E8 /* SendMeMailController.swift in Sources */,
 				A84989EC1E14B36D0095D9E8 /* TimerHandle.swift in Sources */,

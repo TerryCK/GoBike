@@ -8,19 +8,22 @@
 
 import MapKit
 
+
 extension MapViewController {
       
-    func getDirections(){
+    func getDirections()   {
         guard let selectedPin = self.selectedPin else {
             return
         }
+        
         let mapItem = MKMapItem(placemark: selectedPin)
         mapItem.name = self.selectedPinName
         print(" mapItem.name \(mapItem.name)")
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
         mapItem.openInMaps(launchOptions: launchOptions)
-        
+    
     }
+    
     //map information
     func mapViewInfoCustomize(){
         mapView.delegate = self

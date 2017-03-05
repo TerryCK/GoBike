@@ -25,8 +25,6 @@ struct StationXML:XMLIndexerDeserializable, StationInfoProtocol {
     var longitude:Double
     var latitude:Double
     
-    
-    
     static func deserialize(_ node: XMLIndexer) throws -> StationXML { return try StationXML(
         name: node["StationName"].value(),
         location: node["StationAddress"].value(),
