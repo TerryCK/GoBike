@@ -4,9 +4,9 @@ App Store免費下載 [傳送門](https://goo.gl/cqPrsf). <p>
 `GoBike`是一套強而有力的公共自行車地圖App，使用方便、容易上手、並且直觀讓你快速找到最近的腳踏車站點與租借狀態
 <p align="center" >★★ <b>請星星這個專案來鼓勵作者，謝謝 ⸜(* ॑꒳ ॑* )⸝</b> ★★</p>
 
-<img src="https://img.shields.io/badge/platform-ios-lightgrey.svg">
+<nobr><img src="https://img.shields.io/badge/platform-ios-lightgrey.svg">
 <img src="http://img.shields.io/badge/License-MIT-green.svg?style=flat">
-<img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat">
+<img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat"></nobr>
 
 ### 支援地區 
 -----------
