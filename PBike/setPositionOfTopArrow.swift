@@ -31,7 +31,7 @@ extension MapViewController {
         }
         
         self.rotationArrow.imageEdgeInsets = UIEdgeInsetsMake(0.0, CGFloat(left), 0.0, 0.0)
-//        print("left insert value:\(left)")
+        print("left insert value:\(left)")
     }
     
 }

@@ -8,8 +8,7 @@
 
 import UIKit
 
-extension MapViewController{
-      
+extension MapViewController {
     
     func blurEffect() {
         // Add blur view
@@ -20,14 +19,6 @@ extension MapViewController{
         self.navigationController?.navigationBar.addSubview(visualEffectView)
         self.navigationController?.navigationBar.backgroundColor = UIColor.clear
         self.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
-        
-        
-        //        self.
-        //print("subviews\(self.navigationController?.navigationBar.subviews)")
-        //self.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
-        //        self.navigationController?.navigationBar.insertSubview(view:visualEffectView, at: 2)
-        
-        // Here you can add visual effects to any UIView control.
-        // Replace custom view with navigation bar in above code to add effects to custom view.
     }
+    
 }

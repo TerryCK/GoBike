@@ -133,7 +133,6 @@ extension MapViewController:CLLocationManagerDelegate {
     }
 
     
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         let current = locations.last!
         let longitude = current.coordinate.longitude
@@ -145,14 +144,15 @@ extension MapViewController:CLLocationManagerDelegate {
        
         print("did Update locations the location is ", location)
         
-        
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             myLocationManager.requestLocation()
         }
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error)")

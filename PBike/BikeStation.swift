@@ -148,11 +148,12 @@ class BikeStation:BikeStationDelegate {
                             print("station is nil plz check parseJson")
                             return
                         }
+                        
                         self._stations.append(contentsOf: stations)
                         completed()
                         
                     case .failure(let error):
-                        print("JSON parse error", error)
+                        print("JSON parse error:", error)
                     }
                 }//Alamofire
             } // switch

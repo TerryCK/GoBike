@@ -13,11 +13,13 @@ import Foundation
 import SwiftyJSON
 import CoreLocation
 
+
 extension BikeStation {
+    
     func parseHTML(city:String, html: String) -> Void {
         
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
-            print("doc can't be assigned by  html")
+            print("doc can't be assigned by html")
             return
         }
         
@@ -193,7 +195,7 @@ extension BikeStation {
                 latitude: stations[index].latitude
             )
             
-            if key == "pingtung" {
+            if obj.latitude > obj.longitude {
                 swap(&obj.latitude, &obj.longitude)
             }
             

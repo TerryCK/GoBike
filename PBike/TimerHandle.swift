@@ -26,6 +26,7 @@ extension MapViewController {
         
         
         switch timerStatusReadyTo {
+            
         case .play:
             print("Timer playing")
             timerStatusReadyTo = .pause

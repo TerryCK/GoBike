@@ -18,7 +18,7 @@ extension MapViewController {
         
         let mapItem = MKMapItem(placemark: selectedPin)
         mapItem.name = self.selectedPinName
-        print(" mapItem.name \(mapItem.name)")
+        print("mapItem.name \(String(describing: mapItem.name))")
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
         mapItem.openInMaps(launchOptions: launchOptions)
     
