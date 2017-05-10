@@ -775,7 +775,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "陳 冠禎";
 				TargetAttributes = {
 					A84913EA1EC056E600C307D9 = {
@@ -1438,6 +1438,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0FAC1E897406EA3C78BFCC30 /* Pods-GoBikeTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1456,6 +1457,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A193FE0EBF6F4A3A2FA555C8 /* Pods-GoBikeTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = Y8SJ5M44N4;

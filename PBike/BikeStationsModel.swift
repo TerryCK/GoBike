@@ -13,7 +13,7 @@ import Foundation
 import SwiftyJSON
 import CoreLocation
 
-protocol BikeStationDelegate {
+protocol BikeStationDelegate  {
     
     var  citys:        [City]      { get }
     var  stations:     [Station]   { get }
@@ -40,7 +40,7 @@ class BikeStationsModel: BikeStationDelegate {
     var _stations: [Station] = []
     var apis = Bike().apis
     
-    func downloadInfoOfBikeFromAPI(completed:@escaping DownloadComplete) {
+    func downloadInfoOfBikeFromAPI(completed:@escaping DownloadComplete) { 
         //Alamofire download
 
         self._stations.removeAll()
@@ -62,7 +62,7 @@ class BikeStationsModel: BikeStationDelegate {
             
             switch api.dataType {
             case .XML, .html:
-                Alamofire.request(currentBikeURL).responseString { response in
+                Alamofire.request(currentBikeURL).responseString {  response in
 //                    print("資料來源: \(response.request!)\n 伺服器傳輸量: \(response.data!)\n")
 //                    print("\nsuccess", api.city,"\n")
                     guard response.result.isSuccess else {

@@ -9,7 +9,7 @@
 import UIKit
 
 class GuidePageViewController: UIViewController{
-
+    
     @IBOutlet weak var guideImageView: UIImageView!
     
     @IBAction func guidePageCompleteBtn(_ sender: Any) {
@@ -32,18 +32,19 @@ extension MapViewController {
         let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
         let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
         
-        // Display ads from google if user no shared, recommend this app
-        if !hasSharedApp {
-            print("hasSharedApp: \(hasSharedApp)")
-            setGoogleMobileAds()
-        }
         
+        // Display ads from google if user no shared, recommend this app
+        if hasSharedApp {
+            //            print("hasSharedApp: \(hasSharedApp)")
+            defaults.set(true, forKey: "hasSharedApp")
+        }
+        setGoogleMobileAds()
         //present the guide page to first launch GoBike app.
         if !hasViewedGuidePage {
             if let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController {
                 present(guidePageViewController, animated: true, completion: nil )
             }
         }
-        print("hasSharedApp: \(hasSharedApp)")
+        
     }
 }

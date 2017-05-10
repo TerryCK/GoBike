@@ -30,7 +30,7 @@ enum TableViewCurrentDisplaySwitcher {
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     
     @IBAction func titleBtnPressed(_ sender: AnyObject) {
-        print("titleBtnPressed？ \(tableViewCanDoNext)")
+//        print("titleBtnPressed？ \(tableViewCanDoNext)")
         
         guard tableViewCanDoNext else {
             return
@@ -38,17 +38,25 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         
         switch currentStateOfTableViewDisplaying {
             
-        case .unDisplay:                                //defult on the screen
+        case .unDisplay:
+            //defult on the screen
+            DispatchQueue.main.async {
+                self.showUpTableView(self.UITableView)
+                self.locationArrowImage.isEnabled = false
+            }
             
-            showUpTableView(UITableView)
-            self.locationArrowImage.isEnabled = false
             setTrackModeNone()                          //turn off the Tracking module
             currentStateOfTableViewDisplaying.next()
             
         case .displaying:
             
-            unShowTableView(UITableView)
-            self.locationArrowImage.isEnabled = true
+            DispatchQueue.main.async {
+              
+                self.unShowTableView(self.UITableView)
+                self.locationArrowImage.isEnabled = true
+            }
+
+            
             currentStateOfTableViewDisplaying.next()
         }
         
@@ -81,7 +89,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             
         })
         
-        print("y: \(moveView.center.y)")
+//        print("y: \(moveView.center.y)")
         
     }
     
@@ -107,7 +115,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             self.visualEffectView.isHidden = true
             
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta )
-            print("y: \(moveView.center.y)")
+//            print("y: \(moveView.center.y)")
             self.tableViewCanDoNext = true
             
         })

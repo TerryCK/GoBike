@@ -14,7 +14,7 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
     @IBAction func errorReportBtnPressed(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "hasSharedApp")
-        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
+//        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
 //        print("hasSharedApp:", hasSharedApp)
         let mailComposeViewController = configuredMailComposeViewController()
         

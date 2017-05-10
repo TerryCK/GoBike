@@ -10,10 +10,13 @@ import Foundation
 import CoreLocation
 
 extension BikeStationsModel {
+    
+    
+    
     func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D) {
+       
         let latitude = userLocation.latitude.format //(%.2 double)
         let longitude = userLocation.longitude.format
-        
         
         for index in 0..<apis.count {
             
@@ -27,40 +30,39 @@ extension BikeStationsModel {
                 
                 
             case (.Taoyuan, 24.81...25.11, 120.9...121.4):
-                apis[index].isHere = false
+                apis[index].isHere = true
                 
                 
             case (.Hsinchu, 24.67...24.96, 120.81...121.16):
-                apis[index].isHere = false
+                apis[index].isHere = true
                 
                 
             case (.Taichung, 24.03...24.35, 120.40...121.00):
-                apis[index].isHere = false
+                apis[index].isHere = true
                 
                 
             case (.Changhua, 23.76...24.23, 120.06...120.77):
-                apis[index].isHere = false
+                apis[index].isHere = true
                 
                 
             case (.Tainan, 22.72...23.47, 119.94...120.58):
-                apis[index].isHere = false
+                apis[index].isHere = true
                 
                 
             case (.Kaohsiung, 22.46...22.73, 120.17...120.44):
-                apis[index].isHere = false
+                apis[index].isHere = true
                 
                 
             case (.Pingtung, 22.62...22.71, 120.430...120.53):
                 apis[index].isHere = true
                 
-                //            case ("pingtung", _ , _):
-                //
-                //                apis[index].isHere = true
                 
-            default:   //show alart
-                apis[index].isHere = true
+            default:
+                break
+                //show alart
+                //                apis[index].isHere = true
             }
-//            print("set",apis[index].city,"to" ,apis[index].isHere)
+            //            print("set",apis[index].city,"to" ,apis[index].isHere)
         }
     }
     

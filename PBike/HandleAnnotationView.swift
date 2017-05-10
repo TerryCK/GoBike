@@ -12,22 +12,22 @@ extension MapViewController {
     
     func handleAnnotationInfo() {
         
-//        let numberOfAPIs = delegate?.countOfAPIs
-//        let showPinInReginoDistance = 15.0
-//       print("restrict distance", showPinInReginoDistance)
-//        print("numberOfAPIs:", numberOfAPIs!, "timesOfLoadingAnnotationView:",timesOfLoadingAnnotationView)
-//        guard timesOfLoadingAnnotationView == numberOfAPIs! else {
-//            print("pass", timesOfLoadingAnnotationView)
-//            print("citys?:" , delegate?.citys.count)
-//            timesOfLoadingAnnotationView += 1
-//            return
-//        }
+        //        let numberOfAPIs = delegate?.countOfAPIs
+        //        let showPinInReginoDistance = 15.0
+        //       print("restrict distance", showPinInReginoDistance)
+        //        print("numberOfAPIs:", numberOfAPIs!, "timesOfLoadingAnnotationView:",timesOfLoadingAnnotationView)
+        //        guard timesOfLoadingAnnotationView == numberOfAPIs! else {
+        //            print("pass", timesOfLoadingAnnotationView)
+        //            print("citys?:" , delegate?.citys.count)
+        //            timesOfLoadingAnnotationView += 1
+        //            return
+        //        }
         
         guard let stations = delegate?.stations else {
             print("station nil")
             return
         }
-
+        
         
         self.bikeStations = stations
         var objArray = [CustomPointAnnotation]()
@@ -49,8 +49,10 @@ extension MapViewController {
         
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-//       guard let annotation = self.mapView?.annotations  else { return }
+        //       guard let annotation = self.mapView?.annotations  else { return }
         //        print("annotation count \(annotation.count)")
+        
+        
         oldAnnotations.append(contentsOf: annotations)
         annotations.removeAll()
         
@@ -69,6 +71,7 @@ extension MapViewController {
             //handle distance
             let distanceInKM = destinationOfCoordinats.distance(from: currentLocation).km
             let distanceInKMStr = distanceInKM.string
+            
             objectAnnotation.distance = distanceInKMStr
             
             
@@ -90,8 +93,8 @@ extension MapViewController {
             
             //handle bike station's name
             guard let currentBikeNumber = stations[index].currentBikeNumber,
-                  let name = stations[index].name,
-                  let parkNumber = stations[index].parkNumber else {
+                let name = stations[index].name,
+                let parkNumber = stations[index].parkNumber else {
                     return
             }
             
@@ -109,15 +112,19 @@ extension MapViewController {
             print("mapView not to self.mapView")
             return
         }
-        mapView.addAnnotations(annotations)
-        mapView.removeAnnotations(oldAnnotations)
         
-//        if oldAnnotations.count != 0 {
-//            (mapView.annotations.count - 1) == oldAnnotations.count ? print("annotationViews clean success") : print("移除之前的 \(oldAnnotations.count) 個後，annotations： \(mapView.annotations.count) 個\n")
-//            }
+        DispatchQueue.main.async {
+            mapView.addAnnotations(self.annotations)
+            mapView.removeAnnotations(self.oldAnnotations)
+            
+        }
+        
+        //        if oldAnnotations.count != 0 {
+        //            (mapView.annotations.count - 1) == oldAnnotations.count ? print("annotationViews clean success") : print("移除之前的 \(oldAnnotations.count) 個後，annotations： \(mapView.annotations.count) 個\n")
+        //            }
         oldAnnotations.removeAll()
     }
-   
+    
 }
 
 //present annotationView
@@ -125,6 +132,7 @@ extension MapViewController {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+
         if annotation.isKind(of: MKUserLocation.self) {
             return nil
         }
@@ -137,7 +145,8 @@ extension MapViewController {
             annotationView?.canShowCallout = true
             
         } else {
-            annotationView?.annotation = annotation   }
+            annotationView?.annotation = annotation
+        }
         
         let customAnnotation = annotation as! CustomPointAnnotation
         let distance = Double(customAnnotation.distance!)!
@@ -151,7 +160,6 @@ extension MapViewController {
         subTitleView.numberOfLines = 0
         subTitleView.textColor = UIColor.gray
         subTitleView.text = "\(distance) km"
-        
         annotationView?.image =  customAnnotation.imageName
         
         let smallSquare = CGSize(width: 43, height: 43)
@@ -160,25 +168,30 @@ extension MapViewController {
         button.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
         annotationView?.rightCalloutAccessoryView = button
         annotationView?.leftCalloutAccessoryView = subTitleView
+
         
         return annotationView
+        
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("Annotation selected")
+        //        print("Annotation selected")
         
-        if let annotation = view.annotation as? CustomPointAnnotation {
-            self.selectedPin = annotation.placemark
-            if let name = annotation.subtitle {
-                self.selectedPinName = "\(name) Bike)"
-                print("Your annotationView title: \(name)")
+        DispatchQueue.global(qos: .background).async {
+            if let annotation = view.annotation as? CustomPointAnnotation {
+                self.selectedPin = annotation.placemark
+                if let name = annotation.subtitle {
+                    self.selectedPinName = "\(name) Bike)"
+                    print("You selected annotationView title: \(name)")
+                }
             }
+            
         }
     }
     
     func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){
         //method of detect span region to change size of annotation View
-//        print("region will change")
+        //        print("region will change")
     }
 }
 

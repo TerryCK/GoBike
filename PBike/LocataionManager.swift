@@ -134,7 +134,7 @@ extension MapViewController: CLLocationManagerDelegate {
         let longitude = current.coordinate.longitude
         location.longitude = longitude >= 0 ? longitude : longitude + 360
         location.latitude = current.coordinate.latitude
-        delegate?.findLocateBikdAPI2Download(userLocation: location)
+        
         
 //        print("did Update locations the location is ", location)
         

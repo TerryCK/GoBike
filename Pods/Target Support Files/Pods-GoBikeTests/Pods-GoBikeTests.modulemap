@@ -1,6 +1,0 @@
-framework module Pods_GoBikeTests {
-  umbrella header "Pods-GoBikeTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

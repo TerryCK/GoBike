@@ -39,7 +39,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var selectedPin: MKPlacemark?
     var selectedPinName:String?
     var currentPeopleOfRidePBike:String = ""
-//    var resultSearchController: UISearchController!
+    //    var resultSearchController: UISearchController!
     var adUnitID = "ca-app-pub-3022461967351598/7933523718"
     var appId = "1168936145"
     var mailtitle =  "[GoBike]APP建議與回報"
@@ -57,7 +57,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var oldAnnotations = [MKAnnotation]()
     var timesOfLoadingAnnotationView = 1
     
-//     time relation parameter
+    //     time relation parameter
     let showTheResetButtonTime = 3
     var time = 1800
     var timer = Timer()
@@ -70,12 +70,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var bikesInStation = 0
     var nunberOfUsingBike = 0
     var bikeInUsing = ""
+    var citycounter = 1
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         self.updatingDataByServalTime()
+        
     }
     
     func updatingDataByServalTime() {
@@ -83,50 +84,56 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if reloadtime > 0 {
             reloadtime -= 1
             updateTimeLabel.text = "\(30 - reloadtime) 秒前更新"
-
+            
             
         } else {
             timer.invalidate()
             updateTimeLabel.text = "資料更新中"
             print("\n ***** 資料更新中 *****\n")
-            var counter = 1
-            delegate?.downloadInfoOfBikeFromAPI {
-                
-                
-                self.bikeOnService = self.appVersionInit()
-//                print("bikeOnService", self.bikeOnService)
-                self.handleAnnotationInfo()
-                guard let cities = self.delegate?.citys,
-                      let netWorkDataSize = self.delegate?.netWorkDataSize.currencyStyle else {
-                        return
-                }
-               
-                guard counter == cities.count else {
-                    counter += 1
-                    return
-                }
-                
-                print("\n站內腳踏車有 \(self.bikesInStation.currencyStyle) 台")
-                print("目前有 \(self.self.currentPeopleOfRidePBike) 人正在騎腳踏車")
-                print("全台目前站點有： \(self.annotations.count) 座")
-                print("目前顯示城市名單:")
-                print("  *****  ", terminator: "")
-                cities.forEach{ print($0, terminator: ", ") }
-                
-                print("  *****  \n\nnetWorkDataSize", netWorkDataSize, "bytes\n")
-                
-                self.UITableView.reloadData()
-                
-            }
-            
+            self.citycounter = 1
+            self.downloadDataFromAPI()
             timesOfLoadingAnnotationView = 1
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
             reloadtime = 30
         }
     }
     
+    func downloadDataFromAPI(){
+        
+        delegate?.downloadInfoOfBikeFromAPI {
+            self.bikeOnService = self.appVersionInit()
+            self.handleAnnotationInfo()
+            self.refreshShownData()
+        }
+    }
+    
+    func refreshShownData(){
+        
+        guard let cities = self.delegate?.citys,
+            let netWorkDataSize = self.delegate?.netWorkDataSize.currencyStyle else {
+                return
+        }
+        
+        guard self.citycounter == cities.count else {
+            self.citycounter += 1
+            return
+        }
+        print("\n站內腳踏車有 \(self.bikesInStation.currencyStyle) 台")
+        print("目前有 \(self.self.currentPeopleOfRidePBike) 人正在騎腳踏車")
+        print("目前地圖中有 \(self.annotations.count.currencyStyle) 座")
+        print("目前顯示城市名單:\n")
+        print("  *****  ", terminator: "")
+        cities.forEach{ print($0, terminator: ", ") }
+        
+        print("  *****  \n\n累積下載資料量:", netWorkDataSize, "bytes\n")
+        UITableView.reloadData()
+
+        
+    }
+    
     func setup() {
         delegate = BikeStationsModel()
+        
         setupRotatArrowBtnPosition()
         UITableView.delegate = self
         UITableView.dataSource = self

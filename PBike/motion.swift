@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 extension MapViewController {
     
     func applyMotionEffect(toView view: UIView, magnitude:Float){
