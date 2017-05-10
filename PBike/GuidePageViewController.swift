@@ -38,7 +38,7 @@ extension MapViewController {
             //            print("hasSharedApp: \(hasSharedApp)")
             defaults.set(true, forKey: "hasSharedApp")
         }
-        setGoogleMobileAds()
+//        setGoogleMobileAds()
         //present the guide page to first launch GoBike app.
         if !hasViewedGuidePage {
             if let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController {
