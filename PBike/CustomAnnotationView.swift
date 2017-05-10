@@ -11,5 +11,5 @@ import MapKit
 class CustomPointAnnotation: MKPointAnnotation {
     var imageName: UIImage!
     var placemark: MKPlacemark!
-    var distance: String!
+    var distance:  String!
 }

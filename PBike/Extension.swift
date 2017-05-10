@@ -73,6 +73,11 @@ extension Double {
     var format:Double {
         return Double(String(format:"%.2f", self))!
     }
+    var toRadian: CGFloat {
+        get { return CGFloat(self * (Double.pi/180))
+        }
+    }
+    
 }
 
 public extension Int {
@@ -80,11 +85,7 @@ public extension Int {
         return self <= 0 ? 0 : self
     }
     
-    var increaing: Int {
-        return self + 1
-    }
 
-    
     var currencyStyle: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -93,9 +94,23 @@ public extension Int {
         let result = formatter.string(from: self as NSNumber)
         return result!
     }
+    
+    var convertToHMS: String {
+        
+        let tempSeconds = self > 0 ? self : self * -1
+        let minutes: Int = tempSeconds / 60
+        let seconds: Int  = tempSeconds % 60
+        let zero: String  = 0...9 ~= seconds ? "0" : ""
+        let result: String = "\(minutes):\(zero)\(seconds)"
+        
+        // unit test 1
+        return result
+        
+        
+    }
 }
 
-extension BikeStation {
+extension BikeStationsModel {
     func enumerate(indexer: XMLIndexer, level: Int) {
         for child in indexer.children {
             let name = child.element!.name
@@ -104,4 +119,9 @@ extension BikeStation {
         }
     }
 }
+
+
+
+
+
 

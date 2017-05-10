@@ -14,7 +14,7 @@ extension MapViewController {
         let width = self.view.frame.size.width
         var left = -40
         
-        print("width:\(width)")
+//        print("width:\(width)")
         
         switch width {
             
@@ -31,7 +31,7 @@ extension MapViewController {
         }
         
         self.rotationArrow.imageEdgeInsets = UIEdgeInsetsMake(0.0, CGFloat(left), 0.0, 0.0)
-        print("left insert value:\(left)")
+//        print("left insert value:\(left)")
     }
     
 }

@@ -12,6 +12,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A84913EA1EC056E600C307D9"
+               BuildableName = "GoBikeUITests.xctest"
+               BlueprintName = "GoBikeUITests"
+               ReferencedContainer = "container:PBike.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A84913F81EC05A6900C307D9"
+               BuildableName = "GoBikeTests.xctest"
+               BlueprintName = "GoBikeTests"
+               ReferencedContainer = "container:PBike.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -41,3 +41,10 @@ target 'GoBike' do
     shared_pods
 
 end
+
+target 'GoBikeTests' do
+    
+    shared_pods
+    
+end
+

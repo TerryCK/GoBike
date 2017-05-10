@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "818F282CADF1FA29D16470DF938AF23A"
+               BlueprintIdentifier = "931B2B61EF4803E07A37BD52B7A10370"
                BuildableName = "Pods_GoBike.framework"
                BlueprintName = "Pods-GoBike"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "818F282CADF1FA29D16470DF938AF23A"
+            BlueprintIdentifier = "931B2B61EF4803E07A37BD52B7A10370"
             BuildableName = "Pods_GoBike.framework"
             BlueprintName = "Pods-GoBike"
             ReferencedContainer = "container:Pods.xcodeproj">

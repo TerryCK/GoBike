@@ -9,14 +9,28 @@
 import UIKit
 
 enum TimerStatus {
-    case pause
-    case play
-    case reset
+    case Pause
+    case Play
+    case Reset
+    mutating func next() {
+        
+        switch self {
+        case .Play:
+            self = .Pause
+            
+        case .Pause:
+            self = .Reset
+            
+        case .Reset:
+            self = .Play
+        }
+    }
 }
 
 extension MapViewController {
     
     @IBAction func timerPressed(_ sender: AnyObject) {
+        
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
@@ -25,93 +39,69 @@ extension MapViewController {
         print("hours = \(hour):\(minutes):\(seconds)")
         
         
+        
         switch timerStatusReadyTo {
             
-        case .play:
+        case .Play:
             print("Timer playing")
-            timerStatusReadyTo = .pause
-            timeCurrentStatus = .play
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.decreaseTimer), userInfo: nil, repeats: true)
             
-        case .pause:
+            timeCurrentStatus = .Play
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.decreaseTimer), userInfo: nil, repeats: true)
+            timerStatusReadyTo.next()
+            
+        case .Pause:
             self.timeInPause = time
             print("Timer pause")
-            timerStatusReadyTo = .reset
-            timeCurrentStatus = .pause
+            
+            timeCurrentStatus = .Pause
             timerLabel.setTitleColor(UIColor.red, for: .normal)
             timerLabel.setTitle("重置", for: .normal)
+            timerStatusReadyTo.next()
             
-        case .reset:
+        case .Reset:
+            
+            print("Timer reset")
+            
+            timeCurrentStatus = .Reset
             time = 1800
             timer.invalidate()
-            print("Timer reset")
-            timerStatusReadyTo = .play
-            timeCurrentStatus = .reset
             timerLabel.setTitleColor(UIColor.gray, for: .normal)
-            timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: UIControlState.normal)
+            timerLabel.setTitle(time.convertToHMS, for: UIControlState.normal)
+            timerStatusReadyTo.next()
         }
     }
     
     func decreaseTimer() {
         time -= 1
-        guard self.timeCurrentStatus == .play else {
-            return
-        }
-        switch time {
-        case 600...3600:
-            timerLabel.setTitleColor(UIColor.black, for: .normal)
-            timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
+        
+        if self.timeCurrentStatus == .Play {
+            let timerTittle = time.convertToHMS
             
-        case 0...600:
-            timerLabel.setTitleColor(UIColor.red, for: .normal)
-            timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
-        
-        default:
-            timerLabel.setTitleColor(UIColor.blue, for: .normal)
-            timerLabel.setTitle(timeConverterToHMS(_seconds: time), for: .normal)
-        
-        }
-        guard self.timeCurrentStatus == .pause else {
-            return
-        }
-        print("reset \(self.time)")
-        print("time in pause\(self.timeInPause)")
-        let timeToShowReset = timeInPause - self.showTheResetButtonTime
-        guard timeToShowReset == self.time else {
-            return
-        }
-        print("reset button unshow")
-        self.timeCurrentStatus = .play
-        self.timerStatusReadyTo = .pause
-    }
-    
-    func timeConverterToHMS(_seconds:Int) -> String {
-        var minutes: Int = 0
-        var seconds: Int = 0
-        var tempSeconds: Int = 0
-        var zero:String = ""
-        
-        tempSeconds = _seconds
-        
-        if _seconds < 0 {
-            tempSeconds = _seconds * -1
-        }
-        
-        minutes = tempSeconds / 60
-        seconds = tempSeconds % 60
-        
-        if seconds < 10 && seconds >= 0 {
-            zero = "0"
+            switch time {
+            case 600...3600:
+                timerLabel.setTitleColor(UIColor.black, for: .normal)
+                timerLabel.setTitle(timerTittle, for: .normal)
+                
+            case 0...600:
+                timerLabel.setTitleColor(UIColor.red, for: .normal)
+                timerLabel.setTitle(timerTittle, for: .normal)
+                
+            default:
+                timerLabel.setTitleColor(UIColor.blue, for: .normal)
+                timerLabel.setTitle(timerTittle, for: .normal)
+            }
             
-        } else {
-            zero = ""
+        } else if self.timeCurrentStatus == .Pause {
+            
+            print("reset \(self.time)")
+            print("time in pause\(self.timeInPause)")
+            let timeToShowReset = timeInPause - self.showTheResetButtonTime
+            guard timeToShowReset == self.time else {
+                return
+            }
+            //reset the timer status to defult
+            self.timeCurrentStatus = .Play
+            self.timerStatusReadyTo = .Pause
         }
-        
-        let time:String = "\(minutes):\(zero)\(seconds) "
-        
-        return (time)
     }
-    
-        
-        
 }

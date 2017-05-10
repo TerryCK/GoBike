@@ -4,32 +4,62 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
+		<key>Alamofire-iOS10.3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>AsyncSwift.xcscheme</key>
+		<key>Alamofire-iOS9.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>GoogleToolboxForMac.xcscheme</key>
+		<key>AsyncSwift-iOS10.3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>GzipSwift.xcscheme</key>
+		<key>AsyncSwift-iOS9.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Kanna.xcscheme</key>
+		<key>GoogleToolboxForMac-iOS10.3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PercentEncoder.xcscheme</key>
+		<key>GoogleToolboxForMac-iOS9.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GzipSwift-iOS10.3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GzipSwift-iOS9.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Kanna-iOS10.3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Kanna-iOS9.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PercentEncoder-iOS10.3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PercentEncoder-iOS9.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -44,6 +74,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-GoBikeTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PBike Dev.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,17 +89,32 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ReachabilitySwift.xcscheme</key>
+		<key>ReachabilitySwift-iOS10.3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SWXMLHash.xcscheme</key>
+		<key>ReachabilitySwift-iOS9.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
+		<key>SWXMLHash-iOS10.3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SWXMLHash-iOS9.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON-iOS10.3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON-iOS9.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -72,67 +122,117 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>10E34DB6DE66B9C7769CD168A1F8C4BE</key>
+		<key>0EEC6EB168CC0353BBEA3CA874586620</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5220306DE4390CF2C902092CC4F67F7B</key>
+		<key>162B14C735406B55997F682FC9308E25</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B535F108F36F971F443054A2FB1F624</key>
+		<key>1B107FBF1254601AD5A0DF5C856EEA21</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<key>2BADF8528BCA0E02930427A619F3D8C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>803EF880F0D8ECA3BA6F38C16BC6F2FF</key>
+		<key>2BDD80682AC221DC396BFC60901DFD58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>818F282CADF1FA29D16470DF938AF23A</key>
+		<key>3C2F1EE564F2E3FDC98E611BE863B889</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>92BB131FA876445E027D20AE23EA7B5F</key>
+		<key>433DC48143C8B5424A878201AB60B0E2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B5F2DA90FC241CBDC7558C2CB2A614C</key>
+		<key>4EA75BF80317ACE3D5614961725AC7DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9FDC0423067FEA5A5FC8C59AEE3F2F97</key>
+		<key>684B01ED43E2132502570DAA9D7534D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CAA176DE926B6802A5721A15ED7C706A</key>
+		<key>699442FDB0AEA39B688212C5E927FD7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1DC35DB2C695031A72543555FB23729</key>
+		<key>6C89DE94E80A058848728361785CD519</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D9DC09EBDF4A93EFC35EEA753D0A92C2</key>
+		<key>7925193D8B130429D2D229452632B540</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FEAAE7D0EBA6EBC0F715ACA3A40C7D81</key>
+		<key>8F42851F47294AA1B05A3D4CD04D65FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>931B2B61EF4803E07A37BD52B7A10370</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9719C8085230695A15D2354EF33B5F56</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A99E71E54AECA833175292D4A71F2976</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B71126FB6A743020BEF7F6ACB6D3388D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0EFA83920DAA7B37A1C31B3591FE92C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7E84328EC7B622702057CFBFEF82599</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA5767DC45FB63C73462C748D96C8EA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E1ABA90149F7F8DB8AB51389D07263E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F15699B593DF8A300F8D270BCEDC711C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE11B427C9EE76B8FE1D969C68A57379</key>
 		<dict>
 			<key>primary</key>
 			<true/>

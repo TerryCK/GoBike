@@ -13,197 +13,146 @@ import Foundation
 import SwiftyJSON
 import CoreLocation
 
-
-extension BikeStation {
+protocol Parser {
     
-    func parseHTML(city:String, html: String) -> Void {
+    func parseHTML2Object(city: City, html: String)                     -> [Station]?
+    func parseJSON2Object(city: City, json: JSON)                       -> [Station]?
+    func parseXML2Object(city:  City, xml stations: [StationXMLObject]) -> [Station]?
+    
+}
+
+
+extension BikeStationsModel: Parser {
+    
+    func parseHTML2Object(city: City, html: String) -> [Station]? {
         
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
-            print("doc can't be assigned by html")
-            return
+            print("error: parseHTML2Object")
+            return nil
         }
         
         let node = doc.css("script")[21]
-        let uriDecoded = node.text?.between("arealist='", "';arealist=JSON")?.urlDecode
         
-        guard let dataFromString = uriDecoded?.data(using: String.Encoding.utf8, allowLossyConversion: false) else {
+        let header = "arealist='"
+        
+        let footer = "';arealist=JSON"
+        
+        let uriDecoded = node.text?.between(header, footer)?.urlDecode
+        let using = String.Encoding.utf8
+        
+        guard let dataFromString = uriDecoded?.data(using: using, allowLossyConversion: false) else {
             print("dataFromString can't be assigned Changhau & Hsinchu")
-            return
+            return nil
         }
+        
         let json = JSON(data: dataFromString)
         
-        guard let stations:[Station] = self.parseJSON2Object(city, json: json) else {
+        guard let stations: [Station] = self.parseJSON2Object(city: city, json: json) else {
             print("station is nil plz check parseJson")
-            return
+            return nil
         }
-        self._stations.append(contentsOf: stations)
+        return stations
     }
     
-    func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D) {
-        let latitude = userLocation.latitude.format //(%.2 double)
-        let longitude = userLocation.longitude.format
-        for index in 0..<apis.count {
-            
-            switch (apis[index].city, latitude, longitude){
-            case ("taipei", 24.96...25.14, 121.44...121.65):
-                apis[index].isHere = true
-                
-                
-            case ("newTaipei", 24.75...25.33, 121.15...121.83):
-                apis[index].isHere = true
-                
-                
-            case ("taoyuan", 24.81...25.11, 120.9...121.4):
-                apis[index].isHere = true
-                
-                
-            case ("Hsinchu", 24.67...24.96, 120.81...121.16):
-                apis[index].isHere = true
-                
-                
-            case ("taichung", 24.03...24.35, 120.40...121.00):
-                apis[index].isHere = true
-                
-                
-            case ("Changhua", 23.76...24.23, 120.06...120.77):
-                apis[index].isHere = true
-                
-                
-            case ("tainan", 22.72...23.47, 119.94...120.58):
-                apis[index].isHere = true
-                
-                
-            case ("kaohsiung", 22.46...22.73, 120.17...120.44):
-                apis[index].isHere = true
-                
-                
-            case ("pingtung", 22.62...22.71, 120.430...120.53):
-                apis[index].isHere = true
-                
-                
-            default:  //show alart
-                apis[index].isHere = true
-            }
-            print("set",apis[index].city,"to" ,apis[index].isHere)
-        }
-    }
     
-    func parseJSON2Object(_ callIdentifier: String, json: JSON)  ->  [Station]? {
+    
+    
+    func parseJSON2Object(city: City, json: JSON) -> [Station]? {
         var jsonStation: [Station] = []
-        //        print("callIdentifier:",callIdentifier, "\n json:", json)
+        //        print("city:",city, "\n json:", json)
         guard !(json.isEmpty) else {
-            print("json is empty")
+            print("error: parseJSON2Object")
             return nil
         }
         
         func deserializableJSON(json: JSON) -> [Station] {
-            var deserializableJSONStation:[Station] = []
-            print("call deserializableJSON")
+            var deserializableJSON:[Station] = []
+//            print("call deserializableJSON")
+            
+            var name =              "sna"
+            var location =          "ar"
+            var parkNumber =        "bemp"
+            var currentBikeNumber = "sbi"
+            var longitude =         "lng"
+            var latitude =          "lat"
+            
+            
+            if city == .Tainan {
+               
+                name =              "StationName"
+                location =          "Address"
+                parkNumber =        "AvaliableSpaceCount"
+                currentBikeNumber = "AvaliableBikeCount"
+                longitude =         "Longitude"
+                latitude =          "Latitude"
+            }
             
             for ( _ , dict) in json {
                 
                 let obj = Station(
-                    name: dict["sna"].string,
-                    location: dict["ar"].stringValue,
-                    parkNumber: dict["bemp"].intValue,
-                    currentBikeNumber: dict["sbi"].intValue,
-                    longitude: dict["lng"].doubleValue,
-                    latitude: dict["lat"].doubleValue)
+                    name:               dict[name].string,
+                    location:           dict[location].stringValue,
+                    parkNumber:         dict[parkNumber].intValue,
+                    currentBikeNumber:  dict[currentBikeNumber].intValue,
+                    longitude:          dict[longitude].doubleValue,
+                    latitude:           dict[latitude].doubleValue)
                 
-                deserializableJSONStation.append(obj)
+                deserializableJSON.append(obj)
             }
-            return deserializableJSONStation
-        }
-        
-        func deserializableJSONOfTainan(json: JSON) -> [Station] {
-            var deserializableJSONStation:[Station] = []
-            for ( _ , dict) in json {
-                
-                let obj = Station(
-                    name: dict["StationName"].string,
-                    location: dict["Address"].stringValue,
-                    parkNumber: dict["AvaliableSpaceCount"].intValue,
-                    currentBikeNumber: dict["AvaliableBikeCount"].intValue,
-                    longitude: dict["Longitude"].doubleValue,
-                    latitude: dict["Latitude"].doubleValue)
-                
-                deserializableJSONStation.append(obj)
-            }
-            return deserializableJSONStation
+            return deserializableJSON
         }
         
         var jsonArray = json[]
         
-        switch callIdentifier {
-        case "tainan":
-            jsonArray = json
-            jsonStation = deserializableJSONOfTainan(json: jsonArray)
-            return jsonStation
+        switch city {
             
-        case "taipei","taichung":
+        case .Taipei, .Taichung:
             jsonArray = json["retVal"]
             
-        case "newTaipei", "taoyuan":
+        case .NewTaipei, .Taoyuan:
             jsonArray = json["result"]["records"]
             
-        case "Changhua", "Hsinchu":
+        case .Changhua, .Hsinchu, .Tainan:
             jsonArray = json
             
         default:
-            print("callIdentifier error")
+            print("city error:", city)
         }
+        
         
         jsonStation = deserializableJSON(json: jsonArray)
         return jsonStation
     }
     
-    func statusOfStationImage(station:[Station], index:Int) -> String {
-        var pinImage = ""
-        
-        if let numberOfBike = station[index].currentBikeNumber {
-            
-            switch numberOfBike {
-            case 1...5:
-                pinImage = "pinLess"
-                
-            case 5...200:
-                pinImage = station[index].parkNumber == 0 ? "pinFull" : "pinMed"
-                
-            case 0:
-                pinImage = "pinEmpty"
-                
-            default:
-                pinImage  = "pinUnknow"
-                
-            }
-        }
-        return pinImage
-    }
     
-    func xmlToStation(key:String, stations:[StationXML]) -> [Station] {
-        var _station:[Station]  = []
-        let count = stations.count
+    func parseXML2Object(city: City, xml stations: [StationXMLObject]) -> [Station]? {
+        var stationsParsed:[Station]  = []
         
-        for index in 0..<count  {
+        guard !(stations.isEmpty) else {
+            print("error: parseXML2Object")
+            return nil
+        }
+        
+        stationsParsed = stations.map {
             
-            var obj = Station(
-                name: stations[index].name,
-                location: stations[index].location,
-                parkNumber: stations[index].parkNumber,
-                currentBikeNumber: stations[index].currentBikeNumber,
-                longitude: stations[index].longitude,
-                latitude: stations[index].latitude
+            var obj = Station (
+                name:               $0.name,
+                location:           $0.location,
+                parkNumber:         $0.parkNumber,
+                currentBikeNumber:  $0.currentBikeNumber,
+                longitude:          $0.longitude,
+                latitude:           $0.latitude
             )
             
+            // avoid data source wrong formation with coordinates
             if obj.latitude > obj.longitude {
                 swap(&obj.latitude, &obj.longitude)
             }
             
-            _station.append(obj)
+            return obj
         }
         
-        
-        return _station
+        return stationsParsed
     }
-
 }
+

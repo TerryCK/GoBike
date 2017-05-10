@@ -15,7 +15,7 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "hasSharedApp")
         let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
-        print("hasSharedApp:", hasSharedApp)
+//        print("hasSharedApp:", hasSharedApp)
         let mailComposeViewController = configuredMailComposeViewController()
         
         if MFMailComposeViewController.canSendMail() {
@@ -39,8 +39,8 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         
         UIApplication.shared.openURL(checkURL)
         print("rating url successfully opened")
-        let defaults = UserDefaults.standard
-        defaults.set(true, forKey: "hasSharedApp")
+//        let defaults = UserDefaults.standard
+//        defaults.set(true, forKey: "hasSharedApp")
     }
     
     
@@ -52,7 +52,7 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         }
         let objectsToShare = [name]
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        if (UIDevice.current.userInterfaceIdiom) == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             activityVC.popoverPresentationController?.sourceView = self.view
             activityVC.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
             activityVC.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.init(rawValue: 0)
@@ -60,10 +60,10 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
             print("This is iPad")
         }
         self.present(activityVC, animated: true, completion: nil)
-        let defaults = UserDefaults.standard
-        defaults.set(true, forKey: "hasSharedApp")
-        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
-        print("hasSharedApp:", hasSharedApp)
+//        let defaults = UserDefaults.standard
+//        defaults.set(true, forKey: "hasSharedApp")
+//        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
+//        print("hasSharedApp:", hasSharedApp)
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {

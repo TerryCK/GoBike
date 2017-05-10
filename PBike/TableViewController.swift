@@ -9,44 +9,59 @@
 
 import UIKit
 
+enum TableViewCurrentDisplaySwitcher {
+    case displaying, unDisplay
+    
+    mutating func next(){
+        
+        switch self {
+            
+        case .displaying:
+            self = .unDisplay
+            
+        case .unDisplay:
+            self = .displaying
+            
+        }
+        
+    }
+}
+
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     
     @IBAction func titleBtnPressed(_ sender: AnyObject) {
         print("titleBtnPressed？ \(tableViewCanDoNext)")
-        print("秀表格嗎？ \(showInfoTableView)")
         
         guard tableViewCanDoNext else {
             return
         }
         
-        if showInfoTableView {
-//            do for unshow tabview
-            self.locationArrowImage.isEnabled = true
-            unShowTableView(UITableView)
-            showInfoTableView = false
-            print("locationArrowImage Button is enabled")
+        switch currentStateOfTableViewDisplaying {
             
-        } else {
-//             do for show tabview
-            setTrackModeNone()
+        case .unDisplay:                                //defult on the screen
+            
             showUpTableView(UITableView)
             self.locationArrowImage.isEnabled = false
-            showInfoTableView = true
-            print("locationArrowImage Button is unabled")
+            setTrackModeNone()                          //turn off the Tracking module
+            currentStateOfTableViewDisplaying.next()
+            
+        case .displaying:
+            
+            unShowTableView(UITableView)
+            self.locationArrowImage.isEnabled = true
+            currentStateOfTableViewDisplaying.next()
         }
-    }
+        
+}
     
-    func toRadian(degree: Double) -> CGFloat {
-        return CGFloat(degree * (M_PI/180))
-    }
     
     func showUpTableView(_ moveView: UIView){
         self.tableViewCanDoNext = false
         
-//        show subview from top
-//        print("self.tableViewCanDoNext \(self.tableViewCanDoNext)")
-//        print("UITableView Postition \(UITableView.center) ")
-//        print("Show up Table View   : Y + yDelta")
+        //        show subview from top
+        //        print("self.tableViewCanDoNext \(self.tableViewCanDoNext)")
+        //        print("UITableView Postition \(UITableView.center) ")
+        //        print("Show up Table View   : Y + yDelta")
         
         moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta )
         moveView.isHidden = false
@@ -55,14 +70,14 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         UIView.animate(withDuration: 0.3, delay: 0, options:[UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut], animations: {
             
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta)
-            self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: self.toRadian(degree: 180))
+            self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 180.toRadian)
             self.visualEffectView.effect = self.effect
             
         }, completion: { (Bool) in
             
             self.tableViewCanDoNext = true
             
-//            print("show Up animation is completion")
+            //            print("show Up animation is completion")
             
         })
         
@@ -70,28 +85,34 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
     
+    
+    
     func unShowTableView(_ moveView: UIView){
-//        show subview out to top
-//        print("Show off Table View  : Y - yDelta")
+        //        show subview out to top
+        //        print("Show off Table View  : Y - yDelta")
         
-        self.tableViewCanDoNext = false
+        self.tableViewCanDoNext = false //operation for safe display tableview
         
         
         UIView.animate(withDuration: 0.3, delay: 0, options:[UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut], animations: {
+            
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta)
             self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 0)
             self.visualEffectView.effect = nil
             
         }, completion: { (Bool) in
-//            print("show off animation is completion")
+            //            print("show off animation is completion")
+            
             moveView.isHidden = true
             self.visualEffectView.isHidden = true
+            
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta )
             print("y: \(moveView.center.y)")
             self.tableViewCanDoNext = true
             
         })
     }
+    
     
     
     
@@ -102,7 +123,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 12
     }
-//    set cell space hight
+    //    set cell space hight
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -134,7 +155,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThanksforTableViewCell", for: indexPath) as! ThanksforTableViewCell
-            cell.thanksLabel.text = "   本程式資料來源係由\(govName)與\(dataOwner)之公開資訊、恕不保證內容準確性，本程式之所有權為作者所有。"
+            cell.thanksLabel.text = "   本程式資料來源係由各地方政府及其合作廠商之公開資訊、恕不保證內容準確性，本程式之所有權為作者所有。"
             cellCustomize(cell: cell)
             return cell
             
@@ -146,7 +167,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//         note that indexPath.section is used rather than indexPath.row
+        //         note that indexPath.section is used rather than indexPath.row
         print("You tapped cell number \(indexPath.section).")
         
     }
