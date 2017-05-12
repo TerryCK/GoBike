@@ -1,5 +1,4 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
 FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Alamofire-iOS9.0" "$PODS_CONFIGURATION_BUILD_DIR/AsyncSwift-iOS9.0" "$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac-iOS9.0" "$PODS_CONFIGURATION_BUILD_DIR/GzipSwift-iOS9.0" "$PODS_CONFIGURATION_BUILD_DIR/Kanna-iOS9.0" "$PODS_CONFIGURATION_BUILD_DIR/PercentEncoder-iOS9.0" "$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift-iOS9.0" "$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash-iOS9.0" "$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON-iOS9.0" "${PODS_ROOT}/Crashlytics/iOS" "${PODS_ROOT}/Fabric/iOS" "${PODS_ROOT}/FirebaseAnalytics/Frameworks" "${PODS_ROOT}/FirebaseCore/Frameworks" "${PODS_ROOT}/FirebaseInstanceID/Frameworks" "${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/frameworks"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) ${PODS_ROOT}/Firebase/Core/Sources $(SDKROOT)/usr/include/libxml2 $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Crashlytics" "${PODS_ROOT}/Headers/Public/Fabric" "${PODS_ROOT}/Headers/Public/Firebase" "${PODS_ROOT}/Headers/Public/FirebaseAnalytics" "${PODS_ROOT}/Headers/Public/FirebaseCore" "${PODS_ROOT}/Headers/Public/FirebaseInstanceID" "${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK"
@@ -9,5 +8,6 @@ OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"sqlite3" -l"z" -framework "AVFound
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
 SWIFT_INCLUDE_PATHS = $(SRCROOT)/Kanna/Modules

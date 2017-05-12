@@ -58,9 +58,9 @@ extension BikeStationsModel {
                 
                 
             default:
-                break
+                 apis[index].isHere = true//                break
                 //show alart
-                //                apis[index].isHere = true
+                
             }
             //            print("set",apis[index].city,"to" ,apis[index].isHere)
         }

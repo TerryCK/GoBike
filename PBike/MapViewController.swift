@@ -26,7 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     
-    let yDelta:CGFloat = 500
+    let yDelta: CGFloat = 500
     let queue = DispatchQueue(label: "com.MapVision.myqueue")
     let cellSpacingHeight: CGFloat = 5
     
@@ -34,11 +34,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var effect:UIVisualEffect!
     
     
-    var bikeStations = BikeStationsModel().stations //the object for save ["station"]
+    var bikeStations = [Station]() //the object for save ["station"]
     var location = CLLocationCoordinate2D()
     var selectedPin: MKPlacemark?
-    var selectedPinName:String?
-    var currentPeopleOfRidePBike:String = ""
+    var selectedPinName: String?
+    var currentPeopleOfRidePBike: String = ""
     //    var resultSearchController: UISearchController!
     var adUnitID = "ca-app-pub-3022461967351598/7933523718"
     var appId = "1168936145"
@@ -53,7 +53,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var currentStateOfTableViewDisplaying = TableViewCurrentDisplaySwitcher.unDisplay
     
-    var tableViewCanDoNext:Bool = true
+    var tableViewCanDoNext: Bool = true
     var oldAnnotations = [MKAnnotation]()
     var timesOfLoadingAnnotationView = 1
     
@@ -75,11 +75,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
         self.updatingDataByServalTime()
         
     }
     
+
+    
     func updatingDataByServalTime() {
+        
         
         if reloadtime > 0 {
             reloadtime -= 1
@@ -87,6 +91,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             
         } else {
+            
             timer.invalidate()
             updateTimeLabel.text = "資料更新中"
             print("\n ***** 資料更新中 *****\n")
@@ -104,13 +109,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.bikeOnService = self.appVersionInit()
             self.handleAnnotationInfo()
             self.refreshShownData()
+           
         }
+        
+        
     }
     
     func refreshShownData(){
         
         guard let cities = self.delegate?.citys,
-            let netWorkDataSize = self.delegate?.netWorkDataSize.currencyStyle else {
+                let netWorkDataSize = self.delegate?.netWorkDataSize.currencyStyle else {
                 return
         }
         
@@ -127,13 +135,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         print("  *****  \n\n累積下載資料量:", netWorkDataSize, "bytes\n")
         UITableView.reloadData()
-
+        
         
     }
     
     func setup() {
-        delegate = BikeStationsModel()
         
+        delegate = BikeStationsModel()
         setupRotatArrowBtnPosition()
         UITableView.delegate = self
         UITableView.dataSource = self

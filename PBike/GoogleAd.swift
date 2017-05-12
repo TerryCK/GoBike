@@ -21,13 +21,13 @@ extension MapViewController: GADBannerViewDelegate{
         request.testDevices = [test_iPhone, test_iPhones, kGADSimulatorID]
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.load(request)
-        print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
-        print("TestID is \(request.testDevices!)")
+//        print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
+//        print("TestID is \(request.testDevices!)")
     }
     
     private func adView(bannerView: GADBannerView!,
                         didFailToReceiveAdWithError error: GADRequestError!) {
-        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+//        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
     
 }

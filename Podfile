@@ -3,11 +3,12 @@
 
 def shared_pods
 	use_frameworks!
-    pod 'Firebase/Core'
+
+    pod 'Firebase/AdMob'
+    pod 'Firebase/Core', '~> 3.16.0'
     pod 'SWXMLHash', '~> 3.0.0'
     pod 'Alamofire', '~> 4.0'
     pod 'ReachabilitySwift'
-    pod 'Firebase/AdMob'
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'GzipSwift', '~> 3.1'
@@ -37,9 +38,9 @@ end
 
 
 target 'GoBike' do
-
+    
     shared_pods
-
+    
 end
 
 target 'GoBikeTests' do

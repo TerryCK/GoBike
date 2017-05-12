@@ -177,16 +177,16 @@ extension MapViewController {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         //        print("Annotation selected")
         
-        DispatchQueue.global(qos: .background).async {
+//        DispatchQueue.global(qos: .background).async {
             if let annotation = view.annotation as? CustomPointAnnotation {
                 self.selectedPin = annotation.placemark
                 if let name = annotation.subtitle {
-                    self.selectedPinName = "\(name) Bike)"
+                    self.selectedPinName = "\(name) (公共自行車站)"
                     print("You selected annotationView title: \(name)")
                 }
             }
             
-        }
+//        }
     }
     
     func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){

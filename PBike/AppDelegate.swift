@@ -27,21 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
-        #if CityBike  //city bike
-            
-            GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~8088837314")
-            
-            
-        #elseif PBike //PBike
-            
-            GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~3503324111")
-        
-        #else //GoBike
+//        #if CityBike  //city bike
+//            
+//            GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~8088837314")
+//            
+//            
+//        #elseif PBike //PBike
+//            
+//            GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~3503324111")
+//        
+//        #else //GoBike
             
             GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~6339780911")
             
-        #endif
-        
+//        #endif
+
         return true
     }
 

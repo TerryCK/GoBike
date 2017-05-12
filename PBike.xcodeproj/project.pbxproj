@@ -167,6 +167,7 @@
 		A8CC81791E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
 		A8E01EA31DDD481900BC440C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */; };
 		A8E01EA41DDD481900BC440C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */; };
+		A8E453E01EC5AC3D001D9BC7 /* YouBikeTP.gz in Resources */ = {isa = PBXBuildFile; fileRef = A8E453DF1EC5AC3D001D9BC7 /* YouBikeTP.gz */; };
 		A8F43CC91E63D04900B0A6BE /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC71E63D04900B0A6BE /* Taipei.gpx */; };
 		A8F43CCA1E63D04900B0A6BE /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC71E63D04900B0A6BE /* Taipei.gpx */; };
 		A8F43CCB1E63D04900B0A6BE /* Taipei.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A8F43CC71E63D04900B0A6BE /* Taipei.gpx */; };
@@ -302,6 +303,7 @@
 		A8CC81751E14C7D000CBC824 /* MapNavigate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigate.swift; sourceTree = "<group>"; };
 		A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8E453DF1EC5AC3D001D9BC7 /* YouBikeTP.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = YouBikeTP.gz; sourceTree = "<group>"; };
 		A8F43CC71E63D04900B0A6BE /* Taipei.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Taipei.gpx; path = GPX/Taipei.gpx; sourceTree = "<group>"; };
 		A8F43CC81E63D04900B0A6BE /* PingtungTW.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PingtungTW.gpx; path = GPX/PingtungTW.gpx; sourceTree = "<group>"; };
 		A8F43CD21E63D07100B0A6BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/CBikeLaunch Screen.storyboard"; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 		A84913FA1EC05A6900C307D9 /* GoBikeTests */ = {
 			isa = PBXGroup;
 			children = (
+				A8E453DF1EC5AC3D001D9BC7 /* YouBikeTP.gz */,
 				A84913FB1EC05A6900C307D9 /* GoBikeTests.swift */,
 				A84913FD1EC05A6900C307D9 /* Info.plist */,
 			);
@@ -868,6 +871,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E453E01EC5AC3D001D9BC7 /* YouBikeTP.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,7 +950,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4C11C28DCFE172EED88B0DEA /* [CP] Check Pods Manifest.lock */ = {
@@ -961,7 +965,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		57F4C19608A4D96E5F57C15E /* [CP] Embed Pods Frameworks */ = {
@@ -1021,7 +1025,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A85D3C641DCEBAE800875B3A /* [CP] Embed Pods Frameworks */ = {
@@ -1066,7 +1070,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A8A80B1E1DD1F6F400107566 /* [CP] Embed Pods Frameworks */ = {
@@ -1137,7 +1141,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A8FE69721DEDB2BE00BE4E51 /* [CP] Embed Pods Frameworks */ = {
@@ -1443,6 +1447,21 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = Y8SJ5M44N4;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK\"",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+				);
 				INFOPLIST_FILE = GoBikeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1461,6 +1480,21 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				DEVELOPMENT_TEAM = Y8SJ5M44N4;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK\"",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+				);
 				INFOPLIST_FILE = GoBikeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1695,6 +1729,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1797,11 +1832,6 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
-					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
 					"$(PROJECT_DIR)/PBike",
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)",
@@ -1834,11 +1864,6 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/ReachabilitySwift\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
-					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
 					"$(PROJECT_DIR)/PBike",
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)",
