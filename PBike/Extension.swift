@@ -101,7 +101,7 @@ public extension Int {
         let minutes: Int = tempSeconds / 60
         let seconds: Int  = tempSeconds % 60
         let zero: String  = 0...9 ~= seconds ? "0" : ""
-        let result: String = "\(minutes):\(zero)\(seconds)"
+        let result: String = "\(minutes):\(zero)\(seconds) "
         
         // unit test 1
         return result

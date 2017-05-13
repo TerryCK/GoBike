@@ -46,9 +46,9 @@ struct Bike: BikeAPIDelegate {
     
     internal var apis: [BikeAPI] = [
         
-        BikeAPI(city: .Taipei, url: taipeiAPI, isHere: false, bikeVision: .UBike, dataType: .JSON),
+        BikeAPI(city: .Taipei, url: taipeiAPI, isHere: true, bikeVision: .UBike, dataType: .JSON),
         
-        BikeAPI(city: .NewTaipei, url: newTaipeiAPI, isHere: false ,bikeVision: .UBike, dataType: .JSON),
+        BikeAPI(city: .NewTaipei, url: newTaipeiAPI, isHere: true ,bikeVision: .UBike, dataType: .JSON),
         
         BikeAPI(city: .Taoyuan, url: taoyuanAPI, isHere: false, bikeVision: .UBike, dataType: .JSON),
         

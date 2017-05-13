@@ -78,7 +78,7 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         return mailComposerVC
     }
     
-    //    alart 待改進
+    
     func showSendMailErrorAlert() {
         let alertController = UIAlertController(title: "無法傳送Email", message: "目前無法傳送郵件，請檢查E-mail設定並在重試", preferredStyle: UIAlertControllerStyle.alert)
         //Replace UIAlertControllerStyle.Alert by UIAlertControllerStyle.alert

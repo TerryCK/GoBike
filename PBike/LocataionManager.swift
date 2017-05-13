@@ -17,13 +17,14 @@ extension MapViewController: CLLocationManagerDelegate {
         myLocationManager.delegate = self
         myLocationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
         myLocationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
     }
     
     func setCurrentLocation(latDelta: Double, longDelta: Double) {
         
         let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
         
-//        print("myLocationManager.location , \(myLocationManager.location)")
+        //        print("myLocationManager.location , \(myLocationManager.location)")
         
         if let current = myLocationManager.location {
             
@@ -45,7 +46,7 @@ extension MapViewController: CLLocationManagerDelegate {
         let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate, span: currentLocationSpan)
         self.mapView.setRegion(currentRegion, animated: false)
         
-//        print("currentRegion \(currentRegion)")
+        //        print("currentRegion \(currentRegion)")
     }
     
     
@@ -90,15 +91,15 @@ extension MapViewController: CLLocationManagerDelegate {
         self.mapView.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
     }
     
-    func setTrackModeNone(){
+    func setTrackModeNone() {
         self.mapView.setUserTrackingMode(MKUserTrackingMode.none, animated: false)
     }
     
-    func setTrackModeToFollow(){
+    func setTrackModeToFollow() {
         self.mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: false)
     }
     
-    func authrizationStatus(){
+    func authrizationStatus(completed: @escaping () -> Void ) {
         let authrizationStatus = CLLocationManager.authorizationStatus()
         switch authrizationStatus {
         case .notDetermined:
@@ -113,7 +114,7 @@ extension MapViewController: CLLocationManagerDelegate {
             
         case .authorizedWhenInUse:
             myLocationManager.startUpdatingLocation()
-//            print("開始定位")
+            //            print("開始定位")
             
         default:
             print("Location authrization error")
@@ -123,9 +124,9 @@ extension MapViewController: CLLocationManagerDelegate {
         
         let myLocation:MKUserLocation = mapView.userLocation
         myLocation.title = "😏目前位置"
-        setCurrentLocation(latDelta: 0.03, longDelta: 0.03)
-//        print("location", location)
-        delegate?.findLocateBikdAPI2Download(userLocation: location)
+        
+        completed()
+        
     }
     
     
@@ -136,7 +137,7 @@ extension MapViewController: CLLocationManagerDelegate {
         location.latitude = current.coordinate.latitude
         
         
-//        print("did Update locations the location is ", location)
+        //        print("did Update locations the location is ", location)
         
     }
     

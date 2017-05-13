@@ -33,12 +33,12 @@ extension MapViewController {
                 self.dataOwner = "巨大機械工業股份有限公司"
                 bikeOnService += 7500
                 
-            case .Taoyuan :
+            case .Taoyuan:
                 self.govName = "桃園市政府"
                 self.dataOwner = "巨大機械工業股份有限公司"
                 bikeOnService += 2800
                 
-            case .Hsinchu :
+            case .Hsinchu:
                 self.govName = "新竹市政府"
                 self.dataOwner = "巨大機械工業股份有限公司"
                 bikeOnService += 1350
@@ -53,12 +53,12 @@ extension MapViewController {
                 self.dataOwner = "巨大機械工業股份有限公司"
                 bikeOnService += 7000
                 
-            case .Tainan :
+            case .Tainan:
                 self.govName = "台南市政府"
                 self.dataOwner = "T-Bike營運團隊"
                 bikeOnService += 500
                 
-            case .Kaohsiung :
+            case .Kaohsiung:
                 self.govName = "高雄市政府"
                 self.dataOwner = "高雄捷運局"
                 bikeOnService += 2600
@@ -70,7 +70,7 @@ extension MapViewController {
                 
             }
             
-            bikeOnService = bikeOnService >= 45000 ? 40000 : bikeOnService
+            bikeOnService = bikeOnService >= 40000 ? 40000 : bikeOnService
             
         }
         

@@ -4,21 +4,20 @@ PODS:
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
-  - Firebase/AdMob (3.16.0):
+  - Firebase/AdMob (3.15.0):
     - Firebase/Core
-    - Google-Mobile-Ads-SDK (= 7.19.1)
-  - Firebase/Core (3.16.0):
-    - FirebaseAnalytics (= 3.8.0)
-    - FirebaseCore (= 3.6.0)
-  - FirebaseAnalytics (3.8.0):
-    - FirebaseCore (~> 3.6)
+    - Google-Mobile-Ads-SDK (= 7.19.0)
+  - Firebase/Core (3.15.0):
+    - FirebaseAnalytics (= 3.7.0)
+    - FirebaseCore (= 3.5.2)
+  - FirebaseAnalytics (3.7.0):
+    - FirebaseCore (~> 3.5)
     - FirebaseInstanceID (~> 1.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (3.6.0):
+  - FirebaseCore (3.5.2):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseInstanceID (1.0.10):
-    - FirebaseCore (~> 3.6)
-  - Google-Mobile-Ads-SDK (7.19.1)
+  - FirebaseInstanceID (1.0.9)
+  - Google-Mobile-Ads-SDK (7.19.0)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
@@ -27,7 +26,7 @@ PODS:
   - PercentEncoder (1.1.0)
   - ReachabilitySwift (3)
   - SwiftyJSON (3.1.4)
-  - SWXMLHash (3.0.4)
+  - SWXMLHash (3.0.5)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -35,7 +34,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Firebase/AdMob
-  - Firebase/Core (~> 3.16.0)
+  - Firebase/Core (~> 3.15.0)
   - GzipSwift (~> 3.1)
   - Kanna (~> 2.1.0)
   - PercentEncoder
@@ -48,19 +47,19 @@ SPEC CHECKSUMS:
   AsyncSwift: 632138e42ead868b53c745fcde9bf733ce1527ad
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  Firebase: 21bf4a89d3f01bfbe11adc3a5d934a4a3d3a5fd6
-  FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
-  FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
-  FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
-  Google-Mobile-Ads-SDK: 43ac87810e4961f5093024d3525bfe022f956da3
+  Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
+  FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
+  FirebaseCore: a024587e43778508700af8c6b1209f7c4516ba02
+  FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
+  Google-Mobile-Ads-SDK: d1bcdbd8347a105a687345b8511701172a5074e9
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GzipSwift: 11ddb2bf253b1cd7b60bb169da20f62ac4348769
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   PercentEncoder: 7a001be188d62187761cb785156ac7e5c105688d
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  SWXMLHash: 29d20b84692fc319ea8ed933058fe7d8d005139b
+  SWXMLHash: 701f7d07c032089b9ff34e0352bd4fed1a24652a
 
-PODFILE CHECKSUM: 55a2967130e1c6038d032be2181409c2d14c9f9b
+PODFILE CHECKSUM: f5375abccf0e6a348040787b3ce17a20736a6542
 
 COCOAPODS: 1.2.1

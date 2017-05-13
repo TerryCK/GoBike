@@ -58,7 +58,8 @@ extension BikeStationsModel {
                 
                 
             default:
-                 apis[index].isHere = true//                break
+//                 apis[index].isHere = true
+                                break
                 //show alart
                 
             }

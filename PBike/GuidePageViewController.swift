@@ -25,26 +25,16 @@ class GuidePageViewController: UIViewController{
 extension MapViewController {
     
     //get the authorization for location
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    
+    func performanceGuidePage() {
         
         let defaults = UserDefaults.standard
-        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
         let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
-        
-        
-        // Display ads from google if user no shared, recommend this app
-        if hasSharedApp {
-            //            print("hasSharedApp: \(hasSharedApp)")
-            defaults.set(true, forKey: "hasSharedApp")
-        }
-        setGoogleMobileAds()
-        //present the guide page to first launch GoBike app.
         if !hasViewedGuidePage {
             if let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController {
                 present(guidePageViewController, animated: true, completion: nil )
             }
         }
-        
+       
     }
 }

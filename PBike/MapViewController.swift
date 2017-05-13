@@ -8,10 +8,20 @@
 
 import UIKit
 import MapKit
-import Crashlytics
 import CoreLocation
 import GoogleMobileAds
 
+protocol BikeStationDelegate: class  {
+    var  citys:             [City]      { get }
+    var  stations:          [Station]   { get }
+    var  countOfAPIs:       Int         { get }
+    var  netWorkDataSize:   Int         { get }
+    func downloadInfoOfBikeFromAPI(completed: @escaping DownloadComplete)
+    func statusOfStationImage(station: [Station], index: Int) -> String
+    func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D)
+    
+    
+}
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
@@ -25,9 +35,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var locationArrowImage: UIButton!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
+    var delegate: BikeStationDelegate?
+//    var bikeStationModel: BikeStationsModel?
     
     let yDelta: CGFloat = 500
-    let queue = DispatchQueue(label: "com.MapVision.myqueue")
     let cellSpacingHeight: CGFloat = 5
     
     var myLocationManager: CLLocationManager!
@@ -47,7 +58,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var dataOwner = "高雄捷運局"
     var applink = "https://itunes.apple.com/tw/app/pbike-ping-dong-zui-piao-liang/id1168936145?l=zh&mt=8"
     var rideBikeWithYou = "人陪你騎腳踏車"
-    var delegate: BikeStationDelegate?
+    
     var annotations = [MKAnnotation]()
     var bikeOnService = 0
     
@@ -61,9 +72,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let showTheResetButtonTime = 3
     var time = 1800
     var timer = Timer()
+    var rentedTimer = Timer()
     var reloadtime = 0 //seconds
     var timerStatusReadyTo: TimerStatus = .Play
-    var timeCurrentStatus: TimerStatus = .Reset
+    open var timerCurrentStatusFlag: TimerStatus = .Reset
     var timeInPause: Int = 5
     
     
@@ -74,17 +86,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        configuration()
         
-        self.updatingDataByServalTime()
+        authrizationStatus {
+            self.setCurrentLocation(latDelta: 0.03, longDelta: 0.03)
+//            print("delegate mapview",self.delegate)
+            self.delegate?.findLocateBikdAPI2Download(userLocation: self.location)
+            self.updatingDataByServalTime()
+        }
         
     }
     
 
     
     func updatingDataByServalTime() {
-        
-        
+       
         if reloadtime > 0 {
             reloadtime -= 1
             updateTimeLabel.text = "\(30 - reloadtime) 秒前更新"
@@ -104,15 +120,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func downloadDataFromAPI(){
-        
+
         delegate?.downloadInfoOfBikeFromAPI {
             self.bikeOnService = self.appVersionInit()
             self.handleAnnotationInfo()
             self.refreshShownData()
            
         }
-        
-        
     }
     
     func refreshShownData(){
@@ -139,19 +153,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    func setup() {
-        
-        delegate = BikeStationsModel()
+    
+    func configuration() {
+        performanceGuidePage()
+        initializeLocationManager()
+
         setupRotatArrowBtnPosition()
+        self.delegate = BikeStationsModel()
+        //        bikeStationModel = BikeStationsModel.init()
         UITableView.delegate = self
         UITableView.dataSource = self
+        
+        
         UITableView.backgroundView?.alpha = 0
-        initializeLocationManager()
-        authrizationStatus()
-        viewInit()
+        viewConfriguation()
+        setGoogleMobileAds()
     }
     
-    func viewInit() {
+    func viewConfriguation() {
         mapViewInfoCustomize()
         effect = self.visualEffectView.effect
         visualEffectView.effect = nil

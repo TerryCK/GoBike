@@ -13,17 +13,7 @@ import Foundation
 import SwiftyJSON
 import CoreLocation
 
-protocol BikeStationDelegate  {
-    
-    var  citys:        [City]      { get }
-    var  stations:     [Station]   { get }
-    var  countOfAPIs:  Int         { get }
-    func downloadInfoOfBikeFromAPI(completed: @escaping DownloadComplete)
-    func statusOfStationImage(station: [Station], index: Int) -> String
-    func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D)
-    var  netWorkDataSize: Int { get }
-    
-}
+
 
 
 class BikeStationsModel: BikeStationDelegate {
@@ -35,14 +25,17 @@ class BikeStationsModel: BikeStationDelegate {
     internal var countOfAPIs = 0
     internal var netWorkDataSize = 0
     
-    var citys: [City] = []
-    var longitude = ""
-    var lativtude = ""
+    internal var citys: [City] = []
+    internal var apis = Bike().apis
+//    var mapViewController: MapViewController!
+    private var longitude = ""
+    private var lativtude = ""
+    private var _stations: [Station] = []
     
-    var _stations: [Station] = []
-    var apis = Bike().apis
-    
-    init(){
+    init() {
+        
+//        self.mapViewController = MapViewController()
+//        self.mapViewController.delegate = self
         print("BikeStationsModel init")
     }
     
@@ -83,7 +76,7 @@ class BikeStationsModel: BikeStationDelegate {
                     // html
                     if api.dataType == .html {
                         guard let html = response.result.value,
-                            let stations = self.parseHTML2Object(city: api.city, html: html) else {
+                            let stations = self.parse(city: api.city, html: html) else {
                                 print("error: BikeStationsModel .html " )
                                 return
                         }
@@ -99,7 +92,7 @@ class BikeStationsModel: BikeStationDelegate {
                         
                         do {
                             guard let stationsXML:[StationXMLObject] = try xml["BIKEStationData"]["BIKEStation"]["Station"].value(),
-                                  let stations:[Station] = self.parseXML2Object(city: api.city, xml: stationsXML) else {
+                                  let stations:[Station] = self.parse(city: api.city, xml: stationsXML) else {
                                   return
                             }
                                 self._stations.append(contentsOf: stations)
@@ -121,7 +114,7 @@ class BikeStationsModel: BikeStationDelegate {
                     case .success(let value):
                         
                         let json = JSON(value)
-                        guard let stations:[Station] = self.parseJSON2Object(city: api.city, json: json) else {
+                        guard let stations:[Station] = self.parse(city: api.city, json: json) else {
                             print("station is nil plz check parseJson")
                             return
                         }

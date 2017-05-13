@@ -13,18 +13,18 @@ import Foundation
 import SwiftyJSON
 import CoreLocation
 
-protocol Parser {
-    
-    func parseHTML2Object(city: City, html: String)                     -> [Station]?
-    func parseJSON2Object(city: City, json: JSON)                       -> [Station]?
-    func parseXML2Object(city:  City, xml stations: [StationXMLObject]) -> [Station]?
-    
+
+typealias HTML = String
+
+protocol ParserDelegate {
+    func parse(city: City, html: HTML)                       -> [Station]?
+    func parse(city: City, json: JSON)                       -> [Station]?
+    func parse(city: City, xml stations: [StationXMLObject]) -> [Station]?
 }
 
-
-extension BikeStationsModel: Parser {
+extension BikeStationsModel: ParserDelegate {
     
-    func parseHTML2Object(city: City, html: String) -> [Station]? {
+    func parse(city: City, html: HTML) -> [Station]? {
         
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
             print("error: parseHTML2Object")
@@ -47,7 +47,7 @@ extension BikeStationsModel: Parser {
         
         let json = JSON(data: dataFromString)
         
-        guard let stations: [Station] = self.parseJSON2Object(city: city, json: json) else {
+        guard let stations: [Station] = self.parse(city: city, json: json) else {
             print("station is nil plz check parseJson")
             return nil
         }
@@ -57,17 +57,16 @@ extension BikeStationsModel: Parser {
     
     
     
-    func parseJSON2Object(city: City, json: JSON) -> [Station]? {
+    func parse(city: City, json: JSON) -> [Station]? {
         var jsonStation: [Station] = []
         //        print("city:",city, "\n json:", json)
         guard !(json.isEmpty) else {
-            print("error: parseJSON2Object")
+            print("error: JSON parser ")
             return nil
         }
         
         func deserializableJSON(json: JSON) -> [Station] {
             var deserializableJSON:[Station] = []
-//            print("call deserializableJSON")
             
             var name =              "sna"
             var location =          "ar"
@@ -78,7 +77,7 @@ extension BikeStationsModel: Parser {
             
             
             if city == .Tainan {
-               
+                
                 name =              "StationName"
                 location =          "Address"
                 parkNumber =        "AvaliableSpaceCount"
@@ -116,20 +115,19 @@ extension BikeStationsModel: Parser {
             jsonArray = json
             
         default:
-            print("city error:", city)
+            print("JSON city error:", city)
         }
-        
         
         jsonStation = deserializableJSON(json: jsonArray)
         return jsonStation
     }
     
     
-    func parseXML2Object(city: City, xml stations: [StationXMLObject]) -> [Station]? {
+    func parse(city: City, xml stations: [StationXMLObject]) -> [Station]? {
         var stationsParsed:[Station]  = []
         
         guard !(stations.isEmpty) else {
-            print("error: parseXML2Object")
+            print("error: xml parser")
             return nil
         }
         
@@ -155,4 +153,5 @@ extension BikeStationsModel: Parser {
         return stationsParsed
     }
 }
+
 
