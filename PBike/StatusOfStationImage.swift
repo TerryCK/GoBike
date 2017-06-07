@@ -6,29 +6,36 @@
 //  Copyright © 2017年 陳 冠禎. All rights reserved.
 //
 
+enum BikeStationStatus: String {
+    case less = "pinLess"
+    case med = "pinMed"
+    case full = "pinFull"
+    case empty = "pinEmpty"
+    case unknow = "pinUnknow"
+}
 
-extension BikeStationsModel: BikeAPIDelegate {
+
+extension BikeModelProtocol {
     
-    func statusOfStationImage(station: [Station], index: Int) -> String {
-        var pinImage = ""
+    static func statusOfStationImage(station: [Station], index: Int) -> String {
         
-        if let numberOfBike = station[index].currentBikeNumber {
+        var pinImage  = BikeStationStatus.unknow
+        guard let numberOfBike = station[index].currentBikeNumber else { return pinImage.rawValue }
+        switch numberOfBike {
+        case 1...5:
+            pinImage = .less
             
-            switch numberOfBike {
-            case 1...5:
-                pinImage = "pinLess"
-                
-            case 5...200:
-                pinImage = station[index].parkNumber == 0 ? "pinFull" : "pinMed"
-                
-            case 0:
-                pinImage = "pinEmpty"
-                
-            default:
-                pinImage  = "pinUnknow"
-                
-            }
+        case 5...200:
+            pinImage = station[index].parkNumber == 0 ? BikeStationStatus.full : BikeStationStatus.med
+        case 0:
+            pinImage = .empty
+            
+        default:
+            pinImage  = .unknow
+            
         }
-        return pinImage
+        
+        return pinImage.rawValue
     }
+    
 }

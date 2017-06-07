@@ -106,6 +106,11 @@
 		A85D3C5D1DCEBAE800875B3A /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
 		A85D3C5F1DCEBAE800875B3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
 		A85D3C621DCEBAE800875B3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
+		A86353691EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
+		A863536A1EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
+		A863536B1EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
+		A863536C1EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
+		A863536D1EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
 		A870E6DA1DC2519100329830 /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
 		A87E52371DC0999E0016F9E0 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */; };
 		A87E52391DC099CC0016F9E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52381DC099CC0016F9E0 /* AudioToolbox.framework */; };
@@ -165,6 +170,14 @@
 		A8CC81771E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
 		A8CC81781E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
 		A8CC81791E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
+		A8CEEF6F1ED26EED00374389 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF6E1ED26EED00374389 /* Networking.swift */; };
+		A8CEEF701ED26EED00374389 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF6E1ED26EED00374389 /* Networking.swift */; };
+		A8CEEF711ED26EED00374389 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF6E1ED26EED00374389 /* Networking.swift */; };
+		A8CEEF721ED26EED00374389 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF6E1ED26EED00374389 /* Networking.swift */; };
+		A8CEEF741ED2750B00374389 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* Model.swift */; };
+		A8CEEF751ED2750B00374389 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* Model.swift */; };
+		A8CEEF761ED2750B00374389 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* Model.swift */; };
+		A8CEEF771ED2750B00374389 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* Model.swift */; };
 		A8E01EA31DDD481900BC440C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */; };
 		A8E01EA41DDD481900BC440C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */; };
 		A8E453E01EC5AC3D001D9BC7 /* YouBikeTP.gz in Resources */ = {isa = PBXBuildFile; fileRef = A8E453DF1EC5AC3D001D9BC7 /* YouBikeTP.gz */; };
@@ -276,6 +289,7 @@
 		A84F02251E20D24300E65C22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A851E5611E6C061A003A1B35 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		A85D3C691DCEBAE800875B3A /* CBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A86353681EE7B553003CCFDA /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = aboutUsTableViewCell.swift; sourceTree = "<group>"; };
 		A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		A87E52381DC099CC0016F9E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -301,6 +315,8 @@
 		A8CC81681E14BB0100CBC824 /* AppVisionCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVisionCheck.swift; sourceTree = "<group>"; };
 		A8CC81701E14C30E00CBC824 /* LocataionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocataionManager.swift; sourceTree = "<group>"; };
 		A8CC81751E14C7D000CBC824 /* MapNavigate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigate.swift; sourceTree = "<group>"; };
+		A8CEEF6E1ED26EED00374389 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		A8CEEF731ED2750B00374389 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8E453DF1EC5AC3D001D9BC7 /* YouBikeTP.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = YouBikeTP.gz; sourceTree = "<group>"; };
@@ -524,6 +540,14 @@
 			name = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		A8AA17421EE837A4003A90DA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A86353681EE7B553003CCFDA /* Navigator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		A8E01E9E1DDD481900BC440C /* CBike */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +594,7 @@
 		A8F8364C1DB37336001131BE /* PBike */ = {
 			isa = PBXGroup;
 			children = (
+				A8AA17421EE837A4003A90DA /* Protocol */,
 				A89833501DD2C8360092F727 /* LaunchScreen */,
 				A85B62C51DB895C800C1413B /* Resource */,
 				A8F836611DB3747E001131BE /* View */,
@@ -591,8 +616,8 @@
 				A84989C71E1367D10095D9E8 /* Station.swift */,
 				A808B0A91E43874D0052C983 /* Extension.swift */,
 				A8F836621DB374A6001131BE /* BikeStationsModel.swift */,
+				A8CEEF731ED2750B00374389 /* Model.swift */,
 				A84989C31E114D3C0095D9E8 /* API_Protocol.swift */,
-				A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -606,6 +631,7 @@
 				A8CC81681E14BB0100CBC824 /* AppVisionCheck.swift */,
 				A8CC81701E14C30E00CBC824 /* LocataionManager.swift */,
 				A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */,
+				A8CEEF6E1ED26EED00374389 /* Networking.swift */,
 				A84989DA1E14B0840095D9E8 /* TableViewController.swift */,
 				A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */,
 				A84989F31E14B41F0095D9E8 /* SendMeMailController.swift */,
@@ -623,6 +649,7 @@
 				A89B048B1E4992AA0052DBF6 /* UpdateTimeLabel.swift */,
 				A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */,
 				A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */,
+				A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */,
 				A84989E41E14B3010095D9E8 /* setPositionOfTopArrow.swift */,
 				A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */,
 				A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */,
@@ -1210,6 +1237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84913EE1EC056E600C307D9 /* GoBikeUITests.swift in Sources */,
+				A863536D1EE7B554003CCFDA /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1226,6 +1254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84989C61E1364FE0095D9E8 /* API_Protocol.swift in Sources */,
+				A8CEEF701ED26EED00374389 /* Networking.swift in Sources */,
 				A85D3C441DCEBAE800875B3A /* ThanksforTableViewCell.swift in Sources */,
 				A85D3C451DCEBAE800875B3A /* LocationSearchTable.swift in Sources */,
 				A8CC81721E14C30E00CBC824 /* LocataionManager.swift in Sources */,
@@ -1240,10 +1269,12 @@
 				A8CC81771E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A84989F51E14B41F0095D9E8 /* SendMeMailController.swift in Sources */,
 				A85D3C491DCEBAE800875B3A /* aboutUsTableViewCell.swift in Sources */,
+				A8CEEF751ED2750B00374389 /* Model.swift in Sources */,
 				A84989EB1E14B36D0095D9E8 /* TimerHandle.swift in Sources */,
 				A85D3C4A1DCEBAE800875B3A /* AppDelegate.swift in Sources */,
 				A84989DC1E14B0840095D9E8 /* TableViewController.swift in Sources */,
 				A808B0AB1E43874D0052C983 /* Extension.swift in Sources */,
+				A863536A1EE7B554003CCFDA /* Navigator.swift in Sources */,
 				A84989E61E14B3010095D9E8 /* setPositionOfTopArrow.swift in Sources */,
 				A84989D71E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0871E46B5EB00407AB8 /* GuidePageViewController.swift in Sources */,
@@ -1272,10 +1303,12 @@
 				A8A80B011DD1F6F400107566 /* StationTableViewCell.swift in Sources */,
 				A81C7A811EC07E0600928F20 /* StatusOfStationImage.swift in Sources */,
 				A8CC816C1E14BE7000CBC824 /* CustomAnnotationView.swift in Sources */,
+				A863536C1EE7B554003CCFDA /* Navigator.swift in Sources */,
 				A8A80B021DD1F6F400107566 /* MapViewController.swift in Sources */,
 				A84989F21E14B3CA0095D9E8 /* AddBlurEffect.swift in Sources */,
 				A81BE0881E46B5ED00407AB8 /* GuidePageViewController.swift in Sources */,
 				A8CC816F1E14BE7600CBC824 /* AppVisionCheck.swift in Sources */,
+				A8CEEF771ED2750B00374389 /* Model.swift in Sources */,
 				A8A80B031DD1F6F400107566 /* aboutUsTableViewCell.swift in Sources */,
 				A84989D41E14AFCB0095D9E8 /* motion.swift in Sources */,
 				A8A80B041DD1F6F400107566 /* AppDelegate.swift in Sources */,
@@ -1287,6 +1320,7 @@
 				A8A80B061DD1F6F400107566 /* RateingReportTableViewCell.swift in Sources */,
 				A84989CB1E1368000095D9E8 /* Station.swift in Sources */,
 				A84989E31E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
+				A8CEEF721ED26EED00374389 /* Networking.swift in Sources */,
 				A8CC81741E14C30E00CBC824 /* LocataionManager.swift in Sources */,
 				A8A80B081DD1F6F400107566 /* BikeStationTableViewCell.swift in Sources */,
 			);
@@ -1297,6 +1331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84989C41E114D3C0095D9E8 /* API_Protocol.swift in Sources */,
+				A8CEEF6F1ED26EED00374389 /* Networking.swift in Sources */,
 				A83BD3351DC355E0002D2DC4 /* ThanksforTableViewCell.swift in Sources */,
 				A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */,
 				A8CC81711E14C30E00CBC824 /* LocataionManager.swift in Sources */,
@@ -1311,10 +1346,12 @@
 				A8CC81761E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A84989F41E14B41F0095D9E8 /* SendMeMailController.swift in Sources */,
 				A870E6DA1DC2519100329830 /* aboutUsTableViewCell.swift in Sources */,
+				A8CEEF741ED2750B00374389 /* Model.swift in Sources */,
 				A84989EA1E14B36D0095D9E8 /* TimerHandle.swift in Sources */,
 				A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */,
 				A84989DB1E14B0840095D9E8 /* TableViewController.swift in Sources */,
 				A808B0AA1E43874D0052C983 /* Extension.swift in Sources */,
+				A86353691EE7B554003CCFDA /* Navigator.swift in Sources */,
 				A84989E51E14B3010095D9E8 /* setPositionOfTopArrow.swift in Sources */,
 				A84989D61E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0861E46B5EA00407AB8 /* GuidePageViewController.swift in Sources */,
@@ -1333,6 +1370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84989C51E1364FE0095D9E8 /* API_Protocol.swift in Sources */,
+				A8CEEF711ED26EED00374389 /* Networking.swift in Sources */,
 				A84989F11E14B3CA0095D9E8 /* AddBlurEffect.swift in Sources */,
 				A8FE694E1DEDB2BE00BE4E51 /* ThanksforTableViewCell.swift in Sources */,
 				A8CC81781E14C7D000CBC824 /* MapNavigate.swift in Sources */,
@@ -1347,10 +1385,12 @@
 				A84989E21E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A84989E71E14B3010095D9E8 /* setPositionOfTopArrow.swift in Sources */,
 				A84989D81E14B0550095D9E8 /* GoogleAd.swift in Sources */,
+				A8CEEF761ED2750B00374389 /* Model.swift in Sources */,
 				A8FE69541DEDB2BE00BE4E51 /* AppDelegate.swift in Sources */,
 				A8FE69551DEDB2BE00BE4E51 /* BikeStationsModel.swift in Sources */,
 				A8FE69561DEDB2BE00BE4E51 /* RateingReportTableViewCell.swift in Sources */,
 				A808B0AC1E43874D0052C983 /* Extension.swift in Sources */,
+				A863536B1EE7B554003CCFDA /* Navigator.swift in Sources */,
 				A8CC81731E14C30E00CBC824 /* LocataionManager.swift in Sources */,
 				A84989DD1E14B0840095D9E8 /* TableViewController.swift in Sources */,
 				A81BE0851E462E8900407AB8 /* GuidePageViewController.swift in Sources */,

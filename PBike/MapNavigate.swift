@@ -8,24 +8,17 @@
 
 import MapKit
 
-
-extension MapViewController {
-      
-    func getDirections()   {
+extension MapViewController: Navigatorable {
+    
+    internal func navigating() {
         guard let selectedPin = self.selectedPin else {
             return
         }
-        
-        let mapItem = MKMapItem(placemark: selectedPin)
-        mapItem.name = self.selectedPinName
-        print("mapItem.name \(String(describing: mapItem.name))")
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
-        mapItem.openInMaps(launchOptions: launchOptions)
-    
+        goto(destination: selectedPin)
     }
     
     //map information
-    func mapViewInfoCustomize(){
+    func mapViewInfoCustomize() {
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.showsUserLocation = true

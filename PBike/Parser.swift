@@ -16,15 +16,15 @@ import CoreLocation
 
 typealias HTML = String
 
-protocol ParserDelegate {
-    func parse(city: City, html: HTML)                       -> [Station]?
-    func parse(city: City, json: JSON)                       -> [Station]?
-    func parse(city: City, xml stations: [StationXMLObject]) -> [Station]?
+protocol Parsable {
+     func parse(city: City, html: HTML)                       -> [Station]?
+     func parse(city: City, json: JSON)                       -> [Station]?
+     func parse(city: City, xml stations: [StationXMLObject]) -> [Station]?
 }
 
-extension BikeStationsModel: ParserDelegate {
+extension Parsable {
     
-    func parse(city: City, html: HTML) -> [Station]? {
+    internal func parse(city: City, html: HTML) -> [Station]? {
         
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
             print("error: parseHTML2Object")
@@ -32,11 +32,8 @@ extension BikeStationsModel: ParserDelegate {
         }
         
         let node = doc.css("script")[21]
-        
         let header = "arealist='"
-        
         let footer = "';arealist=JSON"
-        
         let uriDecoded = node.text?.between(header, footer)?.urlDecode
         let using = String.Encoding.utf8
         
@@ -55,11 +52,8 @@ extension BikeStationsModel: ParserDelegate {
     }
     
     
-    
-    
-    func parse(city: City, json: JSON) -> [Station]? {
+   internal func parse(city: City, json: JSON) -> [Station]? {
         var jsonStation: [Station] = []
-        //        print("city:",city, "\n json:", json)
         guard !(json.isEmpty) else {
             print("error: JSON parser ")
             return nil
@@ -123,7 +117,7 @@ extension BikeStationsModel: ParserDelegate {
     }
     
     
-    func parse(city: City, xml stations: [StationXMLObject]) -> [Station]? {
+   internal func parse(city: City, xml stations: [StationXMLObject]) -> [Station]? {
         var stationsParsed:[Station]  = []
         
         guard !(stations.isEmpty) else {

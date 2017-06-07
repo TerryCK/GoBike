@@ -8,17 +8,23 @@
 
 import UIKit
 
-extension MapViewController {
+protocol NavigationBarBlurEffectable {
+   func setNavigationBarBackgrondBlurEffect(to viewController: UIViewController)
+}
+
+
+extension NavigationBarBlurEffectable {
     
-    func blurEffect() {
+    func setNavigationBarBackgrondBlurEffect(to viewController: UIViewController) {
         // Add blur view
-        let bounds = self.navigationController?.navigationBar.bounds as CGRect!
+        let bounds = viewController.navigationController?.navigationBar.bounds as CGRect!
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) as UIVisualEffectView
         visualEffectView.frame = bounds!
         visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.navigationController?.navigationBar.addSubview(visualEffectView)
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-        self.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
+        viewController.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        viewController.navigationController?.navigationBar.addSubview(visualEffectView)
+        
+        viewController.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
     }
     
 }

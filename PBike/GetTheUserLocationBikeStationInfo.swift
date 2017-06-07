@@ -11,8 +11,6 @@ import CoreLocation
 
 extension BikeStationsModel {
     
-    
-    
     func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D) {
        
         let latitude = userLocation.latitude.format //(%.2 double)
@@ -20,7 +18,7 @@ extension BikeStationsModel {
         
         for index in 0..<apis.count {
             
-            switch (apis[index].city, latitude, longitude){
+            switch (apis[index].city, latitude, longitude) {
             case (.Taipei, 24.96...25.14, 121.44...121.65):
                 apis[index].isHere = true
                 
@@ -58,8 +56,8 @@ extension BikeStationsModel {
                 
                 
             default:
-//                 apis[index].isHere = true
-                                break
+                 apis[index].isHere = true
+//                                break
                 //show alart
                 
             }

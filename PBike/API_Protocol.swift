@@ -6,11 +6,6 @@
 //  Copyright © 2016年 陳 冠禎. All rights reserved.
 //
 
-protocol BikeAPIDelegate {
-    var apis: [BikeAPI] { get set }
-}
-
-
 struct BikeAPI {
     var city: City
     var url: String
@@ -30,18 +25,18 @@ struct BikeAPI {
 
 
 
-struct Bike: BikeAPIDelegate {
+struct Bike {
     
     
-    static let taipeiAPI = "http://data.taipei/youbike"
-    static let newTaipeiAPI = "http://data.ntpc.gov.tw/api/v1/rest/datastore/382000000A-000352-001"
-    static let taoyuanAPI = "http://data.tycg.gov.tw/api/v1/rest/datastore/a1b4714b-3b75-4ff8-a8f2-cc377e4eaa0f?format=json"
-    static let hsinchuAPI = "http://hccg.youbike.com.tw/cht/f12.php"
-    static let taichungAPI = "http://ybjson01.youbike.com.tw:1002/gwjs.json"
-    static let changhuaAPI = "http://chcg.youbike.com.tw/cht/f12.php"
-    static let taiwanAPI = "http://tbike.tainan.gov.tw:8081/Service/StationStatus/Json"
-    static let kaohsiungAPI = "http://www.c-bike.com.tw/xml/stationlistopendata.aspx"
-    static let pingtungAPI =  "http://pbike.pthg.gov.tw/xml/stationlist.aspx"
+    private static let taipeiAPI = "http://data.taipei/youbike"
+    private static let newTaipeiAPI = "http://data.ntpc.gov.tw/api/v1/rest/datastore/382000000A-000352-001"
+    private static let taoyuanAPI = "http://data.tycg.gov.tw/api/v1/rest/datastore/a1b4714b-3b75-4ff8-a8f2-cc377e4eaa0f?format=json"
+    private static let hsinchuAPI = "http://hccg.youbike.com.tw/cht/f12.php"
+    private static let taichungAPI = "http://ybjson01.youbike.com.tw:1002/gwjs.json"
+    private static let changhuaAPI = "http://chcg.youbike.com.tw/cht/f12.php"
+    private static let taiwanAPI = "http://tbike.tainan.gov.tw:8081/Service/StationStatus/Json"
+    private static let kaohsiungAPI = "http://www.c-bike.com.tw/xml/stationlistopendata.aspx"
+    private static let pingtungAPI =  "http://pbike.pthg.gov.tw/xml/stationlist.aspx"
     
     
     internal var apis: [BikeAPI] = [

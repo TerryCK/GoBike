@@ -11,11 +11,9 @@ import UIKit
 
 enum TableViewCurrentDisplaySwitcher {
     case displaying, unDisplay
-    
     mutating func next(){
         
         switch self {
-            
         case .displaying:
             self = .unDisplay
             
@@ -29,9 +27,10 @@ enum TableViewCurrentDisplaySwitcher {
 
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     
+    var yDelta: CGFloat { get { return 500 } }
+    var cellSpacingHeight: CGFloat { get { return 5 } }
+    
     @IBAction func titleBtnPressed(_ sender: AnyObject) {
-//        print("titleBtnPressed？ \(tableViewCanDoNext)")
-        
         guard tableViewCanDoNext else {
             return
         }
@@ -51,17 +50,16 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         case .displaying:
             
             DispatchQueue.main.async {
-              
+                
                 self.unShowTableView(self.UITableView)
                 self.locationArrowImage.isEnabled = true
             }
-
+            
             
             currentStateOfTableViewDisplaying.next()
         }
         
-}
-    
+    }
     
     func showUpTableView(_ moveView: UIView){
         self.tableViewCanDoNext = false
@@ -75,23 +73,24 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         moveView.isHidden = false
         self.visualEffectView.isHidden = false
         
-        UIView.animate(withDuration: 0.3, delay: 0, options:[UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut], animations: {
-            
-            moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta)
-            self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 180.toRadian)
-            self.visualEffectView.effect = self.effect
-            
-        }, completion: { (Bool) in
-            
-            self.tableViewCanDoNext = true
-            
-            //            print("show Up animation is completion")
-            
+        UIView.animate(withDuration: 0.3, delay: 0, options:[UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut],
+        animations: {
+                        
+        moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta)
+        self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 180.toRadian)
+        self.visualEffectView.effect = self.effect
+           moveView.alpha = 1
+        },
+                       
+        completion: { (finished: Bool) in
+                        
+        self.tableViewCanDoNext = true
+                        
+                        //        print("y: \(moveView.center.y)")
+                        
         })
-        
-//        print("y: \(moveView.center.y)")
-        
     }
+    
     
     
     
@@ -107,15 +106,15 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta)
             self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 0)
             self.visualEffectView.effect = nil
-            
-        }, completion: { (Bool) in
+            moveView.alpha = 0
+        }, completion: { _ in
             //            print("show off animation is completion")
             
             moveView.isHidden = true
             self.visualEffectView.isHidden = true
             
             moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta )
-//            print("y: \(moveView.center.y)")
+            //            print("y: \(moveView.center.y)")
             self.tableViewCanDoNext = true
             
         })
@@ -175,9 +174,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //         note that indexPath.section is used rather than indexPath.row
         print("You tapped cell number \(indexPath.section).")
-        
     }
     
     func cellCustomize(cell: UITableViewCell){

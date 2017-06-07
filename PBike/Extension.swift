@@ -5,6 +5,7 @@
 //  Created by 陳 冠禎 on 2017/2/2.
 //  Copyright © 2017年 陳 冠禎. All rights reserved.
 //
+import UIKit
 import SWXMLHash
 import Foundation
 import CoreLocation
@@ -85,7 +86,7 @@ public extension Int {
         return self <= 0 ? 0 : self
     }
     
-
+    
     var currencyStyle: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -121,7 +122,5 @@ extension BikeStationsModel {
 }
 
 
-
-
-
-
+        
+  

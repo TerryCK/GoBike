@@ -23,7 +23,7 @@ extension MapViewController {
         //            return
         //        }
         
-        guard let stations = delegate?.stations else {
+        guard let stations = bikeModel?.stations else {
             print("station nil")
             return
         }
@@ -86,9 +86,9 @@ extension MapViewController {
                 objectAnnotation.placemark = placemark
             }
             //handle picture of pin
-            if let pinImage = delegate?.statusOfStationImage(station: stations, index: index){
+             let pinImage = BikeStationsModel.statusOfStationImage(station: stations, index: index)
                 objectAnnotation.imageName = UIImage(named: pinImage)
-            }
+            
             
             
             //handle bike station's name
@@ -164,8 +164,9 @@ extension MapViewController {
         
         let smallSquare = CGSize(width: 43, height: 43)
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
+        
         button.setBackgroundImage(UIImage(named: "go"), for: UIControlState())
-        button.addTarget(self, action: #selector(MapViewController.getDirections), for: .touchUpInside)
+        button.addTarget(self, action: #selector(MapViewController.navigating), for: .touchUpInside)
         annotationView?.rightCalloutAccessoryView = button
         annotationView?.leftCalloutAccessoryView = subTitleView
 
@@ -179,9 +180,9 @@ extension MapViewController {
         
 //        DispatchQueue.global(qos: .background).async {
             if let annotation = view.annotation as? CustomPointAnnotation {
-                self.selectedPin = annotation.placemark
+                self.selectedPin = annotation
                 if let name = annotation.subtitle {
-                    self.selectedPinName = "\(name) (公共自行車站)"
+//                    self.selectedPinName = "\(name) (公共自行車站)"
                     print("You selected annotationView title: \(name)")
                 }
             }

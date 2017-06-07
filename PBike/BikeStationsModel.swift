@@ -14,36 +14,27 @@ import SwiftyJSON
 import CoreLocation
 
 
-
-
-class BikeStationsModel: BikeStationDelegate {
+class BikeStationsModel: BikeModelProtocol, Parsable {
     
     internal var stations: [Station] {
         return _stations
     }
     
+    
     internal var countOfAPIs = 0
     internal var netWorkDataSize = 0
-    
     internal var citys: [City] = []
     internal var apis = Bike().apis
-//    var mapViewController: MapViewController!
+    
     private var longitude = ""
     private var lativtude = ""
     private var _stations: [Station] = []
     
-    init() {
-        
-//        self.mapViewController = MapViewController()
-//        self.mapViewController.delegate = self
-        print("BikeStationsModel init")
-    }
+   
     
-    deinit {
-        print("BikeStationsModel deinit")
-    }
+
     
-    func downloadInfoOfBikeFromAPI(completed: @escaping DownloadComplete) {
+    func getData(completed: @escaping DownloadComplete) {
         //Alamofire download
         
         self._stations.removeAll()
@@ -64,7 +55,7 @@ class BikeStationsModel: BikeStationDelegate {
             
             switch api.dataType {
             case .XML, .html:
-                Alamofire.request(currentBikeURL).responseString {  response in
+                Alamofire.request(currentBikeURL).responseString { response in
                     guard response.result.isSuccess else {
                         print("response is failed")
                         return
@@ -83,6 +74,7 @@ class BikeStationsModel: BikeStationDelegate {
                         self._stations.append(contentsOf: stations)
                         
                         // xml
+                        
                     } else {
                         guard let xmlToParse = response.result.value else {
                             print("error, can't unwrap response data")
@@ -92,10 +84,10 @@ class BikeStationsModel: BikeStationDelegate {
                         
                         do {
                             guard let stationsXML:[StationXMLObject] = try xml["BIKEStationData"]["BIKEStation"]["Station"].value(),
-                                  let stations:[Station] = self.parse(city: api.city, xml: stationsXML) else {
-                                  return
+                                let stations:[Station] = self.parse(city: api.city, xml: stationsXML) else {
+                                    return
                             }
-                                self._stations.append(contentsOf: stations)
+                            self._stations.append(contentsOf: stations)
                             
                             
                         } catch {
@@ -106,7 +98,8 @@ class BikeStationsModel: BikeStationDelegate {
                 }
                 
             case .JSON:
-                Alamofire.request(currentBikeURL).validate().responseJSON {  response in
+                
+                Alamofire.request(currentBikeURL).validate().responseJSON { response in
                     let dataSize = response.data! as NSData
                     self.netWorkDataSize += (dataSize.length)
                     

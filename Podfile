@@ -6,16 +6,16 @@ def shared_pods
 
     pod 'Firebase/AdMob'
     pod 'Firebase/Core', '~> 3.15.0'
-    pod 'SWXMLHash', '~> 3.0.0'
+    pod 'SWXMLHash'
     pod 'Alamofire', '~> 4.0'
     pod 'ReachabilitySwift'
     pod 'Fabric'
     pod 'Crashlytics'
-    pod 'GzipSwift', '~> 3.1'
     pod 'SwiftyJSON'
     pod 'Kanna', '~> 2.1.0'
     pod 'PercentEncoder'
     pod 'AsyncSwift'
+    pod 'Cluster'
 end
 
 target 'PBike' do

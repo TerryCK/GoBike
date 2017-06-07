@@ -14,8 +14,6 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
     @IBAction func errorReportBtnPressed(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "hasSharedApp")
-//        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
-//        print("hasSharedApp:", hasSharedApp)
         let mailComposeViewController = configuredMailComposeViewController()
         
         if MFMailComposeViewController.canSendMail() {
@@ -39,8 +37,6 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
         
         UIApplication.shared.openURL(checkURL)
         print("rating url successfully opened")
-//        let defaults = UserDefaults.standard
-//        defaults.set(true, forKey: "hasSharedApp")
     }
     
     
@@ -60,10 +56,6 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
             print("This is iPad")
         }
         self.present(activityVC, animated: true, completion: nil)
-//        let defaults = UserDefaults.standard
-//        defaults.set(true, forKey: "hasSharedApp")
-//        let hasSharedApp = defaults.bool(forKey: "hasSharedApp")
-//        print("hasSharedApp:", hasSharedApp)
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
@@ -87,13 +79,7 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
             print("Destructive")
         }
         
-        //        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
-        //            (result : UIAlertAction) -> Void in
-        //            print("OK")
-        //        }
-        
         alertController.addAction(DestructiveAction)
-        //        alertController.addAction(okAction)
         
     }
     

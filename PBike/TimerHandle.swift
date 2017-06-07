@@ -9,44 +9,49 @@
 import UIKit
 
 protocol TimerHandlerDelegate: class {
-    
     var timerCurrentStatusFlag: TimerStatus { get }
     var time: Int { set get }
 }
 
 
+protocol TimeStatueProtocol {
+    func play()
+    func pause()
+    func reset()
+}
+
 enum TimerStatus {
-    case Pause
-    case Play
-    case Reset
+    case pause
+    case play
+    case reset
+    
     mutating func next() {
         
         switch self {
-        case .Play:
-            self = .Pause
+        case .play:
+            self = .pause
             
-        case .Pause:
-            self = .Reset
+        case .pause:
+            self = .reset
             
-        case .Reset:
-            self = .Play
+        case .reset:
+            self = .play
         }
     }
 }
 
 
 
-extension MapViewController: TimerHandlerDelegate  {
-
+extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
+    
     
     @IBAction func timerPressed(_ sender: AnyObject) {
-
         timerCounterStatus()
     }
     
     
     func timerCounterStatus() {
-       
+        
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
@@ -57,16 +62,15 @@ extension MapViewController: TimerHandlerDelegate  {
         print("hours = \(hour):\(minutes):\(seconds)")
         print("timer flag" , self.timerCurrentStatusFlag)
         
-        
         switch timerStatusReadyTo {
             
-        case .Play:
+        case .play:
             play()
             
-        case .Pause:
+        case .pause:
             pause()
             
-        case .Reset:
+        case .reset:
             reset()
         }
     }
@@ -74,8 +78,8 @@ extension MapViewController: TimerHandlerDelegate  {
     
     func decreaseTimer() {
         time -= 1
-        
-        if self.timerCurrentStatusFlag == .Play {
+        if self.timerCurrentStatusFlag == .play {
+            
             let timerTittle = time.convertToHMS
             let black = UIColor.black
             let red = UIColor.red
@@ -96,7 +100,7 @@ extension MapViewController: TimerHandlerDelegate  {
                 timerLabel.setTitle(timerTittle, for: .normal)
             }
             
-        } else if self.timerCurrentStatusFlag == .Pause {
+        } else if self.timerCurrentStatusFlag == .pause {
             
             print("reset \(self.time)")
             print("time in pause time: \(self.timeInPause.convertToHMS)")
@@ -105,46 +109,40 @@ extension MapViewController: TimerHandlerDelegate  {
                 return
             }
             //reset the timer status to defult
-            self.timerCurrentStatusFlag = .Play
-            self.timerStatusReadyTo = .Pause
+            self.timerCurrentStatusFlag = .play
+            self.timerStatusReadyTo = .pause
         }
     }
     
     func play() {
         print("Timer playing")
         
-        timerCurrentStatusFlag = .Play
+        timerCurrentStatusFlag = .play
         print("timerCurrentStatusFlag", timerCurrentStatusFlag)
         rentedTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.decreaseTimer), userInfo: nil, repeats: true)
         timerStatusReadyTo.next()
-        
-
     }
+    
     func pause() {
         self.timeInPause = time
         print("Timer pause")
-        
-        timerCurrentStatusFlag = .Pause
+        timerCurrentStatusFlag = .pause
         print("timerCurrentStatusFlag", timerCurrentStatusFlag)
         timerLabel.setTitleColor(UIColor.red, for: .normal)
         timerLabel.setTitle("重置", for: .normal)
         timerStatusReadyTo.next()
-        
-        
     }
     
     func reset() {
-        
         print("Timer reset")
-        
-        timerCurrentStatusFlag = .Reset
-         print("timerCurrentStatusFlag", timerCurrentStatusFlag)
+        timerCurrentStatusFlag = .reset
+        print("timerCurrentStatusFlag", timerCurrentStatusFlag)
         time = 1800
         rentedTimer.invalidate()
         timerLabel.setTitleColor(UIColor.gray, for: .normal)
         timerLabel.setTitle(time.convertToHMS, for: UIControlState.normal)
         timerStatusReadyTo.next()
-   
-
+        
+        
     }
 }

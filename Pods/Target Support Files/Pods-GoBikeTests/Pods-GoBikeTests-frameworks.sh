@@ -91,8 +91,8 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS10.3/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AsyncSwift-iOS10.3/Async.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Cluster-iOS10.3/Cluster.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac-iOS10.3/GoogleToolboxForMac.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/GzipSwift-iOS10.3/Gzip.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kanna-iOS10.3/Kanna.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PercentEncoder-iOS10.3/PercentEncoder.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReachabilitySwift-iOS10.3/ReachabilitySwift.framework"
@@ -102,8 +102,8 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS10.3/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AsyncSwift-iOS10.3/Async.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Cluster-iOS10.3/Cluster.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac-iOS10.3/GoogleToolboxForMac.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/GzipSwift-iOS10.3/Gzip.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kanna-iOS10.3/Kanna.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PercentEncoder-iOS10.3/PercentEncoder.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReachabilitySwift-iOS10.3/ReachabilitySwift.framework"
