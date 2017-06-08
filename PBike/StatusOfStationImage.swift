@@ -1,8 +1,8 @@
 //
 //  File.swift
-//  PBike
+//  GoBike
 //
-//  Created by 陳 冠禎 on 2017/5/8.
+//  Refactoring by 陳 冠禎 on 2017/6/8.
 //  Copyright © 2017年 陳 冠禎. All rights reserved.
 //
 
@@ -20,21 +20,17 @@ extension BikeModelProtocol {
     static func statusOfStationImage(station: [Station], index: Int) -> String {
         
         var pinImage  = BikeStationStatus.unknow
-        guard let numberOfBike = station[index].currentBikeNumber else { return pinImage.rawValue }
+        guard let numberOfBike = station[index].bikeOnSite else { return pinImage.rawValue }
         switch numberOfBike {
         case 1...5:
             pinImage = .less
-            
         case 5...200:
             pinImage = station[index].parkNumber == 0 ? BikeStationStatus.full : BikeStationStatus.med
         case 0:
             pinImage = .empty
-            
         default:
             pinImage  = .unknow
-            
         }
-        
         return pinImage.rawValue
     }
     

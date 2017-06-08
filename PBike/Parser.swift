@@ -13,13 +13,15 @@ import Foundation
 import SwiftyJSON
 import CoreLocation
 
-
 typealias HTML = String
 
 protocol Parsable {
-     func parse(city: City, html: HTML)                       -> [Station]?
-     func parse(city: City, json: JSON)                       -> [Station]?
-     func parse(city: City, xml stations: [StationXMLObject]) -> [Station]?
+    
+     func parse(city: City, html: HTML)      -> [Station]?
+     func parse(city: City, json: JSON)      -> [Station]?
+     func parse(city: City, xml: [Station])  -> [Station]?
+    
+    
 }
 
 extension Parsable {
@@ -44,7 +46,7 @@ extension Parsable {
         
         let json = JSON(data: dataFromString)
         
-        guard let stations: [Station] = self.parse(city: city, json: json) else {
+        guard let stations: [Station] = parse(city: city, json: json) else {
             print("station is nil plz check parseJson")
             return nil
         }
@@ -62,33 +64,25 @@ extension Parsable {
         func deserializableJSON(json: JSON) -> [Station] {
             var deserializableJSON:[Station] = []
             
-            var name =              "sna"
-            var location =          "ar"
-            var parkNumber =        "bemp"
-            var currentBikeNumber = "sbi"
-            var longitude =         "lng"
-            var latitude =          "lat"
+            let isTainan: Bool = city == .tainan ? true : false
             
+            let name =        isTainan ? "StationName"          : "sna"
+            let location =    isTainan ? "Address"              : "ar"
+            let parkNumber =  isTainan ? "AvaliableSpaceCount"  : "bemp"
+            let bikeOnSite =  isTainan ? "AvaliableBikeCount"   : "sbi"
+            let latitude =    isTainan ? "Latitude"             : "lat"
+            let longitude =   isTainan ? "Longitude"            : "lng"
             
-            if city == .Tainan {
-                
-                name =              "StationName"
-                location =          "Address"
-                parkNumber =        "AvaliableSpaceCount"
-                currentBikeNumber = "AvaliableBikeCount"
-                longitude =         "Longitude"
-                latitude =          "Latitude"
-            }
             
             for ( _ , dict) in json {
-                
                 let obj = Station(
                     name:               dict[name].string,
                     location:           dict[location].stringValue,
                     parkNumber:         dict[parkNumber].intValue,
-                    currentBikeNumber:  dict[currentBikeNumber].intValue,
-                    longitude:          dict[longitude].doubleValue,
-                    latitude:           dict[latitude].doubleValue)
+                    bikeOnSite:         dict[bikeOnSite].intValue,
+                    latitude:           dict[latitude].doubleValue,
+                    longitude:          dict[longitude].doubleValue
+                )
                 
                 deserializableJSON.append(obj)
             }
@@ -99,13 +93,13 @@ extension Parsable {
         
         switch city {
             
-        case .Taipei, .Taichung:
+        case .taipei, .taichung:
             jsonArray = json["retVal"]
             
-        case .NewTaipei, .Taoyuan:
+        case .newTaipei, .taoyuan:
             jsonArray = json["result"]["records"]
             
-        case .Changhua, .Hsinchu, .Tainan:
+        case .changhua, .hsinchu, .tainan:
             jsonArray = json
             
         default:
@@ -117,23 +111,23 @@ extension Parsable {
     }
     
     
-   internal func parse(city: City, xml stations: [StationXMLObject]) -> [Station]? {
+   internal func parse(city: City, xml: [Station]) -> [Station]? {
         var stationsParsed:[Station]  = []
         
-        guard !(stations.isEmpty) else {
+        guard !(xml.isEmpty) else {
             print("error: xml parser")
             return nil
         }
         
-        stationsParsed = stations.map {
+        stationsParsed = xml.map {
             
             var obj = Station (
                 name:               $0.name,
                 location:           $0.location,
                 parkNumber:         $0.parkNumber,
-                currentBikeNumber:  $0.currentBikeNumber,
-                longitude:          $0.longitude,
-                latitude:           $0.latitude
+                bikeOnSite:         $0.bikeOnSite,
+                latitude:           $0.latitude,
+                longitude:          $0.longitude
             )
             
             // avoid data source wrong formation with coordinates

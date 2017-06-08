@@ -17,7 +17,7 @@ protocol BikeModelProtocol: class  {
     var  countOfAPIs:       Int         { get }
     var  netWorkDataSize:   Int         { get }
     func getData(completed: @escaping DownloadComplete)
-    func findLocateBikdAPI2Download(userLocation: CLLocationCoordinate2D)
+    func getAPIFrom(userLocation: CLLocationCoordinate2D)
     static func statusOfStationImage(station: [Station], index: Int) -> String
 }
 
@@ -71,18 +71,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
         super.viewDidLoad()
         configuration()
 
-        authrizationStatus {
-            
-            [unowned self] in
-            self.setCurrentLocation(latDelta: 0.03, longDelta: 0.03)
-            self.bikeModel?.findLocateBikdAPI2Download(userLocation: self.location)
+        authrizationStatus { [unowned self] in
+            let delta = 0.03
+            self.setCurrentLocation(latDelta: delta, longDelta: delta)
+            self.bikeModel?.getAPIFrom(userLocation: self.location)
             self.updatingDataByServalTime()
             
         }
         
     }
  
-
+    
+    
     
     func updatingDataByServalTime() {
        
@@ -96,14 +96,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
             updateTimeLabel.text = "資料更新中"
             print("\n ***** 資料更新中 *****\n")
             self.citycounter = 1
-            self.downloadDataFromAPI()
+            self.getedData()
             timesOfLoadingAnnotationView = 1
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
             reloadtime = 30
         }
     }
     
-    func downloadDataFromAPI(){
+    func getedData(){
 
         bikeModel?.getData { [unowned self] in
             self.bikeOnService = self.appVersionInit()
@@ -127,7 +127,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
         
         
         print("\n站內腳踏車有 \(self.bikesInStation.currencyStyle) 台")
-        print("目前有 \(self.self.currentPeopleOfRidePBike) 人正在騎腳踏車")
+        print("目前有 \(self.currentPeopleOfRidePBike) 人正在騎腳踏車")
         print("目前地圖中有 \(self.annotations.count.currencyStyle) 座")
         print("目前顯示城市名單:\n")
         print("  *****  ", terminator: "")
@@ -143,13 +143,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
         performanceGuidePage()
         initializeLocationManager()
         setupRotatArrowBtnPosition()
-        
         self.bikeModel = BikeStationsModel()
         
         UITableView.delegate = self
         UITableView.dataSource = self
-        
-        
         UITableView.backgroundView?.alpha = 0
         viewConfriguation()
         setGoogleMobileAds()

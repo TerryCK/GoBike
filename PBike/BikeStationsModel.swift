@@ -24,15 +24,11 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
     internal var countOfAPIs = 0
     internal var netWorkDataSize = 0
     internal var citys: [City] = []
-    internal var apis = Bike().apis
+    internal var bikeApis = BikeStationAPI().bikeAPIs
     
     private var longitude = ""
     private var lativtude = ""
     private var _stations: [Station] = []
-    
-   
-    
-
     
     func getData(completed: @escaping DownloadComplete) {
         //Alamofire download
@@ -41,14 +37,15 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
         countOfAPIs = 0
         citys.removeAll()
         
-        for api in apis {
+        for api in bikeApis {
             guard api.isHere else {
                 continue
             }
             
             self.countOfAPIs += 1
             citys.append(api.city)
-            guard let currentBikeURL = URL(string: api.url) else {
+            let url = api.city.rawValue
+            guard let currentBikeURL = URL(string: url) else {
                 print("URL error")
                 return
             }
@@ -83,10 +80,11 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
                         let xml = SWXMLHash.parse(xmlToParse)
                         
                         do {
-                            guard let stationsXML:[StationXMLObject] = try xml["BIKEStationData"]["BIKEStation"]["Station"].value(),
+                            guard let stationsXML:[Station] = try xml["BIKEStationData"]["BIKEStation"]["Station"].value(),
                                 let stations:[Station] = self.parse(city: api.city, xml: stationsXML) else {
                                     return
                             }
+                            
                             self._stations.append(contentsOf: stations)
                             
                             

@@ -8,44 +8,39 @@
 
 import SWXMLHash
 
-protocol StationInfoProtocol {
+protocol Stationable {
     var name:               String?         { get set }
     var location:           String          { get set }
     var parkNumber:         Int?            { get set }
-    var currentBikeNumber:  Int?            { get set }
-    var longitude:          Double          { get set }
+    var bikeOnSite:         Int?            { get set }
     var latitude:           Double          { get set }
+    var longitude:          Double          { get set }
 }
 
-struct StationXMLObject: XMLIndexerDeserializable, StationInfoProtocol {
+struct Station: XMLIndexerDeserializable, Stationable {
     var name: String?
     var location: String
     var parkNumber: Int?
-    var currentBikeNumber: Int?
-    var longitude: Double
+    var bikeOnSite: Int?
     var latitude: Double
+    var longitude: Double
     
-    static func deserialize(_ node: XMLIndexer) throws -> StationXMLObject {
+    static func deserialize(_ node: XMLIndexer) throws -> Station {
         
-        return try StationXMLObject (
+        return try Station (
             name:               node["StationName"].value(),
             location:           node["StationAddress"].value(),
             parkNumber:         node["StationNums2"].value(),
-            currentBikeNumber:  node["StationNums1"].value(),
-            longitude:          node["StationLon"].value(),
-            latitude:           node["StationLat"].value()
+            bikeOnSite:         node["StationNums1"].value(),
+            latitude:           node["StationLat"].value(),
+            longitude:          node["StationLon"].value()
         )
     }
 }
 
-    struct Station: StationInfoProtocol {
-        var name: String?
-        var location: String
-        var parkNumber: Int?
-        var currentBikeNumber: Int?
-        var longitude: Double
-        var latitude: Double
-}
+
+
+
 
 
 

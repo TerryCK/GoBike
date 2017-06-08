@@ -22,31 +22,28 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func setCurrentLocation(latDelta: Double, longDelta: Double) {
         
-        let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
-        
-        //        print("myLocationManager.location , \(myLocationManager.location)")
+        let currentLocationSpan = MKCoordinateSpanMake(latDelta, longDelta)
         
         if let current = myLocationManager.location {
-            
-            location.latitude = current.coordinate.latitude
-            location.longitude = current.coordinate.longitude
+            location = current.coordinate
             print("取得使用者GPS位置")
             
         } else {
-            //cibike Version
-            location.latitude = 22.6384542
-            location.longitude = 120.3019452
+            
+            let kaohsiungStationLocation = CLLocationCoordinate2D(latitude: 22.6384542, longitude: 120.3019452)
+            
+            location = kaohsiungStationLocation
             print("無法取得使用者位置、改取得高雄火車站GPS位置")
         }
         
         
         print("北緯：\(location.latitude) 東經：\(location.longitude)")
-        let center:CLLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        let center = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
-        let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate, span: currentLocationSpan)
+        let currentRegion = MKCoordinateRegion(center: center.coordinate, span: currentLocationSpan)
+        
         self.mapView.setRegion(currentRegion, animated: false)
         
-        //        print("currentRegion \(currentRegion)")
     }
     
     
@@ -114,7 +111,6 @@ extension MapViewController: CLLocationManagerDelegate {
             
         case .authorizedWhenInUse:
             myLocationManager.startUpdatingLocation()
-            //            print("開始定位")
             
         default:
             print("Location authrization error")
@@ -135,12 +131,7 @@ extension MapViewController: CLLocationManagerDelegate {
         let longitude = current.coordinate.longitude
         location.longitude = longitude >= 0 ? longitude : longitude + 360
         location.latitude = current.coordinate.latitude
-        
-        
-        //        print("did Update locations the location is ", location)
-        
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {

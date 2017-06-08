@@ -11,7 +11,8 @@ import UIKit
 
 enum TableViewCurrentDisplaySwitcher {
     case displaying, unDisplay
-    mutating func next(){
+    
+    mutating func next() {
         
         switch self {
         case .displaying:
@@ -119,9 +120,6 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             
         })
     }
-    
-    
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4

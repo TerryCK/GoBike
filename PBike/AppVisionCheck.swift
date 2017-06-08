@@ -21,7 +21,6 @@ protocol ConfigurationProtocol {
 
 extension ConfigurationProtocol {
     var appId: String           { return "1192891004" }
-    var adUnitID: String        { return "ca-app-pub-3022461967351598/7816514110" }
     var mailtitle: String       { return "[GoBike]APP建議與回報" }
     var govName: String         { return "屏東縣政府" }
     var dataOwner: String       { return "高雄捷運局" }
@@ -29,14 +28,24 @@ extension ConfigurationProtocol {
     var rideBikeWithYou: String { return "人陪你騎腳踏車" }
 }
 
+protocol VersionCheckable {
+    func setTopTitleImage(to view: UIViewController)
+}
+
+extension VersionCheckable {
+    func setTopTitleImage(to viewController: UIViewController) {
+        let vc = viewController as! MapViewController
+        vc.topTitleimageView.setImage(UIImage(named: "GoBike"), for: UIControlState.normal)
+        
+    }
+}
 // APP check version and default
-extension MapViewController: ConfigurationProtocol {
+extension MapViewController: ConfigurationProtocol, VersionCheckable{
     
     func appVersionInit() -> Int {
         
         var bikeOnService = 0
-        
-        self.topTitleimageView.setImage(UIImage(named: "GoBike"), for: UIControlState.normal)
+        setTopTitleImage(to: self)
         
         guard let citys = bikeModel?.citys else {
             print("citys error ")
@@ -45,44 +54,28 @@ extension MapViewController: ConfigurationProtocol {
         
         for city in citys {
             switch city {
-            case .Taipei, .NewTaipei:
-//                self.govName = "臺北市&新北市政府"
-//                self.dataOwner = "巨大機械工業股份有限公司"
+            case .taipei, .newTaipei:
                 bikeOnService += 7500
                 
-            case .Taoyuan:
-//                self.govName = "桃園市政府"
-//                self.dataOwner = "巨大機械工業股份有限公司"
+            case .taoyuan:
                 bikeOnService += 2800
                 
-            case .Hsinchu:
-//                self.govName = "新竹市政府"
-//                self.dataOwner = "巨大機械工業股份有限公司"
+            case .hsinchu:
                 bikeOnService += 1350
                 
-            case .Taichung:
-//                self.govName = "台中市政府"
-//                self.dataOwner = "巨大機械工業股份有限公司"
+            case .taichung:
                 bikeOnService += 7000
                 
-            case .Changhua:
-//                self.govName = "彰化縣政府"
-//                self.dataOwner = "巨大機械工業股份有限公司"
+            case .changhua:
                 bikeOnService += 7000
                 
-            case .Tainan:
-//                self.govName = "台南市政府"
-//                self.dataOwner = "T-Bike營運團隊"
+            case .tainan:
                 bikeOnService += 500
                 
-            case .Kaohsiung:
-//                self.govName = "高雄市政府"
-//                self.dataOwner = "高雄捷運局"
+            case .kaohsiung:
                 bikeOnService += 2600
                 
-            case .Pingtung :
-//                self.govName = "屏東縣政府"
-//                self.dataOwner = "高雄捷運局"
+            case .pingtung :
                 bikeOnService += 600
                 
             }

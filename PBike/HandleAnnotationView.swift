@@ -10,6 +10,11 @@ import MapKit
 
 extension MapViewController {
     
+    
+//    func relashStatus(from old:[MKAnnotation], to new: [MKAnnotation]) -> [MKAnnotation] {
+//
+//    }
+    
     func handleAnnotationInfo() {
         
         //        let numberOfAPIs = delegate?.countOfAPIs
@@ -35,9 +40,9 @@ extension MapViewController {
         var location = CLLocationCoordinate2D()
         location = self.location
         
-        let numberBikeInUsing:Int? = stations.reduce(self.bikeOnService){$0 - $1.currentBikeNumber!}
+        let numberBikeInUsing:Int? = stations.reduce(self.bikeOnService){$0 - $1.bikeOnSite!}
         
-        let bikesInStation = stations.reduce(0){$0 + $1.currentBikeNumber!}
+        let bikesInStation = stations.reduce(0){$0 + $1.bikeOnSite!}
         self.bikesInStation = bikesInStation
         guard let nunberOfUsingBike = numberBikeInUsing else {
             print("nunberOfUsingPBike is nil")
@@ -92,7 +97,7 @@ extension MapViewController {
             
             
             //handle bike station's name
-            guard let currentBikeNumber = stations[index].currentBikeNumber,
+            guard let currentBikeNumber = stations[index].bikeOnSite,
                 let name = stations[index].name,
                 let parkNumber = stations[index].parkNumber else {
                     return
@@ -103,6 +108,7 @@ extension MapViewController {
             objArray.append(objectAnnotation)
             
         } // loop
+        
         
         objArray.sort{ Double($0.distance)! < Double($1.distance)! }
         annotations = objArray
@@ -128,6 +134,7 @@ extension MapViewController {
 }
 
 //present annotationView
+
 extension MapViewController {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -176,18 +183,15 @@ extension MapViewController {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        //        print("Annotation selected")
         
-//        DispatchQueue.global(qos: .background).async {
-            if let annotation = view.annotation as? CustomPointAnnotation {
+        guard let annotation = view.annotation as? CustomPointAnnotation else { return }
                 self.selectedPin = annotation
-                if let name = annotation.subtitle {
-//                    self.selectedPinName = "\(name) (公共自行車站)"
+        
+        if let name = annotation.subtitle {
                     print("You selected annotationView title: \(name)")
                 }
-            }
-            
-//        }
+                
+        
     }
     
     func mapView(_ mapView:MKMapView , regionWillChangeAnimated: Bool){
