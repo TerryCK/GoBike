@@ -65,13 +65,10 @@ public extension String {
 }
 
 extension Double {
-    var km:Double {
-        return Double(self / 1000) }
+    var km: String {
+        return String(format:"%.1f", self/1000) }
     
-    var string:String {
-        return String(format:"%.1f", self) }
-    
-    var format:Double {
+    var format: Double {
         return Double(String(format:"%.2f", self))!
     }
     var toRadian: CGFloat {

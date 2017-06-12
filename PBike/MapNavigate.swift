@@ -11,11 +11,11 @@ import MapKit
 
 extension MapViewController: Navigatorable {
     
-    internal func navigating() {
-        guard let selectedPin = self.selectedPin else {
+     func navigating() {
+        guard let destination = self.selectedPin else {
             return
         }
-        goto(destination: selectedPin)
+        go(to: destination)
     }
     
     //map information

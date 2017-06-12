@@ -9,17 +9,17 @@
 import MapKit
 
 protocol Navigatorable {
-    func goto(destination selectedPin: CustomPointAnnotation!)
+    func go(to destination: CustomPointAnnotation!)
 }
 
 extension Navigatorable {
-    internal func goto(destination selectedPin: CustomPointAnnotation!)   {
-        guard let selectedPin = selectedPin else {
-            return
-        }
-        let mapItem = MKMapItem(placemark: selectedPin.placemark)
-        mapItem.name = " \(selectedPin.subtitle!) (公共自行車站)"
+     func go(to destination: CustomPointAnnotation!) {
+        guard let destination = destination else { return }
+        
+        let mapItem = MKMapItem(placemark: destination.placemark)
+        mapItem.name = " \(destination.subtitle!) (公共自行車站)"
         print("mapItem.name \(String(describing: mapItem.name))")
+        
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
         mapItem.openInMaps(launchOptions: launchOptions)
     }

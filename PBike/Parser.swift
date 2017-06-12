@@ -17,16 +17,16 @@ typealias HTML = String
 
 protocol Parsable {
     
-     func parse(city: City, html: HTML)      -> [Station]?
-     func parse(city: City, json: JSON)      -> [Station]?
-     func parse(city: City, xml: [Station])  -> [Station]?
+     func parse(city: City, dataFormat html: HTML)      -> [Station]?
+     func parse(city: City, dataFormat json: JSON)      -> [Station]?
+     func parse(city: City, dataFormat xml: [Station])  -> [Station]?
     
     
 }
 
 extension Parsable {
     
-    internal func parse(city: City, html: HTML) -> [Station]? {
+     func parse(city: City, dataFormat html: HTML) -> [Station]? {
         
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
             print("error: parseHTML2Object")
@@ -46,7 +46,7 @@ extension Parsable {
         
         let json = JSON(data: dataFromString)
         
-        guard let stations: [Station] = parse(city: city, json: json) else {
+        guard let stations: [Station] = parse(city: city, dataFormat: json) else {
             print("station is nil plz check parseJson")
             return nil
         }
@@ -54,7 +54,7 @@ extension Parsable {
     }
     
     
-   internal func parse(city: City, json: JSON) -> [Station]? {
+    func parse(city: City, dataFormat json: JSON) -> [Station]? {
         var jsonStation: [Station] = []
         guard !(json.isEmpty) else {
             print("error: JSON parser ")
@@ -78,7 +78,7 @@ extension Parsable {
                 let obj = Station(
                     name:               dict[name].string,
                     location:           dict[location].stringValue,
-                    parkNumber:         dict[parkNumber].intValue,
+                    slot:               dict[parkNumber].intValue,
                     bikeOnSite:         dict[bikeOnSite].intValue,
                     latitude:           dict[latitude].doubleValue,
                     longitude:          dict[longitude].doubleValue
@@ -111,7 +111,7 @@ extension Parsable {
     }
     
     
-   internal func parse(city: City, xml: [Station]) -> [Station]? {
+    func parse(city: City, dataFormat xml: [Station]) -> [Station]? {
         var stationsParsed:[Station]  = []
         
         guard !(xml.isEmpty) else {
@@ -124,7 +124,7 @@ extension Parsable {
             var obj = Station (
                 name:               $0.name,
                 location:           $0.location,
-                parkNumber:         $0.parkNumber,
+                slot:               $0.slot,
                 bikeOnSite:         $0.bikeOnSite,
                 latitude:           $0.latitude,
                 longitude:          $0.longitude

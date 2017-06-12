@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double GzipVersionNumber;
-FOUNDATION_EXPORT const unsigned char GzipVersionString[];
+FOUNDATION_EXPORT double ClusterVersionNumber;
+FOUNDATION_EXPORT const unsigned char ClusterVersionString[];
 

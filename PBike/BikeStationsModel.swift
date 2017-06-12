@@ -13,91 +13,82 @@ import Foundation
 import SwiftyJSON
 import CoreLocation
 
-
 class BikeStationsModel: BikeModelProtocol, Parsable {
     
-    internal var stations: [Station] {
-        return _stations
-    }
+    var stations: [Station] { return _stations }
+    var countOfAPIs = 0
+    var netWorkDataSize = 0
+    var citys: [City] = []
+    var bikeApis = BikeStationAPI().bikeAPIs
     
-    
-    internal var countOfAPIs = 0
-    internal var netWorkDataSize = 0
-    internal var citys: [City] = []
-    internal var bikeApis = BikeStationAPI().bikeAPIs
-    
-    private var longitude = ""
-    private var lativtude = ""
     private var _stations: [Station] = []
     
     func getData(completed: @escaping DownloadComplete) {
-        //Alamofire download
         
         self._stations.removeAll()
         countOfAPIs = 0
         citys.removeAll()
         
+        var stations = [Station]()
+        
         for api in bikeApis {
-            guard api.isHere else {
-                continue
-            }
+            guard api.isHere else { continue }
             
             self.countOfAPIs += 1
+            
             citys.append(api.city)
+            
             let url = api.city.rawValue
-            guard let currentBikeURL = URL(string: url) else {
+            
+            guard let apiURL = URL(string: url) else {
                 print("URL error")
                 return
             }
+            let city = api.city
             
             switch api.dataType {
-            case .XML, .html:
-                Alamofire.request(currentBikeURL).responseString { response in
-                    guard response.result.isSuccess else {
-                        print("response is failed")
-                        return
-                    }
+                
+            case .xml, .html:
+                
+                Alamofire.request(apiURL).responseString { [unowned self] response in
+                    guard response.result.isSuccess else { return }
                     
                     let dataSize = response.data! as NSData
                     self.netWorkDataSize += (dataSize.length)
                     
-                    // html
+                    
                     if api.dataType == .html {
                         guard let html = response.result.value,
-                            let stations = self.parse(city: api.city, html: html) else {
+                            let stations = self.parse(city: city, dataFormat: html) else {
                                 print("error: BikeStationsModel .html " )
                                 return
                         }
+                        
                         self._stations.append(contentsOf: stations)
-                        
-                        // xml
-                        
                     } else {
                         guard let xmlToParse = response.result.value else {
                             print("error, can't unwrap response data")
                             return
                         }
+                        
                         let xml = SWXMLHash.parse(xmlToParse)
                         
                         do {
                             guard let stationsXML:[Station] = try xml["BIKEStationData"]["BIKEStation"]["Station"].value(),
-                                let stations:[Station] = self.parse(city: api.city, xml: stationsXML) else {
-                                    return
-                            }
+                                let stations:[Station] = self.parse(city: city, dataFormat: stationsXML) else { return }
                             
                             self._stations.append(contentsOf: stations)
-                            
                             
                         } catch {
                             print("xml parse error:", error)
                         }
                     }
-                    completed() // main
+                    completed()  // main
                 }
                 
-            case .JSON:
+            case .json:
                 
-                Alamofire.request(currentBikeURL).validate().responseJSON { response in
+                Alamofire.request(apiURL).validate().responseJSON { [unowned self] response in
                     let dataSize = response.data! as NSData
                     self.netWorkDataSize += (dataSize.length)
                     
@@ -105,7 +96,7 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
                     case .success(let value):
                         
                         let json = JSON(value)
-                        guard let stations:[Station] = self.parse(city: api.city, json: json) else {
+                        guard let stations:[Station] = self.parse(city: city, dataFormat: json) else {
                             print("station is nil plz check parseJson")
                             return
                         }
@@ -119,6 +110,14 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
             } // switch
         }//for lop
     }
+}
+
+
+
+
+extension BikeModelProtocol {
+    
+   
 }
 
 

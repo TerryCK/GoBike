@@ -21,35 +21,32 @@ extension MapViewController: CLLocationManagerDelegate {
     }
     
     func setCurrentLocation(latDelta: Double, longDelta: Double) {
-        
         let currentLocationSpan = MKCoordinateSpanMake(latDelta, longDelta)
         
         if let current = myLocationManager.location {
             location = current.coordinate
+            
             print("取得使用者GPS位置")
             
         } else {
-            
             let kaohsiungStationLocation = CLLocationCoordinate2D(latitude: 22.6384542, longitude: 120.3019452)
             
             location = kaohsiungStationLocation
             print("無法取得使用者位置、改取得高雄火車站GPS位置")
         }
         
-        
         print("北緯：\(location.latitude) 東經：\(location.longitude)")
         let center = CLLocation(latitude: location.latitude, longitude: location.longitude)
-        
         let currentRegion = MKCoordinateRegion(center: center.coordinate, span: currentLocationSpan)
         
-        self.mapView.setRegion(currentRegion, animated: false)
-        
+        mapView.setRegion(currentRegion, animated: false)
     }
     
     
     @IBAction func locationArrowPressed(_ sender: AnyObject) {
         
-        switch (self.mapView.userTrackingMode) {
+        switch (mapView.userTrackingMode) {
+            
         case .none:
             setTrackModeToFollow()
             
@@ -59,11 +56,12 @@ extension MapViewController: CLLocationManagerDelegate {
         case .followWithHeading:
             setTrackModeNone()
         }
+        
     }
     
     @objc(mapView:didChangeUserTrackingMode:animated:) func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
         
-        switch (self.mapView.userTrackingMode) {
+        switch (mapView.userTrackingMode) {
         case .none:
             locationArrowImage.setImage(UIImage(named: "locationArrowNone"), for: UIControlState.normal)
             print("tracking mode has changed to none")
@@ -85,15 +83,15 @@ extension MapViewController: CLLocationManagerDelegate {
     func setTrackModeToFollowWithHeading(){
         setCurrentLocation(latDelta: 0.01, longDelta: 0.01)
         
-        self.mapView.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
+        mapView.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
     }
     
     func setTrackModeNone() {
-        self.mapView.setUserTrackingMode(MKUserTrackingMode.none, animated: false)
+        mapView.setUserTrackingMode(MKUserTrackingMode.none, animated: false)
     }
     
     func setTrackModeToFollow() {
-        self.mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: false)
+        mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: false)
     }
     
     func authrizationStatus(completed: @escaping () -> Void ) {
@@ -104,10 +102,15 @@ extension MapViewController: CLLocationManagerDelegate {
             myLocationManager.startUpdatingLocation()
             
         case .denied: //提示可以在設定中打開
-            let alertController = UIAlertController(title: "定位權限以關閉", message: "如要變更權限，請至 設定 > 隱私權 > 定位服務 開啟", preferredStyle:.alert)
+            
+            let alartTitle = "定位權限以關閉"
+            let alartMessage = "如要變更權限，請至 設定 > 隱私權 > 定位服務 開啟"
+            
+            let alertController = UIAlertController(title: title, message: alartMessage, preferredStyle:.alert)
+            
             let okAction = UIAlertAction(title: "確認", style: .default, handler: nil)
             alertController.addAction(okAction)
-            self.present(alertController,animated: true, completion: nil)
+            present(alertController,animated: true, completion: nil)
             
         case .authorizedWhenInUse:
             myLocationManager.startUpdatingLocation()
@@ -131,6 +134,7 @@ extension MapViewController: CLLocationManagerDelegate {
         let longitude = current.coordinate.longitude
         location.longitude = longitude >= 0 ? longitude : longitude + 360
         location.latitude = current.coordinate.latitude
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

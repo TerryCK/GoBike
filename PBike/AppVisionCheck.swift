@@ -44,7 +44,7 @@ extension MapViewController: ConfigurationProtocol, VersionCheckable{
     
     func appVersionInit() -> Int {
         
-        var bikeOnService = 0
+        var estimatedBikeOnService = 0
         setTopTitleImage(to: self)
         
         guard let citys = bikeModel?.citys else {
@@ -55,36 +55,36 @@ extension MapViewController: ConfigurationProtocol, VersionCheckable{
         for city in citys {
             switch city {
             case .taipei, .newTaipei:
-                bikeOnService += 7500
+                estimatedBikeOnService += 7500
                 
             case .taoyuan:
-                bikeOnService += 2800
+                estimatedBikeOnService += 2800
                 
             case .hsinchu:
-                bikeOnService += 1350
+                estimatedBikeOnService += 1350
                 
             case .taichung:
-                bikeOnService += 7000
+                estimatedBikeOnService += 7000
                 
             case .changhua:
-                bikeOnService += 7000
+                estimatedBikeOnService += 7000
                 
             case .tainan:
-                bikeOnService += 500
+                estimatedBikeOnService += 500
                 
             case .kaohsiung:
-                bikeOnService += 2600
+                estimatedBikeOnService += 2600
                 
             case .pingtung :
-                bikeOnService += 600
+                estimatedBikeOnService += 600
                 
             }
             
-            bikeOnService = bikeOnService >= 40000 ? 40000 : bikeOnService
+            estimatedBikeOnService = estimatedBikeOnService >= 40000 ? 40000 : estimatedBikeOnService
             
         }
         
-        return bikeOnService
+        return estimatedBikeOnService
     }
     
 }

@@ -20,7 +20,6 @@ enum TableViewCurrentDisplaySwitcher {
             
         case .unDisplay:
             self = .displaying
-            
         }
         
     }

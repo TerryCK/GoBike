@@ -19,22 +19,22 @@ struct BikeAPI  {
 
 struct BikeStationAPI {
     
-    internal var bikeAPIs = [
-    BikeAPI(city: .taipei,      dataType: .JSON),
-    BikeAPI(city: .newTaipei,   dataType: .JSON),
-    BikeAPI(city: .taoyuan,     dataType: .JSON),
-    BikeAPI(city: .hsinchu,     dataType: .html),
-    BikeAPI(city: .taichung,    dataType: .JSON),
-    BikeAPI(city: .changhua,    dataType: .html),
-    BikeAPI(city: .tainan,      dataType: .JSON),
-    BikeAPI(city: .kaohsiung,   dataType: .XML),
-    BikeAPI(city: .pingtung,    dataType: .XML)
+    var bikeAPIs = [
+        BikeAPI(city: .taipei,      dataType: .json),
+        BikeAPI(city: .newTaipei,   dataType: .json),
+        BikeAPI(city: .taoyuan,     dataType: .json),
+        BikeAPI(city: .hsinchu,     dataType: .html),
+        BikeAPI(city: .taichung,    dataType: .json),
+        BikeAPI(city: .changhua,    dataType: .html),
+        BikeAPI(city: .tainan,      dataType: .json),
+        BikeAPI(city: .kaohsiung,   dataType: .xml),
+        BikeAPI(city: .pingtung,    dataType: .xml)
     ]
 }
 
 
 enum DataType {
-    case XML, JSON, html
+    case xml, json, html
 }
 
 
