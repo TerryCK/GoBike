@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import SWXMLHash
+import Alamofire
+import SwiftyJSON
+
 protocol Downloadable: Parsable {
     func getStations(from apis:[API]) -> [Station]
 }
