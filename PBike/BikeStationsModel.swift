@@ -13,14 +13,15 @@ import Foundation
 import SwiftyJSON
 import CoreLocation
 
-class BikeStationsModel: BikeModelProtocol, Parsable {
+typealias DownloadComplete = () -> ()
+
+final class BikeStationsModel: BikeModelProtocol, Parsable {
     
     var stations: [Station] { return _stations }
     var countOfAPIs = 0
     var netWorkDataSize = 0
     var citys: [City] = []
-    var bikeApis = BikeStationAPI().bikeAPIs
-    
+    var bikeApis = BikeStationAPI().APIs
     private var _stations: [Station] = []
     
     func getData(completed: @escaping DownloadComplete) {
@@ -29,7 +30,7 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
         countOfAPIs = 0
         citys.removeAll()
         
-        var stations = [Station]()
+        //        var stations = [Station]()
         
         for api in bikeApis {
             guard api.isHere else { continue }
@@ -40,17 +41,14 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
             
             let url = api.city.rawValue
             
-            guard let apiURL = URL(string: url) else {
-                print("URL error")
-                return
-            }
+            guard let apiURL = URL(string: url) else { return }
             let city = api.city
             
             switch api.dataType {
                 
             case .xml, .html:
                 
-                Alamofire.request(apiURL).responseString { [unowned self] response in
+                Alamofire.request(apiURL).responseString { response in
                     guard response.result.isSuccess else { return }
                     
                     let dataSize = response.data! as NSData
@@ -65,6 +63,8 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
                         }
                         
                         self._stations.append(contentsOf: stations)
+                        
+                        
                     } else {
                         guard let xmlToParse = response.result.value else {
                             print("error, can't unwrap response data")
@@ -115,10 +115,6 @@ class BikeStationsModel: BikeModelProtocol, Parsable {
 
 
 
-extension BikeModelProtocol {
-    
-   
-}
 
 
 

@@ -9,36 +9,36 @@
 import MapKit
 
 protocol AnnotationHandleable {
-    func getObjectArray(from stations: [Station], userLocation: CLLocation) -> [CustomPointAnnotation]
+     func getObjectArray(from stations: [Station], userLocation: CLLocation, region: Int?) -> [CustomPointAnnotation]
 }
 
 extension MapViewController: AnnotationHandleable, Counterable {
     
-    func handleAnnotationInfo() {
+    func handleAnnotationInfo(estimated: Int) -> String {
         
         var objArray = [CustomPointAnnotation]()
-        guard let stations = bikeModel?.stations else { return }
+        guard let stations = bikeModel?.stations else { return "0" }
         
-        //        let numberOfAPIs = delegate?.countOfAPIs
-        //        let showPinInReginoDistance = 15.0
-        //        print("numberOfAPIs:", numberOfAPIs!, "timesOfLoadingAnnotationView:",timesOfLoadingAnnotationView)
-        //        guard timesOfLoadingAnnotationView == numberOfAPIs! else {
-        //            timesOfLoadingAnnotationView += 1
-        //            return
-        //        }
+//                let numberOfAPIs = delegate?.countOfAPIs
+//                let showPinInReginoDistance = 15.0
+//
+//                guard timesOfLoadingAnnotationView == numberOfAPIs! else {
+//                    timesOfLoadingAnnotationView += 1
+//                    return
+//                }
         
         
-        let estimate = self.estimatedBikeOnService
-        let determined = getValueOfUsingAndOnSite(from: stations, estimateValue: estimate)
-        self.bikesInStation = determined.bikeOnSite
+        
+        let determined = getValueOfUsingAndOnSite(from: stations, estimateValue: estimated)
         let bikeInUsing = determined.bikeIsUsing.currencyStyle
         
-        self.currentPeopleOfRidePBike = bikeInUsing
+        
         
         oldAnnotations.append(contentsOf: annotations)
         annotations.removeAll()
         
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        
         objArray = getObjectArray(from: stations, userLocation: currentLocation)
         
         annotations = objArray
@@ -48,6 +48,8 @@ extension MapViewController: AnnotationHandleable, Counterable {
             mapView.addAnnotations(self.annotations)
             mapView.removeAnnotations(self.oldAnnotations)
             oldAnnotations.removeAll()
+        
+        return "\(determined.bikeOnSite)"
     }
     
 }

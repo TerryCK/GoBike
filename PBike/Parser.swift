@@ -16,12 +16,9 @@ import CoreLocation
 typealias HTML = String
 
 protocol Parsable {
-    
      func parse(city: City, dataFormat html: HTML)      -> [Station]?
      func parse(city: City, dataFormat json: JSON)      -> [Station]?
      func parse(city: City, dataFormat xml: [Station])  -> [Station]?
-    
-    
 }
 
 extension Parsable {
@@ -105,39 +102,28 @@ extension Parsable {
         default:
             print("JSON city error:", city)
         }
-        
         jsonStation = deserializableJSON(json: jsonArray)
         return jsonStation
     }
     
     
     func parse(city: City, dataFormat xml: [Station]) -> [Station]? {
-        var stationsParsed:[Station]  = []
-        
         guard !(xml.isEmpty) else {
-            print("error: xml parser")
+            print("xml is empty")
             return nil
         }
         
-        stationsParsed = xml.map {
-            
-            var obj = Station (
+        let stationsParsed: [Station] = xml.map {
+            let obj = Station (
                 name:               $0.name,
                 location:           $0.location,
                 slot:               $0.slot,
                 bikeOnSite:         $0.bikeOnSite,
-                latitude:           $0.latitude,
-                longitude:          $0.longitude
+                latitude:           $0.latitude > $0.longitude ? $0.longitude : $0.latitude,
+                longitude:          $0.latitude > $0.longitude ? $0.latitude  : $0.longitude
             )
-            
-            // avoid data source wrong formation with coordinates
-            if obj.latitude > obj.longitude {
-                swap(&obj.latitude, &obj.longitude)
-            }
-            
             return obj
         }
-        
         return stationsParsed
     }
 }

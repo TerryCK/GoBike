@@ -5,7 +5,7 @@ def shared_pods
 	use_frameworks!
 
     pod 'Firebase/AdMob'
-    pod 'Firebase/Core', '~> 3.15.0'
+    pod 'Firebase/Core'#, '~> 3.15.0'
     pod 'SWXMLHash'
     pod 'Alamofire', '~> 4.0'
     pod 'ReachabilitySwift'
@@ -14,7 +14,6 @@ def shared_pods
     pod 'SwiftyJSON'
     pod 'Kanna', '~> 2.1.0'
     pod 'PercentEncoder'
-    pod 'AsyncSwift'
     pod 'Cluster'
 end
 

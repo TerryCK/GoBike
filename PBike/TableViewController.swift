@@ -147,7 +147,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationTableViewCell
-            cell.peopleNumberLabel.text = self.currentPeopleOfRidePBike
+            cell.peopleNumberLabel.text = self.BikeOnRiding
             cell.rideBikeWithYouLabel.text = self.rideBikeWithYou
             cellCustomize(cell: cell)
             return cell

@@ -25,27 +25,22 @@ extension MapViewController: CLLocationManagerDelegate {
         
         if let current = myLocationManager.location {
             location = current.coordinate
-            
             print("取得使用者GPS位置")
-            
         } else {
             let kaohsiungStationLocation = CLLocationCoordinate2D(latitude: 22.6384542, longitude: 120.3019452)
-            
             location = kaohsiungStationLocation
             print("無法取得使用者位置、改取得高雄火車站GPS位置")
         }
-        
         print("北緯：\(location.latitude) 東經：\(location.longitude)")
         let center = CLLocation(latitude: location.latitude, longitude: location.longitude)
         let currentRegion = MKCoordinateRegion(center: center.coordinate, span: currentLocationSpan)
-        
         mapView.setRegion(currentRegion, animated: false)
     }
     
     
     @IBAction func locationArrowPressed(_ sender: AnyObject) {
         
-        switch (mapView.userTrackingMode) {
+        switch mapView.userTrackingMode {
             
         case .none:
             setTrackModeToFollow()
@@ -82,7 +77,6 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func setTrackModeToFollowWithHeading(){
         setCurrentLocation(latDelta: 0.01, longDelta: 0.01)
-        
         mapView.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
     }
     
@@ -103,10 +97,10 @@ extension MapViewController: CLLocationManagerDelegate {
             
         case .denied: //提示可以在設定中打開
             
-            let alartTitle = "定位權限以關閉"
+            let alartTitle = "定位權限已關閉"
             let alartMessage = "如要變更權限，請至 設定 > 隱私權 > 定位服務 開啟"
             
-            let alertController = UIAlertController(title: title, message: alartMessage, preferredStyle:.alert)
+            let alertController = UIAlertController(title: alartTitle, message: alartMessage, preferredStyle:.alert)
             
             let okAction = UIAlertAction(title: "確認", style: .default, handler: nil)
             alertController.addAction(okAction)
@@ -123,9 +117,7 @@ extension MapViewController: CLLocationManagerDelegate {
         
         let myLocation:MKUserLocation = mapView.userLocation
         myLocation.title = "😏目前位置"
-        
         completed()
-        
     }
     
     

@@ -1,5 +1,5 @@
 framework module Pods_PBike_Dev {
-  umbrella header "Pods-BikeVisionPbike Dev-umbrella.h"
+  umbrella header "Pods-PBike Dev-umbrella.h"
 
   export *
   module * { export * }

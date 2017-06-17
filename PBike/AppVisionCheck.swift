@@ -16,7 +16,7 @@ protocol ConfigurationProtocol {
     var dataOwner: String       { get }
     var applink: String         { get }
     var rideBikeWithYou: String { get }
-    
+    func setTopTitleImage(to view: UIViewController)
 }
 
 extension ConfigurationProtocol {
@@ -26,65 +26,34 @@ extension ConfigurationProtocol {
     var dataOwner: String       { return "高雄捷運局" }
     var applink: String         { return "https://itunes.apple.com/tw/app/id1192891004?l=zh&mt=8" }
     var rideBikeWithYou: String { return "人陪你騎腳踏車" }
-}
-
-protocol VersionCheckable {
-    func setTopTitleImage(to view: UIViewController)
-}
-
-extension VersionCheckable {
     func setTopTitleImage(to viewController: UIViewController) {
         let vc = viewController as! MapViewController
         vc.topTitleimageView.setImage(UIImage(named: "GoBike"), for: UIControlState.normal)
-        
     }
 }
+
+
+
 // APP check version and default
-extension MapViewController: ConfigurationProtocol, VersionCheckable{
+extension MapViewController: ConfigurationProtocol {
     
     func appVersionInit() -> Int {
-        
-        var estimatedBikeOnService = 0
         setTopTitleImage(to: self)
-        
-        guard let citys = bikeModel?.citys else {
-            print("citys error ")
-            return -1
-        }
+        var estimatedBikeOnService = 0
+        guard let citys = bikeModel?.citys else { return -1 }
         
         for city in citys {
             switch city {
             case .taipei, .newTaipei:
                 estimatedBikeOnService += 7500
-                
-            case .taoyuan:
+            case .taoyuan, .taichung, .changhua, .kaohsiung:
                 estimatedBikeOnService += 2800
-                
             case .hsinchu:
                 estimatedBikeOnService += 1350
-                
-            case .taichung:
-                estimatedBikeOnService += 7000
-                
-            case .changhua:
-                estimatedBikeOnService += 7000
-                
-            case .tainan:
-                estimatedBikeOnService += 500
-                
-            case .kaohsiung:
-                estimatedBikeOnService += 2600
-                
-            case .pingtung :
+            case .tainan, .pingtung:
                 estimatedBikeOnService += 600
-                
             }
-            
-            estimatedBikeOnService = estimatedBikeOnService >= 40000 ? 40000 : estimatedBikeOnService
-            
         }
-        
-        return estimatedBikeOnService
+        return estimatedBikeOnService >= 40000 ? 40000 : estimatedBikeOnService
     }
-    
 }

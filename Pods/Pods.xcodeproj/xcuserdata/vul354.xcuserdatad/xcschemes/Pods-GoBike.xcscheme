@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A431FEF78257530889E10ADB3054620"
+               BlueprintIdentifier = "17C4FE661B944E078992B61ED54AD3F8"
                BuildableName = "Pods_GoBike.framework"
                BlueprintName = "Pods-GoBike"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A431FEF78257530889E10ADB3054620"
+            BlueprintIdentifier = "17C4FE661B944E078992B61ED54AD3F8"
             BuildableName = "Pods_GoBike.framework"
             BlueprintName = "Pods-GoBike"
             ReferencedContainer = "container:Pods.xcodeproj">

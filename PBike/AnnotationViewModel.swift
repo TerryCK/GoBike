@@ -11,19 +11,30 @@ import MapKit
 
 
 protocol Counterable {
-     func getValueOfUsingAndOnSite(from array: [Station], estimateValue: Int) -> (bikeOnSite: Int,  bikeIsUsing: Int)
+    func getValueOfUsingAndOnSite(from array: [Station], estimateValue: Int) -> (bikeOnSite: Int,  bikeIsUsing: Int)
 }
 
 extension Counterable {
-     func getValueOfUsingAndOnSite(from array: [Station], estimateValue: Int) -> (bikeOnSite: Int,  bikeIsUsing: Int) {
+    func getValueOfUsingAndOnSite(from array: [Station], estimateValue: Int) -> (bikeOnSite: Int,  bikeIsUsing: Int) {
         let bikeOnSite = array.reduce(0){$0 + $1.bikeOnSite!}.minLimit
         let bikeIsUsing = (estimateValue - bikeOnSite).minLimit
         return (bikeOnSite, bikeIsUsing)
     }
 }
+
+
+
+
+
+
+
+
+
+
 extension AnnotationHandleable {
     
-    func getObjectArray(from stations: [Station], userLocation: CLLocation) -> [CustomPointAnnotation] {
+    func getObjectArray(from stations: [Station], userLocation: CLLocation, region: Int? = nil) -> [CustomPointAnnotation] {
+        
         var objArray = [CustomPointAnnotation]()
         
         for (index, _) in stations.enumerated() {
@@ -31,6 +42,11 @@ extension AnnotationHandleable {
             objArray.append(object)
         }
         objArray.sort{ Double($0.distance)! < Double($1.distance)! }
+        
+        if let region = region {
+            objArray.filter { Int($0.distance)! < region  }
+        }
+        
         return objArray
     }
     
@@ -50,7 +66,7 @@ extension AnnotationHandleable {
         let placemark = MKPlacemark(coordinate: bikeStationLocation, addressDictionary: [subtitle: ""])
         let destinationCoordinate = CLLocation(latitude: latitude, longitude: longitude)
         let distance = destinationCoordinate.distance(from: userLocation).km
-        let pinImage = BikeStationsModel.getStatusImage(from: stations, at: index)
+        let pinImage = StationStatus.getImage(by: stations, at: index)
         
         let objectAnnotation = CustomPointAnnotation()
         

@@ -76,7 +76,7 @@ extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
     }
     
     
-    func decreaseTimer() {
+    @objc func decreaseTimer() {
         time -= 1
         if self.timerCurrentStatusFlag == .play {
             

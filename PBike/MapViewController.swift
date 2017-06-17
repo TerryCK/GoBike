@@ -11,17 +11,16 @@ import MapKit
 import CoreLocation
 import GoogleMobileAds
 
-protocol BikeModelProtocol: class  {
+protocol BikeModelProtocol {
     var  citys:             [City]      { get }
     var  stations:          [Station]   { get }
     var  countOfAPIs:       Int         { get }
     var  netWorkDataSize:   Int         { get }
     func getData(completed: @escaping DownloadComplete)
     func getAPIFrom(userLocation: CLLocationCoordinate2D)
-    static func getStatusImage(from station: [Station], at index: Int) -> String
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable {
+final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable {
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var updateTimeLabel: UILabel!
@@ -34,17 +33,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     
+    
+    
     var myLocationManager: CLLocationManager!
     var effect:UIVisualEffect!
     
     var location = CLLocationCoordinate2D()
-    
-    
-    
     var selectedPin: CustomPointAnnotation?
-    
-    
-    var currentPeopleOfRidePBike: String = ""
+    var BikeOnRiding: String = ""
     
     var annotations = [MKAnnotation]()
     var estimatedBikeOnService = 0
@@ -80,15 +76,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
             self.setCurrentLocation(latDelta: delta, longDelta: delta)
             self.bikeModel?.getAPIFrom(userLocation: self.location)
             self.updatingDataByServalTime()
-            
         }
-        
     }
     
     
     
     
-    func updatingDataByServalTime() {
+    @objc func updatingDataByServalTime() {
         
         if reloadtime > 0 {
             reloadtime -= 1
@@ -100,19 +94,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
             updateTimeLabel.text = "資料更新中"
             print("\n ***** 資料更新中 *****\n")
             citycounter = 1
+            
             getedData()
             timesOfLoadingAnnotationView = 1
-            
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
             reloadtime = 30
         }
     }
     
     func getedData(){
-        
         bikeModel?.getData { [unowned self] in
+            let estimated = self.estimatedBikeOnService
             self.estimatedBikeOnService = self.appVersionInit()
-            self.handleAnnotationInfo()
+            self.BikeOnRiding = self.handleAnnotationInfo(estimated: estimated)
         }
     }
     
@@ -123,7 +117,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
             let netWorkDataSize = self.bikeModel?.netWorkDataSize.currencyStyle else { return }
         
             print("\n站內腳踏車有 \(self.bikesInStation.currencyStyle) 台")
-            print("目前有 \(self.currentPeopleOfRidePBike) 人正在騎腳踏車")
+            print("目前有 \(self.BikeOnRiding) 人正在騎腳踏車")
             print("目前地圖中有 \(self.annotations.count.currencyStyle) 座")
             print("目前顯示城市名單:\n")
             print("  *****  ", terminator: "")
@@ -140,7 +134,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurE
         initializeLocationManager()
         setupRotatArrowBtnPosition()
         self.bikeModel = BikeStationsModel()
-        
         UITableView.delegate = self
         UITableView.dataSource = self
         UITableView.backgroundView?.alpha = 0

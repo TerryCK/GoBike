@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.sharedSDK().debug = true
         Fabric.with([Crashlytics.self])
-        FIRApp.configure()
+        FirebaseApp.configure()
         GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~6339780911")
         return true
     }
