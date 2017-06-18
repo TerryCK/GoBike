@@ -13,9 +13,7 @@ extension ConfigurationProtocol where Self: GADBannerViewDelegate {
 
 extension MapViewController: GADBannerViewDelegate {
     
-    
     func setGoogleMobileAds(){
-        
         let request: GADRequest = GADRequest()
         bannerView.rootViewController = self
         bannerView.adUnitID = adUnitID

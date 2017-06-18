@@ -8,7 +8,7 @@
 
 import MapKit
 
-class CustomPointAnnotation: MKPointAnnotation {
+final class CustomPointAnnotation: MKPointAnnotation {
     var imageName: UIImage!
     var placemark: MKPlacemark!
     var distance:  String!

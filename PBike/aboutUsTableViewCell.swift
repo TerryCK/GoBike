@@ -8,7 +8,7 @@
 
 import UIKit
 
-class aboutUsTableViewCell: UITableViewCell {
+final class aboutUsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var LabNameLabel: UILabel!
     

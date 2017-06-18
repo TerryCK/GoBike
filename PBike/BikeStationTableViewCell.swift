@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BikeStationTableViewCell: UITableViewCell {
+final class BikeStationTableViewCell: UITableViewCell {
 
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!

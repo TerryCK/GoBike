@@ -76,7 +76,7 @@ extension MapViewController: AnnotationHandleable, Counterable {
 //present annotationView
 extension MapViewController {
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    @objc func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         
         if annotation.isKind(of: MKUserLocation.self) { return nil }

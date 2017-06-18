@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RateingReportTableViewCell: UITableViewCell {
+final class RateingReportTableViewCell: UITableViewCell {
     
     @IBOutlet weak var report: UIButton!
     

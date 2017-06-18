@@ -20,7 +20,7 @@ protocol BikeModelProtocol {
     func getAPIFrom(userLocation: CLLocationCoordinate2D)
 }
 
-final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable {
+final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable {
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var updateTimeLabel: UILabel!
@@ -78,8 +78,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
             self.updatingDataByServalTime()
         }
     }
-    
-    
     
     
     @objc func updatingDataByServalTime() {

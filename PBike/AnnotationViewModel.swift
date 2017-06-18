@@ -16,20 +16,11 @@ protocol Counterable {
 
 extension Counterable {
     func getValueOfUsingAndOnSite(from array: [Station], estimateValue: Int) -> (bikeOnSite: Int,  bikeIsUsing: Int) {
-        let bikeOnSite = array.reduce(0){$0 + $1.bikeOnSite!}.minLimit
+        let bikeOnSite = array.reduce(0){ $0 + $1.bikeOnSite! }.minLimit
         let bikeIsUsing = (estimateValue - bikeOnSite).minLimit
         return (bikeOnSite, bikeIsUsing)
     }
 }
-
-
-
-
-
-
-
-
-
 
 extension AnnotationHandleable {
     

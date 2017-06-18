@@ -21,7 +21,6 @@ enum TableViewCurrentDisplaySwitcher {
         case .unDisplay:
             self = .displaying
         }
-        
     }
 }
 
@@ -31,12 +30,9 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     var cellSpacingHeight: CGFloat { get { return 5 } }
     
     @IBAction func titleBtnPressed(_ sender: AnyObject) {
-        guard tableViewCanDoNext else {
-            return
-        }
+        guard tableViewCanDoNext else { return }
         
         switch currentStateOfTableViewDisplaying {
-            
         case .unDisplay:
             //defult on the screen
             DispatchQueue.main.async {
@@ -62,8 +58,8 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func showUpTableView(_ moveView: UIView){
-        self.tableViewCanDoNext = false
         
+        self.tableViewCanDoNext = false
         //        show subview from top
         //        print("self.tableViewCanDoNext \(self.tableViewCanDoNext)")
         //        print("UITableView Postition \(UITableView.center) ")

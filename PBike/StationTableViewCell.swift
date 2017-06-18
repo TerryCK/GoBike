@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StationTableViewCell: UITableViewCell {
+final class StationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var peopleNumberLabel: UILabel!
     @IBOutlet weak var rideBikeWithYouLabel: UILabel!

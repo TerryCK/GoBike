@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThanksforTableViewCell: UITableViewCell {
+final class ThanksforTableViewCell: UITableViewCell {
 
     @IBOutlet weak var thanksLabel: UILabel!
     

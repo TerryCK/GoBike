@@ -8,9 +8,12 @@
 
 import UIKit
 
-extension MapViewController {
+protocol MotionEffectable {
+      func applyMotionEffect(toView view: UIView, magnitude: Float)
+}
+extension MotionEffectable {
     
-    func applyMotionEffect(toView view: UIView, magnitude: Float){
+    func applyMotionEffect(toView view: UIView, magnitude: Float) {
         let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         xMotion.minimumRelativeValue = -magnitude
         xMotion.maximumRelativeValue = magnitude

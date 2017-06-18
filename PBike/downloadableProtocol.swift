@@ -12,19 +12,19 @@ import Alamofire
 import SwiftyJSON
 
 protocol Downloadable: Parsable {
-    func getStations(from apis:[API]) -> [Station]
+    func getStations(from apis:[API], completeHandler: @escaping () -> [Station])
 }
 
 extension Downloadable {
     
-    func getStations(from apis:[API]) -> [Station] {
+    func getStations(from apis:[API], completeHandler: @escaping ([Station]) -> Void) {
         var stations = [Station]()
         for api in apis {
             let url = api.city.rawValue
             let newStations = getData(api , url)
             stations.append(contentsOf: newStations)
         }
-        return stations
+        completeHandler(stations)
     }
     
     private func getData(_ api: API, _ url: String) -> [Station] {
