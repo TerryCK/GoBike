@@ -40,20 +40,20 @@ extension MapViewController: ConfigurationProtocol {
     func appVersionInit() -> Int {
         setTopTitleImage(to: self)
         var estimatedBikeOnService = 0
-        guard let citys = bikeModel?.citys else { return -1 }
+//        guard let citys = bikeModel?.citys else { return -1 }
         
-        for city in citys {
-            switch city {
-            case .taipei, .newTaipei:
-                estimatedBikeOnService += 7500
-            case .taoyuan, .taichung, .changhua, .kaohsiung:
-                estimatedBikeOnService += 2800
-            case .hsinchu:
-                estimatedBikeOnService += 1350
-            case .tainan, .pingtung:
-                estimatedBikeOnService += 600
-            }
-        }
+//        for city in citys {
+//            switch city {
+//            case .taipei, .newTaipei:
+//                estimatedBikeOnService += 7500
+//            case .taoyuan, .taichung, .changhua, .kaohsiung:
+//                estimatedBikeOnService += 2800
+//            case .hsinchu:
+//                estimatedBikeOnService += 1350
+//            case .tainan, .pingtung:
+//                estimatedBikeOnService += 600
+//            }
+//        }
         return estimatedBikeOnService >= 40000 ? 40000 : estimatedBikeOnService
     }
 }

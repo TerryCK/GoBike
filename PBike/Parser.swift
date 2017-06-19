@@ -23,7 +23,7 @@ protocol Parsable {
 
 extension Parsable {
     
-     func parse(city: City, dataFormat html: HTML) -> [Station]? {
+      func parse(city: City, dataFormat html: HTML) -> [Station]? {
         
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
             print("error: parseHTML2Object")
@@ -51,7 +51,28 @@ extension Parsable {
     }
     
     
-    func parse(city: City, dataFormat json: JSON) -> [Station]? {
+    
+    
+    
+     func parse(city: City, dataFormat xml: [Station]) -> [Station]? {
+        guard !(xml.isEmpty) else { print("xml is empty") ; return nil }
+        let stationsParsed: [Station] = xml.map {
+            let obj = Station (
+                name:               $0.name,
+                location:           $0.location,
+                slot:               $0.slot,
+                bikeOnSite:         $0.bikeOnSite,
+                latitude:           $0.latitude > $0.longitude ? $0.longitude : $0.latitude,
+                longitude:          $0.latitude > $0.longitude ? $0.latitude  : $0.longitude
+            )
+            return obj
+        }
+        
+        return stationsParsed
+    }
+    
+    
+     func parse(city: City, dataFormat json: JSON) -> [Station]? {
         var jsonStation: [Station] = []
         guard !(json.isEmpty) else {
             print("error: JSON parser ")
@@ -104,27 +125,6 @@ extension Parsable {
         }
         jsonStation = deserializableJSON(json: jsonArray)
         return jsonStation
-    }
-    
-    
-    func parse(city: City, dataFormat xml: [Station]) -> [Station]? {
-        guard !(xml.isEmpty) else {
-            print("xml is empty")
-            return nil
-        }
-        
-        let stationsParsed: [Station] = xml.map {
-            let obj = Station (
-                name:               $0.name,
-                location:           $0.location,
-                slot:               $0.slot,
-                bikeOnSite:         $0.bikeOnSite,
-                latitude:           $0.latitude > $0.longitude ? $0.longitude : $0.latitude,
-                longitude:          $0.latitude > $0.longitude ? $0.latitude  : $0.longitude
-            )
-            return obj
-        }
-        return stationsParsed
     }
 }
 

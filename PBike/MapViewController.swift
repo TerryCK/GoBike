@@ -11,16 +11,16 @@ import MapKit
 import CoreLocation
 import GoogleMobileAds
 
-protocol BikeModelProtocol {
-    var  citys:             [City]      { get }
-    var  stations:          [Station]   { get }
-    var  countOfAPIs:       Int         { get }
-    var  netWorkDataSize:   Int         { get }
-    func getData(completed: @escaping DownloadComplete)
-    func getAPIFrom(userLocation: CLLocationCoordinate2D)
-}
+//protocol BikeModelProtocol {
+//    var  citys:             [City]      { get }
+//    var  stations:          [Station]   { get }
+//    var  countOfAPIs:       Int         { get }
+//    var  netWorkDataSize:   Int         { get }
+////    func getData(completed: @escaping DownloadComplete)
+//    func getAPIFrom(userLocation: CLLocationCoordinate2D)
+//}
 
-final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable {
+final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol {
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var updateTimeLabel: UILabel!
@@ -65,7 +65,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     var bikeInUsing = ""
     var citycounter = 1
     
-    var bikeModel: BikeModelProtocol!
+//    var bikeModel: BikeModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +74,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         authrizationStatus { [unowned self] in
             let delta = 0.03
             self.setCurrentLocation(latDelta: delta, longDelta: delta)
-            self.bikeModel?.getAPIFrom(userLocation: self.location)
+//            self.bikeModel?.getAPIFrom(userLocation: self.location)
             self.updatingDataByServalTime()
         }
     }
@@ -93,35 +93,41 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
             print("\n ***** 資料更新中 *****\n")
             citycounter = 1
             
-            getedData()
+            getData(userLocation: location)
             timesOfLoadingAnnotationView = 1
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
             reloadtime = 30
         }
     }
     
-    func getedData(){
-        bikeModel?.getData { [unowned self] in
+//    func getedData(){
+//        bikeModel?.getData { [unowned self] in
+//            
+//        }
+//    }
+    
+    func getData(userLocation: CLLocationCoordinate2D) {
+        getStations(userLocation: userLocation) { (stations) in
             let estimated = self.estimatedBikeOnService
             self.estimatedBikeOnService = self.appVersionInit()
-            self.BikeOnRiding = self.handleAnnotationInfo(estimated: estimated)
+            self.BikeOnRiding = self.handleAnnotationInfo(stations: stations, estimated: estimated)
+            print("userLocation:",userLocation)
+            print("getData:", stations )
         }
     }
-    
-    
     func refreshShownData() {
         
-        guard let cities = self.bikeModel?.citys,
-            let netWorkDataSize = self.bikeModel?.netWorkDataSize.currencyStyle else { return }
+//        guard let cities = self.bikeModel?.citys,
+//            let netWorkDataSize = self.bikeModel?.netWorkDataSize.currencyStyle else { return }
         
             print("\n站內腳踏車有 \(self.bikesInStation.currencyStyle) 台")
             print("目前有 \(self.BikeOnRiding) 人正在騎腳踏車")
             print("目前地圖中有 \(self.annotations.count.currencyStyle) 座")
             print("目前顯示城市名單:\n")
             print("  *****  ", terminator: "")
-            cities.forEach{ print($0, terminator: ", ") }
-            print("  *****  \n\n累積下載資料量:", netWorkDataSize, "bytes\n")
-            
+//            cities.forEach{ print($0, terminator: ", ") }
+//            print("  *****  \n\n累積下載資料量:", netWorkDataSize, "bytes\n")
+        
             UITableView.reloadData()
         
     }
@@ -131,7 +137,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         performanceGuidePage()
         initializeLocationManager()
         setupRotatArrowBtnPosition()
-        self.bikeModel = BikeStationsModel()
+//        self.bikeModel = BikeStationsModel()
         UITableView.delegate = self
         UITableView.dataSource = self
         UITableView.backgroundView?.alpha = 0

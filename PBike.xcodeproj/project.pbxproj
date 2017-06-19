@@ -88,7 +88,7 @@
 		A85D3C481DCEBAE800875B3A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A85D3C491DCEBAE800875B3A /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
 		A85D3C4A1DCEBAE800875B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
-		A85D3C4B1DCEBAE800875B3A /* BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* BikeStationsModel.swift */; };
+		A85D3C4B1DCEBAE800875B3A /* [Old]BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */; };
 		A85D3C4C1DCEBAE800875B3A /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
 		A85D3C4E1DCEBAE800875B3A /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
 		A85D3C501DCEBAE800875B3A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52441DC09A0D0016F9E0 /* MessageUI.framework */; };
@@ -131,7 +131,7 @@
 		A8A80B021DD1F6F400107566 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A8A80B031DD1F6F400107566 /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
 		A8A80B041DD1F6F400107566 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
-		A8A80B051DD1F6F400107566 /* BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* BikeStationsModel.swift */; };
+		A8A80B051DD1F6F400107566 /* [Old]BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */; };
 		A8A80B061DD1F6F400107566 /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
 		A8A80B081DD1F6F400107566 /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
 		A8A80B0A1DD1F6F400107566 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52441DC09A0D0016F9E0 /* MessageUI.framework */; };
@@ -178,10 +178,6 @@
 		A8CC81771E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
 		A8CC81781E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
 		A8CC81791E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
-		A8CEEF6F1ED26EED00374389 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF6E1ED26EED00374389 /* Networking.swift */; };
-		A8CEEF701ED26EED00374389 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF6E1ED26EED00374389 /* Networking.swift */; };
-		A8CEEF711ED26EED00374389 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF6E1ED26EED00374389 /* Networking.swift */; };
-		A8CEEF721ED26EED00374389 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF6E1ED26EED00374389 /* Networking.swift */; };
 		A8CEEF741ED2750B00374389 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* Model.swift */; };
 		A8CEEF751ED2750B00374389 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* Model.swift */; };
 		A8CEEF761ED2750B00374389 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* Model.swift */; };
@@ -207,7 +203,7 @@
 		A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
 		A8F836531DB37336001131BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
-		A8F836631DB374A6001131BE /* BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* BikeStationsModel.swift */; };
+		A8F836631DB374A6001131BE /* [Old]BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */; };
 		A8F836651DB378CA001131BE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F836641DB378CA001131BE /* MapKit.framework */; };
 		A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
 		A8FE694E1DEDB2BE00BE4E51 /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
@@ -216,7 +212,7 @@
 		A8FE69521DEDB2BE00BE4E51 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A8FE69531DEDB2BE00BE4E51 /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
 		A8FE69541DEDB2BE00BE4E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
-		A8FE69551DEDB2BE00BE4E51 /* BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* BikeStationsModel.swift */; };
+		A8FE69551DEDB2BE00BE4E51 /* [Old]BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */; };
 		A8FE69561DEDB2BE00BE4E51 /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
 		A8FE69581DEDB2BE00BE4E51 /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
 		A8FE695A1DEDB2BE00BE4E51 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52441DC09A0D0016F9E0 /* MessageUI.framework */; };
@@ -326,7 +322,6 @@
 		A8CC81681E14BB0100CBC824 /* AppVisionCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVisionCheck.swift; sourceTree = "<group>"; };
 		A8CC81701E14C30E00CBC824 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A8CC81751E14C7D000CBC824 /* MapNavigate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigate.swift; sourceTree = "<group>"; };
-		A8CEEF6E1ED26EED00374389 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		A8CEEF731ED2750B00374389 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -342,7 +337,7 @@
 		A8F836521DB37336001131BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A8F836571DB37336001131BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8F836591DB37336001131BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A8F836621DB374A6001131BE /* BikeStationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationsModel.swift; sourceTree = "<group>"; };
+		A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "[Old]BikeStationsModel.swift"; sourceTree = "<group>"; };
 		A8F836641DB378CA001131BE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
 		A8FE69781DEDB2BE00BE4E51 /* GoBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -613,17 +608,16 @@
 		A8F8365F1DB3744C001131BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */,
 				A84989C31E114D3C0095D9E8 /* API.swift */,
-				A851E5611E6C061A003A1B35 /* Parser.swift */,
+				A84989C71E1367D10095D9E8 /* Station.swift */,
 				A86353681EE7B553003CCFDA /* Navigator.swift */,
 				A81C7A7D1EC07E0600928F20 /* StatusImage.swift */,
-				A8193E581EC030F800403B85 /* getAPIFromUserLocation.swift */,
-				A84989C71E1367D10095D9E8 /* Station.swift */,
+				A851E5611E6C061A003A1B35 /* Parser.swift */,
 				A808B0A91E43874D0052C983 /* Extension.swift */,
-				A8CEEF6E1ED26EED00374389 /* Networking.swift */,
-				A8F836621DB374A6001131BE /* BikeStationsModel.swift */,
-				A8CA6C621EF5299B00515253 /* downloadableProtocol.swift */,
 				A8AF41641EEE719A003AA884 /* AnnotationViewModel.swift */,
+				A8193E581EC030F800403B85 /* getAPIFromUserLocation.swift */,
+				A8CA6C621EF5299B00515253 /* downloadableProtocol.swift */,
 				A8CEEF731ED2750B00374389 /* Model.swift */,
 			);
 			name = Model;
@@ -1263,7 +1257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84989C61E1364FE0095D9E8 /* API.swift in Sources */,
-				A8CEEF701ED26EED00374389 /* Networking.swift in Sources */,
 				A85D3C441DCEBAE800875B3A /* ThanksforTableViewCell.swift in Sources */,
 				A85D3C451DCEBAE800875B3A /* LocationSearchTable.swift in Sources */,
 				A8CC81721E14C30E00CBC824 /* LocationManager.swift in Sources */,
@@ -1288,7 +1281,7 @@
 				A84989E61E14B3010095D9E8 /* setPositionOfTopArrow.swift in Sources */,
 				A84989D71E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0871E46B5EB00407AB8 /* GuidePageViewController.swift in Sources */,
-				A85D3C4B1DCEBAE800875B3A /* BikeStationsModel.swift in Sources */,
+				A85D3C4B1DCEBAE800875B3A /* [Old]BikeStationsModel.swift in Sources */,
 				A8CC816E1E14BE7500CBC824 /* AppVisionCheck.swift in Sources */,
 				A85D3C4C1DCEBAE800875B3A /* RateingReportTableViewCell.swift in Sources */,
 				A8AF41661EEE719A003AA884 /* AnnotationViewModel.swift in Sources */,
@@ -1323,7 +1316,7 @@
 				A8A80B031DD1F6F400107566 /* aboutUsTableViewCell.swift in Sources */,
 				A84989D41E14AFCB0095D9E8 /* motion.swift in Sources */,
 				A8A80B041DD1F6F400107566 /* AppDelegate.swift in Sources */,
-				A8A80B051DD1F6F400107566 /* BikeStationsModel.swift in Sources */,
+				A8A80B051DD1F6F400107566 /* [Old]BikeStationsModel.swift in Sources */,
 				A8193E5C1EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */,
 				A84989F71E14B41F0095D9E8 /* SendMeMailController.swift in Sources */,
 				A8CC81791E14C7D000CBC824 /* MapNavigate.swift in Sources */,
@@ -1333,7 +1326,6 @@
 				A8CA6C661EF5299B00515253 /* downloadableProtocol.swift in Sources */,
 				A8AF41681EEE719A003AA884 /* AnnotationViewModel.swift in Sources */,
 				A84989E31E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
-				A8CEEF721ED26EED00374389 /* Networking.swift in Sources */,
 				A8CC81741E14C30E00CBC824 /* LocationManager.swift in Sources */,
 				A8A80B081DD1F6F400107566 /* BikeStationTableViewCell.swift in Sources */,
 			);
@@ -1344,7 +1336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84989C41E114D3C0095D9E8 /* API.swift in Sources */,
-				A8CEEF6F1ED26EED00374389 /* Networking.swift in Sources */,
 				A83BD3351DC355E0002D2DC4 /* ThanksforTableViewCell.swift in Sources */,
 				A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */,
 				A8CC81711E14C30E00CBC824 /* LocationManager.swift in Sources */,
@@ -1369,7 +1360,7 @@
 				A84989E51E14B3010095D9E8 /* setPositionOfTopArrow.swift in Sources */,
 				A84989D61E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0861E46B5EA00407AB8 /* GuidePageViewController.swift in Sources */,
-				A8F836631DB374A6001131BE /* BikeStationsModel.swift in Sources */,
+				A8F836631DB374A6001131BE /* [Old]BikeStationsModel.swift in Sources */,
 				A8CC81691E14BB0100CBC824 /* AppVisionCheck.swift in Sources */,
 				A83BD3371DC360C5002D2DC4 /* RateingReportTableViewCell.swift in Sources */,
 				A8AF41651EEE719A003AA884 /* AnnotationViewModel.swift in Sources */,
@@ -1385,7 +1376,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84989C51E1364FE0095D9E8 /* API.swift in Sources */,
-				A8CEEF711ED26EED00374389 /* Networking.swift in Sources */,
 				A84989F11E14B3CA0095D9E8 /* BlurEffect.swift in Sources */,
 				A8FE694E1DEDB2BE00BE4E51 /* ThanksforTableViewCell.swift in Sources */,
 				A8CC81781E14C7D000CBC824 /* MapNavigate.swift in Sources */,
@@ -1403,7 +1393,7 @@
 				A84989D81E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A8CEEF761ED2750B00374389 /* Model.swift in Sources */,
 				A8FE69541DEDB2BE00BE4E51 /* AppDelegate.swift in Sources */,
-				A8FE69551DEDB2BE00BE4E51 /* BikeStationsModel.swift in Sources */,
+				A8FE69551DEDB2BE00BE4E51 /* [Old]BikeStationsModel.swift in Sources */,
 				A8FE69561DEDB2BE00BE4E51 /* RateingReportTableViewCell.swift in Sources */,
 				A808B0AC1E43874D0052C983 /* Extension.swift in Sources */,
 				A863536B1EE7B554003CCFDA /* Navigator.swift in Sources */,

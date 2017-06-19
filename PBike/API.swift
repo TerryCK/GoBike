@@ -6,22 +6,36 @@
 //  Copyright © 2016年 陳 冠禎. All rights reserved.
 //
 struct BikeStationAPI {
-    var APIs = [
-        API(city: .taipei,      dataType: .json),
-        API(city: .newTaipei,   dataType: .json),
-        API(city: .taoyuan,     dataType: .json),
-        API(city: .hsinchu,     dataType: .html),
-        API(city: .taichung,    dataType: .json),
-        API(city: .changhua,    dataType: .html),
-        API(city: .tainan,      dataType: .json),
-        API(city: .kaohsiung,   dataType: .xml),
-        API(city: .pingtung,    dataType: .xml)
+    
+    
+//    var APIs = [
+//        API(city: .taipei,      dataType: .json),
+//        API(city: .newTaipei,   dataType: .json),
+//        API(city: .taoyuan,     dataType: .json),
+//        API(city: .hsinchu,     dataType: .html),
+//        API(city: .taichung,    dataType: .json),
+//        API(city: .changhua,    dataType: .html),
+//        API(city: .tainan,      dataType: .json),
+//        API(city: .kaohsiung,   dataType: .xml),
+//        API(city: .pingtung,    dataType: .xml)
+//    ]
+    
+    
+    var APIs: Dictionary<City, API> = [
+        .taipei:    API(city: .taipei,      dataType: .json),
+        .newTaipei: API(city: .newTaipei,   dataType: .json),
+        .taoyuan:   API(city: .taoyuan,     dataType: .json),
+        .hsinchu:   API(city: .hsinchu,     dataType: .html),
+        .taichung:  API(city: .taichung,    dataType: .json),
+        .changhua:  API(city: .changhua,    dataType: .html),
+        .tainan:    API(city: .tainan,      dataType: .json),
+        .kaohsiung: API(city: .kaohsiung,   dataType: .xml),
+        .pingtung:  API(city: .pingtung,    dataType: .xml)
     ]
 }
 
 struct API {
     var city: City
-    var isHere: Bool = false
     var dataType: DataType
     
     init(city: City,  dataType: DataType) {

@@ -14,10 +14,10 @@ protocol AnnotationHandleable {
 
 extension MapViewController: AnnotationHandleable, Counterable {
     
-    func handleAnnotationInfo(estimated: Int) -> String {
+    func handleAnnotationInfo(stations: [Station], estimated: Int) -> String {
         
         var objArray = [CustomPointAnnotation]()
-        guard let stations = bikeModel?.stations else { return "0" }
+        
         
 //                let numberOfAPIs = delegate?.countOfAPIs
 //                let showPinInReginoDistance = 15.0
