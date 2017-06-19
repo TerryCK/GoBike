@@ -14,36 +14,37 @@ import SwiftyJSON
 typealias downlocatCompleted = ([Station]) -> ()
 
 protocol Downloadable: Parsable {
-    func downloadData(from apis:[API]) -> [Station]
-    func downloadData(from apis:[API], completed: @escaping downlocatCompleted)
+    func downloadData(from apis:[API], completed: @escaping completeHandle)
 }
 
-extension Downloadable {
-    func downloadData(from apis:[API], completed: @escaping downlocatCompleted) {
-     var stations = [Station]()
-        for api in apis {
-            let url = api.city.rawValue
-            let newStations = getData(from: api, with: url)
-            stations.append(contentsOf: newStations)
 
-        }
-        
-    }
-    
-    func downloadData(from apis:[API]) -> [Station] {
+extension Downloadable {
+    func downloadData(from apis:[API], completed: @escaping completeHandle) {
         var stations = [Station]()
+        var counter = 1
+        
         for api in apis {
             let url = api.city.rawValue
-            let newStations = getData(from: api, with: url)
-            stations.append(contentsOf: newStations)
+            
+            getData(from: api, with: url) { (newStations) in
+                
+                stations.append(contentsOf: newStations)
+                if counter == apis.count {
+                    completed(stations, apis)
+                }  else {
+                    counter += 1
+                }
+            }
         }
-        return stations
     }
     
-    private func getData(from api: API, with url: String) -> [Station] {
+    private func getData(from api: API, with url: String, completed: @escaping downlocatCompleted) {
         let isJSON:Bool = api.dataType == .json ? true : false
-        let stations = isJSON ? getJSONStation(from: api, with: url) : getXMLStation(from: api, with: url)
-        return stations
+        if isJSON {
+            getJSONStation(from: api, with: url) { (stations) in completed(stations) }
+        } else {
+            getXMLStation(from: api, with: url) { (stations) in completed(stations) }
+        }
     }
     
     
@@ -54,34 +55,26 @@ extension Downloadable {
     }
     
     
-    private func getXMLStation(from api: API , with url: String) -> [Station] {
-        var stations = [Station]()
-        
+    private func getXMLStation(from api: API , with url: String, completed: @escaping downlocatCompleted){
         Alamofire.request(url).responseString {  response in
-            
             guard response.result.isSuccess else { return }
             guard let data = response.result.value else { return }
             let isXML: Bool = api.dataType == .xml ? true : false
             if isXML {
                 guard let data = self.getXMLData(data: data),
                     let parsed = self.parse(city: api.city, dataFormat: data) else { return }
-                stations.append(contentsOf: parsed)
-                
+                completed(parsed)
             } else {
                 guard let parsed = self.parse(city: api.city, dataFormat: data) else { return }
-                stations.append(contentsOf: parsed)
+                completed(parsed)
             }
         }
-        return stations
     }
     
     
     
     
-    private func getJSONStation(from api: API , with url: String) -> [Station] {
-        
-        var stations = [Station]()
-        
+    private func getJSONStation(from api: API , with url: String, completed: @escaping downlocatCompleted) {
         Alamofire.request(url).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -90,16 +83,13 @@ extension Downloadable {
                     print("station is nil plz check parseJSON")
                     return
                 }
-                stations.append(contentsOf: parsed)
+                
+                completed(parsed)
+                
             case .failure(let error):
                 print("JSON parse error:", error)
             }
-            
-             print("(內)Stations:", stations)
         }
-        
-        print("(外)Stations:", stations)   // 不會執行
-        return stations
     }
     
 }

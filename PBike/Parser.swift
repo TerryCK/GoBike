@@ -52,8 +52,6 @@ extension Parsable {
     
     
     
-    
-    
      func parse(city: City, dataFormat xml: [Station]) -> [Station]? {
         guard !(xml.isEmpty) else { print("xml is empty") ; return nil }
         let stationsParsed: [Station] = xml.map {
@@ -78,6 +76,7 @@ extension Parsable {
             print("error: JSON parser ")
             return nil
         }
+        
         
         func deserializableJSON(json: JSON) -> [Station] {
             var deserializableJSON:[Station] = []
@@ -123,6 +122,7 @@ extension Parsable {
         default:
             print("JSON city error:", city)
         }
+        
         jsonStation = deserializableJSON(json: jsonArray)
         return jsonStation
     }

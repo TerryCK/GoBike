@@ -16,10 +16,6 @@
 		A808B0AC1E43874D0052C983 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808B0A91E43874D0052C983 /* Extension.swift */; };
 		A808B0AD1E43874D0052C983 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808B0A91E43874D0052C983 /* Extension.swift */; };
 		A80B67DF1DBE16EB00F6B19F /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
-		A8193E591EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8193E581EC030F800403B85 /* getAPIFromUserLocation.swift */; };
-		A8193E5A1EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8193E581EC030F800403B85 /* getAPIFromUserLocation.swift */; };
-		A8193E5B1EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8193E581EC030F800403B85 /* getAPIFromUserLocation.swift */; };
-		A8193E5C1EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8193E581EC030F800403B85 /* getAPIFromUserLocation.swift */; };
 		A81BE0851E462E8900407AB8 /* GuidePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81BE0841E462E8900407AB8 /* GuidePageViewController.swift */; };
 		A81BE0861E46B5EA00407AB8 /* GuidePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81BE0841E462E8900407AB8 /* GuidePageViewController.swift */; };
 		A81BE0871E46B5EB00407AB8 /* GuidePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81BE0841E462E8900407AB8 /* GuidePageViewController.swift */; };
@@ -266,7 +262,6 @@
 		A193FE0EBF6F4A3A2FA555C8 /* Pods-GoBikeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoBikeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoBikeTests/Pods-GoBikeTests.release.xcconfig"; sourceTree = "<group>"; };
 		A808B0A91E43874D0052C983 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
-		A8193E581EC030F800403B85 /* getAPIFromUserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getAPIFromUserLocation.swift; sourceTree = "<group>"; };
 		A81A523D6CAD6ECFCDB5DB0E /* Pods_PBike_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A81BE0841E462E8900407AB8 /* GuidePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidePageViewController.swift; sourceTree = "<group>"; };
 		A81BE0891E4838CF00407AB8 /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image.xcassets; sourceTree = "<group>"; };
@@ -610,13 +605,13 @@
 			children = (
 				A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */,
 				A84989C31E114D3C0095D9E8 /* API.swift */,
+				A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */,
 				A84989C71E1367D10095D9E8 /* Station.swift */,
 				A86353681EE7B553003CCFDA /* Navigator.swift */,
 				A81C7A7D1EC07E0600928F20 /* StatusImage.swift */,
 				A851E5611E6C061A003A1B35 /* Parser.swift */,
 				A808B0A91E43874D0052C983 /* Extension.swift */,
 				A8AF41641EEE719A003AA884 /* AnnotationViewModel.swift */,
-				A8193E581EC030F800403B85 /* getAPIFromUserLocation.swift */,
 				A8CA6C621EF5299B00515253 /* downloadableProtocol.swift */,
 				A8CEEF731ED2750B00374389 /* Model.swift */,
 			);
@@ -649,7 +644,6 @@
 				A89B048B1E4992AA0052DBF6 /* TimeLabel.swift */,
 				A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */,
 				A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */,
-				A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */,
 				A84989E41E14B3010095D9E8 /* setPositionOfTopArrow.swift */,
 				A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */,
 				A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */,
@@ -1266,7 +1260,6 @@
 				A84989CA1E1368000095D9E8 /* Station.swift in Sources */,
 				A8CA6C641EF5299B00515253 /* downloadableProtocol.swift in Sources */,
 				A85D3C481DCEBAE800875B3A /* MapViewController.swift in Sources */,
-				A8193E5A1EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */,
 				A89B048D1E4992AA0052DBF6 /* TimeLabel.swift in Sources */,
 				A84989E11E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A8CC81771E14C7D000CBC824 /* MapNavigate.swift in Sources */,
@@ -1317,7 +1310,6 @@
 				A84989D41E14AFCB0095D9E8 /* motion.swift in Sources */,
 				A8A80B041DD1F6F400107566 /* AppDelegate.swift in Sources */,
 				A8A80B051DD1F6F400107566 /* [Old]BikeStationsModel.swift in Sources */,
-				A8193E5C1EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */,
 				A84989F71E14B41F0095D9E8 /* SendMeMailController.swift in Sources */,
 				A8CC81791E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A84989E81E14B3010095D9E8 /* setPositionOfTopArrow.swift in Sources */,
@@ -1345,7 +1337,6 @@
 				A84989C81E1367D10095D9E8 /* Station.swift in Sources */,
 				A8CA6C631EF5299B00515253 /* downloadableProtocol.swift in Sources */,
 				A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */,
-				A8193E591EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */,
 				A89B048C1E4992AA0052DBF6 /* TimeLabel.swift in Sources */,
 				A84989E01E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A8CC81761E14C7D000CBC824 /* MapNavigate.swift in Sources */,
@@ -1385,7 +1376,6 @@
 				A84989C91E1367FF0095D9E8 /* Station.swift in Sources */,
 				A8CA6C651EF5299B00515253 /* downloadableProtocol.swift in Sources */,
 				A8FE69521DEDB2BE00BE4E51 /* MapViewController.swift in Sources */,
-				A8193E5B1EC030F800403B85 /* getAPIFromUserLocation.swift in Sources */,
 				A89B048E1E4992AA0052DBF6 /* TimeLabel.swift in Sources */,
 				A8FE69531DEDB2BE00BE4E51 /* aboutUsTableViewCell.swift in Sources */,
 				A84989E21E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,

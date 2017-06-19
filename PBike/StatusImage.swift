@@ -21,6 +21,7 @@ enum StationStatus: String, StatusImageGetable {
     static func getImage(by station: [Station], at index: Int) -> String {
         var pinImage = self.unknow
         guard let numberOfBike = station[index].bikeOnSite else { return pinImage.rawValue }
+        
         switch numberOfBike {
             
         case 1...5:
@@ -32,7 +33,6 @@ enum StationStatus: String, StatusImageGetable {
         default:
             pinImage  = .unknow
         }
-        
         return pinImage.rawValue
     }
 }

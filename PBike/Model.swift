@@ -7,29 +7,33 @@
 ////
 //
 import CoreLocation
-typealias completeHandle = ([Station]) -> ()
+
+typealias completeHandle = ([Station], [API]) -> ()
 
 protocol BikeStationModelProtocol: Downloadable {
-     func getStations(userLocation: CLLocationCoordinate2D, completed: @escaping completeHandle)
+    func getStations(userLocation: CLLocationCoordinate2D, completed: @escaping completeHandle)
     
-//     1.func getCitys(userLocation: CLLocationCoordinate2D) -> [City]
-//     2.func getAPIs(from citys: [City]) -> [API]
-//     3.func getStations(from API: String) -> [Station]
+    func getCitys(userLocation: CLLocationCoordinate2D) -> [City]
+    func getAPIs(from citys: [City]) -> [API]
+    func getStations(from API: String) -> [Station]
+    
 }
 
 extension BikeStationModelProtocol {
     
     func getStations(userLocation: CLLocationCoordinate2D, completed: @escaping completeHandle) {
-        
         let citys = getCitys(userLocation: userLocation)
         let apis = getAPIs(from: citys)
-        let stations = downloadData(from: apis) 
-        print("getStations", stations)
-        completed(stations)
-    }
-    
-    private func getCitys(userLocation: CLLocationCoordinate2D) -> [City] {
         
+        downloadData(from: apis) { (stations, apis) in
+            completed(stations, apis)
+        }
+    }
+}
+
+extension BikeStationModelProtocol {
+    fileprivate func getCitys(userLocation: CLLocationCoordinate2D) -> [City] {
+        let isDebugMod: Bool = true
         let latitude = userLocation.latitude
         let longitude = userLocation.longitude
         var citys = [City]()
@@ -54,16 +58,20 @@ extension BikeStationModelProtocol {
         case (22.62...22.71, 120.430...120.53):
             citys.append(.pingtung)
         default:
-            
             break
         }
-//        print("citys:", citys)
-        let testAPI: [City] = [.taipei, .newTaipei, .changhua, .taoyuan, .hsinchu, .pingtung, .kaohsiung, .taichung, .tainan]
-        return testAPI
-//        return citys
+        
+        if isDebugMod {
+            let testAPI: [City] = [.taipei, .newTaipei, .changhua, .taoyuan, .hsinchu, .pingtung, .kaohsiung, .taichung, .tainan]
+            citys = testAPI
+            print("\n** Is Debug Mode !! **\n")
+        }
+        
+        print("citys:\n", citys , "\n")
+        return citys
     }
     
-    private func getAPIs(from citys: [City]) -> [API] {
+    fileprivate func getAPIs(from citys: [City]) -> [API] {
         var apis = [API]()
         let dic = BikeStationAPI().APIs
         for city in citys {
@@ -74,12 +82,3 @@ extension BikeStationModelProtocol {
         return apis
     }
 }
-
-
-
-// old
-// func getData(completed: @escaping DownloadComplete) to controller
-
-// func getAPIBy(userLocation: CLLocationCoordinate2D) -> [City]  ?
-//
-

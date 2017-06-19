@@ -107,16 +107,16 @@ public extension Int {
         
     }
 }
-//
-//extension BikeStationsModel {
-//    func enumerate(indexer: XMLIndexer, level: Int) {
-//        for child in indexer.children {
-//            let name = child.element!.name
-//            print("\(level) \(name)")
-//            enumerate(indexer: child, level: level + 1)
-//        }
-//    }
-//}
+
+extension BikeStationModelProtocol {
+    func enumerate(indexer: XMLIndexer, level: Int) {
+        for child in indexer.children {
+            let name = child.element!.name
+            print("\(level) \(name)")
+            enumerate(indexer: child, level: level + 1)
+        }
+    }
+}
 
 
         

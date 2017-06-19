@@ -8,11 +8,11 @@
 
 import MapKit
 
-protocol AnnotationHandleable {
+protocol AnnotationHandleable: Counterable {
      func getObjectArray(from stations: [Station], userLocation: CLLocation, region: Int?) -> [CustomPointAnnotation]
 }
 
-extension MapViewController: AnnotationHandleable, Counterable {
+extension MapViewController: AnnotationHandleable  {
     
     func handleAnnotationInfo(stations: [Station], estimated: Int) -> String {
         

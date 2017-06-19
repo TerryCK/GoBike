@@ -63,9 +63,8 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     var bikesInStation = 0
     var nunberOfUsingBike = 0
     var bikeInUsing = ""
-    var citycounter = 1
     
-//    var bikeModel: BikeModelProtocol!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +73,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         authrizationStatus { [unowned self] in
             let delta = 0.03
             self.setCurrentLocation(latDelta: delta, longDelta: delta)
-//            self.bikeModel?.getAPIFrom(userLocation: self.location)
             self.updatingDataByServalTime()
         }
     }
@@ -91,7 +89,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
             timer.invalidate()
             updateTimeLabel.text = "資料更新中"
             print("\n ***** 資料更新中 *****\n")
-            citycounter = 1
             
             getData(userLocation: location)
             timesOfLoadingAnnotationView = 1
@@ -100,33 +97,21 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         }
     }
     
-//    func getedData(){
-//        bikeModel?.getData { [unowned self] in
-//            
-//        }
-//    }
+    
     
     func getData(userLocation: CLLocationCoordinate2D) {
-        getStations(userLocation: userLocation) { (stations) in
-            let estimated = self.estimatedBikeOnService
-            self.estimatedBikeOnService = self.appVersionInit()
+        getStations(userLocation: userLocation) { (stations, apis) in
+            let estimated = self.appVersionInit(apis: apis)
             self.BikeOnRiding = self.handleAnnotationInfo(stations: stations, estimated: estimated)
-            print("userLocation:",userLocation)
-            print("getData:", stations )
         }
     }
+    
     func refreshShownData() {
-        
-//        guard let cities = self.bikeModel?.citys,
-//            let netWorkDataSize = self.bikeModel?.netWorkDataSize.currencyStyle else { return }
-        
             print("\n站內腳踏車有 \(self.bikesInStation.currencyStyle) 台")
             print("目前有 \(self.BikeOnRiding) 人正在騎腳踏車")
             print("目前地圖中有 \(self.annotations.count.currencyStyle) 座")
             print("目前顯示城市名單:\n")
             print("  *****  ", terminator: "")
-//            cities.forEach{ print($0, terminator: ", ") }
-//            print("  *****  \n\n累積下載資料量:", netWorkDataSize, "bytes\n")
         
             UITableView.reloadData()
         
@@ -137,7 +122,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         performanceGuidePage()
         initializeLocationManager()
         setupRotatArrowBtnPosition()
-//        self.bikeModel = BikeStationsModel()
+        
         UITableView.delegate = self
         UITableView.dataSource = self
         UITableView.backgroundView?.alpha = 0
