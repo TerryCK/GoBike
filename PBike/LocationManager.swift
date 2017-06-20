@@ -115,7 +115,7 @@ extension MapViewController: CLLocationManagerDelegate {
             
         }
         
-        let myLocation:MKUserLocation = mapView.userLocation
+        let myLocation = mapView.userLocation
         myLocation.title = "😏目前位置"
         completed()
     }

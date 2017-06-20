@@ -10,8 +10,14 @@ import Foundation
 import MapKit
 
 
+protocol TitleImageSetable {
+    func setTopTitleImage(to view: UIViewController)
+}
+
 protocol Counterable {
     func getValueOfUsingAndOnSite(from array: [Station], estimateValue: Int) -> (bikeOnSite: Int,  bikeIsUsing: Int)
+     func getEstimated(from apis: [API]) -> Int
+    
 }
 
 extension Counterable {
@@ -20,6 +26,25 @@ extension Counterable {
         let bikeOnSite = array.reduce(0){ $0 + $1.bikeOnSite! }.minLimit
         let bikeIsUsing = (estimateValue - bikeOnSite).minLimit
         return (bikeOnSite, bikeIsUsing)
+    }
+    
+    func getEstimated(from apis: [API]) -> Int {
+        var estimated = 0
+        let maximum = 40_000
+        
+        for api in apis {
+            switch api.city {
+            case .taipei, .newTaipei:
+                estimated += 10000
+            case .taoyuan, .taichung, .changhua, .kaohsiung:
+                estimated += 3000
+            case .hsinchu:
+                estimated += 1350
+            case .tainan, .pingtung:
+                estimated += 700
+            }
+        }
+        return estimated >= maximum ? maximum : estimated
     }
 }
 
@@ -69,5 +94,15 @@ extension AnnotationHandleable {
         objectAnnotation.imageName = UIImage(named: pinImage)
         
         return objectAnnotation
+    }
+}
+
+
+
+extension TitleImageSetable {
+    
+    func setTopTitleImage(to viewController: UIViewController) {
+        let vc = viewController as! MapViewController
+        vc.topTitleimageView.setImage(UIImage(named: "GoBike"), for: UIControlState.normal)
     }
 }

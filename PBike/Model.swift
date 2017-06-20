@@ -1,28 +1,25 @@
-////
-////  Model.swift
-////  PBike
-////
-////  Created by 陳 冠禎 on 2017/5/22.
-////  Copyright © 2017年 陳 冠禎. All rights reserved.
-////
 //
+//  Model.swift
+//  PBike
+//
+//  Created by 陳 冠禎 on 2017/5/22.
+//  Refactored by 陳 冠禎 on 2017/6/19.
+//  Copyright © 2017年 陳 冠禎. All rights reserved.
+//
+
 import CoreLocation
 
 typealias completeHandle = ([Station], [API]) -> ()
 
 protocol BikeStationModelProtocol: Downloadable {
-    func getStations(userLocation: CLLocationCoordinate2D, completed: @escaping completeHandle)
-    
-    func getCitys(userLocation: CLLocationCoordinate2D) -> [City]
-    func getAPIs(from citys: [City]) -> [API]
-    func getStations(from API: String) -> [Station]
-    
+    func getStations(userLocation: CLLocationCoordinate2D, isNearbyMode: Bool, completed: @escaping completeHandle)
 }
+
 
 extension BikeStationModelProtocol {
     
-    func getStations(userLocation: CLLocationCoordinate2D, completed: @escaping completeHandle) {
-        let citys = getCitys(userLocation: userLocation)
+    func getStations(userLocation: CLLocationCoordinate2D, isNearbyMode: Bool, completed: @escaping completeHandle) {
+        let citys = getCitys(userLocation: userLocation, isNearbyMode: isNearbyMode)
         let apis = getAPIs(from: citys)
         
         downloadData(from: apis) { (stations, apis) in
@@ -32,11 +29,13 @@ extension BikeStationModelProtocol {
 }
 
 extension BikeStationModelProtocol {
-    fileprivate func getCitys(userLocation: CLLocationCoordinate2D) -> [City] {
+    
+    fileprivate func getCitys(userLocation: CLLocationCoordinate2D, isNearbyMode: Bool) -> [City] {
         let isDebugMod: Bool = true
         let latitude = userLocation.latitude
         let longitude = userLocation.longitude
         var citys = [City]()
+        
         switch (latitude, longitude) {
             
         case (24.96...25.14, 121.44...121.65):
@@ -61,13 +60,14 @@ extension BikeStationModelProtocol {
             break
         }
         
-        if isDebugMod {
+        if !isNearbyMode {
             let testAPI: [City] = [.taipei, .newTaipei, .changhua, .taoyuan, .hsinchu, .pingtung, .kaohsiung, .taichung, .tainan]
             citys = testAPI
             print("\n** Is Debug Mode !! **\n")
         }
         
-        print("citys:\n", citys , "\n")
+        citys.forEach{ print($0, terminator: ", ") }
+        print("")
         return citys
     }
     
@@ -82,3 +82,5 @@ extension BikeStationModelProtocol {
         return apis
     }
 }
+
+

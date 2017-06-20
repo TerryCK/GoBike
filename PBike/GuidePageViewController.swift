@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GuidePageViewController: UIViewController {
+final class GuidePageViewController: UIViewController {
     
     @IBOutlet weak var guideImageView: UIImageView!
     
@@ -28,9 +28,7 @@ extension MapViewController {
     func performanceGuidePage() {
         let defaults = UserDefaults.standard
         let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
-        
         guard !hasViewedGuidePage else { return }
-        
         guard let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController else { return }
         
         present(guidePageViewController, animated: true, completion: nil )

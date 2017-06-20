@@ -1,8 +1,9 @@
 //
 //  MapViewController.swift
-//  PBike
+//  GoBike
 //
 //  Created by 陳 冠禎 on 2016/10/19.
+//  Refactored by 陳 冠禎 on 2017/06/20.
 //  Copyright © 2016年 陳 冠禎. All rights reserved.
 //
 
@@ -20,7 +21,9 @@ import GoogleMobileAds
 //    func getAPIFrom(userLocation: CLLocationCoordinate2D)
 //}
 
-final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol {
+final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol, TitleImageSetable {
+    
+    
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var updateTimeLabel: UILabel!
@@ -32,24 +35,39 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     @IBOutlet weak var locationArrowImage: UIButton!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
-    
-    
-    
     var myLocationManager: CLLocationManager!
     var effect:UIVisualEffect!
     
     var location = CLLocationCoordinate2D()
     var selectedPin: CustomPointAnnotation?
-    var BikeOnRiding: String = ""
+    
+    var bikeInUsing = ""
+    
+    
+    @IBOutlet weak var SegmentedControl: UISegmentedControl!
     
     var annotations = [MKAnnotation]()
-    var estimatedBikeOnService = 0
+    var oldAnnotations = [MKAnnotation]()
+    
+    
+    
     
     var currentStateOfTableViewDisplaying = TableViewCurrentDisplaySwitcher.unDisplay
+    var tableViewCanDoNext = true
     
-    var tableViewCanDoNext: Bool = true
-    var oldAnnotations = [MKAnnotation]()
     var timesOfLoadingAnnotationView = 1
+    
+    
+    
+    @IBAction func segbtnPress(_ sender: UISegmentedControl) {
+        
+        let title = sender.titleForSegment(at: sender.selectedSegmentIndex)
+        isNearbyMode = title == "附近" ? true : false
+        print(isNearbyMode)
+        reloadtime = 0
+        self.updatingDataByServalTime()
+        
+    }
     
     //     time relation parameter
     let showTheResetButtonTime = 3
@@ -59,17 +77,13 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     var reloadtime = 0 //seconds
     var timerStatusReadyTo: TimerStatus = .play
     open var timerCurrentStatusFlag: TimerStatus = .reset
-    var timeInPause: Int = 5
-    var bikesInStation = 0
-    var nunberOfUsingBike = 0
-    var bikeInUsing = ""
+    var timeInPause = 5
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
-        
         authrizationStatus { [unowned self] in
             let delta = 0.03
             self.setCurrentLocation(latDelta: delta, longDelta: delta)
@@ -97,32 +111,38 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         }
     }
     
+    var isNearbyMode = true
     
-    
-    func getData(userLocation: CLLocationCoordinate2D) {
-        getStations(userLocation: userLocation) { (stations, apis) in
-            let estimated = self.appVersionInit(apis: apis)
-            self.BikeOnRiding = self.handleAnnotationInfo(stations: stations, estimated: estimated)
+    private func getData(userLocation: CLLocationCoordinate2D) {
+        SegmentedControl.isEnabled = false
+        getStations(userLocation: userLocation, isNearbyMode: isNearbyMode) { (stations, apis) in
+            
+            let estimated = self.getEstimated(from: apis)
+            let determined = self.handleAnnotationInfo(stations: stations, estimated: estimated)
+            self.bikeInUsing = determined.bikeIsUsing.currencyStyle
+            let bikeOnStation = determined.bikeOnSite.currencyStyle
+            self.shownData(bikeOnStation: bikeOnStation, bikeIsUsing: self.bikeInUsing, stations: stations, apis: apis)
+            self.SegmentedControl.isEnabled = true
+            
         }
     }
     
-    func refreshShownData() {
-            print("\n站內腳踏車有 \(self.bikesInStation.currencyStyle) 台")
-            print("目前有 \(self.BikeOnRiding) 人正在騎腳踏車")
-            print("目前地圖中有 \(self.annotations.count.currencyStyle) 座")
-            print("目前顯示城市名單:\n")
-            print("  *****  ", terminator: "")
-        
-            UITableView.reloadData()
-        
+    private func shownData(bikeOnStation: String, bikeIsUsing: String, stations:[Station], apis:[API]) {
+        print("\n站內腳踏車有: \(bikeOnStation) 台")
+        print("目前有: \(bikeIsUsing) 人正在騎腳踏車")
+        print("目前地圖中有: \(stations.count.currencyStyle) 座")
+        print("\n目前顯示城市名單:")
+        print("  *****  ", terminator: "")
+        apis.forEach{ print($0.city, terminator: ", ") }
+        print("  *****  \n")
+        UITableView.reloadData()
     }
     
     
-    func configuration() {
+   private func configuration() {
         performanceGuidePage()
         initializeLocationManager()
         setupRotatArrowBtnPosition()
-        
         UITableView.delegate = self
         UITableView.dataSource = self
         UITableView.backgroundView?.alpha = 0
@@ -130,7 +150,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         setGoogleMobileAds()
     }
     
-    func viewConfriguation() {
+    private func viewConfriguation() {
         mapViewInfoCustomize()
         effect = self.visualEffectView.effect
         visualEffectView.effect = nil
@@ -138,7 +158,10 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         viewUpdateTimeLabel()
         applyMotionEffect(toView: self.UITableView, magnitude: -20)
         applyMotionEffect(toView: self.updateTimeLabel, magnitude: -20)
+        applyMotionEffect(toView: SegmentedControl, magnitude: -20)
+        setTopTitleImage(to: self)
     }
+    
 }
 
 

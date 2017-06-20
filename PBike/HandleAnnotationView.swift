@@ -3,36 +3,22 @@
 //  PBike
 //
 //  Created by 陳 冠禎 on 2016/12/29.
+//  Refactored by 陳 冠禎 on 2017/06/20.
 //  Copyright © 2016年 陳 冠禎. All rights reserved.
 //
 
 import MapKit
 
 protocol AnnotationHandleable: Counterable {
-     func getObjectArray(from stations: [Station], userLocation: CLLocation, region: Int?) -> [CustomPointAnnotation]
+    func getObjectArray(from stations: [Station], userLocation: CLLocation, region: Int?) -> [CustomPointAnnotation]
 }
 
 extension MapViewController: AnnotationHandleable  {
     
-    func handleAnnotationInfo(stations: [Station], estimated: Int) -> String {
+    func handleAnnotationInfo(stations: [Station], estimated: Int) -> (bikeOnSite: Int,  bikeIsUsing: Int) {
         
         var objArray = [CustomPointAnnotation]()
-        
-        
-//                let numberOfAPIs = delegate?.countOfAPIs
-//                let showPinInReginoDistance = 15.0
-//
-//                guard timesOfLoadingAnnotationView == numberOfAPIs! else {
-//                    timesOfLoadingAnnotationView += 1
-//                    return
-//                }
-        
-        
-        
         let determined = getValueOfUsingAndOnSite(from: stations, estimateValue: estimated)
-        let bikeInUsing = determined.bikeIsUsing.currencyStyle
-        
-        
         
         oldAnnotations.append(contentsOf: annotations)
         annotations.removeAll()
@@ -42,14 +28,12 @@ extension MapViewController: AnnotationHandleable  {
         objArray = getObjectArray(from: stations, userLocation: currentLocation)
         
         annotations = objArray
-        //        print(showPinInReginoDistance,"km 內的annotation數量：", annotations.count)
         
+        mapView.addAnnotations(self.annotations)
+        mapView.removeAnnotations(self.oldAnnotations)
+        oldAnnotations.removeAll()
         
-            mapView.addAnnotations(self.annotations)
-            mapView.removeAnnotations(self.oldAnnotations)
-            oldAnnotations.removeAll()
-        
-        return "\(determined.bikeOnSite)"
+        return determined
     }
     
 }
@@ -133,6 +117,7 @@ extension MapViewController {
     }
     
 }
+
 
 
 

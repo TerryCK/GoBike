@@ -7,11 +7,14 @@
 //  Copyright © 2017年 陳 冠禎. All rights reserved.
 //
 
-protocol StatusImageGetable {
+import UIKit
+
+protocol ImageSetable {
     static func getImage(by station: [Station], at index: Int) -> String
+    
 }
 
-enum StationStatus: String, StatusImageGetable {
+enum StationStatus: String, ImageSetable {
     case less   =  "pinLess"
     case med    =  "pinMed"
     case full   =  "pinFull"
@@ -35,5 +38,6 @@ enum StationStatus: String, StatusImageGetable {
         }
         return pinImage.rawValue
     }
+    
+    
 }
-

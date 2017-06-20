@@ -57,7 +57,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    func showUpTableView(_ moveView: UIView){
+    private func showUpTableView(_ moveView: UIView){
         
         self.tableViewCanDoNext = false
         //        show subview from top
@@ -90,7 +90,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     
-    func unShowTableView(_ moveView: UIView){
+    private func unShowTableView(_ moveView: UIView){
         //        show subview out to top
         //        print("Show off Table View  : Y - yDelta")
         
@@ -116,12 +116,12 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         })
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 12
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
     //    set cell space hight
     
@@ -143,7 +143,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationTableViewCell
-            cell.peopleNumberLabel.text = self.BikeOnRiding
+            cell.peopleNumberLabel.text = String(self.bikeInUsing) ?? ""
             cell.rideBikeWithYouLabel.text = self.rideBikeWithYou
             cellCustomize(cell: cell)
             return cell

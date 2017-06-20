@@ -1,8 +1,10 @@
 //
 //  AddBlurEffect.swift
-//  PBike
+//  Rename BlurEffect.swift by 陳 冠禎 on 2017/06/20.
+//  GoBike
 //
 //  Created by 陳 冠禎 on 2016/12/29.
+//  Refactored by 陳 冠禎 on 2017/06/20.
 //  Copyright © 2016年 陳 冠禎. All rights reserved.
 //
 
