@@ -16,7 +16,7 @@ extension Navigatorable {
      func go(to destination: CustomPointAnnotation!) {
         guard let destination = destination else { return }
         let mapItem = MKMapItem(placemark: destination.placemark)
-        mapItem.name = " \(destination.subtitle!) (公共自行車站)"
+        mapItem.name = " \(destination.subtitle!) (共享單車站)"
         print("mapItem.name \(String(describing: mapItem.name))")
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
         mapItem.openInMaps(launchOptions: launchOptions)

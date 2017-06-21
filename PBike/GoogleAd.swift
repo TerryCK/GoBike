@@ -17,11 +17,15 @@ extension MapViewController: GADBannerViewDelegate {
         let request: GADRequest = GADRequest()
         bannerView.rootViewController = self
         bannerView.adUnitID = adUnitID
-        let test_iPhone: NSString = "09f8ecd06be28585d166f429d404b8044ccecdbe"
-        let test_iPhones: String = "09f8ecd06be28585d166f429d404b8044ccecdbe"
-        request.testDevices = [test_iPhone, test_iPhones, kGADSimulatorID]
+        
+//        let test_iPhone = "0e67b18dc7d5d61c450ba3267ffdbfc9"
+//        let test_iPad = "abef55fc4559d02aa14c63328e63a5239abba600"
+        
+        request.testDevices = [kGADSimulatorID]
+        
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.load(request)
+        
         //        print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
         //        print("TestID is \(request.testDevices!)")
     }

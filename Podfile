@@ -8,13 +8,13 @@ def shared_pods
     pod 'Firebase/Core'#, '~> 3.15.0'
     pod 'SWXMLHash'
     pod 'Alamofire', '~> 4.0'
-    pod 'ReachabilitySwift'
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'SwiftyJSON'
     pod 'Kanna', '~> 2.1.0'
     pod 'PercentEncoder'
-    pod 'Cluster'
+#    pod 'Cluster'
+#    pod 'ReachabilitySwift'
 end
 
 target 'PBike' do

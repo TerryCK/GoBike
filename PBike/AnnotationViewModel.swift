@@ -60,7 +60,7 @@ extension AnnotationHandleable {
         }
         objArray.sort{ Double($0.distance)! < Double($1.distance)! }
         if let region = region {
-            objArray.filter { Int($0.distance)! < region  }
+           objArray = objArray.filter { Int($0.distance)! < region  }
         }
         return objArray
     }

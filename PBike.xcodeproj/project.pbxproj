@@ -306,7 +306,6 @@
 		A8A8A3171DC60BD900946AA9 /* Directions.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Directions.geojson; sourceTree = "<group>"; };
 		A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A8AF41641EEE719A003AA884 /* AnnotationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationViewModel.swift; sourceTree = "<group>"; };
-		A8B04C3B1EF8BD030062F603 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A8B556641DBF5436008EA68F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		A8B556661DBF5446008EA68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PBike.entitlements; sourceTree = "<group>"; };
@@ -562,7 +561,6 @@
 		A8F836411DB37336001131BE = {
 			isa = PBXGroup;
 			children = (
-				A8B04C3B1EF8BD030062F603 /* Default-568h@2x.png */,
 				A8C975431E65C4EE00CDE8CD /* GoBike.entitlements */,
 				A8FE697C1DEDB34700BE4E51 /* info */,
 				A8F8364C1DB37336001131BE /* PBike */,
@@ -1931,6 +1929,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D GoBike";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MapVision.GoBike;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;

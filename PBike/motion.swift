@@ -12,6 +12,7 @@ import UIKit
 protocol MotionEffectable {
       func applyMotionEffect(toView view: UIView, magnitude: Float)
 }
+
 extension MotionEffectable {
     
     func applyMotionEffect(toView view: UIView, magnitude: Float) {

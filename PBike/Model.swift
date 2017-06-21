@@ -31,7 +31,6 @@ extension BikeStationModelProtocol {
 extension BikeStationModelProtocol {
     
     fileprivate func getCitys(userLocation: CLLocationCoordinate2D, isNearbyMode: Bool) -> [City] {
-        let isDebugMod: Bool = true
         let latitude = userLocation.latitude
         let longitude = userLocation.longitude
         var citys = [City]()

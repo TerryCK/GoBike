@@ -129,7 +129,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     
     private func shownData(bikeOnStation: String, bikeIsUsing: String, stations:[Station], apis:[API]) {
         print("\n站內腳踏車有: \(bikeOnStation) 台")
-        print("目前有: \(bikeIsUsing) 人正在騎腳踏車")
+        print("目前有: \(bikeIsUsing) 人正在騎共享單車")
         print("目前地圖中有: \(stations.count.currencyStyle) 座")
         print("\n目前顯示城市名單:")
         print("  *****  ", terminator: "")

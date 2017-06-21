@@ -57,7 +57,7 @@ App Store免費下載 [傳送門](https://goo.gl/cqPrsf). <p>
 ### Author
 * [Chen, Guan-Jhen](https://goo.gl/USI7g5)
 
-###License
+### License
 
 Copyright 2017 Chen, Guan-Jhen
 

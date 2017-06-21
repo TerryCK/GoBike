@@ -28,7 +28,7 @@ extension ConfigurationProtocol {
     var govName: String         { return "屏東縣政府" }
     var dataOwner: String       { return "高雄捷運局" }
     var applink: String         { return "https://itunes.apple.com/tw/app/id1192891004?l=zh&mt=8" }
-    var rideBikeWithYou: String { return "人陪你騎腳踏車" }
+    var rideBikeWithYou: String { return "人正在騎共享單車" }
     
     
    

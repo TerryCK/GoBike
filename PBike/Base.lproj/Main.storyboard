@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VLn-st-g6a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VLn-st-g6a">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -31,11 +31,11 @@
                         <viewControllerLayoutGuide type="bottom" id="n15-Sr-peb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="T86-vp-N61">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDr-aS-8Yh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 秒前更新" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62L-Ef-bF0">
                                 <rect key="frame" x="224" y="71" width="80" height="24"/>
@@ -61,9 +61,9 @@
                                 </connections>
                             </segmentedControl>
                             <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGB-VN-ZxY">
-                                <rect key="frame" x="-4" y="64" width="328" height="504"/>
+                                <rect key="frame" x="-4" y="64" width="328" height="460"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AOD-1A-x4Q">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="504"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="460"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="32" sectionFooterHeight="32" translatesAutoresizingMaskIntoConstraints="NO" id="1Vg-Iw-Qov">
@@ -82,7 +82,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="278" height="80"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aex-Ke-T6l">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aex-Ke-T6l">
                                                                 <rect key="frame" x="59" y="8" width="129" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="129" id="qMS-wq-qk0"/>
@@ -250,10 +250,10 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juN-va-5J4" userLabel="BannerGAD" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="474" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="juN-va-5J4" secondAttribute="height" multiplier="32:5" id="cwY-v4-j1p"/>
+                                    <constraint firstAttribute="width" secondItem="juN-va-5J4" secondAttribute="height" multiplier="32:5" id="EnF-Gl-vcc"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="adUnitID" value="ca-app-pub-3022461967351598/7933523718"/>
@@ -264,23 +264,23 @@
                         <constraints>
                             <constraint firstItem="aZh-Wp-26A" firstAttribute="trailing" secondItem="62L-Ef-bF0" secondAttribute="trailing" id="1QH-Qa-O2h"/>
                             <constraint firstItem="aZh-Wp-26A" firstAttribute="centerX" secondItem="62L-Ef-bF0" secondAttribute="centerX" id="2eL-Pz-1bH"/>
-                            <constraint firstItem="juN-va-5J4" firstAttribute="leading" secondItem="JDr-aS-8Yh" secondAttribute="leading" id="60z-L6-cCn"/>
+                            <constraint firstItem="n15-Sr-peb" firstAttribute="top" secondItem="juN-va-5J4" secondAttribute="bottom" id="OsG-p1-doo"/>
                             <constraint firstAttribute="trailing" secondItem="JDr-aS-8Yh" secondAttribute="trailing" id="Qg9-Vn-oeW"/>
                             <constraint firstItem="JDr-aS-8Yh" firstAttribute="top" secondItem="T86-vp-N61" secondAttribute="top" id="Rga-P4-EX1"/>
                             <constraint firstItem="aZh-Wp-26A" firstAttribute="firstBaseline" secondItem="62L-Ef-bF0" secondAttribute="baseline" constant="30" id="VjE-1c-z94"/>
                             <constraint firstItem="JDr-aS-8Yh" firstAttribute="top" secondItem="T86-vp-N61" secondAttribute="top" id="a76-pc-hKt"/>
+                            <constraint firstItem="juN-va-5J4" firstAttribute="leading" secondItem="T86-vp-N61" secondAttribute="leading" id="f0g-Dt-wKz"/>
                             <constraint firstItem="JDr-aS-8Yh" firstAttribute="bottom" secondItem="n15-Sr-peb" secondAttribute="top" id="fXc-Tl-vBt"/>
                             <constraint firstItem="62L-Ef-bF0" firstAttribute="top" secondItem="ECA-nH-ri7" secondAttribute="bottom" constant="7" id="feq-Re-2qw"/>
                             <constraint firstItem="n15-Sr-peb" firstAttribute="top" secondItem="yGB-VN-ZxY" secondAttribute="bottom" id="ldZ-GC-CRT"/>
                             <constraint firstItem="aZh-Wp-26A" firstAttribute="leading" secondItem="62L-Ef-bF0" secondAttribute="leading" id="ojH-F8-aOM"/>
-                            <constraint firstItem="juN-va-5J4" firstAttribute="centerX" secondItem="JDr-aS-8Yh" secondAttribute="centerX" id="ovC-CS-MRo"/>
                             <constraint firstItem="yGB-VN-ZxY" firstAttribute="leading" secondItem="T86-vp-N61" secondAttribute="leadingMargin" constant="-20" id="p95-oD-c6j"/>
                             <constraint firstItem="JDr-aS-8Yh" firstAttribute="leading" secondItem="T86-vp-N61" secondAttribute="leading" id="q7i-fD-2cC"/>
                             <constraint firstItem="yGB-VN-ZxY" firstAttribute="top" secondItem="ECA-nH-ri7" secondAttribute="bottom" id="ss5-C7-q8w"/>
                             <constraint firstItem="62L-Ef-bF0" firstAttribute="trailing" secondItem="T86-vp-N61" secondAttribute="trailingMargin" id="suh-1T-dBQ"/>
-                            <constraint firstItem="juN-va-5J4" firstAttribute="trailing" secondItem="JDr-aS-8Yh" secondAttribute="trailing" id="uDo-1a-klK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yGB-VN-ZxY" secondAttribute="trailing" constant="-20" id="uPh-Sw-FOF"/>
-                            <constraint firstItem="juN-va-5J4" firstAttribute="baseline" secondItem="JDr-aS-8Yh" secondAttribute="baseline" id="xw4-rZ-PGF"/>
+                            <constraint firstAttribute="trailing" secondItem="juN-va-5J4" secondAttribute="trailing" id="ufI-LW-lgb"/>
+                            <constraint firstItem="juN-va-5J4" firstAttribute="centerX" secondItem="T86-vp-N61" secondAttribute="centerX" id="ydY-25-45S"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
@@ -289,7 +289,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" width="95" id="QPW-wF-Bc2">
                             <button key="customView" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ESa-U7-R36">
-                                <rect key="frame" x="16" y="2.5" width="95" height="39"/>
+                                <rect key="frame" x="16" y="2" width="95" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="24"/>
                                 <state key="normal" title="30:00 ">
@@ -302,7 +302,7 @@
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ivr-S5-e8b">
-                            <rect key="frame" x="111" y="6" width="85" height="32"/>
+                            <rect key="frame" x="117" y="6" width="73" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="GoBike"/>
                             <connections>
@@ -321,7 +321,7 @@
                                 </button>
                             </barButtonItem>
                             <barButtonItem width="50" id="xaG-M1-hT5">
-                                <button key="customView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="headTruncation" hasAttributedTitle="YES" id="krC-sn-anO">
+                                <button key="customView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="headTruncation" hasAttributedTitle="YES" id="krC-sn-anO">
                                     <rect key="frame" x="196" y="11" width="50" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="rotatArrow"/>
@@ -364,14 +364,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tfe-qv-DlL">
-                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XDL-Iu-vfm">
-                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
