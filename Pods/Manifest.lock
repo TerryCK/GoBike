@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.4.0)
-  - Cluster (1.0.7)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
@@ -24,26 +23,22 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - Kanna (2.1.1)
   - PercentEncoder (1.1.0)
-  - ReachabilitySwift (3)
   - SwiftyJSON (3.1.4)
   - SWXMLHash (4.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - Cluster
   - Crashlytics
   - Fabric
   - Firebase/AdMob
   - Firebase/Core
   - Kanna (~> 2.1.0)
   - PercentEncoder
-  - ReachabilitySwift
   - SwiftyJSON
   - SWXMLHash
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  Cluster: 7a15791640cc44cde312be37ff18b918fc3c2367
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
@@ -54,10 +49,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   PercentEncoder: 7a001be188d62187761cb785156ac7e5c105688d
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SWXMLHash: 21340633daddd9aaf5c625ae92a26ca6dcdbfe1b
 
-PODFILE CHECKSUM: 0cc742e7e0c122e8e86c025585ab97011fd111c6
+PODFILE CHECKSUM: 8807e528836436472e3f5ca73add40126763110c
 
 COCOAPODS: 1.2.1

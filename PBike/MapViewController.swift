@@ -64,7 +64,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         let title = sender.titleForSegment(at: sender.selectedSegmentIndex)
         isNearbyMode = title == "附近" ? true : false
         print(isNearbyMode)
-        reloadtime = 0
+        timeCounter = 0
         self.updatingDataByServalTime()
         
     }
@@ -74,7 +74,16 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     var time = 1800
     var timer = Timer()
     var rentedTimer = Timer()
-    var reloadtime = 0 //seconds
+    
+    // in second
+    var reloadtime = 360
+    var timeCounter: Int = 360 {
+        didSet {
+            updateTimeLabel.text = "\(timeCounter) 秒前更新"
+        }
+    }
+    
+    
     var timerStatusReadyTo: TimerStatus = .play
     open var timerCurrentStatusFlag: TimerStatus = .reset
     var timeInPause = 5
@@ -84,6 +93,10 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
+        //        getWorlds(url: "https://api.citybik.es/v2/networks") {
+        //            print("get world api:", $0)
+        //        }
+        
         authrizationStatus { [unowned self] in
             let delta = 0.03
             self.setCurrentLocation(latDelta: delta, longDelta: delta)
@@ -94,9 +107,9 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     
     @objc func updatingDataByServalTime() {
         
-        if reloadtime > 0 {
-            reloadtime -= 1
-            updateTimeLabel.text = "\(30 - reloadtime) 秒前更新"
+        
+        if timeCounter != reloadtime {
+            timeCounter += 1
             
         } else {
             
@@ -105,9 +118,13 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
             print("\n ***** 資料更新中 *****\n")
             
             getData(userLocation: location)
+            
             timesOfLoadingAnnotationView = 1
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
-            reloadtime = 30
+            timeCounter = 0
+            
+            
+
         }
     }
     
@@ -139,7 +156,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     }
     
     
-   private func configuration() {
+    private func configuration() {
         performanceGuidePage()
         initializeLocationManager()
         setupRotatArrowBtnPosition()

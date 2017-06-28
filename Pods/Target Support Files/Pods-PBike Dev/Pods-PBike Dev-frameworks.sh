@@ -90,21 +90,17 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS9.0/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Cluster-iOS9.0/Cluster.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac-iOS9.0/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kanna-iOS9.0/Kanna.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PercentEncoder-iOS9.0/PercentEncoder.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/ReachabilitySwift-iOS9.0/ReachabilitySwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SWXMLHash-iOS9.0/SWXMLHash.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON-iOS9.0/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS9.0/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Cluster-iOS9.0/Cluster.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac-iOS9.0/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Kanna-iOS9.0/Kanna.framework"
   install_framework "$BUILT_PRODUCTS_DIR/PercentEncoder-iOS9.0/PercentEncoder.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/ReachabilitySwift-iOS9.0/ReachabilitySwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SWXMLHash-iOS9.0/SWXMLHash.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON-iOS9.0/SwiftyJSON.framework"
 fi

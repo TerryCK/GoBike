@@ -16,14 +16,14 @@ import CoreLocation
 typealias HTML = String
 
 protocol Parsable {
-     func parse(city: City, dataFormat html: HTML)      -> [Station]?
-     func parse(city: City, dataFormat json: JSON)      -> [Station]?
-     func parse(city: City, dataFormat xml: [Station])  -> [Station]?
+    func parse(city: City, dataFormat html: HTML)      -> [Station]?
+    func parse(city: City, dataFormat json: JSON)      -> [Station]?
+    func parse(city: City, dataFormat xml: [Station])  -> [Station]?
 }
 
 extension Parsable {
     
-      func parse(city: City, dataFormat html: HTML) -> [Station]? {
+    func parse(city: City, dataFormat html: HTML) -> [Station]? {
         
         guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
             print("error: parseHTML2Object")
@@ -52,16 +52,18 @@ extension Parsable {
     
     
     
-     func parse(city: City, dataFormat xml: [Station]) -> [Station]? {
+    func parse(city: City, dataFormat xml: [Station]) -> [Station]? {
         guard !(xml.isEmpty) else { print("xml is empty") ; return nil }
-        let stationsParsed: [Station] = xml.map {
+        
+        let stationsParsed: [Station] = xml.map { (station) in
+            
             let obj = Station (
-                name:               $0.name,
-                location:           $0.location,
-                slot:               $0.slot,
-                bikeOnSite:         $0.bikeOnSite,
-                latitude:           $0.latitude > $0.longitude ? $0.longitude : $0.latitude,
-                longitude:          $0.latitude > $0.longitude ? $0.latitude  : $0.longitude
+                name:               station.name,
+                location:           station.location,
+                slot:               station.slot,
+                bikeOnSite:         station.bikeOnSite,
+                latitude:           station.latitude > station.longitude ? station.longitude : station.latitude,
+                longitude:          station.latitude > station.longitude ? station.latitude  : station.longitude
             )
             return obj
         }
@@ -70,7 +72,7 @@ extension Parsable {
     }
     
     
-     func parse(city: City, dataFormat json: JSON) -> [Station]? {
+    func parse(city: City, dataFormat json: JSON) -> [Station]? {
         var jsonStation: [Station] = []
         guard !(json.isEmpty) else {
             print("error: JSON parser ")
@@ -79,16 +81,26 @@ extension Parsable {
         
         
         func deserializableJSON(json: JSON) -> [Station] {
-            var deserializableJSON:[Station] = []
+            var deserializableJSON = [Station]()
             
             let isTainan: Bool = city == .tainan ? true : false
             
-            let name =        isTainan ? "StationName"          : "sna"
-            let location =    isTainan ? "Address"              : "ar"
-            let parkNumber =  isTainan ? "AvaliableSpaceCount"  : "bemp"
-            let bikeOnSite =  isTainan ? "AvaliableBikeCount"   : "sbi"
-            let latitude =    isTainan ? "Latitude"             : "lat"
-            let longitude =   isTainan ? "Longitude"            : "lng"
+            var name =        isTainan ? "StationName"          : "sna"
+            var location =    isTainan ? "Address"              : "ar"
+            var parkNumber =  isTainan ? "AvaliableSpaceCount"  : "bemp"
+            var bikeOnSite =  isTainan ? "AvaliableBikeCount"   : "sbi"
+            var latitude =    isTainan ? "Latitude"             : "lat"
+            var longitude =   isTainan ? "Longitude"            : "lng"
+            
+            if city == .worlds {
+                name = "name"
+                location = "name"
+                parkNumber = "empty_slots"
+                bikeOnSite = "free_bikes"
+                latitude = "latitude"
+                longitude = "longitude"
+            }
+            
             
             
             for ( _ , dict) in json {
@@ -106,6 +118,8 @@ extension Parsable {
             return deserializableJSON
         }
         
+        
+        
         var jsonArray = json[]
         
         switch city {
@@ -119,6 +133,9 @@ extension Parsable {
         case .changhua, .hsinchu, .tainan:
             jsonArray = json
             
+        case .worlds :
+            jsonArray = json["network"]["stations"]
+            
         default:
             print("JSON city error:", city)
         }
@@ -126,6 +143,56 @@ extension Parsable {
         jsonStation = deserializableJSON(json: jsonArray)
         return jsonStation
     }
+    
 }
+
+
+
+
+
+extension Parsable {
+    
+    func parse(url: String, dataFormat json: JSON) -> [World] {
+        
+        var jsonWorld = [World]()
+        
+        guard !(json.isEmpty) else {
+            print("error: JSON parser ")
+            return jsonWorld
+        }
+        
+        
+        func deserializableJSON(json: JSON) -> [World] {
+           
+            var deserializableJSON = [World]()
+            for (_ , dict) in json {
+                
+                let location = Location(city: dict["location"]["city"].stringValue,
+                                        country: dict["location"]["country"].stringValue,
+                                        latitude: dict["location"]["latitude"].doubleValue,
+                                        longitude: dict["location"]["longitude"].doubleValue
+                )
+               
+                let world = World(company: dict["company"].stringValue,
+                                 href: dict["href"].stringValue,
+                                 id: dict["id"].stringValue,
+                                 location: location,
+                                 name: dict["name"].stringValue
+                )
+                
+                deserializableJSON.append(world)
+            }
+            
+            return deserializableJSON
+        }
+        
+        let jsonArray = json["networks"]
+        let worlds = deserializableJSON(json: jsonArray)
+        return worlds
+    }
+}
+
+
+
 
 

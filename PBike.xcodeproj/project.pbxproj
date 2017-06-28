@@ -154,10 +154,10 @@
 		A8B556671DBF5446008EA68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556661DBF5446008EA68F /* CoreMotion.framework */; };
 		A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8C975411E65C46F00CDE8CD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C975401E65C46F00CDE8CD /* StoreKit.framework */; };
-		A8CA6C631EF5299B00515253 /* Downloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA6C621EF5299B00515253 /* Downloadable.swift */; };
-		A8CA6C641EF5299B00515253 /* Downloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA6C621EF5299B00515253 /* Downloadable.swift */; };
-		A8CA6C651EF5299B00515253 /* Downloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA6C621EF5299B00515253 /* Downloadable.swift */; };
-		A8CA6C661EF5299B00515253 /* Downloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA6C621EF5299B00515253 /* Downloadable.swift */; };
+		A8CA6C631EF5299B00515253 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA6C621EF5299B00515253 /* Networking.swift */; };
+		A8CA6C641EF5299B00515253 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA6C621EF5299B00515253 /* Networking.swift */; };
+		A8CA6C651EF5299B00515253 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA6C621EF5299B00515253 /* Networking.swift */; };
+		A8CA6C661EF5299B00515253 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA6C621EF5299B00515253 /* Networking.swift */; };
 		A8CC81671E14BAC600CBC824 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */; };
 		A8CC81691E14BB0100CBC824 /* ConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81681E14BB0100CBC824 /* ConfigurationProtocol.swift */; };
 		A8CC816A1E14BE6F00CBC824 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */; };
@@ -312,7 +312,7 @@
 		A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		A8C975401E65C46F00CDE8CD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A8C975431E65C4EE00CDE8CD /* GoBike.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = GoBike.entitlements; sourceTree = "<group>"; };
-		A8CA6C621EF5299B00515253 /* Downloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloadable.swift; sourceTree = "<group>"; };
+		A8CA6C621EF5299B00515253 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		A8CC81681E14BB0100CBC824 /* ConfigurationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationProtocol.swift; sourceTree = "<group>"; };
 		A8CC81701E14C30E00CBC824 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -604,16 +604,16 @@
 			isa = PBXGroup;
 			children = (
 				A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */,
-				A84989C31E114D3C0095D9E8 /* API.swift */,
 				A8CC81681E14BB0100CBC824 /* ConfigurationProtocol.swift */,
 				A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */,
 				A84989C71E1367D10095D9E8 /* Station.swift */,
 				A86353681EE7B553003CCFDA /* Navigator.swift */,
 				A81C7A7D1EC07E0600928F20 /* StatusImage.swift */,
-				A851E5611E6C061A003A1B35 /* Parser.swift */,
 				A808B0A91E43874D0052C983 /* Extension.swift */,
 				A8AF41641EEE719A003AA884 /* AnnotationViewModel.swift */,
-				A8CA6C621EF5299B00515253 /* Downloadable.swift */,
+				A851E5611E6C061A003A1B35 /* Parser.swift */,
+				A8CA6C621EF5299B00515253 /* Networking.swift */,
+				A84989C31E114D3C0095D9E8 /* API.swift */,
 				A8CEEF731ED2750B00374389 /* Model.swift */,
 			);
 			name = Model;
@@ -1258,7 +1258,7 @@
 				A81C7A7F1EC07E0600928F20 /* StatusImage.swift in Sources */,
 				A84989D21E14AFCA0095D9E8 /* motion.swift in Sources */,
 				A84989CA1E1368000095D9E8 /* Station.swift in Sources */,
-				A8CA6C641EF5299B00515253 /* Downloadable.swift in Sources */,
+				A8CA6C641EF5299B00515253 /* Networking.swift in Sources */,
 				A85D3C481DCEBAE800875B3A /* MapViewController.swift in Sources */,
 				A89B048D1E4992AA0052DBF6 /* TimeLabel.swift in Sources */,
 				A84989E11E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
@@ -1315,7 +1315,7 @@
 				A84989E81E14B3010095D9E8 /* setPositionOfTopArrow.swift in Sources */,
 				A8A80B061DD1F6F400107566 /* RateingReportTableViewCell.swift in Sources */,
 				A84989CB1E1368000095D9E8 /* Station.swift in Sources */,
-				A8CA6C661EF5299B00515253 /* Downloadable.swift in Sources */,
+				A8CA6C661EF5299B00515253 /* Networking.swift in Sources */,
 				A8AF41681EEE719A003AA884 /* AnnotationViewModel.swift in Sources */,
 				A84989E31E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A8CC81741E14C30E00CBC824 /* LocationManager.swift in Sources */,
@@ -1335,7 +1335,7 @@
 				A81C7A7E1EC07E0600928F20 /* StatusImage.swift in Sources */,
 				A84989D11E14AFC10095D9E8 /* motion.swift in Sources */,
 				A84989C81E1367D10095D9E8 /* Station.swift in Sources */,
-				A8CA6C631EF5299B00515253 /* Downloadable.swift in Sources */,
+				A8CA6C631EF5299B00515253 /* Networking.swift in Sources */,
 				A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */,
 				A89B048C1E4992AA0052DBF6 /* TimeLabel.swift in Sources */,
 				A84989E01E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
@@ -1374,7 +1374,7 @@
 				A81C7A801EC07E0600928F20 /* StatusImage.swift in Sources */,
 				A8FE69511DEDB2BE00BE4E51 /* StationTableViewCell.swift in Sources */,
 				A84989C91E1367FF0095D9E8 /* Station.swift in Sources */,
-				A8CA6C651EF5299B00515253 /* Downloadable.swift in Sources */,
+				A8CA6C651EF5299B00515253 /* Networking.swift in Sources */,
 				A8FE69521DEDB2BE00BE4E51 /* MapViewController.swift in Sources */,
 				A89B048E1E4992AA0052DBF6 /* TimeLabel.swift in Sources */,
 				A8FE69531DEDB2BE00BE4E51 /* aboutUsTableViewCell.swift in Sources */,

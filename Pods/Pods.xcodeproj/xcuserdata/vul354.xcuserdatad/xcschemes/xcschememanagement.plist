@@ -14,16 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Cluster-iOS10.3.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Cluster-iOS9.0.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>GoogleToolboxForMac-iOS10.3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -79,16 +69,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ReachabilitySwift-iOS10.3.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ReachabilitySwift-iOS9.0.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SWXMLHash-iOS10.3.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -117,12 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>09C005F40C62593B0239DE2997A434C0</key>
+		<key>17485DE18E71EF5C5742AD483065CBF9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>17C4FE661B944E078992B61ED54AD3F8</key>
+		<key>1CF7332EA54E65CD4180616B013151C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,27 +112,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B476AED5A9129F185ECBE346340A55C</key>
+		<key>3FA273253D97E65FB229C68234D82E9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3AE1A5EC3CFE4C800D9205EB51782831</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3FA59B1DF68694DE6B87C37E2D533623</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>42115198225685F64C89CCE839FC4E92</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>474FF6A0997448ED70E4CB55713C9875</key>
+		<key>596B9CAD6B777DFE18F2FD5BC6E66E72</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,17 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>733566B9C276FFC531A1B724020648BF</key>
+		<key>5C1C9AADDCA2FDC389ECBBB948A225A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9696FDB4670E9D0DD205C2D438753927</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9885AAE99D5C551E7A0E130381481101</key>
+		<key>6BBCDBFE992D2324FAD14E68E0297323</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,17 +142,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AE70C0FDD14C9A75893A2A366D41C32D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B12718E53470CBE64DAB3340DBE75413</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC759321BDCE661BF8972D776E731BDC</key>
+		<key>BE3699671DCF8909DDF4B09548164DA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -207,12 +162,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D3B9F4B312628EC1045672340453BC02</key>
+		<key>EDA6AA970B69DA292C19C6D0CA55BC11</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EDA6AA970B69DA292C19C6D0CA55BC11</key>
+		<key>F1B5C7CF32FA175BD0A27E6BDC0EFD6D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC3225858A8DD8DE498C2315AF1DD42E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

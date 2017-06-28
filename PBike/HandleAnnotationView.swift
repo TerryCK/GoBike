@@ -23,6 +23,7 @@ extension MapViewController: AnnotationHandleable  {
         oldAnnotations.append(contentsOf: annotations)
         annotations.removeAll()
         
+        
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
         objArray = getObjectArray(from: stations, userLocation: currentLocation)

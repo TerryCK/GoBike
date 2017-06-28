@@ -20,13 +20,18 @@ extension BikeStationModelProtocol {
     
     func getStations(userLocation: CLLocationCoordinate2D, isNearbyMode: Bool, completed: @escaping completeHandle) {
         let citys = getCitys(userLocation: userLocation, isNearbyMode: isNearbyMode)
-        let apis = getAPIs(from: citys)
-        
-        downloadData(from: apis) { (stations, apis) in
-            completed(stations, apis)
+        var apis = getAPIs(from: citys)
+        getWorldsAPIs(url: "https://api.citybik.es/v2/networks") { (worldAPIs) in
+            apis += worldAPIs
+            
+            self.downloadData(from: apis) { (stations, apis) in
+                completed(stations, apis)
+            }
         }
     }
 }
+
+
 
 extension BikeStationModelProtocol {
     
@@ -60,7 +65,7 @@ extension BikeStationModelProtocol {
         }
         
         if !isNearbyMode {
-            let testAPI: [City] = [.taipei, .newTaipei, .changhua, .taoyuan, .hsinchu, .pingtung, .kaohsiung, .taichung, .tainan]
+            let testAPI: [City] = [.taipei, .newTaipei, .changhua, .taoyuan, .hsinchu, .pingtung, .kaohsiung, .taichung, .tainan, .worlds]
             citys = testAPI
             print("\n** Is Debug Mode !! **\n")
         }

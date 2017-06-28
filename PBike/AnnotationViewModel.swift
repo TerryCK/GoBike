@@ -16,7 +16,7 @@ protocol TitleImageSetable {
 
 protocol Counterable {
     func getValueOfUsingAndOnSite(from array: [Station], estimateValue: Int) -> (bikeOnSite: Int,  bikeIsUsing: Int)
-     func getEstimated(from apis: [API]) -> Int
+    func getEstimated(from apis: [API]) -> Int
     
 }
 
@@ -42,6 +42,9 @@ extension Counterable {
                 estimated += 1350
             case .tainan, .pingtung:
                 estimated += 700
+                
+            default:
+                estimated += 0
             }
         }
         return estimated >= maximum ? maximum : estimated
@@ -60,7 +63,7 @@ extension AnnotationHandleable {
         }
         objArray.sort{ Double($0.distance)! < Double($1.distance)! }
         if let region = region {
-           objArray = objArray.filter { Int($0.distance)! < region  }
+            objArray = objArray.filter { Int($0.distance)! < region  }
         }
         return objArray
     }

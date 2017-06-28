@@ -13,24 +13,26 @@ import SwiftyJSON
 
 typealias downlocatCompleted = ([Station]) -> ()
 
-protocol Downloadable: Parsable {
+protocol Downloadable: Parsable, WorldAPIGetable {
     func downloadData(from apis:[API], completed: @escaping completeHandle)
 }
 
 
 extension Downloadable {
+    
     func downloadData(from apis:[API], completed: @escaping completeHandle) {
         var stations = [Station]()
         var counter = 1
         
-        for api in apis {
-            let url = api.city.rawValue
+        for get in apis {
+            let url = get.api
             
-            getData(from: api, with: url) { (newStations) in
+            getData(from: get, with: url) { (newStations) in
                 
                 stations.append(contentsOf: newStations)
                 if counter == apis.count {
                     completed(stations, apis)
+                
                 }  else {
                     counter += 1
                 }
@@ -91,5 +93,47 @@ extension Downloadable {
             }
         }
     }
+}
+
+
+extension WorldAPIGetable {
+    
+    
+    func getWorldsAPIs(url: String, completed: @escaping (([API]) -> Void)) {
+        Alamofire.request(url).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                let parsed = self.parse(url: url, dataFormat: json)
+                let result = self.getAPIs(from: parsed)
+               
+                completed(result)
+                
+            case .failure(let error):
+                print("JSON parse error:", error)
+            }
+        }
+    }
+    
+    private func getAPIs(from worlds: [World]) -> [API] {
+        var results = [API]()
+        
+        for world in worlds {
+            
+            let prefix = "https://api.citybik.es/"
+            let endpoint = world.href
+            let api = prefix + endpoint
+            let obj = API(city: .worlds, dataType: .json, api: api)
+            results.append(obj)
+        }
+        return results
+    }
     
 }
+
+
+
+
+
+
+

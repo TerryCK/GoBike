@@ -17,9 +17,6 @@ protocol ConfigurationProtocol {
     var dataOwner: String       { get }
     var applink: String         { get }
     var rideBikeWithYou: String { get }
-    
-    
-
 }
 
 extension ConfigurationProtocol {

@@ -57,6 +57,11 @@ App Store免費下載 [傳送門](https://goo.gl/cqPrsf). <p>
 ### Author
 * [Chen, Guan-Jhen](https://goo.gl/USI7g5)
 
+### Acknowledgment
+ Thanks for Taiwan local government and OpenData platform
+ 
+ Thanks for Bike sharing around the world API provide by: https://api.citybik.es/v2/
+
 ### License
 
 Copyright 2017 Chen, Guan-Jhen

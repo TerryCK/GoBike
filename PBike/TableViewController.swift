@@ -13,11 +13,11 @@ enum TableViewCurrentDisplaySwitcher {
     case displaying, unDisplay
     
     mutating func next() {
-        
         switch self {
+        
         case .displaying:
             self = .unDisplay
-            
+
         case .unDisplay:
             self = .displaying
         }
@@ -104,7 +104,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             self.visualEffectView.effect = nil
             moveView.alpha = 0
         }, completion: { _ in
-            //            print("show off animation is completion")
+            
             
             moveView.isHidden = true
             self.visualEffectView.isHidden = true
