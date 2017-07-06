@@ -24,6 +24,7 @@ import GoogleMobileAds
 final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol, TitleImageSetable {
     
     
+    var resultSearchController: UISearchController!
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var updateTimeLabel: UILabel!
@@ -40,7 +41,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     
     var location = CLLocationCoordinate2D()
     var selectedPin: CustomPointAnnotation?
-    
     var bikeInUsing = ""
     
     
@@ -49,13 +49,18 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     var annotations = [MKAnnotation]()
     var oldAnnotations = [MKAnnotation]()
     
+    let yDelta: CGFloat = 500
     
     
+
     
-    var currentStateOfTableViewDisplaying = TableViewCurrentDisplaySwitcher.unDisplay
+    
     var tableViewCanDoNext = true
+    var tableViewIsShowing = false
     
-    var timesOfLoadingAnnotationView = 1
+    
+    
+    
     
     
     
@@ -77,6 +82,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     
     // in second
     var reloadtime = 360
+    
     var timeCounter: Int = 360 {
         didSet {
             updateTimeLabel.text = "\(timeCounter) 秒前更新"
@@ -93,11 +99,12 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
-        //        getWorlds(url: "https://api.citybik.es/v2/networks") {
-        //            print("get world api:", $0)
-        //        }
-        
-        authrizationStatus { [unowned self] in
+//        mapSearcherConfig()
+    }
+    
+    
+    func setupAuthrizationStatus() {
+        self.authrizationStatus { [unowned self] in
             let delta = 0.03
             self.setCurrentLocation(latDelta: delta, longDelta: delta)
             self.updatingDataByServalTime()
@@ -105,9 +112,8 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     }
     
     
+    
     @objc func updatingDataByServalTime() {
-        
-        
         if timeCounter != reloadtime {
             timeCounter += 1
             
@@ -116,35 +122,39 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
             timer.invalidate()
             updateTimeLabel.text = "資料更新中"
             print("\n ***** 資料更新中 *****\n")
-            
             getData(userLocation: location)
-            
-            timesOfLoadingAnnotationView = 1
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
+            
             timeCounter = 0
-            
-            
-
         }
     }
     
     var isNearbyMode = true
     
     private func getData(userLocation: CLLocationCoordinate2D) {
+        
         SegmentedControl.isEnabled = false
-        getStations(userLocation: userLocation, isNearbyMode: isNearbyMode) { (stations, apis) in
+        
+        
+        getStations(userLocation: userLocation, isNearbyMode: isNearbyMode) { [unowned self] (stations, apis) in
+            
             
             let estimated = self.getEstimated(from: apis)
+            
             let determined = self.handleAnnotationInfo(stations: stations, estimated: estimated)
+            
             self.bikeInUsing = determined.bikeIsUsing.currencyStyle
             let bikeOnStation = determined.bikeOnSite.currencyStyle
+            
             self.shownData(bikeOnStation: bikeOnStation, bikeIsUsing: self.bikeInUsing, stations: stations, apis: apis)
+            
             self.SegmentedControl.isEnabled = true
             
         }
     }
     
     private func shownData(bikeOnStation: String, bikeIsUsing: String, stations:[Station], apis:[API]) {
+        
         print("\n站內腳踏車有: \(bikeOnStation) 台")
         print("目前有: \(bikeIsUsing) 人正在騎共享單車")
         print("目前地圖中有: \(stations.count.currencyStyle) 座")
@@ -165,6 +175,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         UITableView.backgroundView?.alpha = 0
         viewConfriguation()
         setGoogleMobileAds()
+        setupAuthrizationStatus()
     }
     
     private func viewConfriguation() {
@@ -181,5 +192,52 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     
 }
 
+
+extension MapViewController: HandleMapSearch {
+    
+    func mapSearcherConfig() {
+        let uiBarbtnitem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(MapViewController.callSearcher))
+        
+        navigationItem.rightBarButtonItems?.insert(uiBarbtnitem, at: 0)
+        
+    }
+    func callSearcher() {
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        print("call searcher")
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController.searchResultsUpdater = locationSearchTable
+        
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search for places"
+        
+        navigationItem.titleView = searchBar
+        resultSearchController.hidesNavigationBarDuringPresentation = false
+        resultSearchController.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
+    }
+    
+    func dropPinZoomIn(_ placemark: MKPlacemark){
+        // cache the pin
+        
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
+    }
+}
 
 

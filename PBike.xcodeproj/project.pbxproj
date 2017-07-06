@@ -82,7 +82,7 @@
 		A85D3C451DCEBAE800875B3A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A85D3C471DCEBAE800875B3A /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
 		A85D3C481DCEBAE800875B3A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
-		A85D3C491DCEBAE800875B3A /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
+		A85D3C491DCEBAE800875B3A /* AboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */; };
 		A85D3C4A1DCEBAE800875B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
 		A85D3C4B1DCEBAE800875B3A /* [Old]BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */; };
 		A85D3C4C1DCEBAE800875B3A /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
@@ -101,13 +101,12 @@
 		A85D3C5C1DCEBAE800875B3A /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */; };
 		A85D3C5D1DCEBAE800875B3A /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
 		A85D3C5F1DCEBAE800875B3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
-		A85D3C621DCEBAE800875B3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A86353691EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
 		A863536A1EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
 		A863536B1EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
 		A863536C1EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
 		A863536D1EE7B554003CCFDA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86353681EE7B553003CCFDA /* Navigator.swift */; };
-		A870E6DA1DC2519100329830 /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
+		A870E6DA1DC2519100329830 /* AboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */; };
 		A87E52371DC0999E0016F9E0 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */; };
 		A87E52391DC099CC0016F9E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52381DC099CC0016F9E0 /* AudioToolbox.framework */; };
 		A87E523B1DC099D40016F9E0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E523A1DC099D40016F9E0 /* AVFoundation.framework */; };
@@ -125,7 +124,7 @@
 		A8A80AFF1DD1F6F400107566 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8A80B011DD1F6F400107566 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
 		A8A80B021DD1F6F400107566 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
-		A8A80B031DD1F6F400107566 /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
+		A8A80B031DD1F6F400107566 /* AboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */; };
 		A8A80B041DD1F6F400107566 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
 		A8A80B051DD1F6F400107566 /* [Old]BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */; };
 		A8A80B061DD1F6F400107566 /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
@@ -144,7 +143,6 @@
 		A8A80B161DD1F6F400107566 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */; };
 		A8A80B171DD1F6F400107566 /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32ADF4BAF9745C9EDD04B20 /* Pods_PBike.framework */; };
 		A8A80B191DD1F6F400107566 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
-		A8A80B1C1DD1F6F400107566 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A8AF41651EEE719A003AA884 /* AnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF41641EEE719A003AA884 /* AnnotationViewModel.swift */; };
 		A8AF41661EEE719A003AA884 /* AnnotationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF41641EEE719A003AA884 /* AnnotationViewModel.swift */; };
@@ -197,7 +195,6 @@
 		A8F4B09D1DCF596C00EBC68F /* DirectionsCityBike.geojson in Resources */ = {isa = PBXBuildFile; fileRef = A8F4B09C1DCF596C00EBC68F /* DirectionsCityBike.geojson */; };
 		A8F7DC811E0E875B008E0862 /* CBike-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8F7DC801E0E875B008E0862 /* CBike-info.plist */; };
 		A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
-		A8F836531DB37336001131BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836511DB37336001131BE /* Main.storyboard */; };
 		A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8F836561DB37336001131BE /* LaunchScreen.storyboard */; };
 		A8F836631DB374A6001131BE /* [Old]BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */; };
 		A8F836651DB378CA001131BE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F836641DB378CA001131BE /* MapKit.framework */; };
@@ -206,7 +203,7 @@
 		A8FE694F1DEDB2BE00BE4E51 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8FE69511DEDB2BE00BE4E51 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
 		A8FE69521DEDB2BE00BE4E51 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
-		A8FE69531DEDB2BE00BE4E51 /* aboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */; };
+		A8FE69531DEDB2BE00BE4E51 /* AboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */; };
 		A8FE69541DEDB2BE00BE4E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8364D1DB37336001131BE /* AppDelegate.swift */; };
 		A8FE69551DEDB2BE00BE4E51 /* [Old]BikeStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F836621DB374A6001131BE /* [Old]BikeStationsModel.swift */; };
 		A8FE69561DEDB2BE00BE4E51 /* RateingReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3361DC360C5002D2DC4 /* RateingReportTableViewCell.swift */; };
@@ -290,7 +287,7 @@
 		A851E5611E6C061A003A1B35 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		A85D3C691DCEBAE800875B3A /* CBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86353681EE7B553003CCFDA /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
-		A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = aboutUsTableViewCell.swift; sourceTree = "<group>"; };
+		A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsTableViewCell.swift; sourceTree = "<group>"; };
 		A87E52361DC0999E0016F9E0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		A87E52381DC099CC0016F9E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A87E523A1DC099D40016F9E0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -643,7 +640,7 @@
 				A84989EE1E14B3CA0095D9E8 /* BlurEffect.swift */,
 				A89B048B1E4992AA0052DBF6 /* TimeLabel.swift */,
 				A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */,
-				A870E6D91DC2519100329830 /* aboutUsTableViewCell.swift */,
+				A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */,
 				A84989E41E14B3010095D9E8 /* setPositionOfTopArrow.swift */,
 				A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */,
 				A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */,
@@ -911,7 +908,6 @@
 				A8F43CCA1E63D04900B0A6BE /* Taipei.gpx in Resources */,
 				A81BE08B1E4838CF00407AB8 /* image.xcassets in Resources */,
 				A8F4B09D1DCF596C00EBC68F /* DirectionsCityBike.geojson in Resources */,
-				A85D3C621DCEBAE800875B3A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,7 +919,6 @@
 				A8F43CD61E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */,
 				A8F43CD01E63D04900B0A6BE /* PingtungTW.gpx in Resources */,
 				A8A80B191DD1F6F400107566 /* LaunchScreen.storyboard in Resources */,
-				A8A80B1C1DD1F6F400107566 /* Main.storyboard in Resources */,
 				A8F43CCC1E63D04900B0A6BE /* Taipei.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -934,7 +929,6 @@
 			files = (
 				A8F836581DB37336001131BE /* LaunchScreen.storyboard in Resources */,
 				A82B6AF91E1FE30E009314F1 /* PBikeDev.plist in Resources */,
-				A8F836531DB37336001131BE /* Main.storyboard in Resources */,
 				A8F43CCD1E63D04900B0A6BE /* PingtungTW.gpx in Resources */,
 				A8E01EA41DDD481900BC440C /* GoogleService-Info.plist in Resources */,
 				A8F43CD31E63D07100B0A6BE /* CBikeLaunch Screen.storyboard in Resources */,
@@ -1264,7 +1258,7 @@
 				A84989E11E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A8CC81771E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A84989F51E14B41F0095D9E8 /* SendMeMailController.swift in Sources */,
-				A85D3C491DCEBAE800875B3A /* aboutUsTableViewCell.swift in Sources */,
+				A85D3C491DCEBAE800875B3A /* AboutUsTableViewCell.swift in Sources */,
 				A8CEEF751ED2750B00374389 /* Model.swift in Sources */,
 				A84989EB1E14B36D0095D9E8 /* TimerHandler.swift in Sources */,
 				A85D3C4A1DCEBAE800875B3A /* AppDelegate.swift in Sources */,
@@ -1306,7 +1300,7 @@
 				A81BE0881E46B5ED00407AB8 /* GuidePageViewController.swift in Sources */,
 				A8CC816F1E14BE7600CBC824 /* ConfigurationProtocol.swift in Sources */,
 				A8CEEF771ED2750B00374389 /* Model.swift in Sources */,
-				A8A80B031DD1F6F400107566 /* aboutUsTableViewCell.swift in Sources */,
+				A8A80B031DD1F6F400107566 /* AboutUsTableViewCell.swift in Sources */,
 				A84989D41E14AFCB0095D9E8 /* motion.swift in Sources */,
 				A8A80B041DD1F6F400107566 /* AppDelegate.swift in Sources */,
 				A8A80B051DD1F6F400107566 /* [Old]BikeStationsModel.swift in Sources */,
@@ -1341,7 +1335,7 @@
 				A84989E01E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A8CC81761E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A84989F41E14B41F0095D9E8 /* SendMeMailController.swift in Sources */,
-				A870E6DA1DC2519100329830 /* aboutUsTableViewCell.swift in Sources */,
+				A870E6DA1DC2519100329830 /* AboutUsTableViewCell.swift in Sources */,
 				A8CEEF741ED2750B00374389 /* Model.swift in Sources */,
 				A84989EA1E14B36D0095D9E8 /* TimerHandler.swift in Sources */,
 				A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */,
@@ -1377,7 +1371,7 @@
 				A8CA6C651EF5299B00515253 /* Networking.swift in Sources */,
 				A8FE69521DEDB2BE00BE4E51 /* MapViewController.swift in Sources */,
 				A89B048E1E4992AA0052DBF6 /* TimeLabel.swift in Sources */,
-				A8FE69531DEDB2BE00BE4E51 /* aboutUsTableViewCell.swift in Sources */,
+				A8FE69531DEDB2BE00BE4E51 /* AboutUsTableViewCell.swift in Sources */,
 				A84989E21E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A84989E71E14B3010095D9E8 /* setPositionOfTopArrow.swift in Sources */,
 				A84989D81E14B0550095D9E8 /* GoogleAd.swift in Sources */,

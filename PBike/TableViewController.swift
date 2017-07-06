@@ -9,118 +9,101 @@
 
 import UIKit
 
-enum TableViewCurrentDisplaySwitcher {
-    case displaying, unDisplay
-    
-    mutating func next() {
-        switch self {
-        
-        case .displaying:
-            self = .unDisplay
-
-        case .unDisplay:
-            self = .displaying
-        }
-    }
-}
-
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    var yDelta: CGFloat { get { return 500 } }
-    var cellSpacingHeight: CGFloat { get { return 5 } }
     
     @IBAction func titleBtnPressed(_ sender: AnyObject) {
         guard tableViewCanDoNext else { return }
         
-        switch currentStateOfTableViewDisplaying {
-        case .unDisplay:
-            //defult on the screen
-            DispatchQueue.main.async {
-                self.showUpTableView(self.UITableView)
-                self.locationArrowImage.isEnabled = false
-            }
+        let yDelta: CGFloat = 500
+        
+        switch tableViewIsShowing {
             
-            setTrackModeNone()                          //turn off the Tracking module
-            currentStateOfTableViewDisplaying.next()
+        case false:
+            self.showUpTableView(self.UITableView, movedBy: yDelta)
+            tableViewIsShowing = true
+        case true:
+            self.unShowTableView()
+            tableViewIsShowing = false
             
-        case .displaying:
-            
-            DispatchQueue.main.async {
-                
-                self.unShowTableView(self.UITableView)
-                self.locationArrowImage.isEnabled = true
-            }
-            
-            
-            currentStateOfTableViewDisplaying.next()
         }
         
     }
+  
     
-    private func showUpTableView(_ moveView: UIView){
-        
+     func showUpTableView(_ moveView: UIView, movedBy yDelta: CGFloat){
         self.tableViewCanDoNext = false
-        //        show subview from top
-        //        print("self.tableViewCanDoNext \(self.tableViewCanDoNext)")
-        //        print("UITableView Postition \(UITableView.center) ")
-        //        print("Show up Table View   : Y + yDelta")
+        self.locationArrowImage.isEnabled = false
+        self.setTrackModeNone()
+        let originX = moveView.center.x
+        let startPointY = moveView.center.y - yDelta
         
-        moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta )
+        visualEffectView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(unShowTableView)))
+        
+        moveView.center = CGPoint(x: originX, y: startPointY)
         moveView.isHidden = false
+        
         self.visualEffectView.isHidden = false
         
         UIView.animate(withDuration: 0.3, delay: 0, options:[UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut],
-        animations: {
-                        
-        moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta)
-        self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 180.toRadian)
-        self.visualEffectView.effect = self.effect
-           moveView.alpha = 1
-        },
-                       
-        completion: { (finished: Bool) in
-                        
-        self.tableViewCanDoNext = true
-                        
-                        //        print("y: \(moveView.center.y)")
-                        
-        })
+                       animations: { doAnimation() },
+                       completion: { completeAction(isFinished: $0) }
+        )
+        
+        func doAnimation() {
+            let endPointY  = moveView.center.y + yDelta
+            moveView.center = CGPoint(x: originX, y: endPointY)
+            self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 180.toRadian)
+            self.visualEffectView.effect = self.effect
+            moveView.alpha = 1
+        }
+        
+        func completeAction(isFinished: Bool) {
+            self.tableViewCanDoNext = isFinished
+        }
     }
     
     
-    
-    
-    private func unShowTableView(_ moveView: UIView){
-        //        show subview out to top
-        //        print("Show off Table View  : Y - yDelta")
+    @objc private func unShowTableView() {
         
-        self.tableViewCanDoNext = false //operation for safe display tableview
+        let moveView = UITableView!
+        self.tableViewCanDoNext = false
+        let originX = moveView.center.x
+        let startPointY = moveView.center.y - yDelta
         
         
-        UIView.animate(withDuration: 0.3, delay: 0, options:[UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut], animations: {
-            
-            moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y - self.yDelta)
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options:[UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.curveEaseInOut],
+                       animations: { doAnimation() },
+                       completion: { completeAction(isFinished: $0) }
+        )
+        
+        func doAnimation(){
+            moveView.alpha = 0
+            moveView.center = CGPoint(x: originX, y: startPointY)
             self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 0)
             self.visualEffectView.effect = nil
-            moveView.alpha = 0
-        }, completion: { _ in
-            
-            
-            moveView.isHidden = true
-            self.visualEffectView.isHidden = true
-            
-            moveView.center = CGPoint(x: moveView.center.x, y:moveView.center.y + self.yDelta )
-            //            print("y: \(moveView.center.y)")
-            self.tableViewCanDoNext = true
-            
-        })
+        }
+        
+        func completeAction(isFinished: Bool) {
+            moveView.isHidden = isFinished
+            let endPoint = moveView.center.y + yDelta
+            moveView.center = CGPoint(x: originX, y: endPoint)
+            self.visualEffectView.isHidden = isFinished
+            self.tableViewCanDoNext = isFinished
+            self.locationArrowImage.isEnabled = true
+        }
     }
     
-     func numberOfSections(in tableView: UITableView) -> Int {
+    
+    
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
-     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     //    set cell space hight
@@ -160,7 +143,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "aboutUs", for: indexPath) as! aboutUsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "aboutUs", for: indexPath) as! AboutUsTableViewCell
             cellCustomize(cell: cell)
             return cell
         }

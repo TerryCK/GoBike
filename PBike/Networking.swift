@@ -1,8 +1,11 @@
 //
 //  downloadableProtocol.swift
-//  PBike
+//  Rename Networking.swift  2017/6/27
+//  GoBike
 //
 //  Created by 陳 冠禎 on 2017/6/17.
+//  Add feature world API provide by "https://api.citybik.es/" 
+//
 //  Copyright © 2017年 陳 冠禎. All rights reserved.
 //
 
@@ -116,8 +119,8 @@ extension WorldAPIGetable {
     }
     
     private func getAPIs(from worlds: [World]) -> [API] {
-        var results = [API]()
         
+        var results = [API]()
         for world in worlds {
             
             let prefix = "https://api.citybik.es/"

@@ -89,6 +89,7 @@ extension MapViewController: CLLocationManagerDelegate {
     }
     
     func authrizationStatus(completed: @escaping () -> Void ) {
+        
         let authrizationStatus = CLLocationManager.authorizationStatus()
         switch authrizationStatus {
         case .notDetermined:
@@ -117,6 +118,7 @@ extension MapViewController: CLLocationManagerDelegate {
         
         let myLocation = mapView.userLocation
         myLocation.title = "😏目前位置"
+        
         completed()
     }
     

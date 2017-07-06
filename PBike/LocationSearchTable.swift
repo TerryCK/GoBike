@@ -1,6 +1,6 @@
 //
 //  LocationSearchTable.swift
-//  PBike
+//  GoBike
 //
 //  Created by 陳 冠禎 on 2016/10/22.
 //  Copyright © 2016年 陳 冠禎. All rights reserved.
@@ -16,6 +16,7 @@ protocol HandleMapSearch:class {
 class LocationSearchTable: UITableViewController {
     
     weak var handleMapSearchDelegate: HandleMapSearch?
+    
     var matchingItems: [MKMapItem] = []
     var mapView: MKMapView?
     

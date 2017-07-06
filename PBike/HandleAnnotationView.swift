@@ -23,7 +23,6 @@ extension MapViewController: AnnotationHandleable  {
         oldAnnotations.append(contentsOf: annotations)
         annotations.removeAll()
         
-        
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
         objArray = getObjectArray(from: stations, userLocation: currentLocation)
@@ -57,7 +56,6 @@ extension MapViewController: AnnotationHandleable  {
 
 
 
-
 //present annotationView
 extension MapViewController {
     
@@ -65,7 +63,6 @@ extension MapViewController {
         
         
         if annotation.isKind(of: MKUserLocation.self) { return nil }
-        
         let identifier = "station"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         

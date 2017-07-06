@@ -18,8 +18,8 @@ struct BikeStationAPI {
         .changhua:  API(city: .changhua,    dataType: .html),
         .tainan:    API(city: .tainan,      dataType: .json),
         .kaohsiung: API(city: .kaohsiung,   dataType: .xml),
-        .pingtung:  API(city: .pingtung,    dataType: .xml),
-        .worlds:    API(city: .worlds,      dataType: .json)
+        .pingtung:  API(city: .pingtung,    dataType: .xml)
+//        .worlds:    API(city: .worlds,      dataType: .json)
     ]
     
 }
