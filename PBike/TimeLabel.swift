@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension MapViewController {
 
     func viewUpdateTimeLabel() {

@@ -11,7 +11,7 @@ import JavaScriptCore
 
 public enum PercentEncoding {
     case encodeURI, encodeURIComponent, decodeURI, decodeURIComponent
-    
+
     /// return equivalent javascript function name
     private var functionName: String {
         switch self {
@@ -21,7 +21,7 @@ public enum PercentEncoding {
         case .decodeURIComponent:   return "decodeURIComponent"
         }
     }
-    
+
     public func evaluate(string: String) -> String {
         // escape back slash, single quote and line terminators because it is not included in ECMAScript SingleStringCharacter
         // * Must use an array to ensure the order to escape the characters.
@@ -33,13 +33,13 @@ public enum PercentEncoding {
             ("\u{2028}", "\\u2028"),
             ("\u{2029}", "\\u2029")
         ]
-        
+
         var escaped = string
-        
+
         for (src, dst) in mapping {
             escaped = escaped.replacingOccurrences(of: src, with: dst, options: .literal)
         }
-        
+
         let script = "var value = \(functionName)('\(escaped)');"
         let context: JSContext! = JSContext()
         context.evaluateScript(script)

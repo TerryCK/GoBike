@@ -9,12 +9,15 @@
 import UIKit
 
 extension MapViewController {
-    
+
     func setupRotatArrowBtnPosition() {
+        guard let keyWindow = UIApplication.shared.keyWindow?.frame else {
+            return
+        }
         
-        let width = self.view.frame.size.width
+        let width = keyWindow.width
         var left = -40
-        
+
         switch width {
         case 320: left = -30    //iPhone SE
         case 375: left = -60    //iPhone 7
@@ -26,9 +29,9 @@ extension MapViewController {
         case 2048: left = -700
         default: left = -320
         }
-        
+
         self.rotationArrow.imageEdgeInsets = UIEdgeInsetsMake(0.0, CGFloat(left), 0.0, 0.0)
 //        print("left insert value:\(left)")
     }
-    
+
 }

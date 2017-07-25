@@ -12,20 +12,10 @@ import MapKit
 import CoreLocation
 import GoogleMobileAds
 
-//protocol BikeModelProtocol {
-//    var  citys:             [City]      { get }
-//    var  stations:          [Station]   { get }
-//    var  countOfAPIs:       Int         { get }
-//    var  netWorkDataSize:   Int         { get }
-////    func getData(completed: @escaping DownloadComplete)
-//    func getAPIFrom(userLocation: CLLocationCoordinate2D)
-//}
+final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol {
 
-final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol, TitleImageSetable {
-    
-    
     var resultSearchController: UISearchController!
-    
+
     @IBOutlet var mapView: MKMapView!
     @IBOutlet weak var updateTimeLabel: UILabel!
     @IBOutlet weak var UITableView: UITableView!
@@ -35,74 +25,62 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     @IBOutlet weak var topTitleimageView: UIButton!
     @IBOutlet weak var locationArrowImage: UIButton!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    
+    var effect: UIVisualEffect!
     var myLocationManager: CLLocationManager!
-    var effect:UIVisualEffect!
     
+
     var location = CLLocationCoordinate2D()
     var selectedPin: CustomPointAnnotation?
     var bikeInUsing = ""
-    
-    
+
     @IBOutlet weak var SegmentedControl: UISegmentedControl!
-    
+
     var annotations = [MKAnnotation]()
     var oldAnnotations = [MKAnnotation]()
-    
-    let yDelta: CGFloat = 500
-    
-    
 
-    
-    
+    let yDelta: CGFloat = 500
+
     var tableViewCanDoNext = true
     var tableViewIsShowing = false
-    
-    
-    
-    
-    
-    
-    
+
     @IBAction func segbtnPress(_ sender: UISegmentedControl) {
-        
-        let title = sender.titleForSegment(at: sender.selectedSegmentIndex)
-        isNearbyMode = title == "附近" ? true : false
-        print(isNearbyMode)
-        timeCounter = 0
+
+        let nearbyTitle = sender.titleForSegment(at: sender.selectedSegmentIndex)
+        isNearbyMode = nearbyTitle == "附近" ? true : false
+        print(nearbyTitle ?? "")
+        timeCounter = reloadtime
         self.updatingDataByServalTime()
-        
+
     }
-    
+
     //     time relation parameter
     let showTheResetButtonTime = 3
     var time = 1800
     var timer = Timer()
     var rentedTimer = Timer()
-    
+
     // in second
     var reloadtime = 360
-    
+
     var timeCounter: Int = 360 {
         didSet {
-            updateTimeLabel.text = "\(timeCounter) 秒前更新"
+            if timeCounter != reloadtime {
+                updateTimeLabel.text = "\(timeCounter) 秒前更新"
+            }
+            
         }
     }
-    
-    
+
     var timerStatusReadyTo: TimerStatus = .play
     open var timerCurrentStatusFlag: TimerStatus = .reset
     var timeInPause = 5
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
 //        mapSearcherConfig()
     }
-    
-    
+
     func setupAuthrizationStatus() {
         self.authrizationStatus { [unowned self] in
             let delta = 0.03
@@ -110,62 +88,58 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
             self.updatingDataByServalTime()
         }
     }
-    
-    
-    
+
     @objc func updatingDataByServalTime() {
         if timeCounter != reloadtime {
             timeCounter += 1
-            
+
         } else {
-            
+
             timer.invalidate()
             updateTimeLabel.text = "資料更新中"
             print("\n ***** 資料更新中 *****\n")
             getData(userLocation: location)
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
-            
+
             timeCounter = 0
         }
     }
-    
+
     var isNearbyMode = true
-    
+
     private func getData(userLocation: CLLocationCoordinate2D) {
-        
+
         SegmentedControl.isEnabled = false
         
-        
         getStations(userLocation: userLocation, isNearbyMode: isNearbyMode) { [unowned self] (stations, apis) in
-            
-            
+
             let estimated = self.getEstimated(from: apis)
-            
+
             let determined = self.handleAnnotationInfo(stations: stations, estimated: estimated)
-            
+
             self.bikeInUsing = determined.bikeIsUsing.currencyStyle
             let bikeOnStation = determined.bikeOnSite.currencyStyle
-            
+
             self.shownData(bikeOnStation: bikeOnStation, bikeIsUsing: self.bikeInUsing, stations: stations, apis: apis)
-            
+
             self.SegmentedControl.isEnabled = true
-            
+
         }
     }
-    
-    private func shownData(bikeOnStation: String, bikeIsUsing: String, stations:[Station], apis:[API]) {
+
+    private func shownData(bikeOnStation: String, bikeIsUsing: String, stations: [Station], apis: [API]) {
         
         print("\n站內腳踏車有: \(bikeOnStation) 台")
         print("目前有: \(bikeIsUsing) 人正在騎共享單車")
         print("目前地圖中有: \(stations.count.currencyStyle) 座")
         print("\n目前顯示城市名單:")
         print("  *****  ", terminator: "")
-        apis.forEach{ print($0.city, terminator: ", ") }
+        apis.forEach { print($0.city, terminator: ", ") }
         print("  *****  \n")
-        UITableView.reloadData()
+
+               UITableView.reloadData()
     }
-    
-    
+
     private func configuration() {
         performanceGuidePage()
         initializeLocationManager()
@@ -177,40 +151,36 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         setGoogleMobileAds()
         setupAuthrizationStatus()
     }
-    
+
     private func viewConfriguation() {
         mapViewInfoCustomize()
-        effect = self.visualEffectView.effect
+        effect = visualEffectView.effect
         visualEffectView.effect = nil
-        setNavigationBarBackgrondBlurEffect(to: self)
+        
         viewUpdateTimeLabel()
-        applyMotionEffect(toView: self.UITableView, magnitude: -20)
-        applyMotionEffect(toView: self.updateTimeLabel, magnitude: -20)
-        applyMotionEffect(toView: SegmentedControl, magnitude: -20)
-        setTopTitleImage(to: self)
+        applyMotionEffect(toView: UITableView, updateTimeLabel, SegmentedControl, magnitude: -20)
     }
-    
+
 }
 
-
 extension MapViewController: HandleMapSearch {
-    
+
     func mapSearcherConfig() {
         let uiBarbtnitem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(MapViewController.callSearcher))
-        
         navigationItem.rightBarButtonItems?.insert(uiBarbtnitem, at: 0)
-        
+
     }
+    
     func callSearcher() {
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         print("call searcher")
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController.searchResultsUpdater = locationSearchTable
-        
+
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
-        
+
         navigationItem.titleView = searchBar
         resultSearchController.hidesNavigationBarDuringPresentation = false
         resultSearchController.dimsBackgroundDuringPresentation = true
@@ -218,26 +188,24 @@ extension MapViewController: HandleMapSearch {
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
     }
-    
-    func dropPinZoomIn(_ placemark: MKPlacemark){
+
+    func dropPinZoomIn(_ placemark: MKPlacemark) {
         // cache the pin
-        
+
         // clear existing pins
         mapView.removeAnnotations(mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
-        
+
         if let city = placemark.locality,
             let state = placemark.administrativeArea {
             annotation.subtitle = "\(city) \(state)"
         }
-        
+
         mapView.addAnnotation(annotation)
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
     }
 }
-
-

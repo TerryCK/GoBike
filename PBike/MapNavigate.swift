@@ -8,23 +8,21 @@
 
 import MapKit
 
-
 extension MapViewController: Navigatorable {
-    
+
      func navigating() {
         guard let destination = self.selectedPin else { return }
         go(to: destination)
     }
-    
-    
+
     func mapViewInfoCustomize() {
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.showsUserLocation = true
         mapView.isZoomEnabled = true
-        mapView.showsCompass = false
-        mapView.showsScale = false
+        mapView.showsCompass = true
+        mapView.showsScale = true
         mapView.showsTraffic = false
     }
-    
+
 }

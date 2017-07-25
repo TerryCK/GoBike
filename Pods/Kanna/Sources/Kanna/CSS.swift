@@ -57,29 +57,29 @@ public struct CSS {
         while str.utf16.count > 0 {
             var attributes: [String] = []
             var combinator: String = ""
-            
+
             if let result = matchBlank(str) {
                 str = str.substring(from: str.index(str.startIndex, offsetBy: result.range.length))
             }
-            
+
             // element
             let element = getElement(&str)
-            
+
             // class / id
             while let attr = getClassId(&str) {
                 attributes.append(attr)
             }
-            
+
             // attribute
             while let attr = getAttribute(&str) {
                 attributes.append(attr)
             }
-            
+
             // matchCombinator
             if let combi = genCombinator(&str) {
                 combinator = combi
             }
-            
+
             // generate xpath phrase
             let attr = attributes.reduce("") { $0.isEmpty ? $1 : $0 + " and " + $1 }
             if attr.isEmpty {
@@ -170,16 +170,16 @@ private func getElement(_ str: inout String, skip: Bool = true) -> String {
     if let result = matchElement(str) {
         let (text, text2) = (substringWithRangeAtIndex(result, str: str, at: 1),
                              substringWithRangeAtIndex(result, str: str, at: 4))
-        
+
         if skip {
             str = str.substring(from: str.characters.index(str.startIndex, offsetBy: result.range.length))
         }
-        
+
         // tag with namespace
         if !text.isEmpty && !text2.isEmpty {
             return "\(text):\(text2)"
         }
-        
+
         // tag
         if !text.isEmpty {
             return text
@@ -195,7 +195,7 @@ private func getClassId(_ str: inout String, skip: Bool = true) -> String? {
         if skip {
             str = str.substring(from: str.characters.index(str.startIndex, offsetBy: result.range.length))
         }
-        
+
         if attr.hasPrefix("#") {
             return "@id = '\(text)'"
         } else if attr.hasPrefix(".") {
@@ -214,7 +214,7 @@ private func getAttribute(_ str: inout String, skip: Bool = true) -> String? {
         if skip {
             str = str.substring(from: str.characters.index(str.startIndex, offsetBy: result.range.length))
         }
-        
+
         switch expr {
         case "!=":
             return "@\(attr) != \(text)"
@@ -236,7 +236,7 @@ private func getAttribute(_ str: inout String, skip: Bool = true) -> String? {
         if skip {
             str = str.substring(from: str.characters.index(str.startIndex, offsetBy: result.range.length))
         }
-        
+
         return "@\(atr)"
     } else if str.hasPrefix("[") {
         // bad syntax attribute
@@ -248,7 +248,7 @@ private func getAttribute(_ str: inout String, skip: Bool = true) -> String? {
         if skip {
             str = str.substring(from: str.characters.index(str.startIndex, offsetBy: result.range.length))
         }
-        
+
         switch one {
         case "first-child":
             return "count(preceding-sibling::*) = 0"
@@ -272,7 +272,7 @@ private func getAttribute(_ str: inout String, skip: Bool = true) -> String? {
             if let sub = matchSubNthChild(one) {
                 let (nth, arg1) = (substringWithRangeAtIndex(sub, str: one, at: 1),
                                    substringWithRangeAtIndex(sub, str: one, at: 2))
-                
+
                 let nthFunc = (nth == "nth-child") ? nth_child : nth_last_child
                 if arg1 == "odd" {
                     return nthFunc(2, 1)
@@ -285,7 +285,7 @@ private func getAttribute(_ str: inout String, skip: Bool = true) -> String? {
                 let (nth, arg1, arg2) = (substringWithRangeAtIndex(sub, str: one, at: 1),
                                          substringWithRangeAtIndex(sub, str: one, at: 2),
                                          substringWithRangeAtIndex(sub, str: one, at: 3))
-                
+
                 let nthFunc = (nth == "nth-child") ? nth_child : nth_last_child
                 let a: Int = (arg1 == "-") ? -1 : Int(arg1)!
                 let b: Int = (arg2.isEmpty) ? 0 : Int(arg2)!
@@ -316,7 +316,7 @@ private func getAttrNot(_ str: inout String, skip: Bool = true) -> String? {
         if skip {
             str = str.substring(from: str.characters.index(str.startIndex, offsetBy: result.range.length))
         }
-        
+
         if let attr = getAttribute(&one, skip: false) {
             return attr
         } else if let sub = matchElement(one) {
@@ -343,7 +343,7 @@ private func genCombinator(_ str: inout String, skip: Bool = true) -> String? {
         if skip {
             str = str.substring(from: str.characters.index(str.startIndex, offsetBy: result.range.length))
         }
-        
+
         switch one {
         case ">":
             return "/"

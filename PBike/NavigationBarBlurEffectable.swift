@@ -14,19 +14,18 @@ protocol NavigationBarBlurEffectable {
    func setNavigationBarBackgrondBlurEffect(to viewController: UIViewController)
 }
 
-
 extension NavigationBarBlurEffectable {
-    
+
     func setNavigationBarBackgrondBlurEffect(to viewController: UIViewController) {
         // Add blur view
-        let bounds = viewController.navigationController?.navigationBar.bounds as CGRect!
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) as UIVisualEffectView
+        let bounds = viewController.navigationController?.navigationBar.bounds
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         visualEffectView.frame = bounds!
         visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewController.navigationController?.navigationBar.backgroundColor = UIColor.clear
         viewController.navigationController?.navigationBar.addSubview(visualEffectView)
-        
+
         viewController.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
     }
-    
+
 }

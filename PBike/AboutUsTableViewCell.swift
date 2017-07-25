@@ -9,20 +9,20 @@
 import UIKit
 
 final class AboutUsTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var LabNameLabel: UILabel!
-    
+
+    @IBOutlet weak var labNameLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        LabNameLabel.textColor = UIColor.white
+
+        labNameLabel.textColor = UIColor.white
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
-    
+
 }

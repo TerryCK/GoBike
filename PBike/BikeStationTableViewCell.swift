@@ -14,10 +14,10 @@ final class BikeStationTableViewCell: UITableViewCell {
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet weak var currentBikeNumber: UILabel!
     @IBOutlet weak var parkNumber: UILabel!
-    @IBOutlet var parkingImageView:UIImageView!
-    @IBOutlet var bikeImageView:UIImageView!
-    @IBOutlet var navigationImageView:UIImageView!
-    
+    @IBOutlet var parkingImageView: UIImageView!
+    @IBOutlet var bikeImageView: UIImageView!
+    @IBOutlet var navigationImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

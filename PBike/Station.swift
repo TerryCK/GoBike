@@ -9,13 +9,14 @@
 import SWXMLHash
 
 protocol Stationable {
-    var name:               String?         { get set }
-    var location:           String          { get set }
-    var slot:               Int?            { get set }
-    var bikeOnSite:         Int?            { get set }
-    var latitude:           Double          { get set }
-    var longitude:          Double          { get set }
+    var name: String?       { get set }
+    var location: String    { get set }
+    var slot: Int?          { get set }
+    var bikeOnSite: Int?    { get set }
+    var latitude: Double    { get set }
+    var longitude: Double   { get set }
 }
+
 
 struct Station: XMLIndexerDeserializable, Stationable {
     var name: String?
@@ -24,9 +25,8 @@ struct Station: XMLIndexerDeserializable, Stationable {
     var bikeOnSite: Int?
     var latitude: Double
     var longitude: Double
-    
+
     static func deserialize(_ node: XMLIndexer) throws -> Station {
-        
         return try Station (
             name:               node["StationName"].value(),
             location:           node["StationAddress"].value(),
@@ -37,12 +37,3 @@ struct Station: XMLIndexerDeserializable, Stationable {
         )
     }
 }
-
-
-
-
-
-
-
-
-

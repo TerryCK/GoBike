@@ -40,7 +40,7 @@ internal final class libxmlHTMLNode: XMLElement {
         }
         return nil
     }
-    
+
     var toHTML: String? {
         let buf = xmlBufferCreate()
         htmlNodeDump(buf, docPtr, nodePtr)
@@ -56,7 +56,7 @@ internal final class libxmlHTMLNode: XMLElement {
         xmlBufferFree(buf)
         return html
     }
-    
+
     var innerHTML: String? {
         if let html = self.toHTML {
             let inner = html.replacingOccurrences(of: "</[^>]*>$", with: "", options: .regularExpression, range: nil)
@@ -65,12 +65,12 @@ internal final class libxmlHTMLNode: XMLElement {
         }
         return nil
     }
-    
+
     var className: String? {
         return self["class"]
     }
-    
-    var tagName:   String? {
+
+    var tagName: String? {
         get {
             if nodePtr != nil {
                 return String(cString: UnsafePointer((nodePtr?.pointee.name)!))
@@ -110,13 +110,11 @@ internal final class libxmlHTMLNode: XMLElement {
         }
     }
 
-    fileprivate var docPtr:  htmlDocPtr? = nil
-    fileprivate var nodePtr: xmlNodePtr? = nil
-    fileprivate var isRoot:  Bool       = false
-    
-    
-    subscript(attributeName: String) -> String?
-    {
+    fileprivate var docPtr: htmlDocPtr?
+    fileprivate var nodePtr: xmlNodePtr?
+    fileprivate var isRoot: Bool       = false
+
+    subscript(attributeName: String) -> String? {
         get {
             var attr = nodePtr?.pointee.properties
             while attr != nil {
@@ -134,7 +132,7 @@ internal final class libxmlHTMLNode: XMLElement {
             }
             return nil
         }
-        
+
         set(newValue) {
             if let newValue = newValue {
                 xmlSetProp(nodePtr, attributeName, newValue)
@@ -143,18 +141,18 @@ internal final class libxmlHTMLNode: XMLElement {
             }
         }
     }
-    
+
     init(docPtr: xmlDocPtr) {
         self.docPtr  = docPtr
         self.nodePtr = xmlDocGetRootElement(docPtr)
         self.isRoot  = true
     }
-    
+
     init(docPtr: xmlDocPtr, node: xmlNodePtr) {
         self.docPtr  = docPtr
         self.nodePtr = node
     }
-    
+
     // MARK: Searchable
     func xpath(_ xpath: String, namespaces: [String:String]?) -> XPathObject {
         let ctxt = xmlXPathNewContext(docPtr)
@@ -162,13 +160,13 @@ internal final class libxmlHTMLNode: XMLElement {
             return XPathObject.none
         }
         ctxt?.pointee.node = nodePtr
-        
+
         if let nsDictionary = namespaces {
             for (ns, name) in nsDictionary {
                 xmlXPathRegisterNs(ctxt, ns, name)
             }
         }
-        
+
         let result = xmlXPathEvalExpression(xpath, ctxt)
         defer {
             xmlXPathFreeObject(result)
@@ -180,19 +178,19 @@ internal final class libxmlHTMLNode: XMLElement {
 
         return XPathObject(docPtr: docPtr!, object: result!.pointee)
     }
-    
+
     func xpath(_ xpath: String) -> XPathObject {
         return self.xpath(xpath, namespaces: nil)
     }
-    
+
     func at_xpath(_ xpath: String, namespaces: [String:String]?) -> XMLElement? {
         return self.xpath(xpath, namespaces: namespaces).nodeSetValue.first
     }
-    
+
     func at_xpath(_ xpath: String) -> XMLElement? {
         return self.at_xpath(xpath, namespaces: nil)
     }
-    
+
     func css(_ selector: String, namespaces: [String:String]?) -> XPathObject {
         if let xpath = CSS.toXPath(selector) {
             if isRoot {
@@ -203,15 +201,15 @@ internal final class libxmlHTMLNode: XMLElement {
         }
         return XPathObject.none
     }
-    
+
     func css(_ selector: String) -> XPathObject {
         return self.css(selector, namespaces: nil)
     }
-    
+
     func at_css(_ selector: String, namespaces: [String:String]?) -> XMLElement? {
         return self.css(selector, namespaces: namespaces).nodeSetValue.first
     }
-    
+
     func at_css(_ selector: String) -> XMLElement? {
         return self.css(selector, namespaces: nil).nodeSetValue.first
     }
@@ -237,9 +235,9 @@ internal final class libxmlHTMLNode: XMLElement {
         xmlUnlinkNode(node.nodePtr)
         xmlAddChild(nodePtr, node.nodePtr)
     }
-    
+
     func removeChild(_ node: XMLElement) {
-        
+
         guard let node = node as? libxmlHTMLNode else {
             return
         }
@@ -260,8 +258,8 @@ private func libxmlGetNodeContent(_ nodePtr: xmlNodePtr) -> String? {
 
 let entities = [
     "&": "&amp;",
-    "<" : "&lt;",
-    ">" : "&gt;",
+    "<": "&lt;",
+    ">": "&gt;"
 ]
 
 private func escape(_ str: String) -> String {
@@ -271,4 +269,3 @@ private func escape(_ str: String) -> String {
     }
     return newStr
 }
-

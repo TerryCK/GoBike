@@ -33,7 +33,7 @@ import libxml2
 /*
 Libxml2HTMLParserOptions
 */
-public struct Libxml2HTMLParserOptions : OptionSet {
+public struct Libxml2HTMLParserOptions: OptionSet {
     public typealias RawValue = UInt
     private var value: UInt = 0
     init(_ value: UInt) { self.value = value }
@@ -43,7 +43,7 @@ public struct Libxml2HTMLParserOptions : OptionSet {
     public static var allZeros: Libxml2HTMLParserOptions { return .init(0) }
     static func fromMask(raw: UInt) -> Libxml2HTMLParserOptions { return .init(raw) }
     public var rawValue: UInt { return self.value }
-    
+
     public static let STRICT     = Libxml2HTMLParserOptions(0)
     public static let RECOVER    = Libxml2HTMLParserOptions(HTML_PARSE_RECOVER)
     public static let NODEFDTD   = Libxml2HTMLParserOptions(HTML_PARSE_NODEFDTD)
@@ -70,7 +70,7 @@ public struct Libxml2XMLParserOptions: OptionSet {
     public static var allZeros: Libxml2XMLParserOptions { return .init(0) }
     static func fromMask(raw: UInt) -> Libxml2XMLParserOptions { return .init(raw) }
     public var rawValue: UInt { return self.value }
-    
+
     public static let STRICT     = Libxml2XMLParserOptions(0)
     public static let RECOVER    = Libxml2XMLParserOptions(XML_PARSE_RECOVER)
     public static let NOENT      = Libxml2XMLParserOptions(XML_PARSE_NOENT)

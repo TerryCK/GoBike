@@ -9,14 +9,14 @@
 import UIKit
 
 final class GuidePageViewController: UIViewController {
-    
+
     @IBOutlet weak var guideImageView: UIImageView!
-    
+
     @IBAction func guidePageCompleteBtn(_ sender: Any) {
-        
+
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "hasViewedGuidePage")
-        
+
         let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
         print("hasViewedGuidePage:", hasViewedGuidePage)
         dismiss(animated: true, completion: nil)
@@ -24,15 +24,17 @@ final class GuidePageViewController: UIViewController {
 }
 
 extension MapViewController {
-    
+
     func performanceGuidePage() {
         let defaults = UserDefaults.standard
         let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
-        guard !hasViewedGuidePage else { return }
-        guard let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController else { return }
-        
+        guard !hasViewedGuidePage,
+         let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController else {
+            return
+        }
+
         present(guidePageViewController, animated: true, completion: nil )
-        
+
     }
-    
+
 }

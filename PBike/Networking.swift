@@ -4,39 +4,33 @@
 //  GoBike
 //
 //  Created by 陳 冠禎 on 2017/6/17.
-//  Add feature world API provide by "https://api.citybik.es/" 
+//  Add feature world API provide by "https://api.citybik.es/"
 //
 //  Copyright © 2017年 陳 冠禎. All rights reserved.
 //
-
 
 import Alamofire
 import SWXMLHash
 import SwiftyJSON
 
-typealias downlocatCompleted = ([Station]) -> ()
+typealias downlocatCompleted = ([Station]) -> Void
 
 protocol Downloadable: Parsable, WorldAPIGetable {
-    func downloadData(from apis:[API], completed: @escaping completeHandle)
+    func downloadData(from apis: [API], completed: @escaping completeHandle)
 }
-
 
 extension Downloadable {
     
-    func downloadData(from apis:[API], completed: @escaping completeHandle) {
+    func downloadData(from apis: [API], completed: @escaping completeHandle) {
         var stations = [Station]()
         var counter = 1
         
-        for get in apis {
-            let url = get.api
-            
-            getData(from: get, with: url) { (newStations) in
-                
+        apis.forEach { (city) in
+            getData(from: city, with: city.api) { (newStations) in
                 stations.append(contentsOf: newStations)
                 if counter == apis.count {
                     completed(stations, apis)
-                
-                }  else {
+                } else {
                     counter += 1
                 }
             }
@@ -44,52 +38,59 @@ extension Downloadable {
     }
     
     private func getData(from api: API, with url: String, completed: @escaping downlocatCompleted) {
-        let isJSON:Bool = api.dataType == .json ? true : false
+        let isJSON: Bool = api.dataType == .json ? true : false
+        
         if isJSON {
-            getJSONStation(from: api, with: url) { (stations) in completed(stations) }
+            getJSONStation(from: api, with: url, completed: completed)
         } else {
-            getXMLStation(from: api, with: url) { (stations) in completed(stations) }
+            getXMLStation(from: api, with: url, completed: completed)
         }
     }
-    
-    
-    private func getXMLData(data: String) -> [Station]? {
-        let xml = SWXMLHash.parse(data)
-        guard let data:[Station] = try? xml["BIKEStationData"]["BIKEStation"]["Station"].value() else { return nil }
-        return data
-    }
-    
-    
-    private func getXMLStation(from api: API , with url: String, completed: @escaping downlocatCompleted){
+
+    private func getXMLStation(from api: API, with url: String, completed: @escaping downlocatCompleted) {
+        
         Alamofire.request(url).responseString {  response in
-            guard response.result.isSuccess else { return }
-            guard let data = response.result.value else { return }
+            guard response.result.isSuccess,
+                let data = response.result.value else {
+                    return
+            }
+            
             let isXML: Bool = api.dataType == .xml ? true : false
+            
             if isXML {
-                guard let data = self.getXMLData(data: data),
-                    let parsed = self.parse(city: api.city, dataFormat: data) else { return }
-                completed(parsed)
+                if let data = getXMLData(data: data),
+                    let parsed = self.parse(city: api.city, dataFormat: data){
+                    completed(parsed)
+                }
             } else {
-                guard let parsed = self.parse(city: api.city, dataFormat: data) else { return }
-                completed(parsed)
+                
+                if let parsed = self.parse(city: api.city, dataFormat: data) {
+                    completed(parsed)
+                }
             }
         }
+        
+        
+        func getXMLData(data: String) -> [Station]? {
+            let xml = SWXMLHash.parse(data)
+            guard let data: [Station] = try? xml["BIKEStationData"]["BIKEStation"]["Station"].value() else {
+                return nil
+            }
+            return data
+        }
+        
     }
     
-    
-    
-    
-    private func getJSONStation(from api: API , with url: String, completed: @escaping downlocatCompleted) {
+    private func getJSONStation(from api: API, with url: String, completed: @escaping downlocatCompleted) {
         Alamofire.request(url).validate().responseJSON { response in
             switch response.result {
+                
             case .success(let value):
                 let json = JSON(value)
-                guard let parsed:[Station] = self.parse(city: api.city, dataFormat: json) else {
-                    print("station is nil plz check parseJSON")
-                    return
-                }
                 
-                completed(parsed)
+                if let parsed = self.parse(city: api.city, dataFormat: json)  {
+                    completed(parsed)
+                }
                 
             case .failure(let error):
                 print("JSON parse error:", error)
@@ -98,9 +99,7 @@ extension Downloadable {
     }
 }
 
-
 extension WorldAPIGetable {
-    
     
     func getWorldsAPIs(url: String, completed: @escaping (([API]) -> Void)) {
         Alamofire.request(url).validate().responseJSON { response in
@@ -109,7 +108,7 @@ extension WorldAPIGetable {
                 let json = JSON(value)
                 let parsed = self.parse(url: url, dataFormat: json)
                 let result = self.getAPIs(from: parsed)
-               
+                
                 completed(result)
                 
             case .failure(let error):
@@ -119,7 +118,6 @@ extension WorldAPIGetable {
     }
     
     private func getAPIs(from worlds: [World]) -> [API] {
-        
         var results = [API]()
         for world in worlds {
             
@@ -133,10 +131,3 @@ extension WorldAPIGetable {
     }
     
 }
-
-
-
-
-
-
-

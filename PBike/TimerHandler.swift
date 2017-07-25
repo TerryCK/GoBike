@@ -10,9 +10,8 @@ import UIKit
 
 protocol TimerHandlerDelegate: class {
     var timerCurrentStatusFlag: TimerStatus { get }
-    var time: Int { set get }
+    var time: Int { get set }
 }
-
 
 protocol TimeStatueProtocol {
     func play()
@@ -24,84 +23,78 @@ enum TimerStatus {
     case pause
     case play
     case reset
-    
+
     mutating func next() {
-        
+
         switch self {
         case .play:
             self = .pause
-            
+
         case .pause:
             self = .reset
-            
+
         case .reset:
             self = .play
         }
     }
 }
 
-
-
 extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
-    
-    
+
     @IBAction func timerPressed(_ sender: AnyObject) {
         timerCounterStatus()
     }
-    
-    
+
     func timerCounterStatus() {
-        
+
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
-        
-        
+
         print("hours = \(hour):\(minutes):\(seconds)")
-        print("timer flag" , self.timerCurrentStatusFlag)
-        
+        print("timer flag", self.timerCurrentStatusFlag)
+
         switch timerStatusReadyTo {
-            
+
         case .play:
             play()
-            
+
         case .pause:
             pause()
-            
+
         case .reset:
             reset()
         }
     }
-    
-    
+
     @objc func decreaseTimer() {
         time -= 1
         if self.timerCurrentStatusFlag == .play {
-            
+
             let timerTittle = time.convertToHMS
             let black = UIColor.black
             let red = UIColor.red
             let blue = UIColor.blue
-            
+
             switch time {
-                
+
             case 600...3600:
                 timerLabel.setTitleColor(black, for: .normal)
                 timerLabel.setTitle(timerTittle, for: .normal)
-                
+
             case 0...600:
                 timerLabel.setTitleColor(red, for: .normal)
                 timerLabel.setTitle(timerTittle, for: .normal)
-                
+
             default:
                 timerLabel.setTitleColor(blue, for: .normal)
                 timerLabel.setTitle(timerTittle, for: .normal)
             }
-            
+
         } else if self.timerCurrentStatusFlag == .pause {
-            
+
             print("reset \(self.time)")
             print("time in pause time: \(self.timeInPause.convertToHMS)")
             let timeToShowReset = timeInPause - self.showTheResetButtonTime
@@ -113,16 +106,16 @@ extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
             self.timerStatusReadyTo = .pause
         }
     }
-    
+
     func play() {
         print("Timer playing")
-        
+
         timerCurrentStatusFlag = .play
         print("timerCurrentStatusFlag", timerCurrentStatusFlag)
         rentedTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.decreaseTimer), userInfo: nil, repeats: true)
         timerStatusReadyTo.next()
     }
-    
+
     func pause() {
         self.timeInPause = time
         print("Timer pause")
@@ -132,7 +125,7 @@ extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
         timerLabel.setTitle("重置", for: .normal)
         timerStatusReadyTo.next()
     }
-    
+
     func reset() {
         print("Timer reset")
         timerCurrentStatusFlag = .reset
@@ -142,7 +135,6 @@ extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
         timerLabel.setTitleColor(UIColor.gray, for: .normal)
         timerLabel.setTitle(time.convertToHMS, for: UIControlState.normal)
         timerStatusReadyTo.next()
-        
-        
+
     }
 }

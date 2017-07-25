@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VLn-st-g6a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VLn-st-g6a">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aZh-Wp-26A">
-                                <rect key="frame" x="224" y="102.5" width="80" height="29"/>
+                                <rect key="frame" x="224" y="103" width="80" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="附近"/>
@@ -156,7 +156,7 @@
                                                     </tableViewCellContentView>
                                                     <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                                     <connections>
-                                                        <outlet property="LabNameLabel" destination="QVI-mw-43n" id="Ilt-Mk-2uf"/>
+                                                        <outlet property="labNameLabel" destination="QVI-mw-43n" id="mBg-E3-Dmk"/>
                                                     </connections>
                                                 </tableViewCell>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ThanksforTableViewCell" rowHeight="80" id="S29-i7-B5v" customClass="ThanksforTableViewCell" customModule="GoBike" customModuleProvider="target">
@@ -192,7 +192,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMe-4T-55m" userLabel="Rating">
-                                                                <rect key="frame" x="189" y="18.5" width="80" height="43"/>
+                                                                <rect key="frame" x="189" y="19" width="80" height="43"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="43" id="5M4-gi-3QU"/>
                                                                     <constraint firstAttribute="width" constant="80" id="PeZ-q8-qtI"/>
@@ -203,7 +203,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edO-T6-nZF" userLabel="mail">
-                                                                <rect key="frame" x="9" y="18.5" width="80" height="43"/>
+                                                                <rect key="frame" x="9" y="19" width="80" height="43"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="43" id="SfC-e8-Ib0"/>
                                                                     <constraint firstAttribute="width" constant="80" id="iGc-H4-PFi"/>
@@ -214,7 +214,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5l-Rb-zrI">
-                                                                <rect key="frame" x="99" y="18.5" width="80" height="43"/>
+                                                                <rect key="frame" x="99" y="19" width="80" height="43"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="80" id="1Wg-EC-dxd"/>
                                                                     <constraint firstAttribute="height" constant="43" id="DDa-dP-BUv"/>
@@ -247,7 +247,7 @@
                                         <constraint firstItem="1Vg-Iw-Qov" firstAttribute="top" secondItem="AOD-1A-x4Q" secondAttribute="topMargin" id="iXX-Hd-3DF"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juN-va-5J4" userLabel="BannerGAD" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="474" width="320" height="50"/>
@@ -329,6 +329,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="SegmentedControl" destination="aZh-Wp-26A" id="04D-WB-Vxf"/>

@@ -10,23 +10,22 @@
 import UIKit
 
 protocol MotionEffectable {
-      func applyMotionEffect(toView view: UIView, magnitude: Float)
+      func applyMotionEffect(toView views: UIView..., magnitude: Float)
 }
 
 extension MotionEffectable {
-    
-    func applyMotionEffect(toView view: UIView, magnitude: Float) {
+
+    func applyMotionEffect(toView views: UIView..., magnitude: Float) {
         let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         xMotion.minimumRelativeValue = -magnitude
         xMotion.maximumRelativeValue = magnitude
-        
+
         let yMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
         yMotion.maximumRelativeValue = magnitude
         yMotion.minimumRelativeValue = -magnitude
-        
+
         let group = UIMotionEffectGroup()
         group.motionEffects = [xMotion, yMotion]
-        view.addMotionEffect(group)
-        
+        views.forEach { $0.addMotionEffect(group) }
     }
 }
