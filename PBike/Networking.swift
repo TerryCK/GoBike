@@ -46,7 +46,7 @@ extension Downloadable {
             getXMLStation(from: api, with: url, completed: completed)
         }
     }
-
+    
     private func getXMLStation(from api: API, with url: String, completed: @escaping downlocatCompleted) {
         
         Alamofire.request(url).responseString {  response in
@@ -73,15 +73,13 @@ extension Downloadable {
         
         func getXMLData(data: String) -> [Station]? {
             let xml = SWXMLHash.parse(data)
-            guard let data: [Station] = try? xml["BIKEStationData"]["BIKEStation"]["Station"].value() else {
-                return nil
-            }
-            return data
+            return try? xml["BIKEStationData"]["BIKEStation"]["Station"].value()
         }
         
     }
     
     private func getJSONStation(from api: API, with url: String, completed: @escaping downlocatCompleted) {
+        print("url", url)
         Alamofire.request(url).validate().responseJSON { response in
             switch response.result {
                 

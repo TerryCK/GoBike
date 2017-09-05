@@ -1,5 +1,6 @@
 //
 //  SWXMLHash.swift
+//  SWXMLHash
 //
 //  Copyright (c) 2014 David Mohundro
 //
@@ -20,6 +21,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
 // swiftlint exceptions:
 // - Disabled file_length because there are a number of users that still pull the
@@ -45,6 +47,9 @@ public class SWXMLHashOptions {
     /// Matching element names, element values, attribute names, attribute values
     /// will be case insensitive. This will not affect parsing (data does not change)
     public var caseInsensitive = false
+
+    /// Encoding used for XML parsing. Default is set to UTF8
+    public var encoding = String.Encoding.utf8
 }
 
 /// Simple XML parser
@@ -78,7 +83,10 @@ public class SWXMLHash {
     - returns: an `XMLIndexer` instance that can be iterated over
     */
     public func parse(_ xml: String) -> XMLIndexer {
-        return parse(xml.data(using: String.Encoding.utf8)!)
+        guard let data = xml.data(using: options.encoding) else {
+            return .xmlError(.encoding)
+        }
+        return parse(data)
     }
 
     /**
@@ -442,6 +450,7 @@ public enum IndexingError: Error {
     case key(key: String)
     case index(idx: Int)
     case initialize(instance: AnyObject)
+    case encoding
     case error
 
 // swiftlint:disable identifier_name
@@ -539,7 +548,7 @@ public enum XMLIndexer {
     /// All child elements from the currently indexed level
     public var children: [XMLIndexer] {
         var list = [XMLIndexer]()
-        for elem in all.map({ $0.element! }).flatMap({ $0 }) {
+        for elem in all.flatMap({ $0.element }) {
             for elem in elem.xmlChildren {
                 list.append(XMLIndexer(elem))
             }
@@ -562,9 +571,9 @@ public enum XMLIndexer {
             let match = opStream.findElements()
             return try match.withAttribute(attr, value)
         case .list(let list):
-            if let elem = list.filter({
-                return value.compare($0.attribute(by: attr)?.text, $0.caseInsensitive)
-            }).first {
+            if let elem = list.first(where: {
+                value.compare($0.attribute(by: attr)?.text, $0.caseInsensitive)
+            }) {
                 return .element(elem)
             }
             throw IndexingError.attributeValue(attr: attr, value: value)
@@ -623,7 +632,7 @@ public enum XMLIndexer {
             return .stream(opStream)
         case .element(let elem):
             let match = elem.xmlChildren.filter({
-                return $0.name.compare(key, $0.caseInsensitive)
+                $0.name.compare(key, $0.caseInsensitive)
             })
             if !match.isEmpty {
                 if match.count == 1 {
@@ -705,10 +714,10 @@ extension XMLIndexer: CustomStringConvertible {
     public var description: String {
         switch self {
         case .list(let list):
-            return list.map { $0.description }.joined(separator: "")
+            return list.reduce("", { $0 + $1.description })
         case .element(let elem):
             if elem.name == rootElementName {
-                return elem.children.map { $0.description }.joined(separator: "")
+                return elem.children.reduce("", { $0 + $1.description })
             }
 
             return elem.description
@@ -732,6 +741,8 @@ extension IndexingError: CustomStringConvertible {
             return "XML Element Error: Incorrect index [\"\(index)\"]"
         case .initialize(let instance):
             return "XML Indexer Error: initialization with Object [\"\(instance)\"]"
+        case .encoding:
+            return "String Encoding Error"
         case .error:
             return "Unknown Error"
         }
@@ -771,17 +782,20 @@ public class XMLElement: XMLContent {
 
     public func attribute(by name: String) -> XMLAttribute? {
         if caseInsensitive {
-            return allAttributes.filter({ $0.key.compare(name, true) }).first?.value
+            return allAttributes.first(where: { $0.key.compare(name, true) })?.value
         }
         return allAttributes[name]
     }
 
     /// The inner text of the element, if it exists
     public var text: String {
-        return children
-            .map({ $0 as? TextElement })
-            .flatMap({ $0 })
-            .reduce("", { $0 + $1.text })
+        return children.reduce("", {
+            if let element = $1 as? TextElement {
+                return $0 + element.text
+            }
+
+            return $0
+        })
     }
 
     /// The inner text of the element and its children
@@ -803,7 +817,7 @@ public class XMLElement: XMLContent {
     var index: Int
 
     var xmlChildren: [XMLElement] {
-        return children.map { $0 as? XMLElement }.flatMap { $0 }
+        return children.flatMap { $0 as? XMLElement }
     }
 
     /**
@@ -865,10 +879,7 @@ extension XMLAttribute: CustomStringConvertible {
 extension XMLElement: CustomStringConvertible {
     /// The tag, attributes and content for a `XMLElement` instance (<elem id="foo">content</elem>)
     public var description: String {
-        var attributesString = allAttributes.map { $0.1.description }.joined(separator: " ")
-        if !attributesString.isEmpty {
-            attributesString = " " + attributesString
-        }
+        let attributesString = allAttributes.reduce("", { $0 + " " + $1.1.description })
 
         if !children.isEmpty {
             var xmlReturn = [String]()
@@ -897,7 +908,9 @@ public typealias SWXMLHashXMLElement = XMLElement
 
 fileprivate extension String {
     func compare(_ str2: String?, _ insensitive: Bool) -> Bool {
-        guard let str2 = str2 else { return false }
+        guard let str2 = str2 else {
+            return false
+        }
         let str1 = self
         if insensitive {
             return str1.caseInsensitiveCompare(str2) == .orderedSame

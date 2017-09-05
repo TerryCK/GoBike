@@ -25,7 +25,7 @@
         <!--Map View Controller-->
         <scene sceneID="aXT-AP-Q2e">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="zYx-kV-zsV" customClass="MapViewController" customModule="GoBike" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="zYx-kV-zsV" customClass="MapViewController" customModule="CBike" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ECA-nH-ri7"/>
                         <viewControllerLayoutGuide type="bottom" id="n15-Sr-peb"/>
@@ -75,7 +75,7 @@
                                                 <constraint firstAttribute="height" constant="432" id="l3k-cr-nhd"/>
                                             </constraints>
                                             <prototypes>
-                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="fWH-3K-mQI" customClass="StationTableViewCell" customModule="GoBike" customModuleProvider="target">
+                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="fWH-3K-mQI" customClass="StationTableViewCell" customModule="CBike" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="32" width="278" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fWH-3K-mQI" id="N9l-wK-uYV">
@@ -124,7 +124,7 @@
                                                         <outlet property="rideBikeWithYouLabel" destination="XlL-QN-gwS" id="QNy-h6-r1h"/>
                                                     </connections>
                                                 </tableViewCell>
-                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="aboutUs" rowHeight="80" id="4DR-Zx-gRr" customClass="AboutUsTableViewCell" customModule="GoBike" customModuleProvider="target">
+                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="aboutUs" rowHeight="80" id="4DR-Zx-gRr" customClass="AboutUsTableViewCell" customModule="CBike" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="112" width="278" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4DR-Zx-gRr" id="1pc-lQ-Nef">
@@ -159,7 +159,7 @@
                                                         <outlet property="labNameLabel" destination="QVI-mw-43n" id="mBg-E3-Dmk"/>
                                                     </connections>
                                                 </tableViewCell>
-                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ThanksforTableViewCell" rowHeight="80" id="S29-i7-B5v" customClass="ThanksforTableViewCell" customModule="GoBike" customModuleProvider="target">
+                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ThanksforTableViewCell" rowHeight="80" id="S29-i7-B5v" customClass="ThanksforTableViewCell" customModule="CBike" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="192" width="278" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S29-i7-B5v" id="jLB-OL-gHw">
@@ -184,7 +184,7 @@
                                                         <outlet property="thanksLabel" destination="O60-yR-dVg" id="vV5-pN-k7g"/>
                                                     </connections>
                                                 </tableViewCell>
-                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RatingReprotCell" rowHeight="80" id="63T-B5-W4X" customClass="RateingReportTableViewCell" customModule="GoBike" customModuleProvider="target">
+                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RatingReprotCell" rowHeight="80" id="63T-B5-W4X" customClass="RateingReportTableViewCell" customModule="CBike" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="272" width="278" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="63T-B5-W4X" id="UNH-tc-RZc">
@@ -332,12 +332,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="SegmentedControl" destination="aZh-Wp-26A" id="04D-WB-Vxf"/>
                         <outlet property="UITableView" destination="1Vg-Iw-Qov" id="1Me-uw-QeZ"/>
                         <outlet property="bannerView" destination="juN-va-5J4" id="Gv7-Cj-gll"/>
                         <outlet property="locationArrowImage" destination="jIg-on-tRK" id="QCh-vp-FyX"/>
                         <outlet property="mapView" destination="JDr-aS-8Yh" id="Xwu-DM-tgF"/>
                         <outlet property="rotationArrow" destination="krC-sn-anO" id="edF-mO-Vil"/>
+                        <outlet property="segmentedControl" destination="aZh-Wp-26A" id="TMr-yA-VMC"/>
                         <outlet property="timerLabel" destination="ESa-U7-R36" id="syR-PW-hmz"/>
                         <outlet property="topTitleimageView" destination="ivr-S5-e8b" id="BfV-4T-D75"/>
                         <outlet property="updateTimeLabel" destination="62L-Ef-bF0" id="WAr-WD-aOj"/>
@@ -351,7 +351,7 @@
         <!--Location Search Table-->
         <scene sceneID="PBy-83-8as">
             <objects>
-                <tableViewController storyboardIdentifier="LocationSearchTable" id="vtP-Mk-UpH" customClass="LocationSearchTable" customModule="GoBike" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LocationSearchTable" id="vtP-Mk-UpH" customClass="LocationSearchTable" customModule="CBike" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uGO-as-Zfk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,14 +365,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tfe-qv-DlL">
-                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XDL-Iu-vfm">
-                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>

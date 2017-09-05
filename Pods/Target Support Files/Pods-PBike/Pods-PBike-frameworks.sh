@@ -95,6 +95,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/PercentEncoder-iOS9.0/PercentEncoder.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SWXMLHash-iOS9.0/SWXMLHash.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON-iOS9.0/SwiftyJSON.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/nanopb-iOS9.0/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS9.0/Alamofire.framework"
@@ -103,6 +104,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/PercentEncoder-iOS9.0/PercentEncoder.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SWXMLHash-iOS9.0/SWXMLHash.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON-iOS9.0/SwiftyJSON.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/nanopb-iOS9.0/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

@@ -146,7 +146,8 @@ public class NetworkReachabilityManager {
         context.info = Unmanaged.passUnretained(self).toOpaque()
 
         let callbackEnabled = SCNetworkReachabilitySetCallback(
-            reachability, { (_, flags, info) in
+            reachability,
+            { (_, flags, info) in
                 let reachability = Unmanaged<NetworkReachabilityManager>.fromOpaque(info!).takeUnretainedValue()
                 reachability.notifyListener(flags)
             },
@@ -181,21 +182,24 @@ public class NetworkReachabilityManager {
     // MARK: - Internal - Network Reachability Status
 
     func networkReachabilityStatusForFlags(_ flags: SCNetworkReachabilityFlags) -> NetworkReachabilityStatus {
-        guard flags.contains(.reachable) else { return .notReachable }
+        guard isNetworkReachable(with: flags) else { return .notReachable }
 
-        var networkStatus: NetworkReachabilityStatus = .notReachable
+        var networkStatus: NetworkReachabilityStatus = .reachable(.ethernetOrWiFi)
 
-        if !flags.contains(.connectionRequired) { networkStatus = .reachable(.ethernetOrWiFi) }
-
-        if flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic) {
-            if !flags.contains(.interventionRequired) { networkStatus = .reachable(.ethernetOrWiFi) }
-        }
-
-        #if os(iOS)
-            if flags.contains(.isWWAN) { networkStatus = .reachable(.wwan) }
-        #endif
+    #if os(iOS)
+        if flags.contains(.isWWAN) { networkStatus = .reachable(.wwan) }
+    #endif
 
         return networkStatus
+    }
+
+    func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+
+        return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
     }
 }
 
@@ -212,7 +216,8 @@ extension NetworkReachabilityManager.NetworkReachabilityStatus: Equatable {}
 public func ==(
     lhs: NetworkReachabilityManager.NetworkReachabilityStatus,
     rhs: NetworkReachabilityManager.NetworkReachabilityStatus)
-    -> Bool {
+    -> Bool
+{
     switch (lhs, rhs) {
     case (.unknown, .unknown):
         return true
