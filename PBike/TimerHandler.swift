@@ -107,7 +107,7 @@ extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
         }
     }
 
-    func play() {
+     func play() {
         print("Timer playing")
 
         timerCurrentStatusFlag = .play
@@ -116,7 +116,7 @@ extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
         timerStatusReadyTo.next()
     }
 
-    func pause() {
+     func pause() {
         self.timeInPause = time
         print("Timer pause")
         timerCurrentStatusFlag = .pause
@@ -126,7 +126,7 @@ extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
         timerStatusReadyTo.next()
     }
 
-    func reset() {
+     func reset() {
         print("Timer reset")
         timerCurrentStatusFlag = .reset
         print("timerCurrentStatusFlag", timerCurrentStatusFlag)

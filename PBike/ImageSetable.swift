@@ -10,8 +10,7 @@
 import UIKit
 
 protocol ImageSetable {
-    static func getImage(by station: [Station], at index: Int) -> String
-
+     static func getImage(by station: Station) -> UIImage
 }
 
 enum StationStatus: String, ImageSetable {
@@ -22,11 +21,11 @@ enum StationStatus: String, ImageSetable {
     case unknow =  "pinUnknow"
 
     
-    static func getImage(by station: [Station], at index: Int) -> String {
+    static func getImage(by station: Station) -> UIImage {
         var pinImage = self.unknow
         
-        guard let numberOfBike = station[index].bikeOnSite else {
-            return pinImage.rawValue
+        guard let numberOfBike = station.bikeOnSite else {
+            return #imageLiteral(resourceName: "pinUnknow")
         }
 
         switch numberOfBike {
@@ -34,12 +33,13 @@ enum StationStatus: String, ImageSetable {
         case 1...5:
             pinImage = .less
         case 5...200:
-            pinImage = station[index].slot == 0 ? self.full : self.med
+            pinImage = station.slot == 0 ? self.full : self.med
         case 0:
             pinImage = .empty
         default:
             pinImage  = .unknow
         }
-        return pinImage.rawValue
+        
+        return UIImage(named: pinImage.rawValue) ?? #imageLiteral(resourceName: "pinUnknow")
     }
 }

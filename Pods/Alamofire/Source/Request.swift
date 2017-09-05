@@ -46,7 +46,7 @@ public typealias RequestRetryCompletion = (_ shouldRetry: Bool, _ timeDelay: Tim
 public protocol RequestRetrier {
     /// Determines whether the `Request` should be retried by calling the `completion` closure.
     ///
-    /// This operation is fully asychronous. Any amount of time can be taken to determine whether the request needs
+    /// This operation is fully asynchronous. Any amount of time can be taken to determine whether the request needs
     /// to be retried. The one requirement is that the completion closure is called to ensure the request is properly
     /// cleaned up after.
     ///
@@ -161,7 +161,8 @@ open class Request {
         user: String,
         password: String,
         persistence: URLCredential.Persistence = .forSession)
-        -> Self {
+        -> Self
+    {
         let credential = URLCredential(user: user, password: password, persistence: persistence)
         return authenticate(usingCredential: credential)
     }
@@ -268,7 +269,7 @@ extension Request: CustomDebugStringConvertible {
     }
 
     func cURLRepresentation() -> String {
-        var components = ["$ curl -i"]
+        var components = ["$ curl -v"]
 
         guard let request = self.request,
               let url = request.url,
@@ -530,7 +531,8 @@ open class DownloadRequest: Request {
     open class func suggestedDownloadDestination(
         for directory: FileManager.SearchPathDirectory = .documentDirectory,
         in domain: FileManager.SearchPathDomainMask = .userDomainMask)
-        -> DownloadFileDestination {
+        -> DownloadFileDestination
+    {
         return { temporaryURL, response in
             let directoryURLs = FileManager.default.urls(for: directory, in: domain)
 

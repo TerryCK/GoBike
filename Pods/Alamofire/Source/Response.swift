@@ -58,7 +58,8 @@ public struct DefaultDataResponse {
         data: Data?,
         error: Error?,
         timeline: Timeline = Timeline(),
-        metrics: AnyObject? = nil) {
+        metrics: AnyObject? = nil)
+    {
         self.request = request
         self.response = response
         self.data = data
@@ -108,7 +109,8 @@ public struct DataResponse<Value> {
         response: HTTPURLResponse?,
         data: Data?,
         result: Result<Value>,
-        timeline: Timeline = Timeline()) {
+        timeline: Timeline = Timeline())
+    {
         self.request = request
         self.response = response
         self.data = data
@@ -245,7 +247,8 @@ public struct DefaultDownloadResponse {
         resumeData: Data?,
         error: Error?,
         timeline: Timeline = Timeline(),
-        metrics: AnyObject? = nil) {
+        metrics: AnyObject? = nil)
+    {
         self.request = request
         self.response = response
         self.temporaryURL = temporaryURL
@@ -307,7 +310,8 @@ public struct DownloadResponse<Value> {
         destinationURL: URL?,
         resumeData: Data?,
         result: Result<Value>,
-        timeline: Timeline = Timeline()) {
+        timeline: Timeline = Timeline())
+    {
         self.request = request
         self.response = response
         self.temporaryURL = temporaryURL

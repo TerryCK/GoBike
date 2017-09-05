@@ -46,7 +46,7 @@ extension Downloadable {
             getXMLStation(from: api, with: url, completed: completed)
         }
     }
-
+    
     private func getXMLStation(from api: API, with url: String, completed: @escaping downlocatCompleted) {
         
         Alamofire.request(url).responseString {  response in
@@ -82,6 +82,7 @@ extension Downloadable {
     }
     
     private func getJSONStation(from api: API, with url: String, completed: @escaping downlocatCompleted) {
+        print("url", url)
         Alamofire.request(url).validate().responseJSON { response in
             switch response.result {
                 

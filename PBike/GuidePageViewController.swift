@@ -33,7 +33,7 @@ extension MapViewController {
             return
         }
 
-        present(guidePageViewController, animated: true, completion: nil )
+        present(guidePageViewController, animated: true, completion: nil)
 
     }
 
