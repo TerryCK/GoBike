@@ -24,7 +24,6 @@ extension NavigationBarBlurEffectable {
         visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewController.navigationController?.navigationBar.backgroundColor = UIColor.clear
         viewController.navigationController?.navigationBar.addSubview(visualEffectView)
-
         viewController.navigationController?.navigationBar.sendSubviewToBack(visualEffectView)
     }
 

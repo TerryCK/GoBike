@@ -26,15 +26,10 @@ final class GuidePageViewController: UIViewController {
 extension MapViewController {
 
     func performanceGuidePage() {
-        let defaults = UserDefaults.standard
-        let hasViewedGuidePage = defaults.bool(forKey: "hasViewedGuidePage")
-        guard !hasViewedGuidePage,
+        guard !UserDefaults.standard.bool(forKey: "hasViewedGuidePage"),
          let guidePageViewController = storyboard?.instantiateViewController(withIdentifier: "GuidePageViewController") as? GuidePageViewController else {
             return
         }
-
         present(guidePageViewController, animated: true, completion: nil)
-
     }
-
 }

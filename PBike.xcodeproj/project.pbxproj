@@ -74,10 +74,6 @@
 		A84989DC1E14B0840095D9E8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989DA1E14B0840095D9E8 /* TableViewController.swift */; };
 		A84989DD1E14B0840095D9E8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989DA1E14B0840095D9E8 /* TableViewController.swift */; };
 		A84989DE1E14B0840095D9E8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989DA1E14B0840095D9E8 /* TableViewController.swift */; };
-		A84989E01E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989DF1E14B1CF0095D9E8 /* HandleAnnotationView.swift */; };
-		A84989E11E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989DF1E14B1CF0095D9E8 /* HandleAnnotationView.swift */; };
-		A84989E21E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989DF1E14B1CF0095D9E8 /* HandleAnnotationView.swift */; };
-		A84989E31E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989DF1E14B1CF0095D9E8 /* HandleAnnotationView.swift */; };
 		A84989E51E14B3010095D9E8 /* SetPositionOfTopArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989E41E14B3010095D9E8 /* SetPositionOfTopArrow.swift */; };
 		A84989E61E14B3010095D9E8 /* SetPositionOfTopArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989E41E14B3010095D9E8 /* SetPositionOfTopArrow.swift */; };
 		A84989E71E14B3010095D9E8 /* SetPositionOfTopArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84989E41E14B3010095D9E8 /* SetPositionOfTopArrow.swift */; };
@@ -97,7 +93,6 @@
 		A84F02211E208ED300E65C22 /* GoBike.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A84F02201E208ED300E65C22 /* GoBike.storyboard */; };
 		A84F02261E20D24300E65C22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A84F02251E20D24300E65C22 /* GoogleService-Info.plist */; };
 		A85D3C441DCEBAE800875B3A /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
-		A85D3C451DCEBAE800875B3A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A85D3C471DCEBAE800875B3A /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
 		A85D3C481DCEBAE800875B3A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A85D3C491DCEBAE800875B3A /* AboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */; };
@@ -133,7 +128,6 @@
 		A87E52451DC09A0D0016F9E0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52441DC09A0D0016F9E0 /* MessageUI.framework */; };
 		A87E52471DC09A160016F9E0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A87E52461DC09A160016F9E0 /* SystemConfiguration.framework */; };
 		A8A80AFE1DD1F6F400107566 /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
-		A8A80AFF1DD1F6F400107566 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8A80B011DD1F6F400107566 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
 		A8A80B021DD1F6F400107566 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A8A80B031DD1F6F400107566 /* AboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */; };
@@ -160,7 +154,6 @@
 		A8AF41681EEE719A003AA884 /* AnnotationHandleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AF41641EEE719A003AA884 /* AnnotationHandleable.swift */; };
 		A8B556651DBF5436008EA68F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556641DBF5436008EA68F /* AdSupport.framework */; };
 		A8B556671DBF5446008EA68F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B556661DBF5446008EA68F /* CoreMotion.framework */; };
-		A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8B9B5441F5ECE730016DA71 /* StationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B9B5431F5ECE730016DA71 /* StationFactory.swift */; };
 		A8B9B5451F5ECE730016DA71 /* StationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B9B5431F5ECE730016DA71 /* StationFactory.swift */; };
 		A8B9B5461F5ECE730016DA71 /* StationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B9B5431F5ECE730016DA71 /* StationFactory.swift */; };
@@ -215,7 +208,6 @@
 		A8F836651DB378CA001131BE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F836641DB378CA001131BE /* MapKit.framework */; };
 		A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F8366A1DB3A819001131BE /* BikeStationTableViewCell.swift */; };
 		A8FE694E1DEDB2BE00BE4E51 /* ThanksforTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83BD3341DC355E0002D2DC4 /* ThanksforTableViewCell.swift */; };
-		A8FE694F1DEDB2BE00BE4E51 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */; };
 		A8FE69511DEDB2BE00BE4E51 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */; };
 		A8FE69521DEDB2BE00BE4E51 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */; };
 		A8FE69531DEDB2BE00BE4E51 /* AboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A870E6D91DC2519100329830 /* AboutUsTableViewCell.swift */; };
@@ -286,7 +278,6 @@
 		A84989D01E14AFC10095D9E8 /* MotionEffectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionEffectable.swift; sourceTree = "<group>"; };
 		A84989D51E14B0550095D9E8 /* GoogleAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAd.swift; sourceTree = "<group>"; };
 		A84989DA1E14B0840095D9E8 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		A84989DF1E14B1CF0095D9E8 /* HandleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleAnnotationView.swift; sourceTree = "<group>"; };
 		A84989E41E14B3010095D9E8 /* SetPositionOfTopArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPositionOfTopArrow.swift; sourceTree = "<group>"; };
 		A84989E91E14B36D0095D9E8 /* TimerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerHandler.swift; sourceTree = "<group>"; };
 		A84989EE1E14B3CA0095D9E8 /* NavigationBarBlurEffectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarBlurEffectable.swift; sourceTree = "<group>"; };
@@ -316,7 +307,6 @@
 		A8B556641DBF5436008EA68F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		A8B556661DBF5446008EA68F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A8B55FF21DBB1DD200D68B83 /* PBike.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PBike.entitlements; sourceTree = "<group>"; };
-		A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		A8B9B5431F5ECE730016DA71 /* StationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationFactory.swift; sourceTree = "<group>"; };
 		A8B9B5481F5ECF8A0016DA71 /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
 		A8C975401E65C46F00CDE8CD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -676,8 +666,6 @@
 			children = (
 				A84989D51E14B0550095D9E8 /* GoogleAd.swift */,
 				A81BE0841E462E8900407AB8 /* GuidePageViewController.swift */,
-				A84989DF1E14B1CF0095D9E8 /* HandleAnnotationView.swift */,
-				A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */,
 				A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */,
 				A84989F31E14B41F0095D9E8 /* SendMeMailController.swift */,
 				A84989DA1E14B0840095D9E8 /* TableViewController.swift */,
@@ -1340,9 +1328,7 @@
 				A808B0AB1E43874D0052C983 /* Extension.swift in Sources */,
 				A84989D71E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0871E46B5EB00407AB8 /* GuidePageViewController.swift in Sources */,
-				A84989E11E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A81C7A7F1EC07E0600928F20 /* ImageSetable.swift in Sources */,
-				A85D3C451DCEBAE800875B3A /* LocationSearchTable.swift in Sources */,
 				7CDF443422E96B94000368E6 /* GCDTimer.swift in Sources */,
 				A85D3C481DCEBAE800875B3A /* MapViewController.swift in Sources */,
 				A84989D21E14AFCA0095D9E8 /* MotionEffectable.swift in Sources */,
@@ -1383,9 +1369,7 @@
 				A808B0AD1E43874D0052C983 /* Extension.swift in Sources */,
 				A84989D91E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0881E46B5ED00407AB8 /* GuidePageViewController.swift in Sources */,
-				A84989E31E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A81C7A811EC07E0600928F20 /* ImageSetable.swift in Sources */,
-				A8A80AFF1DD1F6F400107566 /* LocationSearchTable.swift in Sources */,
 				A8A80B021DD1F6F400107566 /* MapViewController.swift in Sources */,
 				A84989D41E14AFCB0095D9E8 /* MotionEffectable.swift in Sources */,
 				7CDF443622E96B94000368E6 /* GCDTimer.swift in Sources */,
@@ -1422,9 +1406,7 @@
 				A808B0AA1E43874D0052C983 /* Extension.swift in Sources */,
 				A84989D61E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0861E46B5EA00407AB8 /* GuidePageViewController.swift in Sources */,
-				A84989E01E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A81C7A7E1EC07E0600928F20 /* ImageSetable.swift in Sources */,
-				A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */,
 				A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */,
 				A84989D11E14AFC10095D9E8 /* MotionEffectable.swift in Sources */,
 				A84989EF1E14B3CA0095D9E8 /* NavigationBarBlurEffectable.swift in Sources */,
@@ -1464,9 +1446,7 @@
 				A808B0AC1E43874D0052C983 /* Extension.swift in Sources */,
 				A84989D81E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0851E462E8900407AB8 /* GuidePageViewController.swift in Sources */,
-				A84989E21E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A81C7A801EC07E0600928F20 /* ImageSetable.swift in Sources */,
-				A8FE694F1DEDB2BE00BE4E51 /* LocationSearchTable.swift in Sources */,
 				7CDF443522E96B94000368E6 /* GCDTimer.swift in Sources */,
 				A8FE69521DEDB2BE00BE4E51 /* MapViewController.swift in Sources */,
 				A84989D31E14AFCA0095D9E8 /* MotionEffectable.swift in Sources */,
