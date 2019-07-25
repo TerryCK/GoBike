@@ -19,7 +19,7 @@ extension MKUserTrackingMode: CustomStringConvertible {
     }
     
     var arrowImage: UIImage {
-        return UIImage(named: String(describing: self) + ("Arrow"))!
+        return UIImage(named: String(describing: self) + "Arrow")!
     }
     
     var nextMode: MKUserTrackingMode {

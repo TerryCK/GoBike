@@ -14,13 +14,11 @@ import GoogleMobileAds
 import Cluster
 
 extension MapViewController: AnnotationHandleable {
-    
     func handleAnnotationInfo(stations: [Station], estimated: Int) -> (bikeOnSite: Int, bikeIsUsing: Int) {
         let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
         annotations = getObjectArray(from: stations, userLocation: currentLocation)
         return getValueOfUsingAndOnSite(from: stations, estimateValue: estimated)
     }
-    
 }
 
 //present annotationView
@@ -46,15 +44,11 @@ extension MapViewController {
             }
             
             guard let customAnnotation = annotation as? CustomPointAnnotation else { return nil }
-            
-            
             let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 43, height: 43)))
-            
             button.setBackgroundImage(UIImage(named: "go"), for: .normal)
             button.addTarget(self, action: #selector(MapViewController.navigating), for: .touchUpInside)
             annotationView?.rightCalloutAccessoryView = button
-            annotationView?.image = customAnnotation.image
-            
+            annotationView?.image = customAnnotation.status.image
             return annotationView
         }
     }
@@ -82,19 +76,6 @@ extension MapViewController {
             case .failure: break
             }
         }
-        
-        
-//        getETAData(to: annotation) { (distance, travelTime) in
-//            guard let distance = distance else { return }
-//            let width = distance > 100 ? 52 : 28
-//            let subTitleView = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: width, height: 40)))
-//            subTitleView.font = subTitleView.font.withSize(12)
-//            subTitleView.textAlignment = .right
-//            subTitleView.numberOfLines = 0
-//            subTitleView.textColor = .gray
-//            subTitleView.text = "\(distance.km) 公里 \n\(travelTime)"
-//            view.leftCalloutAccessoryView = subTitleView
-//        }
     }
 }
 
