@@ -12,37 +12,30 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
 
     @IBAction func titleBtnPressed(_ sender: AnyObject) {
         guard tableViewCanDoNext else { return }
-
         let yDelta: CGFloat = 500
-
+        tableViewIsShowing.toggle()
         switch tableViewIsShowing {
-
         case false:
-            self.showUpTableView(self.tableView, movedBy: yDelta)
-            tableViewIsShowing = true
+            showUpTableView(tableView, movedBy: yDelta)
+            
         case true:
-            self.unShowTableView()
-            tableViewIsShowing = false
-
+            unShowTableView()
         }
-
     }
 
      func showUpTableView(_ moveView: UIView, movedBy yDelta: CGFloat) {
-        self.tableViewCanDoNext = false
-        self.locationArrowImage.isEnabled = false
+        tableViewCanDoNext = false
+        locationArrowImage.isEnabled = false
         mapView.setUserTrackingMode(.none, animated: true)
         let originX = moveView.center.x
         let startPointY = moveView.center.y - yDelta
-    
-        
-        
+
         visualEffectView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(unShowTableView)))
 
         moveView.center = CGPoint(x: originX, y: startPointY)
         moveView.isHidden = false
 
-        self.visualEffectView.isHidden = false
+        visualEffectView.isHidden = false
 
         UIView.animate(withDuration: 0.3,
                        delay: 0,
@@ -54,22 +47,22 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         func doAnimation() {
             let endPointY  = moveView.center.y + yDelta
             moveView.center = CGPoint(x: originX, y: endPointY)
-            self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 180.toRadian)
+            rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 180.toRadian)
             
-            self.visualEffectView.effect = self.effect
-            self.visualEffectView.alpha = 0.98
+            visualEffectView.effect = effect
+            visualEffectView.alpha = 0.98
             moveView.alpha = 1
         }
 
         func completeAction(isFinished: Bool) {
-            self.tableViewCanDoNext = isFinished
+           tableViewCanDoNext = isFinished
         }
     }
 
     @objc private func unShowTableView() {
 
         let moveView = tableView!
-        self.tableViewCanDoNext = false
+        tableViewCanDoNext = false
         let originX = moveView.center.x
         let startPointY = moveView.center.y - yDelta
 
@@ -83,20 +76,18 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         func doAnimation() {
             moveView.alpha = 0
             moveView.center = CGPoint(x: originX, y: startPointY)
-            self.rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 0)
-            self.visualEffectView.alpha = 0
-            
-            
+            rotationArrow.imageView?.transform = CGAffineTransform(rotationAngle: 0)
+            visualEffectView.alpha = 0
         }
 
         func completeAction(isFinished: Bool) {
             moveView.isHidden = isFinished
             let endPoint = moveView.center.y + yDelta
             moveView.center = CGPoint(x: originX, y: endPoint)
-            self.visualEffectView.isHidden = isFinished
-            self.tableViewCanDoNext = isFinished
-            self.locationArrowImage.isEnabled = true
-            self.visualEffectView.effect = nil
+            visualEffectView.isHidden = isFinished
+            tableViewCanDoNext = isFinished
+            locationArrowImage.isEnabled = true
+            visualEffectView.effect = nil
         }
     }
 
@@ -107,27 +98,24 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
-    //    set cell space hight
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
+        headerView.backgroundColor = .clear
         return headerView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = (indexPath as NSIndexPath).section
 
-        switch section {
+        switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationTableViewCell
-            cell.peopleNumberLabel.text = String(self.bikeInUsing) ?? ""
-            cell.rideBikeWithYouLabel.text = self.rideBikeWithYou
+            cell.peopleNumberLabel.text = String(bikeInUsing)
+            cell.rideBikeWithYouLabel.text = rideBikeWithYou
             cellCustomize(cell: cell)
             return cell
 
@@ -149,12 +137,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.section).")
-    }
-
     func cellCustomize(cell: UITableViewCell) {
-
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         cell.layer.borderWidth = 0
