@@ -9,16 +9,13 @@
 import MapKit
 
 final class CustomPointAnnotation: MKPointAnnotation {
-    var image: UIImage!
-    var placemark: MKPlacemark!
+    let status: StationStatus
     
-     init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D, image: UIImage, placemark: MKPlacemark) {
+    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D, status: StationStatus) {
+        self.status = status
         super.init()
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
-        self.image = image
-        self.placemark = placemark
-        
     }
 }

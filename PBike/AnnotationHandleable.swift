@@ -23,8 +23,7 @@ extension AnnotationHandleable {
             return CustomPointAnnotation(title: "🚲:  \(bikeOnSite)   🅿️:  \(slot)",
                                          subtitle: station.name ?? "",
                                          coordinate: bikeStationLocation,
-                                         image: StationStatus.getImage(by: station),
-                                         placemark: MKPlacemark(coordinate: bikeStationLocation, addressDictionary: [subtitle: ""]))
+                                         image: StationStatus.status(by: station)))
         }
     }
 }
