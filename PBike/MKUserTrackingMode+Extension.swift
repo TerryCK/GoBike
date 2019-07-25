@@ -14,6 +14,7 @@ extension MKUserTrackingMode: CustomStringConvertible {
         case .none              : return "none"
         case .follow            : return "follow"
         case .followWithHeading : return "followWithHeading"
+        @unknown default        : return ""
         }
     }
     

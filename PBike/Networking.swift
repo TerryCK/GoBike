@@ -15,7 +15,7 @@ import SwiftyJSON
 
 typealias downlocatCompleted = ([Station]) -> Void
 
-protocol Downloadable: Parsable, WorldAPIGetable {
+protocol Downloadable: WorldAPIGetable {
     func downloadData(from apis: [API], completed: @escaping completeHandle)
 }
 

@@ -24,6 +24,10 @@
 		7CDF443422E96B94000368E6 /* GCDTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF443222E96B94000368E6 /* GCDTimer.swift */; };
 		7CDF443522E96B94000368E6 /* GCDTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF443222E96B94000368E6 /* GCDTimer.swift */; };
 		7CDF443622E96B94000368E6 /* GCDTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF443222E96B94000368E6 /* GCDTimer.swift */; };
+		7CDF443822E96D37000368E6 /* LocationManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF443722E96D37000368E6 /* LocationManageable.swift */; };
+		7CDF443922E96D37000368E6 /* LocationManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF443722E96D37000368E6 /* LocationManageable.swift */; };
+		7CDF443A22E96D37000368E6 /* LocationManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF443722E96D37000368E6 /* LocationManageable.swift */; };
+		7CDF443B22E96D37000368E6 /* LocationManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF443722E96D37000368E6 /* LocationManageable.swift */; };
 		A04FC7C4042DF51563943386 /* Pods_PBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4911FA0B9E95B2D562CCC89 /* Pods_PBike.framework */; };
 		A808B0AA1E43874D0052C983 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808B0A91E43874D0052C983 /* Extension.swift */; };
 		A808B0AB1E43874D0052C983 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808B0A91E43874D0052C983 /* Extension.swift */; };
@@ -172,14 +176,6 @@
 		A8CC816D1E14BE7500CBC824 /* ConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81681E14BB0100CBC824 /* ConfigurationProtocol.swift */; };
 		A8CC816E1E14BE7500CBC824 /* ConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81681E14BB0100CBC824 /* ConfigurationProtocol.swift */; };
 		A8CC816F1E14BE7600CBC824 /* ConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81681E14BB0100CBC824 /* ConfigurationProtocol.swift */; };
-		A8CC81711E14C30E00CBC824 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81701E14C30E00CBC824 /* LocationManager.swift */; };
-		A8CC81721E14C30E00CBC824 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81701E14C30E00CBC824 /* LocationManager.swift */; };
-		A8CC81731E14C30E00CBC824 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81701E14C30E00CBC824 /* LocationManager.swift */; };
-		A8CC81741E14C30E00CBC824 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81701E14C30E00CBC824 /* LocationManager.swift */; };
-		A8CC81761E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
-		A8CC81771E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
-		A8CC81781E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
-		A8CC81791E14C7D000CBC824 /* MapNavigate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC81751E14C7D000CBC824 /* MapNavigate.swift */; };
 		A8CEEF741ED2750B00374389 /* BikeStationModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* BikeStationModelProtocol.swift */; };
 		A8CEEF751ED2750B00374389 /* BikeStationModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* BikeStationModelProtocol.swift */; };
 		A8CEEF761ED2750B00374389 /* BikeStationModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CEEF731ED2750B00374389 /* BikeStationModelProtocol.swift */; };
@@ -265,6 +261,7 @@
 		7CDF442822E95D0A000368E6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7CDF442D22E96B2B000368E6 /* MKUserTrackingMode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKUserTrackingMode+Extension.swift"; sourceTree = "<group>"; };
 		7CDF443222E96B94000368E6 /* GCDTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDTimer.swift; sourceTree = "<group>"; };
+		7CDF443722E96D37000368E6 /* LocationManageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManageable.swift; sourceTree = "<group>"; };
 		A808B0A91E43874D0052C983 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		A80B67DE1DBE16EB00F6B19F /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		A81BE0841E462E8900407AB8 /* GuidePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidePageViewController.swift; sourceTree = "<group>"; };
@@ -322,8 +319,6 @@
 		A8CA6C621EF5299B00515253 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		A8CC81661E14BAC600CBC824 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		A8CC81681E14BB0100CBC824 /* ConfigurationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationProtocol.swift; sourceTree = "<group>"; };
-		A8CC81701E14C30E00CBC824 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		A8CC81751E14C7D000CBC824 /* MapNavigate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapNavigate.swift; sourceTree = "<group>"; };
 		A8CEEF731ED2750B00374389 /* BikeStationModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationModelProtocol.swift; sourceTree = "<group>"; };
 		A8E01E9F1DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A8E01EA11DDD481900BC440C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -607,6 +602,7 @@
 			children = (
 				A808B0A91E43874D0052C983 /* Extension.swift */,
 				7CDF442D22E96B2B000368E6 /* MKUserTrackingMode+Extension.swift */,
+				7CDF443722E96D37000368E6 /* LocationManageable.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -675,9 +671,7 @@
 				A84989D51E14B0550095D9E8 /* GoogleAd.swift */,
 				A81BE0841E462E8900407AB8 /* GuidePageViewController.swift */,
 				A84989DF1E14B1CF0095D9E8 /* HandleAnnotationView.swift */,
-				A8CC81701E14C30E00CBC824 /* LocationManager.swift */,
 				A8B55FF51DBB3BE300D68B83 /* LocationSearchTable.swift */,
-				A8CC81751E14C7D000CBC824 /* MapNavigate.swift */,
 				A8A9B48D1DB73DAB00C2568D /* MapViewController.swift */,
 				A84989F31E14B41F0095D9E8 /* SendMeMailController.swift */,
 				A84989DA1E14B0840095D9E8 /* TableViewController.swift */,
@@ -1342,13 +1336,12 @@
 				A81BE0871E46B5EB00407AB8 /* GuidePageViewController.swift in Sources */,
 				A84989E11E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A81C7A7F1EC07E0600928F20 /* ImageSetable.swift in Sources */,
-				A8CC81721E14C30E00CBC824 /* LocationManager.swift in Sources */,
 				A85D3C451DCEBAE800875B3A /* LocationSearchTable.swift in Sources */,
 				7CDF443422E96B94000368E6 /* GCDTimer.swift in Sources */,
-				A8CC81771E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A85D3C481DCEBAE800875B3A /* MapViewController.swift in Sources */,
 				A84989D21E14AFCA0095D9E8 /* MotionEffectable.swift in Sources */,
 				A84989F01E14B3CA0095D9E8 /* NavigationBarBlurEffectable.swift in Sources */,
+				7CDF443922E96D37000368E6 /* LocationManageable.swift in Sources */,
 				A863536A1EE7B554003CCFDA /* Navigatorable.swift in Sources */,
 				A8B9B54A1F5ECF8A0016DA71 /* NetworkActivityIndicatorManager.swift in Sources */,
 				A8CA6C641EF5299B00515253 /* Networking.swift in Sources */,
@@ -1379,14 +1372,13 @@
 				A8CC816F1E14BE7600CBC824 /* ConfigurationProtocol.swift in Sources */,
 				A8E7CF3C1F26E6E5007A7900 /* Counterable.swift in Sources */,
 				A8CC816C1E14BE7000CBC824 /* CustomAnnotationView.swift in Sources */,
+				7CDF443B22E96D37000368E6 /* LocationManageable.swift in Sources */,
 				A808B0AD1E43874D0052C983 /* Extension.swift in Sources */,
 				A84989D91E14B0550095D9E8 /* GoogleAd.swift in Sources */,
 				A81BE0881E46B5ED00407AB8 /* GuidePageViewController.swift in Sources */,
 				A84989E31E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A81C7A811EC07E0600928F20 /* ImageSetable.swift in Sources */,
-				A8CC81741E14C30E00CBC824 /* LocationManager.swift in Sources */,
 				A8A80AFF1DD1F6F400107566 /* LocationSearchTable.swift in Sources */,
-				A8CC81791E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A8A80B021DD1F6F400107566 /* MapViewController.swift in Sources */,
 				A84989D41E14AFCB0095D9E8 /* MotionEffectable.swift in Sources */,
 				7CDF443622E96B94000368E6 /* GCDTimer.swift in Sources */,
@@ -1423,15 +1415,14 @@
 				A81BE0861E46B5EA00407AB8 /* GuidePageViewController.swift in Sources */,
 				A84989E01E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A81C7A7E1EC07E0600928F20 /* ImageSetable.swift in Sources */,
-				A8CC81711E14C30E00CBC824 /* LocationManager.swift in Sources */,
 				A8B55FF61DBB3BE300D68B83 /* LocationSearchTable.swift in Sources */,
-				A8CC81761E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A8A9B48E1DB73DAB00C2568D /* MapViewController.swift in Sources */,
 				A84989D11E14AFC10095D9E8 /* MotionEffectable.swift in Sources */,
 				A84989EF1E14B3CA0095D9E8 /* NavigationBarBlurEffectable.swift in Sources */,
 				A86353691EE7B554003CCFDA /* Navigatorable.swift in Sources */,
 				A8B9B5491F5ECF8A0016DA71 /* NetworkActivityIndicatorManager.swift in Sources */,
 				A8CA6C631EF5299B00515253 /* Networking.swift in Sources */,
+				7CDF443822E96D37000368E6 /* LocationManageable.swift in Sources */,
 				A83BD3371DC360C5002D2DC4 /* RateingReportTableViewCell.swift in Sources */,
 				7CDF443022E96B2C000368E6 /* MKUserTrackingMode+Extension.swift in Sources */,
 				7CDF443322E96B94000368E6 /* GCDTimer.swift in Sources */,
@@ -1466,13 +1457,12 @@
 				A81BE0851E462E8900407AB8 /* GuidePageViewController.swift in Sources */,
 				A84989E21E14B1CF0095D9E8 /* HandleAnnotationView.swift in Sources */,
 				A81C7A801EC07E0600928F20 /* ImageSetable.swift in Sources */,
-				A8CC81731E14C30E00CBC824 /* LocationManager.swift in Sources */,
 				A8FE694F1DEDB2BE00BE4E51 /* LocationSearchTable.swift in Sources */,
 				7CDF443522E96B94000368E6 /* GCDTimer.swift in Sources */,
-				A8CC81781E14C7D000CBC824 /* MapNavigate.swift in Sources */,
 				A8FE69521DEDB2BE00BE4E51 /* MapViewController.swift in Sources */,
 				A84989D31E14AFCA0095D9E8 /* MotionEffectable.swift in Sources */,
 				A84989F11E14B3CA0095D9E8 /* NavigationBarBlurEffectable.swift in Sources */,
+				7CDF443A22E96D37000368E6 /* LocationManageable.swift in Sources */,
 				A863536B1EE7B554003CCFDA /* Navigatorable.swift in Sources */,
 				A8B9B54B1F5ECF8A0016DA71 /* NetworkActivityIndicatorManager.swift in Sources */,
 				A8CA6C651EF5299B00515253 /* Networking.swift in Sources */,

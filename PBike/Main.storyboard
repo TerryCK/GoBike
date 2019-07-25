@@ -310,9 +310,9 @@
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="jIg-on-tRK" userLabel="arrowImageBtn">
                                     <rect key="frame" x="254" y="3" width="50" height="38"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="locationArrowNone"/>
+                                    <state key="normal" image="noneArrow"/>
                                     <connections>
-                                        <action selector="locationArrowPressed:" destination="zYx-kV-zsV" eventType="touchUpInside" id="9GD-hz-Miu"/>
+                                        <action selector="locationArrowPressed:" destination="zYx-kV-zsV" eventType="touchUpInside" id="fk6-ai-ADZ"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
@@ -461,8 +461,8 @@
         <image name="GoBike" width="85" height="32"/>
         <image name="iPadGuidePage" width="16" height="16"/>
         <image name="iPhoneGuidePage" width="640" height="1136"/>
-        <image name="locationArrowNone" width="22" height="22"/>
         <image name="mailto" width="148" height="83"/>
+        <image name="noneArrow" width="22" height="22"/>
         <image name="rate" width="148" height="83"/>
         <image name="rotatArrow" width="11" height="6"/>
         <image name="share" width="148" height="82"/>

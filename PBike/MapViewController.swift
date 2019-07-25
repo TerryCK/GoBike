@@ -11,8 +11,30 @@ import UIKit
 import MapKit
 import CoreLocation
 import GoogleMobileAds
+import Cluster
 
-final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol {
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+        locationArrowImage.setImage(mode.arrowImage, for: .normal)
+    }
+}
+final class MapViewController: UIViewController, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol, LocationManageable, Navigatorable, CLLocationManagerDelegate {
+    
+    lazy var locationManager : CLLocationManager = {
+        $0.delegate = self
+        $0.distanceFilter = kCLLocationAccuracyNearestTenMeters
+        $0.desiredAccuracy = kCLLocationAccuracyBest
+        return $0
+    }(CLLocationManager())
+    
+    @objc func navigating() {
+        guard let destination = selectedPin else { return }
+        go(to: destination)
+    }
+
+    @IBAction func locationArrowPressed(_ sender: AnyObject) {
+        mapView.setUserTrackingMode(mapView.userTrackingMode.nextMode, animated: true)
+    }
     
     var resultSearchController: UISearchController!
     
@@ -57,7 +79,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
             DispatchQueue.main.async {
                 self.mapView.addAnnotations(self.annotations)
                 self.mapView.removeAnnotations(oldValue)
-                print(self.mapView.annotations.count)
             }
             
         }
@@ -101,19 +122,18 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     public var timerCurrentStatusFlag: TimerStatus = .reset
     var timeInPause = 5
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        locationManager.stopUpdatingLocation()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configuration()
-        //        mapSearcherConfig()
+        updatingDataByServalTime()
+        
     }
     
-    func setupAuthrizationStatus() {
-        self.authrizationStatus { [unowned self] in
-            let delta = 0.03
-            self.setCurrentLocation(latDelta: delta, longDelta: delta)
-            self.updatingDataByServalTime()
-        }
-    }
     
     @objc func updatingDataByServalTime() {
         if timeCounter != reloadtime {
@@ -133,7 +153,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     var isNearbyMode = true
     
     private func getData(userLocation: CLLocationCoordinate2D) {
-        NetworkActivityIndicatorManager.shared.networkOperationStarted()
         segmentedControl.isEnabled = false
         NetworkActivityIndicatorManager.shared.networkOperationStarted()
         getStations(userLocation: userLocation, isNearbyMode: isNearbyMode) { [unowned self] (stations, apis) in
@@ -167,7 +186,8 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     
     private func configuration() {
         performanceGuidePage()
-        initializeLocationManager()
+
+        authorizationStatus()
         setupRotatArrowBtnPosition()
         tableView.delegate = self
         tableView.dataSource = self
@@ -176,7 +196,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         #if Release
         setGoogleMobileAds()
         #endif
-        setupAuthrizationStatus()
     }
     
     private func viewConfriguation() {
@@ -214,9 +233,7 @@ extension MapViewController: HandleMapSearch {
     }
     
     func dropPinZoomIn(_ placemark: MKPlacemark) {
-        // cache the pin
-        
-        // clear existing pins
+
         mapView.removeAnnotations(mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
