@@ -18,7 +18,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         switch tableViewIsShowing {
 
         case false:
-            self.showUpTableView(self.UITableView, movedBy: yDelta)
+            self.showUpTableView(self.tableView, movedBy: yDelta)
             tableViewIsShowing = true
         case true:
             self.unShowTableView()
@@ -68,7 +68,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
 
     @objc private func unShowTableView() {
 
-        let moveView = UITableView!
+        let moveView = tableView!
         self.tableViewCanDoNext = false
         let originX = moveView.center.x
         let startPointY = moveView.center.y - yDelta

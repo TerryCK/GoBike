@@ -16,9 +16,26 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     
     var resultSearchController: UISearchController!
     
-    @IBOutlet var mapView: MKMapView!
-    @IBOutlet weak var updateTimeLabel: UILabel!
-    @IBOutlet weak var UITableView: UITableView!
+    @IBOutlet var mapView: MKMapView! {
+        didSet {
+            mapView.delegate = self
+            mapView.mapType = .standard
+            mapView.showsUserLocation = true
+            mapView.isZoomEnabled = true
+            mapView.showsCompass = true
+            mapView.showsScale = true
+            mapView.showsTraffic = false
+        }
+    }
+    
+    @IBOutlet weak var updateTimeLabel: UILabel! {
+        didSet {
+            updateTimeLabel.layer.borderWidth = 0
+            updateTimeLabel.layer.cornerRadius = 8
+            updateTimeLabel.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var timerLabel: UIButton!
     @IBOutlet weak var rotationArrow: UIButton!
@@ -106,7 +123,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
             
             timer.invalidate()
             updateTimeLabel.text = "資料更新中"
-            print("\n ***** 資料更新中 *****\n")
             getData(userLocation: location)
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
             
@@ -146,28 +162,27 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
         apis.forEach { print($0.city, terminator: ", ") }
         print("  *****  \n")
         
-        UITableView.reloadData()
+        tableView.reloadData()
     }
     
     private func configuration() {
         performanceGuidePage()
         initializeLocationManager()
         setupRotatArrowBtnPosition()
-        UITableView.delegate = self
-        UITableView.dataSource = self
-        UITableView.backgroundView?.alpha = 0
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundView?.alpha = 0
         viewConfriguation()
+        #if Release
         setGoogleMobileAds()
+        #endif
         setupAuthrizationStatus()
     }
     
     private func viewConfriguation() {
-        mapViewInfoCustomize()
         effect = visualEffectView.effect
         visualEffectView.effect = nil
-        
-        viewUpdateTimeLabel()
-        applyMotionEffect(toView: UITableView, updateTimeLabel, segmentedControl, magnitude: -20)
+        applyMotionEffect(toView: tableView, updateTimeLabel, segmentedControl, magnitude: -20)
     }
     
 }
