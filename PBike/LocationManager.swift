@@ -57,19 +57,18 @@ extension MapViewController: CLLocationManagerDelegate {
         switch (mapView.userTrackingMode) {
         case .none:
             locationArrowImage.setImage(UIImage(named: "locationArrowNone"), for: .normal)
-            print("tracking mode has changed to none")
+            
 
         case .followWithHeading:
             locationArrowImage.setImage(UIImage(named: "locationArrowFollewWithHeading"), for: .normal)
 
-            print("tracking mode has changed to followWithHeading")
+            
 
         case .follow:
             locationArrowImage.setImage(UIImage(named: "locationArrow"), for: .normal)
-            print("tracking mode has changed to follow")
+            
         }
 
-        print("userTracking mode has been charged")
     }
 
     func setTrackModeToFollowWithHeading() {

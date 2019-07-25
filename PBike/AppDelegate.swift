@@ -21,11 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        FirebaseApp.configure()
         #if RELEASE
             Fabric.sharedSDK().debug = true
             Fabric.with([Crashlytics.self])
-            FirebaseApp.configure()
-            GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~6339780911")
+//            FirebaseApp.configure()
+//            GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~6339780911")
         #else
         NetworkActivityLogger.shared.startLogging()
         NetworkActivityLogger.shared.level = .debug

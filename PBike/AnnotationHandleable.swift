@@ -16,7 +16,7 @@ protocol AnnotationHandleable: Counterable {
 extension AnnotationHandleable {
     
     func getObjectArray(from stations: [Station], userLocation: CLLocation, region: Int? = nil) -> [CustomPointAnnotation] {
-        return stations.flatMap { station in
+        return stations.compactMap { station in
             guard let subtitle = station.name, let slot = station.slot, let bikeOnSite = station.bikeOnSite else { return nil }
             let bikeStationLocation = CLLocationCoordinate2D(latitude: station.latitude, longitude: station.longitude)
             

@@ -15,14 +15,5 @@ extension MapViewController: Navigatorable {
         go(to: destination)
     }
 
-    func mapViewInfoCustomize() {
-        mapView.delegate = self
-        mapView.mapType = .standard
-        mapView.showsUserLocation = true
-        mapView.isZoomEnabled = true
-        mapView.showsCompass = true
-        mapView.showsScale = true
-        mapView.showsTraffic = false
-    }
 
 }
