@@ -41,7 +41,7 @@ extension MapViewController {
         
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 43, height: 43)))
         
-        button.setBackgroundImage(UIImage(named: "go"), for: UIControlState())
+        button.setBackgroundImage(UIImage(named: "go"), for: .normal)
         button.addTarget(self, action: #selector(MapViewController.navigating), for: .touchUpInside)
         annotationView?.rightCalloutAccessoryView = button
         annotationView?.image = customAnnotation.image

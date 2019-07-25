@@ -11,6 +11,7 @@ import Firebase
 import GoogleMobileAds
 import Fabric
 import Crashlytics
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,14 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         #if RELEASE
             Fabric.sharedSDK().debug = true
             Fabric.with([Crashlytics.self])
             FirebaseApp.configure()
             GADMobileAds.configure(withApplicationID: "ca-app-pub-3022461967351598~6339780911")
+        #else
+        NetworkActivityLogger.shared.startLogging()
+        NetworkActivityLogger.shared.level = .debug
         #endif
+        
         return true
     }
     

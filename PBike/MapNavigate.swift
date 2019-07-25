@@ -10,7 +10,7 @@ import MapKit
 
 extension MapViewController: Navigatorable {
 
-     func navigating() {
+    @objc func navigating() {
         guard let destination = self.selectedPin else { return }
         go(to: destination)
     }

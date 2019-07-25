@@ -1,0 +1,6 @@
+framework module AlamofireNetworkActivityLogger {
+  umbrella header "AlamofireNetworkActivityLogger-iOS9.0-umbrella.h"
+
+  export *
+  module * { export * }
+}

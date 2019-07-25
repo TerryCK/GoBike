@@ -6,7 +6,7 @@
 //  Copyright © 2017年 陳 冠禎. All rights reserved.
 //
 
-import Kanna
+//import Kanna
 import Alamofire
 import SWXMLHash
 import Foundation
@@ -16,39 +16,39 @@ import CoreLocation
 typealias HTML = String
 
 protocol Parsable {
-    func parse(city: City, dataFormat html: HTML) -> [Station]?
+//    func parse(city: City, dataFormat html: HTML) -> [Station]?
     func parse(city: City, dataFormat json: JSON) -> [Station]?
     func parse(city: City, dataFormat xml: [Station]) -> [Station]?
 }
 
 extension Parsable {
 
-    func parse(city: City, dataFormat html: HTML) -> [Station]? {
-
-        guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
-            print("error: parseHTML2Object")
-            return nil
-        }
-
-        let node = doc.css("script")[21]
-        let header = "arealist='"
-        let footer = "';arealist=JSON"
-        let uriDecoded = node.text?.between(header, footer)?.urlDecode
-        let using = String.Encoding.utf8
-
-        guard let dataFromString = uriDecoded?.data(using: using, allowLossyConversion: false) else {
-            print("dataFromString can't be assigned Changhau & Hsinchu")
-            return nil
-        }
-
-        let json = JSON(data: dataFromString)
-
-        guard let stations: [Station] = parse(city: city, dataFormat: json) else {
-            print("station is nil plz check parseJson")
-            return nil
-        }
-        return stations
-    }
+//    func parse(city: City, dataFormat html: HTML) -> [Station]? {
+//
+//        guard let doc = Kanna.HTML(html: html, encoding: String.Encoding.utf8) else {
+//            print("error: parseHTML2Object")
+//            return nil
+//        }
+//
+//        let node = doc.css("script")[21]
+//        let header = "arealist='"
+//        let footer = "';arealist=JSON"
+//        let uriDecoded = node.text?.between(header, footer)?.urlDecode
+//        let using = String.Encoding.utf8
+//
+//        guard let dataFromString = uriDecoded?.data(using: using, allowLossyConversion: false) else {
+//            print("dataFromString can't be assigned Changhau & Hsinchu")
+//            return nil
+//        }
+//
+//        let json = JSON(data: dataFromString)
+//
+//        guard let stations: [Station] = parse(city: city, dataFormat: json) else {
+//            print("station is nil plz check parseJson")
+//            return nil
+//        }
+//        return stations
+//    }
 
     func parse(city: City, dataFormat xml: [Station]) -> [Station]? {
         guard !(xml.isEmpty) else { print("xml is empty") ; return nil }
