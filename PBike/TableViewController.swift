@@ -31,7 +31,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
      func showUpTableView(_ moveView: UIView, movedBy yDelta: CGFloat) {
         self.tableViewCanDoNext = false
         self.locationArrowImage.isEnabled = false
-        self.setTrackModeNone()
+        mapView.setUserTrackingMode(.none, animated: true)
         let originX = moveView.center.x
         let startPointY = moveView.center.y - yDelta
     
