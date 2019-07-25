@@ -8,58 +8,6 @@
 
 import MapKit
 
-typealias Distance = Double
-typealias TravelTime = String
-typealias MapRequestCompleted = (Distance?, TravelTime) -> Void
-
-protocol Navigatorable {
-    func go(to destination: MKAnnotation)
-    func getETAData(to destination: CustomPointAnnotation, completeHandler: @escaping MapRequestCompleted)
-}
-
-
-extension Navigatorable where Self: MapViewController {
-    
-    func go(to destination: MKAnnotation) {
-        guard let name = destination.subtitle ?? "" else { return }
-        let placemark = MKPlacemark(coordinate: destination.coordinate, addressDictionary: [name: ""])
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = "\(name) - 共享單車站)"
-        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
-    }
-    
-    func getETAData(to destination: CustomPointAnnotation, completeHandler: @escaping MapRequestCompleted) {
-        // Get current position
-        let sourcePlacemark = MKPlacemark(coordinate: mapView.userLocation.coordinate, addressDictionary: nil)
-        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
-        
-        // Get destination position
-        let coordinate = destination.coordinate
-        let destinationCoordinates = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude)
-        let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinates, addressDictionary: nil)
-        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
-        
-        // Create request
-        let request = MKDirections.Request()
-        request.source = sourceMapItem
-        request.destination = destinationMapItem
-        request.transportType = MKDirectionsTransportType.automobile
-        request.requestsAlternateRoutes = true
-        let directions = MKDirections(request: request)
-        
-        directions.calculate { response, error in
-            if let route = response?.routes.first {
-                completeHandler(route.distance, route.expectedTravelTime.convertToHMS)
-            } else  {
-                completeHandler(nil, "無法取得資料")
-                print("Error: \(error!)")
-            }
-        }
-    }
-}
-
-
-
 protocol Navigable {
     static var option: Navigator.Option { get }
     static func go(to destination: MKAnnotation)
@@ -89,12 +37,11 @@ struct Navigator: Navigable {
         }
     }
     
-    
     private static func goWithAppleMap(to destination: MKAnnotation) {
-        guard let name = destination.title ?? "" else { return }
+        guard let name = destination.subtitle ?? "" else { return }
         let placemark = MKPlacemark(coordinate: destination.coordinate, addressDictionary: [name: ""])
         let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = "\(name)(洗衣精補充站)"
+        mapItem.name = "\(name) - 共享單車站)"
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
     }
     

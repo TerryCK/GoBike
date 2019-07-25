@@ -13,6 +13,92 @@ import CoreLocation
 import GoogleMobileAds
 import Cluster
 
+extension MapViewController: AnnotationHandleable {
+    
+    func handleAnnotationInfo(stations: [Station], estimated: Int) -> (bikeOnSite: Int, bikeIsUsing: Int) {
+        let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        annotations = getObjectArray(from: stations, userLocation: currentLocation)
+        return getValueOfUsingAndOnSite(from: stations, estimateValue: estimated)
+    }
+    
+}
+
+//present annotationView
+extension MapViewController {
+    
+    @objc func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation.isKind(of: MKUserLocation.self) { return nil }
+        if let annotation = annotation as? ClusterAnnotation {
+            let annotationView = mapView.annotationView(of: CountClusterAnnotationView.self, annotation: annotation, reuseIdentifier: "cluster")
+            annotationView.countLabel.backgroundColor = .green
+            return annotationView
+        } else {
+            let identifier = "station"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+                
+            } else {
+                annotationView?.annotation = annotation
+            }
+            
+            guard let customAnnotation = annotation as? CustomPointAnnotation else { return nil }
+            
+            
+            let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 43, height: 43)))
+            
+            button.setBackgroundImage(UIImage(named: "go"), for: .normal)
+            button.addTarget(self, action: #selector(MapViewController.navigating), for: .touchUpInside)
+            annotationView?.rightCalloutAccessoryView = button
+            annotationView?.image = customAnnotation.image
+            
+            return annotationView
+        }
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let destination = view.annotation?.coordinate else {
+            return
+        }
+        
+        Navigator.travelETA(from: mapView.userLocation.coordinate, to: destination) { (result) in
+            switch result {
+            case .success(let value):
+                guard let route =  value.routes.first else { return }
+                let distance = route.distance
+                let width = distance > 100 ? 52 : 28
+                let subTitleView = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: width, height: 40)))
+                subTitleView.font = subTitleView.font.withSize(12)
+                subTitleView.textAlignment = .right
+                subTitleView.numberOfLines = 0
+                subTitleView.textColor = .gray
+                subTitleView.text = "\(distance.km) 公里 \n\(route.expectedTravelTime.convertToHMS)"
+                view.leftCalloutAccessoryView = subTitleView
+                
+            case .failure: break
+            }
+        }
+        
+        
+//        getETAData(to: annotation) { (distance, travelTime) in
+//            guard let distance = distance else { return }
+//            let width = distance > 100 ? 52 : 28
+//            let subTitleView = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: width, height: 40)))
+//            subTitleView.font = subTitleView.font.withSize(12)
+//            subTitleView.textAlignment = .right
+//            subTitleView.numberOfLines = 0
+//            subTitleView.textColor = .gray
+//            subTitleView.text = "\(distance.km) 公里 \n\(travelTime)"
+//            view.leftCalloutAccessoryView = subTitleView
+//        }
+    }
+}
+
+
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
         locationArrowImage.setImage(mode.arrowImage, for: .normal)
@@ -31,7 +117,7 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
-final class MapViewController: UIViewController, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol, LocationManageable, Navigatorable, CLLocationManagerDelegate {
+final class MapViewController: UIViewController, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol, LocationManageable, CLLocationManagerDelegate {
     
     lazy var locationManager : CLLocationManager = {
         $0.delegate = self
@@ -41,7 +127,7 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     }(CLLocationManager())
     
     @objc func navigating() {
-        mapView.selectedAnnotations.first.map(go)
+        mapView.selectedAnnotations.first.map(Navigator.go)
     }
     
     @IBAction func locationArrowPressed(_ sender: AnyObject) {
@@ -81,7 +167,6 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     
     
     var location = CLLocationCoordinate2D()
-    var selectedPin: CustomPointAnnotation?
     var bikeInUsing = ""
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -118,11 +203,11 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
             }
         })
     }()
-    //     time relation parameter
+    private var lastUodateTime: Date = Date()
+    
     let showTheResetButtonTime = 3
     var time = 1800
-    var timer = Timer()
-    var rentedTimer = Timer()
+//    var rentedTimer = Timer()
     
     // in second
     var reloadtime = 360
@@ -134,7 +219,7 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     public var timerCurrentStatusFlag: TimerStatus = .reset
     var timeInPause = 5
     
-    var lastUodateTime: Date = Date()
+  
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -149,6 +234,10 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
         longPressRecognizer.numberOfTapsRequired = 1
         longPressRecognizer.minimumPressDuration = 0.1
         mapView.addGestureRecognizer(longPressRecognizer)
+        
+        if let coordinate = locationManager.location?.coordinate {
+             getData(userLocation: coordinate)
+        }
     }
     
     @objc func action(sender: UILongPressGestureRecognizer) {
@@ -169,14 +258,11 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     
     private var gestureRecognizerStatus: Status  = .release
     
-    
     private func autoUpdate(timeInterval: TimeInterval) {
-        
         if Date().timeIntervalSince(lastUodateTime) > timeInterval {
             self.updateTimeLabel.text = "資料更新中"
             getData(userLocation: mapView.userLocation.coordinate)
             lastUodateTime = Date()
-            
         } else {
             self.updateTimeLabel.text = "\(Int(Date().timeIntervalSince(self.lastUodateTime))) 秒前更新"
         }
