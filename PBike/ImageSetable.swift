@@ -22,22 +22,16 @@ enum StationStatus: String, ImageSetable {
 
     
     static func getImage(by station: Station) -> UIImage {
-        var pinImage = self.unknow
-        
         guard let numberOfBike = station.bikeOnSite else {
             return #imageLiteral(resourceName: "pinUnknow")
         }
-
+        
+        let pinImage: StationStatus
         switch numberOfBike {
-
-        case 1...5:
-            pinImage = .less
-        case 5...200:
-            pinImage = station.slot == 0 ? self.full : self.med
-        case 0:
-            pinImage = .empty
-        default:
-            pinImage  = .unknow
+        case 1...5      : pinImage = .less
+        case 5...200    : pinImage = station.slot == 0 ? full : med
+        case 0          : pinImage = .empty
+        default         : pinImage = .unknow
         }
         
         return UIImage(named: pinImage.rawValue) ?? #imageLiteral(resourceName: "pinUnknow")
