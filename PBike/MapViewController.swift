@@ -17,7 +17,20 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
         locationArrowImage.setImage(mode.arrowImage, for: .normal)
     }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        guard gestureRecognizerStatus == .release else { return }
+        clusterManager.reload(mapView: mapView)
+    }
+    
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        views.forEach { $0.alpha = 0 }
+        UIView.animate(withDuration: 0.35,
+                       animations: { views.forEach { $0.alpha = 1 } }
+        )
+    }
 }
+
 final class MapViewController: UIViewController, NavigationBarBlurEffectable, MotionEffectable, BikeStationModelProtocol, ConfigurationProtocol, LocationManageable, Navigatorable, CLLocationManagerDelegate {
     
     lazy var locationManager : CLLocationManager = {
@@ -28,10 +41,9 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     }(CLLocationManager())
     
     @objc func navigating() {
-        guard let destination = selectedPin else { return }
-        go(to: destination)
+        mapView.selectedAnnotations.first.map(go)
     }
-
+    
     @IBAction func locationArrowPressed(_ sender: AnyObject) {
         mapView.setUserTrackingMode(mapView.userTrackingMode.nextMode, animated: true)
     }
@@ -57,6 +69,7 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
             updateTimeLabel.clipsToBounds = true
         }
     }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var timerLabel: UIButton!
@@ -65,7 +78,6 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     @IBOutlet weak var locationArrowImage: UIButton!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     var effect: UIVisualEffect!
-    var myLocationManager: CLLocationManager!
     
     
     var location = CLLocationCoordinate2D()
@@ -74,13 +86,18 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    private let clusterManager: ClusterManager = {
+        $0.maxZoomLevel = 17
+        $0.minCountForClustering = 3
+        $0.clusterPosition = .nearCenter
+        return $0
+    }(ClusterManager())
+    
     var annotations: [CustomPointAnnotation] = [] {
         didSet {
-            DispatchQueue.main.async {
-                self.mapView.addAnnotations(self.annotations)
-                self.mapView.removeAnnotations(oldValue)
-            }
-            
+            clusterManager.removeAll()
+            clusterManager.add(annotations)
+            clusterManager.reload(mapView: mapView)
         }
     }
     
@@ -91,15 +108,16 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     var tableViewIsShowing = false
     
     @IBAction func segbtnPress(_ sender: UISegmentedControl) {
-        
-        let nearbyTitle = sender.titleForSegment(at: sender.selectedSegmentIndex)
-        isNearbyMode = nearbyTitle == "附近" ? true : false
-        print(nearbyTitle ?? "")
-        timeCounter = reloadtime
-        self.updatingDataByServalTime()
-        
+        isNearbyMode = sender.titleForSegment(at: sender.selectedSegmentIndex) == "附近"
     }
     
+    lazy var countDownTimer: GCDTimer = {
+        return GCDTimer(interval: .seconds(1), repeating: true, queue: DispatchQueue(label: "\(self).queue"), onTimeout: { (timer) in
+            DispatchQueue.main.async {
+                self.autoUpdate(timeInterval: 30)
+            }
+        })
+    }()
     //     time relation parameter
     let showTheResetButtonTime = 3
     var time = 1800
@@ -108,19 +126,15 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     
     // in second
     var reloadtime = 360
-    
-    var timeCounter: Int = 360 {
-        didSet {
-            if timeCounter != reloadtime {
-                updateTimeLabel.text = "\(timeCounter) 秒前更新"
-            }
-            
-        }
+
+    enum Status {
+        case lock, release
     }
-    
     var timerStatusReadyTo: TimerStatus = .play
     public var timerCurrentStatusFlag: TimerStatus = .reset
     var timeInPause = 5
+    
+    var lastUodateTime: Date = Date()
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -129,25 +143,58 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        countDownTimer.start()
         configuration()
-        updatingDataByServalTime()
-        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(action))
+        longPressRecognizer.numberOfTapsRequired = 1
+        longPressRecognizer.minimumPressDuration = 0.1
+        mapView.addGestureRecognizer(longPressRecognizer)
     }
     
+    @objc func action(sender: UILongPressGestureRecognizer) {
+        let isLongPressGestureRecognizerActive = [.possible, .began, .changed].contains(sender.state)
+        gestureRecognizerStatus = isLongPressGestureRecognizerActive ? .lock : .release
+        guard isLongPressGestureRecognizerActive, let lastTouchPoint = lastTouchPoint else {
+            clusterManager.reload(mapView: mapView)
+            return
+        }
+        let current = sender.location(in: mapView)
+        let deltaY = current.y - lastTouchPoint.y
+        self.lastTouchPoint = current
+        
+        mapZoomWith(scale: deltaY > 0 ? 1.05 : 0.95)
+    }
     
-    @objc func updatingDataByServalTime() {
-        if timeCounter != reloadtime {
-            timeCounter += 1
+    private var lastTouchPoint: CGPoint?
+    
+    private var gestureRecognizerStatus: Status  = .release
+    
+    
+    private func autoUpdate(timeInterval: TimeInterval) {
+        
+        if Date().timeIntervalSince(lastUodateTime) > timeInterval {
+            self.updateTimeLabel.text = "資料更新中"
+            getData(userLocation: mapView.userLocation.coordinate)
+            lastUodateTime = Date()
             
         } else {
-            
-            timer.invalidate()
-            updateTimeLabel.text = "資料更新中"
-            getData(userLocation: location)
-            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MapViewController.updatingDataByServalTime), userInfo: nil, repeats: true)
-            
-            timeCounter = 0
+            self.updateTimeLabel.text = "\(Int(Date().timeIntervalSince(self.lastUodateTime))) 秒前更新"
         }
+    }
+    
+    private func mapZoomWith(scale: Double) {
+        var span = mapView.region.span
+        var region = mapView.region
+        let latDelt = min(158.0, max(span.latitudeDelta * scale, 0))
+        let longDelt = min(145.5, max(span.longitudeDelta * scale, 0))
+        span.latitudeDelta = latDelt
+        span.longitudeDelta = longDelt
+        region.span = span
+        mapView.setRegion(region, animated: false)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        lastTouchPoint = touches.first?.location(in: mapView)
     }
     
     var isNearbyMode = true
@@ -158,14 +205,11 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
         getStations(userLocation: userLocation, isNearbyMode: isNearbyMode) { [unowned self] (stations, apis) in
             NetworkActivityIndicatorManager.shared.networkOperationFinished()
             let estimated = self.getEstimated(from: apis)
-            
             let determined = self.handleAnnotationInfo(stations: stations, estimated: estimated)
             
             self.bikeInUsing = determined.bikeIsUsing.currencyStyle
             let bikeOnStation = determined.bikeOnSite.currencyStyle
-            
             self.shownData(bikeOnStation: bikeOnStation, bikeIsUsing: self.bikeInUsing, stations: stations, apis: apis)
-            NetworkActivityIndicatorManager.shared.networkOperationFinished()
             self.segmentedControl.isEnabled = true
             
         }
@@ -186,7 +230,7 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
     
     private func configuration() {
         performanceGuidePage()
-
+        
         authorizationStatus()
         setupRotatArrowBtnPosition()
         tableView.delegate = self
@@ -202,51 +246,5 @@ final class MapViewController: UIViewController, NavigationBarBlurEffectable, Mo
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         applyMotionEffect(toView: tableView, updateTimeLabel, segmentedControl, magnitude: -20)
-    }
-    
-}
-
-extension MapViewController: HandleMapSearch {
-    
-    func mapSearcherConfig() {
-        let uiBarbtnitem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(MapViewController.callSearcher))
-        navigationItem.rightBarButtonItems?.insert(uiBarbtnitem, at: 0)
-        
-    }
-    
-    @objc func callSearcher() {
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
-        print("call searcher")
-        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
-        resultSearchController.searchResultsUpdater = locationSearchTable
-        
-        let searchBar = resultSearchController!.searchBar
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Search for places"
-        
-        navigationItem.titleView = searchBar
-        resultSearchController.hidesNavigationBarDuringPresentation = false
-        resultSearchController.dimsBackgroundDuringPresentation = true
-        definesPresentationContext = true
-        locationSearchTable.mapView = mapView
-        locationSearchTable.handleMapSearchDelegate = self
-    }
-    
-    func dropPinZoomIn(_ placemark: MKPlacemark) {
-
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
-        
-        if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-            annotation.subtitle = "\(city) \(state)"
-        }
-        
-        mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
-        mapView.setRegion(region, animated: true)
     }
 }

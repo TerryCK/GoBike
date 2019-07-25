@@ -11,6 +11,10 @@
 		2F798536C72A7B29AB1C22C2 /* Pods_GoBikeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0129F05BC3E5B61216E3252 /* Pods_GoBikeTests.framework */; };
 		5A53B92511EA93991810C551 /* Pods_CBike.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1945AE9947B96EA39B43B653 /* Pods_CBike.framework */; };
 		735EBDEED93435B188D003D5 /* Pods_PBike_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403B1544F069B0B035E07AF2 /* Pods_PBike_Dev.framework */; };
+		7C0DBE5E22E9A666002B76D5 /* CountClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0DBE5D22E9A666002B76D5 /* CountClusterAnnotationView.swift */; };
+		7C0DBE5F22E9A666002B76D5 /* CountClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0DBE5D22E9A666002B76D5 /* CountClusterAnnotationView.swift */; };
+		7C0DBE6022E9A666002B76D5 /* CountClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0DBE5D22E9A666002B76D5 /* CountClusterAnnotationView.swift */; };
+		7C0DBE6122E9A666002B76D5 /* CountClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0DBE5D22E9A666002B76D5 /* CountClusterAnnotationView.swift */; };
 		7CDF442722E95ADD000368E6 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A851E5611E6C061A003A1B35 /* Parser.swift */; };
 		7CDF442922E95D0A000368E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF442822E95D0A000368E6 /* Main.storyboard */; };
 		7CDF442A22E95D0A000368E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CDF442822E95D0A000368E6 /* Main.storyboard */; };
@@ -258,6 +262,7 @@
 		2620CD7FB9F1C566F51D45DE /* Pods-PBike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.release.xcconfig"; path = "Target Support Files/Pods-PBike/Pods-PBike.release.xcconfig"; sourceTree = "<group>"; };
 		403B1544F069B0B035E07AF2 /* Pods_PBike_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PBike_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		615451E3AF2CE5784D7EBEB6 /* Pods-PBike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBike.debug.xcconfig"; path = "Target Support Files/Pods-PBike/Pods-PBike.debug.xcconfig"; sourceTree = "<group>"; };
+		7C0DBE5D22E9A666002B76D5 /* CountClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountClusterAnnotationView.swift; sourceTree = "<group>"; };
 		7CDF442822E95D0A000368E6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7CDF442D22E96B2B000368E6 /* MKUserTrackingMode+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKUserTrackingMode+Extension.swift"; sourceTree = "<group>"; };
 		7CDF443222E96B94000368E6 /* GCDTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDTimer.swift; sourceTree = "<group>"; };
@@ -603,6 +608,7 @@
 				A808B0A91E43874D0052C983 /* Extension.swift */,
 				7CDF442D22E96B2B000368E6 /* MKUserTrackingMode+Extension.swift */,
 				7CDF443722E96D37000368E6 /* LocationManageable.swift */,
+				7C0DBE5D22E9A666002B76D5 /* CountClusterAnnotationView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1343,6 +1349,7 @@
 				A84989F01E14B3CA0095D9E8 /* NavigationBarBlurEffectable.swift in Sources */,
 				7CDF443922E96D37000368E6 /* LocationManageable.swift in Sources */,
 				A863536A1EE7B554003CCFDA /* Navigatorable.swift in Sources */,
+				7C0DBE6022E9A666002B76D5 /* CountClusterAnnotationView.swift in Sources */,
 				A8B9B54A1F5ECF8A0016DA71 /* NetworkActivityIndicatorManager.swift in Sources */,
 				A8CA6C641EF5299B00515253 /* Networking.swift in Sources */,
 				A85D3C4C1DCEBAE800875B3A /* RateingReportTableViewCell.swift in Sources */,
@@ -1387,6 +1394,7 @@
 				A8CA6C661EF5299B00515253 /* Networking.swift in Sources */,
 				A8A80B061DD1F6F400107566 /* RateingReportTableViewCell.swift in Sources */,
 				A84989F71E14B41F0095D9E8 /* SendMeMailController.swift in Sources */,
+				7C0DBE6122E9A666002B76D5 /* CountClusterAnnotationView.swift in Sources */,
 				A84989E81E14B3010095D9E8 /* SetPositionOfTopArrow.swift in Sources */,
 				A84989CB1E1368000095D9E8 /* Station.swift in Sources */,
 				A8A80B011DD1F6F400107566 /* StationTableViewCell.swift in Sources */,
@@ -1405,6 +1413,7 @@
 				A8AF41651EEE719A003AA884 /* AnnotationHandleable.swift in Sources */,
 				A84989C41E114D3C0095D9E8 /* API.swift in Sources */,
 				A8F8364E1DB37336001131BE /* AppDelegate.swift in Sources */,
+				7C0DBE5F22E9A666002B76D5 /* CountClusterAnnotationView.swift in Sources */,
 				A8CEEF741ED2750B00374389 /* BikeStationModelProtocol.swift in Sources */,
 				A8F8366B1DB3A819001131BE /* BikeStationTableViewCell.swift in Sources */,
 				A8CC81691E14BB0100CBC824 /* ConfigurationProtocol.swift in Sources */,
@@ -1464,6 +1473,7 @@
 				A84989F11E14B3CA0095D9E8 /* NavigationBarBlurEffectable.swift in Sources */,
 				7CDF443A22E96D37000368E6 /* LocationManageable.swift in Sources */,
 				A863536B1EE7B554003CCFDA /* Navigatorable.swift in Sources */,
+				7C0DBE5E22E9A666002B76D5 /* CountClusterAnnotationView.swift in Sources */,
 				A8B9B54B1F5ECF8A0016DA71 /* NetworkActivityIndicatorManager.swift in Sources */,
 				A8CA6C651EF5299B00515253 /* Networking.swift in Sources */,
 				A8FE69561DEDB2BE00BE4E51 /* RateingReportTableViewCell.swift in Sources */,

@@ -13,27 +13,24 @@ typealias TravelTime = String
 typealias MapRequestCompleted = (Distance?, TravelTime) -> Void
 
 protocol Navigatorable {
-    func go(to destination: CustomPointAnnotation)
+    func go(to destination: MKAnnotation)
     func getETAData(to destination: CustomPointAnnotation, completeHandler: @escaping MapRequestCompleted)
 }
 
 
 extension Navigatorable where Self: MapViewController {
     
-    func go(to destination: CustomPointAnnotation) {
-        let mapItem = MKMapItem(placemark: destination.placemark)
-        mapItem.name = " \(destination.subtitle!) (共享單車站)"
-        
-        print("mapItem.name \(String(describing: mapItem.name))")
-        
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
-        
-        mapItem.openInMaps(launchOptions: launchOptions)
+    func go(to destination: MKAnnotation) {
+        guard let name = destination.subtitle ?? "" else { return }
+        let placemark = MKPlacemark(coordinate: destination.coordinate, addressDictionary: [name: ""])
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "\(name) - 共享單車站)"
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
     }
     
     func getETAData(to destination: CustomPointAnnotation, completeHandler: @escaping MapRequestCompleted) {
         // Get current position
-        let sourcePlacemark = MKPlacemark(coordinate: self.location, addressDictionary: nil)
+        let sourcePlacemark = MKPlacemark(coordinate: mapView.userLocation.coordinate, addressDictionary: nil)
         let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
         
         // Get destination position

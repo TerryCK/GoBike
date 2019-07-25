@@ -8,6 +8,7 @@
 //
 
 import MapKit
+import Cluster
 
 extension MapViewController: AnnotationHandleable {
     
@@ -25,29 +26,36 @@ extension MapViewController {
     @objc func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation.isKind(of: MKUserLocation.self) { return nil }
-        let identifier = "station"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-            
+        
+        if let annotation = annotation as? ClusterAnnotation {
+            let annotationView = mapView.annotationView(of: CountClusterAnnotationView.self, annotation: annotation, reuseIdentifier: "cluster")
+            annotationView.countLabel.backgroundColor = .green
+            return annotationView
         } else {
-            annotationView?.annotation = annotation
+            let identifier = "station"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+                
+            } else {
+                annotationView?.annotation = annotation
+            }
+            
+            guard let customAnnotation = annotation as? CustomPointAnnotation else { return nil }
+            
+            
+            let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 43, height: 43)))
+            
+            button.setBackgroundImage(UIImage(named: "go"), for: .normal)
+            button.addTarget(self, action: #selector(MapViewController.navigating), for: .touchUpInside)
+            annotationView?.rightCalloutAccessoryView = button
+            annotationView?.image = customAnnotation.image
+            
+            return annotationView
         }
-        
-        guard let customAnnotation = annotation as? CustomPointAnnotation else { return nil }
-        
-        
-        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 43, height: 43)))
-        
-        button.setBackgroundImage(UIImage(named: "go"), for: .normal)
-        button.addTarget(self, action: #selector(MapViewController.navigating), for: .touchUpInside)
-        annotationView?.rightCalloutAccessoryView = button
-        annotationView?.image = customAnnotation.image
-        
-        return annotationView
-        
     }
     
     

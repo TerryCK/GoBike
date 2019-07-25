@@ -16,32 +16,27 @@ protocol BikeStationModelProtocol: Downloadable {
 }
 
 extension BikeStationModelProtocol {
-
+    
     func getStations(userLocation: CLLocationCoordinate2D, isNearbyMode: Bool, completed: @escaping completeHandle) {
-
+        
         let citys = getCitys(userLocation: userLocation, isNearbyMode: isNearbyMode)
         let apis = getAPIs(from: citys)
-        self.downloadData(from: apis, completed: completed)
+        downloadData(from: apis, completed: completed)
         
-//        getWorldsAPIs(url: "https://api.citybik.es/v2/networks") {  (worldAPIs) in
-//            apis += worldAPIs
-//            
-//            self.downloadData(from: apis, completed: completed)
-//        }
     }
 }
 
 extension BikeStationModelProtocol {
-
+    
     fileprivate func getCitys(userLocation: CLLocationCoordinate2D, isNearbyMode: Bool) -> [City] {
-
+        
         let latitude = userLocation.latitude
         let longitude = userLocation.longitude
-
+        
         var citys = [City]()
-
+        
         switch (latitude, longitude) {
-
+            
         case (24.96...25.14, 121.44...121.65):
             citys.append(.taipei)
         case (24.75...25.33, 121.15...121.83):
@@ -63,19 +58,19 @@ extension BikeStationModelProtocol {
         default:
             break
         }
-
+        
         if !isNearbyMode {
             let testAPI: [City] = [.taipei, .newTaipei, .changhua, .taoyuan, .hsinchu, .pingtung, .kaohsiung, .taichung, .tainan, .worlds]
             citys = testAPI
-
+            
         }
-
+        
         citys.forEach { print($0, terminator: ", ") }
         print("")
-
+        
         return citys
     }
-
+    
     fileprivate func getAPIs(from citys: [City]) -> [API] {
         var apis = [API]()
         let dic = BikeStationAPI().APIs
