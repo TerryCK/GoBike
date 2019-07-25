@@ -81,7 +81,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate, NavigationBa
     }
     
     var timerStatusReadyTo: TimerStatus = .play
-    open var timerCurrentStatusFlag: TimerStatus = .reset
+    public var timerCurrentStatusFlag: TimerStatus = .reset
     var timeInPause = 5
     
     override func viewDidLoad() {
@@ -180,7 +180,7 @@ extension MapViewController: HandleMapSearch {
         
     }
     
-    func callSearcher() {
+    @objc func callSearcher() {
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         print("call searcher")
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
@@ -213,8 +213,8 @@ extension MapViewController: HandleMapSearch {
         }
         
         mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
 }

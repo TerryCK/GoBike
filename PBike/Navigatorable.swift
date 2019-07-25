@@ -43,7 +43,7 @@ extension Navigatorable where Self: MapViewController {
         let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
         
         // Create request
-        let request = MKDirectionsRequest()
+        let request = MKDirections.Request()
         request.source = sourceMapItem
         request.destination = destinationMapItem
         request.transportType = MKDirectionsTransportType.automobile

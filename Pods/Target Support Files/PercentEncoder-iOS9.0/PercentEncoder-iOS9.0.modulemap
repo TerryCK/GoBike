@@ -1,6 +1,0 @@
-framework module PercentEncoder {
-  umbrella header "PercentEncoder-iOS9.0-umbrella.h"
-
-  export *
-  module * { export * }
-}

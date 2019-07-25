@@ -133,7 +133,7 @@ extension MapViewController: TimerHandlerDelegate, TimeStatueProtocol {
         time = 1800
         rentedTimer.invalidate()
         timerLabel.setTitleColor(UIColor.gray, for: .normal)
-        timerLabel.setTitle(time.convertToHMS, for: UIControlState.normal)
+        timerLabel.setTitle(time.convertToHMS, for: UIControl.State.normal)
         timerStatusReadyTo.next()
 
     }

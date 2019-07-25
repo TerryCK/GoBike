@@ -54,9 +54,9 @@ extension MapViewController: MFMailComposeViewControllerDelegate {
     }
 
     func showSendMailErrorAlert() {
-        let alertController = UIAlertController(title: "無法傳送Email", message: "目前無法傳送郵件，請檢查E-mail設定並在重試", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "無法傳送Email", message: "目前無法傳送郵件，請檢查E-mail設定並在重試", preferredStyle: .alert)
         //Replace UIAlertControllerStyle.Alert by UIAlertControllerStyle.alert
-        let DestructiveAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive) {
+        let DestructiveAction = UIAlertAction(title: "OK", style: .destructive) {
             (_ : UIAlertAction) -> Void in
             print("Destructive")
         }

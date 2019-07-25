@@ -17,7 +17,7 @@ extension TitleImageSetable {
     
     func setTopTitleImage(to viewController: UIViewController) {
         if let vc = viewController as? MapViewController {
-            vc.topTitleimageView.setImage(UIImage(named: "GoBike"), for: UIControlState.normal)
+            vc.topTitleimageView.setImage(UIImage(named: "GoBike"), for: .normal)
         }
     }
     

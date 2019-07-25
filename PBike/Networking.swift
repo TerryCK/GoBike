@@ -62,12 +62,13 @@ extension Downloadable {
                     let parsed = self.parse(city: api.city, dataFormat: data){
                     completed(parsed)
                 }
-            } else {
-                
-                if let parsed = self.parse(city: api.city, dataFormat: data) {
-                    completed(parsed)
-                }
             }
+//            else {
+//
+//                if let parsed = self.parse(city: api.city, dataFormat: data) {
+//                    completed(parsed)
+//                }
+//            }
         }
         
         

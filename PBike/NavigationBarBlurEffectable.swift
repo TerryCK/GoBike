@@ -25,7 +25,7 @@ extension NavigationBarBlurEffectable {
         viewController.navigationController?.navigationBar.backgroundColor = UIColor.clear
         viewController.navigationController?.navigationBar.addSubview(visualEffectView)
 
-        viewController.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
+        viewController.navigationController?.navigationBar.sendSubviewToBack(visualEffectView)
     }
 
 }

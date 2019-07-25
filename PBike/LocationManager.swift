@@ -20,7 +20,7 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 
     func setCurrentLocation(latDelta: Double, longDelta: Double) {
-        let currentLocationSpan = MKCoordinateSpanMake(latDelta, longDelta)
+        let currentLocationSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
 
         if let current = myLocationManager.location {
             location = current.coordinate
@@ -56,16 +56,16 @@ extension MapViewController: CLLocationManagerDelegate {
 
         switch (mapView.userTrackingMode) {
         case .none:
-            locationArrowImage.setImage(UIImage(named: "locationArrowNone"), for: UIControlState.normal)
+            locationArrowImage.setImage(UIImage(named: "locationArrowNone"), for: .normal)
             print("tracking mode has changed to none")
 
         case .followWithHeading:
-            locationArrowImage.setImage(UIImage(named: "locationArrowFollewWithHeading"), for: UIControlState.normal)
+            locationArrowImage.setImage(UIImage(named: "locationArrowFollewWithHeading"), for: .normal)
 
             print("tracking mode has changed to followWithHeading")
 
         case .follow:
-            locationArrowImage.setImage(UIImage(named: "locationArrow"), for: UIControlState.normal)
+            locationArrowImage.setImage(UIImage(named: "locationArrow"), for: .normal)
             print("tracking mode has changed to follow")
         }
 
